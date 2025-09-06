@@ -1,0 +1,621 @@
+ :root {
+     --bg-color: #121212;
+     --primary-color: #FFD700;
+     --secondary-color: #1E1E1E;
+     --text-color: #E0E0E0;
+     --panel-bg: rgba(30, 30, 30, 0.95);
+     --panel-width: 350px;
+ }
+
+ body {
+     margin: 0;
+     padding: 0;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     background-color: var(--bg-color);
+     color: var(--text-color);
+     overflow-x: hidden;
+     transition: background-color 0.3s;
+     font-size: 16px;
+     touch-action: pan-y;
+ }
+
+ .container {
+     max-width: 100%;
+     height: 100vh;
+     display: flex;
+     flex-direction: column;
+ }
+
+ .comic-viewer {
+     flex: 1;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     overflow: hidden;
+     position: relative;
+ }
+
+ .comic-image {
+     max-width: 100%;
+     max-height: 100%;
+     object-fit: contain;
+     transition: opacity 0.15s ease;
+     opacity: 1;
+ }
+
+ .comic-image.loading {
+     opacity: 0;
+ }
+
+ .control-panel {
+     position: fixed;
+     top: 0;
+     right: 0;
+     height: 100vh;
+     background-color: var(--panel-bg);
+     border-radius: 0;
+     padding: 15px;
+     width: var(--panel-width);
+     max-width: 90%;
+     backdrop-filter: blur(10px);
+     box-shadow: -8px 0 25px rgba(0, 0, 0, 0.5);
+     transition: all 0.3s ease;
+     z-index: 100;
+     display: none;
+     transform: translateX(100%);
+     overflow-y: auto;
+ }
+
+ .control-panel.active {
+     display: block;
+     transform: translateX(0);
+ }
+
+ .panel-overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background: rgba(0, 0, 0, 0.5);
+     z-index: 99;
+     display: none;
+     opacity: 0;
+     transition: opacity 0.3s;
+ }
+
+ .panel-overlay.active {
+     display: block;
+     opacity: 1;
+ }
+
+ .panel-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 10px 15px;
+     margin-bottom: 10px;
+     border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+ }
+
+ .panel-title {
+     font-size: 20px;
+     color: var(--primary-color);
+     font-weight: bold;
+ }
+
+ .close-btn {
+     background: none;
+     border: none;
+     color: var(--primary-color);
+     font-size: 24px;
+     cursor: pointer;
+     padding: 5px;
+     line-height: 1;
+ }
+
+ .panel-content {
+     padding: 10px 5px;
+     max-height: calc(100vh - 100px);
+     overflow-y: auto;
+ }
+
+ .panel-section {
+     margin-bottom: 15px;
+ }
+
+ .section-title {
+     font-size: 18px;
+     margin-bottom: 10px;
+     color: var(--primary-color);
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+     padding: 8px 10px;
+     background-color: rgba(255, 215, 0, 0.1);
+     border-radius: 8px;
+ }
+
+ .section-content {
+     padding: 10px 15px;
+     display: none;
+     background-color: rgba(0, 0, 0, 0.2);
+     border-radius: 8px;
+     margin-top: 5px;
+ }
+
+ .section-content.active {
+     display: block;
+ }
+
+ .btn {
+     background-color: var(--secondary-color);
+     color: var(--text-color);
+     border: 1px solid var(--primary-color);
+     border-radius: 8px;
+     padding: 10px 15px;
+     margin: 5px;
+     cursor: pointer;
+     font-size: 16px;
+     transition: all 0.2s;
+     min-width: 120px;
+ }
+
+ .btn:hover {
+     background-color: var(--primary-color);
+     color: var(--secondary-color);
+ }
+
+ .btn.active {
+     background-color: var(--primary-color);
+     color: var(--secondary-color);
+ }
+
+ .btn-group {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     margin: 10px 0;
+ }
+
+ .slider-container {
+     display: flex;
+     align-items: center;
+     margin: 15px 0;
+ }
+
+ .slider {
+     flex: 1;
+     -webkit-appearance: none;
+     height: 8px;
+     background: var(--secondary-color);
+     outline: none;
+     margin: 0 15px;
+     border-radius: 4px;
+ }
+
+ .slider::-webkit-slider-thumb {
+     -webkit-appearance: none;
+     appearance: none;
+     width: 20px;
+     height: 20px;
+     border-radius: 50%;
+     background: var(--primary-color);
+     cursor: pointer;
+     border: 2px solid var(--secondary-color);
+ }
+
+ .chapter-list {
+     max-height: 200px;
+     overflow-y: auto;
+     background-color: var(--secondary-color);
+     border-radius: 8px;
+     padding: 5px;
+ }
+
+ .chapter-item {
+     padding: 12px 15px;
+     cursor: pointer;
+     font-size: 16px;
+     border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+     transition: background-color 0.2s;
+ }
+
+ .chapter-item:hover {
+     background-color: rgba(255, 215, 0, 0.2);
+ }
+
+ .chapter-item:last-child {
+     border-bottom: none;
+ }
+
+ .toggle-panel-btn {
+     position: fixed;
+     top: 20px;
+     right: 20px;
+     background-color: var(--panel-bg);
+     border: none;
+     color: var(--primary-color);
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     cursor: pointer;
+     z-index: 100;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 24px;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+ }
+
+ .fullscreen-btn {
+     position: fixed;
+     top: 20px;
+     left: 20px;
+     background-color: var(--panel-bg);
+     border: none;
+     color: var(--primary-color);
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     cursor: pointer;
+     z-index: 100;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 24px;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+ }
+
+ /* Навигация */
+ .nav-area {
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     width: 50%;
+     cursor: pointer;
+     z-index: 10;
+ }
+
+ .prev-area {
+     left: 0;
+ }
+
+ .next-area {
+     right: 0;
+ }
+
+ /* Темная тема */
+ body.light-theme {
+     --bg-color: #f5f5f5;
+     --secondary-color: #e0e0e0;
+     --text-color: #333333;
+     --panel-bg: rgba(224, 224, 224, 0.95);
+ }
+
+ /* Режимы просмотра */
+ .vertical-mode {
+     overflow-y: auto;
+     overflow-x: hidden;
+ }
+
+ .horizontal-mode {
+     overflow-x: auto;
+     overflow-y: hidden;
+     white-space: nowrap;
+     scroll-snap-type: x mandatory;
+ }
+
+ .horizontal-mode .comic-viewer {
+     display: inline-flex;
+     width: 100vw;
+     height: 100vh;
+     scroll-snap-align: start;
+ }
+
+ .horizontal-mode .comic-image {
+     height: auto;
+     max-height: 100vh;
+     max-width: 100vw;
+     width: auto;
+     object-fit: contain;
+ }
+
+ /* Новый дизайн экрана окончания комикса */
+ .end-screen {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: rgba(18, 18, 18, 0.95);
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     z-index: 50;
+     opacity: 0;
+     pointer-events: none;
+     transition: opacity 0.3s ease;
+     padding: 20px;
+     text-align: center;
+     backdrop-filter: blur(5px);
+ }
+
+ .end-screen.active {
+     opacity: 1;
+     pointer-events: all;
+ }
+
+ .end-content {
+     background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(20, 20, 20, 0.95));
+     border: 2px solid var(--primary-color);
+     border-radius: 20px;
+     padding: 30px;
+     max-width: 600px;
+     width: 90%;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+     transform: translateY(20px);
+     opacity: 0;
+     animation: endScreenAppear 0.4s ease-out 0.2s forwards;
+     position: relative;
+     overflow: hidden;
+ }
+
+ @keyframes endScreenAppear {
+     to {
+         transform: translateY(0);
+         opacity: 1;
+     }
+ }
+
+ .end-content::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     height: 4px;
+     background: linear-gradient(90deg, var(--primary-color), #ff9900, var(--primary-color));
+ }
+
+ .end-title {
+     font-size: 2rem;
+     color: var(--primary-color);
+     margin-bottom: 1rem;
+     font-weight: bold;
+     position: relative;
+     padding-bottom: 10px;
+ }
+
+ .end-title::after {
+     content: "";
+     position: absolute;
+     bottom: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 60px;
+     height: 3px;
+     background: var(--primary-color);
+     border-radius: 3px;
+ }
+
+ .end-message {
+     font-size: 1.1rem;
+     color: var(--text-color);
+     margin-bottom: 1.5rem;
+     line-height: 1.6;
+ }
+
+ .end-buttons {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 15px;
+     margin-top: 20px;
+ }
+
+ .end-btn {
+     flex: 1;
+     min-width: 180px;
+     padding: 12px 20px;
+     border-radius: 8px;
+     font-size: 1rem;
+     font-weight: 600;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     text-decoration: none;
+     text-align: center;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border: none;
+ }
+
+ .next-chapter-btn {
+     background-color: var(--primary-color);
+     color: var(--secondary-color);
+     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+ }
+
+ .next-chapter-btn:hover {
+     background-color: #ffc600;
+     transform: translateY(-2px);
+     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+ }
+
+ .restart-chapter-btn {
+     background-color: var(--secondary-color);
+     color: var(--primary-color);
+     border: 1px solid var(--primary-color);
+ }
+
+ .restart-chapter-btn:hover {
+     background-color: rgba(255, 215, 0, 0.1);
+     transform: translateY(-2px);
+ }
+
+ .close-end-btn {
+     background-color: transparent;
+     color: var(--primary-color);
+     border: 1px solid var(--primary-color);
+ }
+
+ .close-end-btn:hover {
+     background-color: rgba(255, 215, 0, 0.1);
+ }
+
+ .end-icon {
+     font-size: 1.5rem;
+     margin-right: 10px;
+ }
+
+ /* Адаптация для мобильных */
+ @media (max-width: 768px) {
+     .control-panel {
+         width: 85%;
+         right: 0;
+         top: 0;
+         height: 100vh;
+         transform: translateX(100%);
+     }
+
+     .control-panel.active {
+         transform: translateX(0);
+     }
+
+     .btn {
+         padding: 12px;
+         font-size: 14px;
+         min-width: 100px;
+     }
+
+     .nav-area {
+         width: 40%;
+     }
+
+     .section-title {
+         font-size: 16px;
+     }
+
+     .panel-title {
+         font-size: 18px;
+     }
+
+     .fullscreen-btn {
+         display: none;
+     }
+
+     /* Улучшенный стиль для мобильного экрана окончания */
+     .end-screen {
+         padding: 10px;
+         justify-content: flex-start;
+         padding-top: 30px;
+     }
+
+     .end-content {
+         padding: 20px 15px;
+         width: 95%;
+         margin-top: 20px;
+     }
+
+     .end-title {
+         font-size: 1.5rem;
+         margin-bottom: 0.8rem;
+     }
+
+     .end-message {
+         font-size: 1rem;
+         margin-bottom: 1.2rem;
+     }
+
+     .end-buttons {
+         flex-direction: column;
+         gap: 10px;
+         margin-top: 15px;
+     }
+
+     .end-btn {
+         width: 100%;
+         min-width: auto;
+         padding: 12px;
+         font-size: 0.9rem;
+     }
+
+     .end-icon {
+         font-size: 1.2rem;
+         margin-right: 8px;
+     }
+ }
+
+ /* Стиль для кнопки в панели */
+ .panel-btn {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 100%;
+     padding: 12px 15px;
+     background-color: var(--secondary-color);
+     border: 1px solid var(--primary-color);
+     border-radius: 8px;
+     color: var(--text-color);
+     cursor: pointer;
+     transition: all 0.2s;
+     font-size: 16px;
+     margin: 5px 0;
+ }
+
+ .panel-btn:hover {
+     background-color: var(--primary-color);
+     color: var(--secondary-color);
+ }
+
+ .panel-btn span {
+     margin-left: 10px;
+ }
+
+ .setting-label {
+     display: block;
+     margin-bottom: 10px;
+     font-size: 16px;
+ }
+
+ /* Индикатор загрузки */
+ .loader {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: var(--bg-color);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 1000;
+     transition: opacity 0.3s ease;
+ }
+
+ .loader.hidden {
+     opacity: 0;
+     pointer-events: none;
+ }
+
+ .loader-spinner {
+     width: 50px;
+     height: 50px;
+     border: 5px solid rgba(255, 215, 0, 0.3);
+     border-radius: 50%;
+     border-top-color: var(--primary-color);
+     animation: spin 1s ease-in-out infinite;
+ }
+
+ @keyframes spin {
+     to {
+         transform: rotate(360deg);
+     }
+ }
+
+ /* Предзагрузка изображений */
+ .preloaded-images {
+     display: none;
+ }

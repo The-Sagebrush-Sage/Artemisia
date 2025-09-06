@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemisia - Telegram Channels</title>
+    <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0088cc;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --light-text: #777;
+            --border-color: #e0e0e0;
+            --bg-color: #ffffff;
+            --sidebar-width: 350px;
+            --header-height: 60px;
+            --message-bg: #e3f2fd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Header стили */
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            height: 30px;
+        }
+
+        .header-title {
+            margin-left: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Основной контейнер */
+        .container {
+            display: flex;
+            margin-top: var(--header-height);
+            height: calc(100vh - var(--header-height));
+        }
+
+        /* Сайдбар */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-color);
+            border-right: 1px solid var(--border-color);
+            height: 100%;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 900;
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .search-container {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text);
+        }
+
+        .channels-list {
+            overflow-y: auto;
+            height: calc(100vh - var(--header-height) - 110px);
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .channel-item:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .channel-item.active {
+            background-color: var(--message-bg);
+        }
+
+        .channel-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+
+        .channel-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .channel-name {
+            font-weight: 600;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .channel-last-message {
+            font-size: 13px;
+            color: var(--light-text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Основное содержимое */
+        .content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            background-color: var(--bg-color);
+            height: calc(100vh - var(--header-height));
+            overflow-y: auto;
+            transition: margin-left 0.3s ease;
+        }
+
+        .chat-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-color);
+            z-index: 800;
+        }
+
+        .chat-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+
+        .chat-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .chat-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-action-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--light-text);
+            cursor: pointer;
+            margin-left: 15px;
+            transition: color 0.2s;
+        }
+
+        .chat-action-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .chat-messages {
+            padding: 15px;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            max-width: 80%;
+        }
+
+        .message-content {
+            padding: 10px 15px;
+            border-radius: 10px;
+            background-color: var(--message-bg);
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .message-text {
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .message-media {
+            margin-top: 10px;
+            max-width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .message-video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .message-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 12px;
+            color: var(--light-text);
+        }
+
+        .message-date {
+            margin-right: 10px;
+        }
+
+        .message-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .message-action {
+            margin-left: 10px;
+            cursor: pointer;
+            color: var(--light-text);
+            transition: color 0.2s;
+        }
+
+        .message-action:hover {
+            color: var(--primary-color);
+        }
+
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-modal {
+            background-color: var(--bg-color);
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-modal-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-modal-title {
+            font-weight: 600;
+        }
+
+        .search-modal-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--light-text);
+        }
+
+        .search-modal-input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-results {
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .search-result-item {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .search-result-item:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .search-result-text {
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .search-result-date {
+            font-size: 12px;
+            color: var(--light-text);
+        }
+
+        .news-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .news-modal {
+            background-color: var(--bg-color);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-modal-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .news-modal-title {
+            font-weight: 600;
+        }
+
+        .news-modal-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--light-text);
+        }
+
+        .news-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .news-tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .news-tab.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .news-content {
+            padding: 15px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .news-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .news-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .news-item-date {
+            font-size: 12px;
+            color: var(--light-text);
+            margin-bottom: 5px;
+        }
+
+        .news-item-text {
+            line-height: 1.4;
+        }
+
+        .share-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-modal {
+            background-color: var(--bg-color);
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .share-modal-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .share-modal-title {
+            font-weight: 600;
+        }
+
+        .share-modal-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--light-text);
+        }
+
+        .share-options {
+            padding: 15px;
+        }
+
+        .share-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .share-option:last-child {
+            border-bottom: none;
+        }
+
+        .share-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .share-icon.telegram {
+            background-color: #0088cc;
+        }
+
+        .share-icon.whatsapp {
+            background-color: #25D366;
+        }
+
+        .share-icon.facebook {
+            background-color: #1877F2;
+        }
+
+        .share-icon.twitter {
+            background-color: #1DA1F2;
+        }
+
+        .share-icon.link {
+            background-color: var(--primary-color);
+        }
+
+        .share-option-name {
+            font-weight: 500;
+        }
+
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                z-index: 1000;
+                width: 90%;
+                max-width: 350px;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .content {
+                margin-left: 0;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 900;
+                display: none;
+            }
+
+            .overlay.active {
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .message {
+                max-width: 90%;
+            }
+
+            .chat-header {
+                padding: 10px;
+            }
+
+            .chat-actions {
+                display: none;
+            }
+
+            .chat-messages {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="menu-icon" id="menuIcon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Логотип" class="logo">
+            <div class="header-title">Telegram Channels</div>
+        </div>
+    </header>
+
+    <!-- Overlay для меню -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Основной контейнер -->
+    <div class="container">
+        <!-- Сайдбар с каналами -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">Каналы</div>
+            </div>
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Поиск каналов..." id="channelSearch">
+                </div>
+            </div>
+            <div class="channels-list" id="channelsList">
+                <!-- Каналы будут добавлены через JavaScript -->
+            </div>
+        </div>
+
+        <!-- Основное содержимое (чат) -->
+        <div class="content" id="content">
+            <div class="chat-header">
+                <div class="chat-info">
+                    <img src="https://i.postimg.cc/3NkP4Yy0/channel1.jpg" alt="Channel Avatar" class="chat-avatar">
+                    <div class="chat-title">Artemisia News</div>
+                </div>
+                <div class="chat-actions">
+                    <button class="chat-action-btn" id="searchChatBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="chat-action-btn" id="newsBtn">
+                        <i class="fas fa-calendar-alt"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Сообщения будут добавлены через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно поиска в чате -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-modal">
+            <div class="search-modal-header">
+                <div class="search-modal-title">Поиск в чате</div>
+                <button class="search-modal-close" id="closeSearchModal">&times;</button>
+            </div>
+            <input type="text" class="search-modal-input" placeholder="Введите текст для поиска..." id="chatSearchInput">
+            <div class="search-results" id="chatSearchResults">
+                <!-- Результаты поиска будут добавлены через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно новостей -->
+    <div class="news-overlay" id="newsOverlay">
+        <div class="news-modal">
+            <div class="news-modal-header">
+                <div class="news-modal-title">Архив новостей</div>
+                <button class="news-modal-close" id="closeNewsModal">&times;</button>
+            </div>
+            <div class="news-tabs">
+                <div class="news-tab active" data-period="this-week">Эта неделя</div>
+                <div class="news-tab" data-period="last-week">Прошлая неделя</div>
+                <div class="news-tab" data-period="this-month">Этот месяц</div>
+            </div>
+            <div class="news-content" id="newsContent">
+                <!-- Новости будут добавлены через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно поделиться -->
+    <div class="share-overlay" id="shareOverlay">
+        <div class="share-modal">
+            <div class="share-modal-header">
+                <div class="share-modal-title">Поделиться</div>
+                <button class="share-modal-close" id="closeShareModal">&times;</button>
+            </div>
+            <div class="share-options">
+                <div class="share-option" data-platform="telegram">
+                    <div class="share-icon telegram">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <div class="share-option-name">Telegram</div>
+                </div>
+                <div class="share-option" data-platform="whatsapp">
+                    <div class="share-icon whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="share-option-name">WhatsApp</div>
+                </div>
+                <div class="share-option" data-platform="facebook">
+                    <div class="share-icon facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="share-option-name">Facebook</div>
+                </div>
+                <div class="share-option" data-platform="twitter">
+                    <div class="share-icon twitter">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div class="share-option-name">Twitter</div>
+                </div>
+                <div class="share-option" data-platform="link">
+                    <div class="share-icon link">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="share-option-name">Копировать ссылку</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Данные каналов
+        const channels = [
+            {
+                id: 'artemisia-news',
+                name: 'Artemisia News',
+                avatar: 'https://i.postimg.cc/3NkP4Yy0/channel1.jpg',
+                lastMessage: 'Новое обновление платформы выйдет на следующей неделе',
+                messages: [
+                    {
+                        text: 'Добро пожаловать в официальный канал Artemisia! Здесь мы публикуем новости о платформе и сообщества художников.',
+                        date: '15 мая 2023, 10:30',
+                        media: null
+                    },
+                    {
+                        text: 'Мы рады объявить о новом конкурсе для художников. Тема: "Фэнтезийные персонажи". Участвуйте и выигрывайте призы!',
+                        date: '17 мая 2023, 14:15',
+                        media: 'https://i.postimg.cc/8zXQYJ6K/contest.jpg'
+                    },
+                    {
+                        text: 'Новое обновление платформы выйдет на следующей неделе. Основные изменения: улучшенный поиск и новые инструменты для художников.',
+                        date: '20 мая 2023, 09:45',
+                        media: null
+                    },
+                    {
+                        text: 'Видео-обзор новых функций:',
+                        date: '21 мая 2023, 16:20',
+                        media: 'https://i.postimg.cc/8zXQYJ6K/video-preview.jpg',
+                        isVideo: true
+                    }
+                ]
+            },
+            {
+                id: 'digital-art',
+                name: 'Digital Art Community',
+                avatar: 'https://i.postimg.cc/8zXQYJ6K/channel2.jpg',
+                lastMessage: 'Сегодня в 20:00 мастер-класс по цифровой живописи',
+                messages: [
+                    {
+                        text: 'Приветствуем всех любителей цифрового искусства! Делитесь своими работами и находите вдохновение.',
+                        date: '10 мая 2023, 12:00',
+                        media: null
+                    },
+                    {
+                        text: 'Работа недели от @artist123. Не забудьте оценить!',
+                        date: '12 мая 2023, 18:30',
+                        media: 'https://i.postimg.cc/8zXQYJ6K/artwork1.jpg'
+                    },
+                    {
+                        text: 'Сегодня в 20:00 мастер-класс по цифровой живописи от профессионального художника. Не пропустите!',
+                        date: '19 мая 2023, 11:45',
+                        media: 'https://i.postimg.cc/8zXQYJ6K/masterclass.jpg'
+                    }
+                ]
+            },
+            {
+                id: 'art-tips',
+                name: 'Art Tips & Tricks',
+                avatar: 'https://i.postimg.cc/8zXQYJ6K/channel3.jpg',
+                lastMessage: 'Новый урок: Как рисовать реалистичные текстуры',
+                messages: [
+                    {
+                        text: 'Канал для тех, кто хочет улучшить свои навыки в искусстве. Полезные советы и уроки каждый день!',
+                        date: '5 мая 2023, 09:00',
+                        media: null
+                    },
+                    {
+                        text: '5 распространенных ошибок начинающих художников и как их избежать.',
+                        date: '8 мая 2023, 15:20',
+                        media: 'https://i.postimg.cc/8zXQYJ6K/mistakes.jpg'
+                    },
+                    {
+                        text: 'Новый урок: Как рисовать реалистичные текстуры (дерево, металл, ткань).',
+                        date: '18 мая 2023, 13:10',
+                        media: 'https://i.postimg.cc/8zXQYJ6K/textures.jpg'
+                    }
+                ]
+            },
+            {
+                id: 'comics',
+                name: 'Comics & Manga',
+                avatar: 'https://i.postimg.cc/8zXQYJ6K/channel4.jpg',
+                lastMessage: 'Конкурс на лучший короткий комикс до 5 панелей',
+                messages: [
+                    {
+                        text: 'Сообщество для любителей комиксов и манги. Обсуждаем, делимся и учимся вместе!',
+                        date: '3 мая 2023, 10:15',
+                        media: null
+                    },
+                    {
+                        text: 'Как создать своего первого персонажа для комикса - гайд для начинающих.',
+                        date: '7 мая 2023, 14:50',
+                        media: 'https://i.postimg.cc/8zXQYJ6K/character.jpg'
+                    },
+                    {
+                        text: 'Конкурс на лучший короткий комикс до 5 панелей. Тема: "Неожиданная встреча".',
+                        date: '16 мая 2023, 17:30',
+                        media: 'https://i.postimg.cc/8zXQYJ6K/contest2.jpg'
+                    }
+                ]
+            },
+            {
+                id: '3d-art',
+                name: '3D Art World',
+                avatar: 'https://i.postimg.cc/8zXQYJ6K/channel5.jpg',
+                lastMessage: 'Blender 3.5 - обзор новых функций',
+                messages: [
+                    {
+                        text: 'Все о 3D-графике: моделирование, текстурирование, рендеринг и анимация.',
+                        date: '1 мая 2023, 11:00',
+                        media: null
+                    },
+                    {
+                        text: '10 бесплатных ресурсов с высококачественными 3D-текстурами.',
+                        date: '4 мая 2023, 12:45',
+                        media: 'https://i.postimg.cc/8zXQYJ6K/textures3d.jpg'
+                    },
+                    {
+                        text: 'Blender 3.5 - обзор новых функций и улучшений.',
+                        date: '14 мая 2023, 10:20',
+                        media: 'https://i.postimg.cc/8zXQYJ6K/blender.jpg'
+                    }
+                ]
+            }
+        ];
+
+        // Данные новостей
+        const news = {
+            'this-week': [
+                {
+                    date: '22 мая 2023',
+                    text: 'Запущена новая функция поиска по хэштегам. Теперь вы можете легко находить работы по темам.'
+                },
+                {
+                    date: '21 мая 2023',
+                    text: 'Мастер-класс по цифровой живописи переносится на 23 мая в 19:00. Приносим извинения за неудобства.'
+                },
+                {
+                    date: '20 мая 2023',
+                    text: 'Объявлены победители конкурса "Фэнтезийные персонажи". Результаты можно посмотреть в закрепленном посте.'
+                }
+            ],
+            'last-week': [
+                {
+                    date: '15 мая 2023',
+                    text: 'Технические работы на сервере завершены. Все функции доступны в полном объеме.'
+                },
+                {
+                    date: '14 мая 2023',
+                    text: 'Новый художник недели - @digital_dreamer. Не забудьте посмотреть его галерею!'
+                },
+                {
+                    date: '12 мая 2023',
+                    text: 'Обновлены правила публикации работ. Пожалуйста, ознакомьтесь с изменениями.'
+                },
+                {
+                    date: '10 мая 2023',
+                    text: 'Конкурс "Лучший портрет" продлен до 20 мая. У вас есть еще время принять участие!'
+                }
+            ],
+            'this-month': [
+                {
+                    date: '1 мая 2023',
+                    text: 'Старт нового месяца - новые возможности! В мае мы запускаем несколько интересных конкурсов.'
+                },
+                {
+                    date: '28 апреля 2023',
+                    text: 'Запланированы технические работы на 2 мая с 03:00 до 06:00. Платформа будет недоступна.'
+                },
+                {
+                    date: '25 апреля 2023',
+                    text: 'Теперь вы можете создавать коллекции своих любимых работ. Попробуйте новую функцию!'
+                },
+                {
+                    date: '20 апреля 2023',
+                    text: 'Итоги апрельского конкурса "Весенние мотивы". Благодарим всех участников!'
+                },
+                {
+                    date: '15 апреля 2023',
+                    text: 'Добавлена поддержка новых форматов файлов: WebP и HEIC.'
+                }
+            ]
+        };
+
+        // Текущий активный канал
+        let activeChannel = channels[0];
+        // Текущее сообщение для поделиться
+        let currentShareMessage = null;
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            renderChannelsList();
+            renderChannelMessages(activeChannel);
+            setupEventListeners();
+        });
+
+        // Рендер списка каналов
+        function renderChannelsList() {
+            const channelsList = document.getElementById('channelsList');
+            channelsList.innerHTML = '';
+
+            channels.forEach(channel => {
+                const channelItem = document.createElement('div');
+                channelItem.className = 'channel-item';
+                if (channel.id === activeChannel.id) {
+                    channelItem.classList.add('active');
+                }
+                channelItem.innerHTML = `
+                    <img src="${channel.avatar}" alt="${channel.name}" class="channel-avatar">
+                    <div class="channel-info">
+                        <div class="channel-name">${channel.name}</div>
+                        <div class="channel-last-message">${channel.lastMessage}</div>
+                    </div>
+                `;
+                channelItem.addEventListener('click', () => {
+                    setActiveChannel(channel);
+                    if (window.innerWidth <= 992) {
+                        toggleSidebar();
+                    }
+                });
+                channelsList.appendChild(channelItem);
+            });
+        }
+
+        // Установка активного канала
+        function setActiveChannel(channel) {
+            activeChannel = channel;
+            document.querySelectorAll('.channel-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`.channel-item:nth-child(${channels.indexOf(channel) + 1})`).classList.add('active');
+            renderChannelMessages(channel);
+            updateChatHeader(channel);
+        }
+
+        // Обновление заголовка чата
+        function updateChatHeader(channel) {
+            document.querySelector('.chat-avatar').src = channel.avatar;
+            document.querySelector('.chat-title').textContent = channel.name;
+        }
+
+        // Рендер сообщений канала
+        function renderChannelMessages(channel) {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = '';
+
+            channel.messages.forEach(message => {
+                const messageElement = document.createElement('div');
+                messageElement.className = 'message';
+                
+                let mediaContent = '';
+                if (message.media) {
+                    if (message.isVideo) {
+                        mediaContent = `
+                            <div class="message-media">
+                                <img src="${message.media}" alt="Media" class="message-video">
+                            </div>
+                        `;
+                    } else {
+                        mediaContent = `
+                            <div class="message-media">
+                                <img src="${message.media}" alt="Media">
+                            </div>
+                        `;
+                    }
+                }
+
+                messageElement.innerHTML = `
+                    <div class="message-content">
+                        <div class="message-text">${message.text}</div>
+                        ${mediaContent}
+                        <div class="message-info">
+                            <div class="message-date">${message.date}</div>
+                            <div class="message-actions">
+                                <span class="message-action" onclick="openShareModal(event, ${JSON.stringify(message).replace(/"/g, '&quot;')})">
+                                    <i class="fas fa-share"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(messageElement);
+            });
+        }
+
+        // Настройка обработчиков событий
+        function setupEventListeners() {
+            // Меню
+            document.getElementById('menuIcon').addEventListener('click', toggleSidebar);
+            document.getElementById('overlay').addEventListener('click', toggleSidebar);
+
+            // Поиск каналов
+            document.getElementById('channelSearch').addEventListener('input', function() {
+                const searchText = this.value.toLowerCase();
+                const channelItems = document.querySelectorAll('.channel-item');
+
+                channelItems.forEach(item => {
+                    const channelName = item.querySelector('.channel-name').textContent.toLowerCase();
+                    const lastMessage = item.querySelector('.channel-last-message').textContent.toLowerCase();
+                    if (channelName.includes(searchText) || lastMessage.includes(searchText)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
+            // Кнопки в чате
+            document.getElementById('searchChatBtn').addEventListener('click', openSearchModal);
+            document.getElementById('newsBtn').addEventListener('click', openNewsModal);
+            document.getElementById('closeSearchModal').addEventListener('click', closeSearchModal);
+            document.getElementById('closeNewsModal').addEventListener('click', closeNewsModal);
+            document.getElementById('closeShareModal').addEventListener('click', closeShareModal);
+
+            // Поиск в чате
+            document.getElementById('chatSearchInput').addEventListener('input', function() {
+                const searchText = this.value.toLowerCase();
+                const resultsContainer = document.getElementById('chatSearchResults');
+                resultsContainer.innerHTML = '';
+
+                if (!searchText) return;
+
+                activeChannel.messages.forEach(message => {
+                    if (message.text.toLowerCase().includes(searchText)) {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'search-result-item';
+                        resultItem.innerHTML = `
+                            <div class="search-result-text">${highlightSearchText(message.text, searchText)}</div>
+                            <div class="search-result-date">${message.date}</div>
+                        `;
+                        resultItem.addEventListener('click', () => {
+                            scrollToMessage(message);
+                            closeSearchModal();
+                        });
+                        resultsContainer.appendChild(resultItem);
+                    }
+                });
+            });
+
+            // Вкладки новостей
+            document.querySelectorAll('.news-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.news-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    renderNews(this.dataset.period);
+                });
+            });
+
+            // Опции поделиться
+            document.querySelectorAll('.share-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    shareMessage(this.dataset.platform);
+                });
+            });
+        }
+
+        // Подсветка текста в результатах поиска
+        function highlightSearchText(text, searchText) {
+            const regex = new RegExp(`(${searchText})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        // Прокрутка к сообщению
+        function scrollToMessage(message) {
+            const messages = document.querySelectorAll('.message');
+            for (let i = 0; i < messages.length; i++) {
+                const msgText = messages[i].querySelector('.message-text').textContent;
+                if (msgText === message.text) {
+                    messages[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    messages[i].classList.add('highlight');
+                    setTimeout(() => {
+                        messages[i].classList.remove('highlight');
+                    }, 2000);
+                    break;
+                }
+            }
+        }
+
+        // Открыть модальное окно поиска
+        function openSearchModal() {
+            document.getElementById('searchOverlay').style.display = 'flex';
+            document.getElementById('chatSearchInput').focus();
+        }
+
+        // Закрыть модальное окно поиска
+        function closeSearchModal() {
+            document.getElementById('searchOverlay').style.display = 'none';
+            document.getElementById('chatSearchInput').value = '';
+            document.getElementById('chatSearchResults').innerHTML = '';
+        }
+
+        // Открыть модальное окно новостей
+        function openNewsModal() {
+            document.getElementById('newsOverlay').style.display = 'flex';
+            renderNews('this-week');
+        }
+
+        // Закрыть модальное окно новостей
+        function closeNewsModal() {
+            document.getElementById('newsOverlay').style.display = 'none';
+        }
+
+        // Рендер новостей
+        function renderNews(period) {
+            const newsContent = document.getElementById('newsContent');
+            newsContent.innerHTML = '';
+
+            news[period].forEach(item => {
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-item';
+                newsItem.innerHTML = `
+                    <div class="news-item-date">${item.date}</div>
+                    <div class="news-item-text">${item.text}</div>
+                `;
+                newsContent.appendChild(newsItem);
+            });
+        }
+
+        // Открыть модальное окно поделиться
+        function openShareModal(event, message) {
+            event.stopPropagation();
+            currentShareMessage = message;
+            document.getElementById('shareOverlay').style.display = 'flex';
+        }
+
+        // Закрыть модальное окно поделиться
+        function closeShareModal() {
+            document.getElementById('shareOverlay').style.display = 'none';
+        }
+
+        // Поделиться сообщением
+        function shareMessage(platform) {
+            let shareUrl = '';
+            const messageText = `${currentShareMessage.text}\n\nЧитать в канале ${activeChannel.name}`;
+            
+            switch (platform) {
+                case 'telegram':
+                    shareUrl = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(messageText)}`;
+                    break;
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent(messageText + ' ' + window.location.href)}`;
+                    break;
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(messageText)}&url=${encodeURIComponent(window.location.href)}`;
+                    break;
+                case 'link':
+                    navigator.clipboard.writeText(`${messageText}\n${window.location.href}`);
+                    alert('Ссылка скопирована в буфер обмена!');
+                    closeShareModal();
+                    return;
+            }
+            
+            window.open(shareUrl, '_blank');
+            closeShareModal();
+        }
+
+        // Переключение сайдбара (для мобильных)
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+            
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+            menuIcon.classList.toggle('active');
+        }
+
+        // Обработка URL для открытия конкретного канала
+        function handleUrl() {
+            const params = new URLSearchParams(window.location.search);
+            const channelId = params.get('channel');
+            
+            if (channelId) {
+                const channel = channels.find(c => c.id === channelId);
+                if (channel) {
+                    setActiveChannel(channel);
+                }
+            }
+        }
+
+        // Инициализация обработки URL
+        handleUrl();
+    </script>
+</body>
+
+</html>

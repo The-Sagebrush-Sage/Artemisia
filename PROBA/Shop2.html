@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин - Artemisia</title>
+    <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Стили для магазина */
+        :root {
+            --primary-dark: #1a1a1a;
+            --secondary-dark: #2d2d2d;
+            --accent-yellow: #FFD700;
+            --accent-gold: #D4AF37;
+            --light-text: #f5f5f5;
+            --dark-text: #333;
+            --card-bg: #2d2d2d;
+            --border-color: #444;
+        }
+
+        /* Основные стили магазина */
+        .shop-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--primary-dark);
+            color: var(--light-text);
+            min-height: calc(100vh - 200px);
+        }
+
+        .shop-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--accent-yellow);
+        }
+
+        .shop-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-yellow);
+        }
+
+        .shop-header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* Фильтры и категории */
+        .shop-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            justify-content: space-between;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .category-btn {
+            background-color: var(--secondary-dark);
+            border: 1px solid var(--border-color);
+            color: var(--light-text);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: var(--accent-yellow);
+            color: var(--dark-text);
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .filter-group label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            background-color: var(--secondary-dark);
+            border: 1px solid var(--border-color);
+            color: var(--light-text);
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .price-range {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-range input {
+            width: 80px;
+        }
+
+        /* Сетка товаров */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--accent-yellow);
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--accent-yellow);
+        }
+
+        .product-artist {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent-yellow);
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            background-color: rgba(255, 215, 0, 0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .buy-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent-yellow);
+            color: var(--dark-text);
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .buy-btn:hover {
+            background-color: var(--accent-gold);
+        }
+
+        /* Пагинация */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .pagination-btn {
+            padding: 8px 15px;
+            background-color: var(--secondary-dark);
+            border: 1px solid var(--border-color);
+            color: var(--light-text);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pagination-btn.active {
+            background-color: var(--accent-yellow);
+            color: var(--dark-text);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .shop-controls {
+                flex-direction: column;
+            }
+            
+            .categories {
+                justify-content: center;
+            }
+            
+            .filters {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .shop-header h1 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 15px;
+            }
+            
+            .filter-group {
+                width: 100%;
+            }
+            
+            .price-range {
+                justify-content: space-between;
+            }
+            
+            .price-range input {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .shop-container {
+                padding: 10px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .categories {
+                overflow-x: auto;
+                padding-bottom: 10px;
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header с поисковой строкой -->
+    <header>
+        <!-- ... (ваш существующий header) ... -->
+    </header>
+
+    <!-- Menu Drawer -->
+    <!-- ... (ваш существующий drawer) ... -->
+
+    <!-- Контент магазина -->
+    <div class="shop-container">
+        <div class="shop-header">
+            <h1>Магазин работ</h1>
+            <p>Уникальные творения от талантливых художников</p>
+        </div>
+
+        <div class="shop-controls">
+            <div class="categories">
+                <button class="category-btn active" data-category="all">Все работы</button>
+                <button class="category-btn" data-category="2d">2D Арт</button>
+                <button class="category-btn" data-category="3d">3D Модели</button>
+                <button class="category-btn" data-category="animation">Анимация</button>
+                <button class="category-btn" data-category="concept">Концепт-арт</button>
+                <button class="category-btn" data-category="illustration">Иллюстрации</button>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="sort">Сортировка</label>
+                    <select id="sort">
+                        <option value="newest">Сначала новые</option>
+                        <option value="price-asc">Цена (по возрастанию)</option>
+                        <option value="price-desc">Цена (по убыванию)</option>
+                        <option value="popular">Популярные</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Цена</label>
+                    <div class="price-range">
+                        <input type="number" id="min-price" placeholder="От" min="0">
+                        <span>-</span>
+                        <input type="number" id="max-price" placeholder="До" min="0">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="style">Стиль</label>
+                    <select id="style">
+                        <option value="all">Все стили</option>
+                        <option value="realism">Реализм</option>
+                        <option value="anime">Аниме</option>
+                        <option value="cartoon">Мультяшный</option>
+                        <option value="fantasy">Фэнтези</option>
+                        <option value="sci-fi">Sci-Fi</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Товары будут добавляться через JavaScript -->
+        </div>
+
+        <div class="pagination">
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">3</button>
+            <button class="pagination-btn">></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <!-- ... (ваш существующий footer) ... -->
+    </footer>
+
+    <!-- Кнопки прокрутки -->
+    <!-- ... (ваши существующие кнопки прокрутки) ... -->
+
+    <script>
+        // Данные товаров (в реальном приложении будут загружаться с сервера)
+        const products = [
+            {
+                id: 1,
+                title: "Портрет в стиле аниме",
+                artist: "AnnaArt",
+                description: "Яркий портрет персонажа в стиле аниме с детализированными глазами",
+                price: 2500,
+                category: "2d",
+                style: "anime",
+                image: "https://i.postimg.cc/8z7W3Z2t/anime-portrait.jpg",
+                featured: true
+            },
+            {
+                id: 2,
+                title: "3D Модель дракона",
+                artist: "DragonCraft",
+                description: "Детализированная 3D модель мифического дракона с текстурами",
+                price: 8500,
+                category: "3d",
+                style: "fantasy",
+                image: "https://i.postimg.cc/fWzq70Z0/dragon-model.jpg",
+                featured: true
+            },
+            {
+                id: 3,
+                title: "Анимированный пейзаж",
+                artist: "MotionMagic",
+                description: "Завораживающая анимация фэнтезийного пейзажа с движущимися элементами",
+                price: 12000,
+                category: "animation",
+                style: "fantasy",
+                image: "https://i.postimg.cc/PxZ1Qy0g/animated-landscape.jpg",
+                featured: true
+            },
+            {
+                id: 4,
+                title: "Концепт персонажа",
+                artist: "ConceptMaster",
+                description: "Профессиональный концепт-арт для игрового персонажа",
+                price: 5000,
+                category: "concept",
+                style: "realism",
+                image: "https://i.postimg.cc/Y9cT7b3J/character-concept.jpg",
+                featured: false
+            },
+            {
+                id: 5,
+                title: "Иллюстрация к книге",
+                artist: "StoryTeller",
+                description: "Художественная иллюстрация для фэнтезийного романа",
+                price: 6000,
+                category: "illustration",
+                style: "fantasy",
+                image: "https://i.postimg.cc/8z7W3Z2t/anime-portrait.jpg",
+                featured: false
+            },
+            {
+                id: 6,
+                title: "Sci-Fi окружение",
+                artist: "FutureVision",
+                description: "Футуристическая 3D модель космической станции",
+                price: 9500,
+                category: "3d",
+                style: "sci-fi",
+                image: "https://i.postimg.cc/fWzq70Z0/dragon-model.jpg",
+                featured: false
+            },
+            {
+                id: 7,
+                title: "Анимация персонажа",
+                artist: "AnimLife",
+                description: "Плавная анимация движений персонажа для игры",
+                price: 15000,
+                category: "animation",
+                style: "cartoon",
+                image: "https://i.postimg.cc/PxZ1Qy0g/animated-landscape.jpg",
+                featured: false
+            },
+            {
+                id: 8,
+                title: "Реалистичный портрет",
+                artist: "RealArt",
+                description: "Высокодетализированный портрет в реалистичном стиле",
+                price: 7000,
+                category: "2d",
+                style: "realism",
+                image: "https://i.postimg.cc/Y9cT7b3J/character-concept.jpg",
+                featured: false
+            }
+        ];
+
+        // Инициализация магазина
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts(products);
+            setupEventListeners();
+        });
+
+        // Рендер товаров
+        function renderProducts(productsToRender) {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+            
+            productsToRender.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.dataset.category = product.category;
+                productCard.dataset.style = product.style;
+                productCard.dataset.price = product.price;
+                
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-artist">Автор: ${product.artist}</p>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-meta">
+                            <span class="product-price">${product.price} ₽</span>
+                            <span class="product-category">${getCategoryName(product.category)}</span>
+                        </div>
+                        <button class="buy-btn" data-id="${product.id}">Купить</button>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        // Получение читаемого имени категории
+        function getCategoryName(categoryKey) {
+            const categories = {
+                '2d': '2D Арт',
+                '3d': '3D Модель',
+                'animation': 'Анимация',
+                'concept': 'Концепт-арт',
+                'illustration': 'Иллюстрация'
+            };
+            
+            return categories[categoryKey] || categoryKey;
+        }
+
+        // Настройка обработчиков событий
+        function setupEventListeners() {
+            // Фильтрация по категориям
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    filterProducts();
+                });
+            });
+            
+            // Сортировка
+            document.getElementById('sort').addEventListener('change', filterProducts);
+            
+            // Фильтр по цене
+            document.getElementById('min-price').addEventListener('input', filterProducts);
+            document.getElementById('max-price').addEventListener('input', filterProducts);
+            
+            // Фильтр по стилю
+            document.getElementById('style').addEventListener('change', filterProducts);
+            
+            // Кнопки покупки
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('buy-btn')) {
+                    const productId = e.target.dataset.id;
+                    const product = products.find(p => p.id == productId);
+                    alert(`Вы выбрали: ${product.title} за ${product.price} ₽`);
+                    // Здесь будет логика добавления в корзину
+                }
+            });
+            
+            // Пагинация
+            document.querySelectorAll('.pagination-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.pagination-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    // Здесь будет логика пагинации
+                });
+            });
+        }
+
+        // Фильтрация товаров
+        function filterProducts() {
+            const selectedCategory = document.querySelector('.category-btn.active').dataset.category;
+            const sortBy = document.getElementById('sort').value;
+            const minPrice = document.getElementById('min-price').value || 0;
+            const maxPrice = document.getElementById('max-price').value || Number.MAX_SAFE_INTEGER;
+            const selectedStyle = document.getElementById('style').value;
+            
+            let filteredProducts = [...products];
+            
+            // Фильтрация по категории
+            if (selectedCategory !== 'all') {
+                filteredProducts = filteredProducts.filter(product => product.category === selectedCategory);
+            }
+            
+            // Фильтрация по цене
+            filteredProducts = filteredProducts.filter(product => 
+                product.price >= minPrice && product.price <= maxPrice
+            );
+            
+            // Фильтрация по стилю
+            if (selectedStyle !== 'all') {
+                filteredProducts = filteredProducts.filter(product => product.style === selectedStyle);
+            }
+            
+            // Сортировка
+            switch(sortBy) {
+                case 'price-asc':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'popular':
+                    filteredProducts.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+                    break;
+                default:
+                    // newest - ничего не делаем, оставляем исходный порядок
+                    break;
+            }
+            
+            renderProducts(filteredProducts);
+        }
+    </script>
+</body>
+
+</html>

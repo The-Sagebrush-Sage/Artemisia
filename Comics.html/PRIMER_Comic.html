@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чтение комикса</title>
+    <link rel="stylesheet" href="../Comics.html/PROB_Com.css">
+    
+</head>
+<body class="dark-theme vertical-mode">
+    <div class="container">
+        <div class="comic-viewer">
+            <div class="nav-area prev-area" onclick="prevPage()"></div>
+            <img src="https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%201/1.png?updatedAt=1751060764359" alt="Страница комикса" class="comic-image fade-in" id="comicImage">
+            <div class="nav-area next-area" onclick="nextPage()"></div>
+        </div>
+    </div>
+
+    <div class="swipe-indicator" id="swipeIndicator">Свайп влево/вправо для навигации</div>
+    
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶</button>
+    <button class="toggle-panel-btn" onclick="togglePanel()">☰</button>
+
+    <div class="panel-overlay" id="panelOverlay"></div>
+    
+    <div class="control-panel" id="controlPanel">
+        <div class="panel-header">
+            <div class="panel-title">Управление комиксом</div>
+            <button class="close-btn" onclick="togglePanel()">×</button>
+        </div>
+        <div class="panel-content">
+            <div class="panel-section">
+                <div class="section-title" onclick="toggleSection('fullscreen-section')">▸ Полноэкранный режим</div>
+                <div class="section-content active" id="fullscreen-section">
+                    <button class="panel-btn" onclick="toggleFullscreen()">
+                        <span>Переключить полноэкранный режим</span>
+                        <span>⛶</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <div class="section-title" onclick="toggleSection('chapters-section')">▸ Выбор главы</div>
+                <div class="section-content" id="chapters-section">
+                    <div class="chapter-list">
+                        <div class="chapter-item" onclick="loadChapter(1)">Глава 1: Начало</div>
+                        <div class="chapter-item" onclick="loadChapter(2)">Глава 2: Развитие</div>
+                        <div class="chapter-item" onclick="loadChapter(3)">Глава 3: Кульминация</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <div class="section-title" onclick="toggleSection('settings-section')">▸ Настройки просмотра</div>
+                <div class="section-content active" id="settings-section">
+                    <div>
+                        <span class="setting-label">Режим просмотра:</span>
+                        <div class="btn-group">
+                            <button class="btn active" id="verticalBtn" onclick="setScrollMode('vertical')">Вертикальный</button>
+                            <button class="btn" id="horizontalBtn" onclick="setScrollMode('horizontal')">Горизонтальный</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <span class="setting-label">Цветовая тема:</span>
+                        <div class="btn-group">
+                            <button class="btn active" id="darkThemeBtn" onclick="setTheme('dark')">Тёмная</button>
+                            <button class="btn" id="lightThemeBtn" onclick="setTheme('light')">Светлая</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <span class="setting-label">Яркость изображения:</span>
+                        <div class="slider-container">
+                            <span style="font-size: 20px;">☀️</span>
+                            <input type="range" min="50" max="100" value="100" class="slider" id="brightnessSlider" oninput="changeBrightness()">
+                            <span style="font-size: 20px;">🔆</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Текущая страница и глава
+        let currentPage = 1;
+        let currentChapter = 1;
+        const totalPages = 2; // Всего страниц в главе
+        const comicImages = [
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%201/1.png?updatedAt=1751060764359",
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%201/2.png?updatedAt=1751060764271"
+        ];
+
+        // Элементы DOM
+        const comicImage = document.getElementById('comicImage');
+        const controlPanel = document.getElementById('controlPanel');
+        const panelOverlay = document.getElementById('panelOverlay');
+        const brightnessSlider = document.getElementById('brightnessSlider');
+        const verticalBtn = document.getElementById('verticalBtn');
+        const horizontalBtn = document.getElementById('horizontalBtn');
+        const darkThemeBtn = document.getElementById('darkThemeBtn');
+        const lightThemeBtn = document.getElementById('lightThemeBtn');
+        const fullscreenBtn = document.querySelector('.fullscreen-btn');
+        const swipeIndicator = document.getElementById('swipeIndicator');
+
+        // Проверка мобильного устройства
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                   (window.innerWidth <= 768);
+        }
+
+        // Скрыть кнопку полноэкранного режима на мобильных
+        if (isMobile()) {
+            fullscreenBtn.style.display = 'none';
+        }
+
+        // Переключение панели управления
+        function togglePanel() {
+            controlPanel.classList.toggle('active');
+            panelOverlay.classList.toggle('active');
+            
+            // Прокрутка к верху панели при открытии
+            if (controlPanel.classList.contains('active')) {
+                const panelContent = controlPanel.querySelector('.panel-content');
+                panelContent.scrollTop = 0;
+            }
+        }
+
+        // Закрытие панели при клике на оверлей
+        panelOverlay.addEventListener('click', togglePanel);
+
+        // Переключение секций
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('active');
+            
+            // Обновляем значок
+            const title = section.previousElementSibling;
+            if (section.classList.contains('active')) {
+                title.innerHTML = title.innerHTML.replace('▸', '▾');
+            } else {
+                title.innerHTML = title.innerHTML.replace('▾', '▸');
+            }
+        }
+
+        // Полноэкранный режим
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Ошибка при включении полноэкранного режима: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Загрузка главы
+        function loadChapter(chapter) {
+            currentChapter = chapter;
+            currentPage = 1;
+            // Здесь должна быть логика загрузки изображений для выбранной главы
+            comicImage.src = comicImages[0];
+            comicImage.classList.add('fade-in');
+            setTimeout(() => comicImage.classList.remove('fade-in'), 300);
+            
+            // Прокрутка в начало
+            window.scrollTo(0, 0);
+            
+            // Закрываем панель после выбора главы
+            togglePanel();
+        }
+
+        // Переключение страниц
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                comicImage.src = comicImages[currentPage - 1];
+                comicImage.classList.add('fade-in');
+                setTimeout(() => comicImage.classList.remove('fade-in'), 300);
+                
+                // Для горизонтального режима - прокрутка к следующей странице
+                if (document.body.classList.contains('horizontal-mode')) {
+                    window.scrollTo({
+                        left: window.scrollX + window.innerWidth,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Для вертикального режима - прокрутка вверх
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                comicImage.src = comicImages[currentPage - 1];
+                comicImage.classList.add('fade-in');
+                setTimeout(() => comicImage.classList.remove('fade-in'), 300);
+                
+                // Для горизонтального режима - прокрутка к предыдущей странице
+                if (document.body.classList.contains('horizontal-mode')) {
+                    window.scrollTo({
+                        left: window.scrollX - window.innerWidth,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Для вертикального режима - прокрутка вверх
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        }
+
+        // Режим прокрутки
+        function setScrollMode(mode) {
+            if (mode === 'vertical') {
+                document.body.classList.remove('horizontal-mode');
+                document.body.classList.add('vertical-mode');
+                verticalBtn.classList.add('active');
+                horizontalBtn.classList.remove('active');
+                
+                // Обновляем подсказку для свайпа
+                swipeIndicator.textContent = 'Свайп вверх/вниз для навигации';
+                
+                // Сброс прокрутки
+                window.scrollTo(0, 0);
+            } else {
+                document.body.classList.remove('vertical-mode');
+                document.body.classList.add('horizontal-mode');
+                verticalBtn.classList.remove('active');
+                horizontalBtn.classList.add('active');
+                
+                // Обновляем подсказку для свайпа
+                swipeIndicator.textContent = 'Свайп влево/вправо для навигации';
+                
+                // Сброс прокрутки
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Смена темы
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme');
+                darkThemeBtn.classList.add('active');
+                lightThemeBtn.classList.remove('active');
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme');
+                darkThemeBtn.classList.remove('active');
+                lightThemeBtn.classList.add('active');
+            }
+        }
+
+        // Изменение яркости
+        function changeBrightness() {
+            const brightnessValue = brightnessSlider.value / 100;
+            comicImage.style.filter = `brightness(${brightnessValue})`;
+        }
+
+        // Обработчики свайпов для мобильных устройств
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+        const swipeThreshold = 50; // Минимальное расстояние для срабатывания свайпа
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, {passive: true});
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, {passive: true});
+
+        function handleSwipe() {
+            // Если панель открыта - игнорируем свайпы
+            if (controlPanel.classList.contains('active')) return;
+            
+            // Определяем направление свайпа
+            const xDiff = touchStartX - touchEndX;
+            const yDiff = touchStartY - touchEndY;
+            
+            // Если в вертикальном режиме, реагируем на вертикальные свайпы
+            if (document.body.classList.contains('vertical-mode')) {
+                if (yDiff > swipeThreshold && Math.abs(yDiff) > Math.abs(xDiff)) {
+                    // Свайп вниз - следующая страница
+                    nextPage();
+                } else if (yDiff < -swipeThreshold && Math.abs(yDiff) > Math.abs(xDiff)) {
+                    // Свайп вверх - предыдущая страница
+                    prevPage();
+                }
+            } 
+            // Если в горизонтальном режиме, реагируем на горизонтальные свайпы
+            else {
+                if (xDiff > swipeThreshold && Math.abs(xDiff) > Math.abs(yDiff)) {
+                    nextPage(); // Свайп влево
+                } else if (xDiff < -swipeThreshold && Math.abs(xDiff) > Math.abs(yDiff)) {
+                    prevPage(); // Свайп вправо
+                }
+            }
+        }
+
+        // Обработчики кликов по экрану
+        document.addEventListener('click', (e) => {
+            // Игнорируем клики по кнопкам и панели
+            if (e.target.closest('.toggle-panel-btn, .fullscreen-btn, .control-panel, .panel-overlay')) {
+                return;
+            }
+            
+            // Определяем, в какой части экрана был клик
+            const windowWidth = window.innerWidth;
+            const clickX = e.clientX;
+            
+            if (clickX < windowWidth * 0.3) {
+                // Клик в левой части экрана - предыдущая страница
+                prevPage();
+            } else if (clickX > windowWidth * 0.7) {
+                // Клик в правой части экрана - следующая страница
+                nextPage();
+            }
+            // Клик по центру экрана ничего не делает (можно добавить свою логику)
+        });
+
+        // Обработчики клавиатуры
+        document.addEventListener('keydown', (e) => {
+            // Закрытие панели по ESC
+            if (e.key === 'Escape' && controlPanel.classList.contains('active')) {
+                togglePanel();
+                return;
+            }
+            
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextPage();
+            } else if (e.key === 'ArrowLeft') {
+                prevPage();
+            } else if (e.key === 'ArrowDown' && document.body.classList.contains('vertical-mode')) {
+                nextPage();
+            } else if (e.key === 'ArrowUp' && document.body.classList.contains('vertical-mode')) {
+                prevPage();
+            }
+        });
+
+        // Скрыть индикатор свайпа через 5 секунд
+        setTimeout(() => {
+            swipeIndicator.style.opacity = '0';
+            setTimeout(() => swipeIndicator.style.display = 'none', 500);
+        }, 5000);
+
+        // Инициализация
+        setScrollMode('vertical');
+    </script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чтение комикса</title>
+    <link rel="stylesheet" href="../../Comics.html/PROB_Com.css">
+</head>
+
+<body class="dark-theme vertical-mode">
+    <!-- Индикатор загрузки -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <div class="container">
+        <div class="comic-viewer">
+            <div class="nav-area prev-area" onclick="prevPage()"></div>
+            <img src="" alt="Страница комикса" class="comic-image loading" id="comicImage">
+            <div class="nav-area next-area" onclick="nextPage()"></div>
+        </div>
+    </div>
+
+    <!-- Новый дизайн экрана окончания комикса -->
+    <div class="end-screen" id="endScreen">
+        <div class="end-content">
+            <h1 class="end-title">Глава завершена</h1>
+            <p class="end-message">Вы успешно прочитали эту главу. Хотите продолжить чтение и узнать, что произойдет дальше?</p>
+            
+            <div class="end-buttons">
+                <a href="../Minasun/Minasun_Ch2.html" class="end-btn next-chapter-btn">
+                    <span class="end-icon">→</span>
+                    <span>Следующая глава</span>
+                </a>
+                <button class="end-btn restart-chapter-btn" onclick="restartChapter()">
+                    <span class="end-icon">↻</span>
+                    <span>Перечитать главу</span>
+                </button>
+                <button class="end-btn close-end-btn" onclick="closeEndScreen()">
+                    <span class="end-icon">×</span>
+                    <span>Закрыть</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶</button>
+    <button class="toggle-panel-btn" onclick="togglePanel()">☰</button>
+
+    <div class="panel-overlay" id="panelOverlay"></div>
+
+    <div class="control-panel" id="controlPanel">
+        <div class="panel-header">
+            <div class="panel-title">Управление комиксом</div>
+            <button class="close-btn" onclick="togglePanel()">×</button>
+        </div>
+        <div class="panel-content">
+            <div class="panel-section">
+                <div class="section-title" onclick="toggleSection('fullscreen-section')">▸ Полноэкранный режим</div>
+                <div class="section-content active" id="fullscreen-section">
+                    <button class="panel-btn" onclick="toggleFullscreen()">
+                        <span>Переключить полноэкранный режим</span>
+                        <span>⛶</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="section-title" onclick="toggleSection('chapters-section')">▸ Выбор главы</div>
+                <div class="section-content" id="chapters-section">
+                    <div class="chapter-list">
+                        <div class="chapter-item" onclick="window.location.href='../Minasun/Minasun_Ch1.html'">Глава 1: Остров</div>
+                        <div class="chapter-item" onclick="window.location.href='../Minasun/Minasun_Ch2.html'">Глава 2: Океан</div>
+                        <div class="chapter-item" onclick="window.location.href='../Minasun/Minasun_Ch3.html'">Глава 3: Похищение</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="section-title" onclick="toggleSection('settings-section')">▸ Настройки просмотра</div>
+                <div class="section-content active" id="settings-section">
+                    <div>
+                        <span class="setting-label">Режим просмотра:</span>
+                        <div class="btn-group">
+                            <button class="btn active" id="verticalBtn" onclick="setScrollMode('vertical')">Вертикальный</button>
+                            <button class="btn" id="horizontalBtn" onclick="setScrollMode('horizontal')">Горизонтальный</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="setting-label">Цветовая тема:</span>
+                        <div class="btn-group">
+                            <button class="btn active" id="darkThemeBtn" onclick="setTheme('dark')">Тёмная</button>
+                            <button class="btn" id="lightThemeBtn" onclick="setTheme('light')">Светлая</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="setting-label">Яркость изображения:</span>
+                        <div class="slider-container">
+                            <span style="font-size: 20px;">☀️</span>
+                            <input type="range" min="50" max="100" value="100" class="slider" id="brightnessSlider" oninput="changeBrightness()">
+                            <span style="font-size: 20px;">🔆</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Текущая страница и глава
+        let currentPage = 1;
+        let currentChapter = 1;
+        const comicImages = [
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/IMG_20250318_164404_767.png?updatedAt=1751554974757",
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F299_20250322163419.png?updatedAt=1751565064255",
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F299_20250322164751.png?updatedAt=1751565064437",
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F299_20250322164755.png?updatedAt=1751565064136",
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/IMG_20250424_121519_590.png?updatedAt=1751565425863",
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/IMG_20250430_001734_795.png?updatedAt=1751565412298",
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F331_20250424115217.png?updatedAt=1751565415770",
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/%D0%91%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F333_20250424123801.png?updatedAt=1751565409211",
+            "https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/IMG_20250424_114632_119.png?updatedAt=1751565650543",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+
+        ];
+        const totalPages = comicImages.length;
+
+        // Элементы DOM
+        const comicImage = document.getElementById('comicImage');
+        const controlPanel = document.getElementById('controlPanel');
+        const panelOverlay = document.getElementById('panelOverlay');
+        const brightnessSlider = document.getElementById('brightnessSlider');
+        const verticalBtn = document.getElementById('verticalBtn');
+        const horizontalBtn = document.getElementById('horizontalBtn');
+        const darkThemeBtn = document.getElementById('darkThemeBtn');
+        const lightThemeBtn = document.getElementById('lightThemeBtn');
+        const fullscreenBtn = document.querySelector('.fullscreen-btn');
+        const endScreen = document.getElementById('endScreen');
+        const loader = document.getElementById('loader');
+
+        // Быстрая загрузка изображений
+        function preloadImages() {
+            let loaded = 0;
+            const total = comicImages.length;
+            
+            comicImages.forEach(imgUrl => {
+                const img = new Image();
+                img.onload = () => {
+                    loaded++;
+                    if (loaded === total) {
+                        // Все изображения загружены
+                        setTimeout(() => {
+                            loader.classList.add('hidden');
+                            updatePage();
+                        }, 300);
+                    }
+                };
+                img.onerror = () => {
+                    loaded++; // Учитываем даже если изображение не загрузилось
+                    if (loaded === total) {
+                        setTimeout(() => {
+                            loader.classList.add('hidden');
+                            updatePage();
+                        }, 300);
+                    }
+                };
+                img.src = imgUrl;
+            });
+        }
+
+        // Проверка мобильного устройства
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                (window.innerWidth <= 768);
+        }
+
+        // Скрыть кнопку полноэкранного режима на мобильных
+        if (isMobile()) {
+            fullscreenBtn.style.display = 'none';
+        }
+
+        // Переключение панели управления
+        function togglePanel() {
+            controlPanel.classList.toggle('active');
+            panelOverlay.classList.toggle('active');
+
+            // Прокрутка к верху панели при открытии
+            if (controlPanel.classList.contains('active')) {
+                const panelContent = controlPanel.querySelector('.panel-content');
+                panelContent.scrollTop = 0;
+            }
+        }
+
+        // Закрытие панели при клике на оверлей
+        panelOverlay.addEventListener('click', togglePanel);
+
+        // Переключение секций
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('active');
+
+            // Обновляем значок
+            const title = section.previousElementSibling;
+            if (section.classList.contains('active')) {
+                title.innerHTML = title.innerHTML.replace('▸', '▾');
+            } else {
+                title.innerHTML = title.innerHTML.replace('▾', '▸');
+            }
+        }
+
+        // Полноэкранный режим
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Ошибка при включении полноэкранного режима: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Быстрое переключение страниц
+        function changePage(newPage) {
+            if (newPage < 1 || newPage > totalPages) return;
+
+            // Показываем индикатор загрузки
+            comicImage.classList.add('loading');
+            
+            currentPage = newPage;
+            updatePage();
+            
+            // Проверка на последнюю страницу
+            if (currentPage === totalPages) {
+                setTimeout(() => {
+                    endScreen.classList.add('active');
+                }, 300);
+            } else {
+                endScreen.classList.remove('active');
+            }
+        }
+
+        // Обновление страницы
+        function updatePage() {
+            const imageUrl = comicImages[currentPage - 1];
+            if (imageUrl) {
+                const img = new Image();
+                img.onload = () => {
+                    comicImage.src = imageUrl;
+                    comicImage.classList.remove('loading');
+                    
+                    // Прокрутка для горизонтального режима
+                    if (document.body.classList.contains('horizontal-mode')) {
+                        window.scrollTo({
+                            left: (currentPage - 1) * window.innerWidth,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        // Прокрутка вверх для вертикального режима
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
+                };
+                img.onerror = () => {
+                    comicImage.classList.remove('loading');
+                    console.error('Ошибка загрузки изображения:', imageUrl);
+                };
+                img.src = imageUrl;
+            }
+        }
+
+        // Переключение страниц
+        function nextPage() {
+            if (currentPage < totalPages) {
+                changePage(currentPage + 1);
+            } else {
+                endScreen.classList.add('active');
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                changePage(currentPage - 1);
+                endScreen.classList.remove('active');
+            }
+        }
+
+        // Режим прокрутки
+        function setScrollMode(mode) {
+            if (mode === 'vertical') {
+                document.body.classList.remove('horizontal-mode');
+                document.body.classList.add('vertical-mode');
+                verticalBtn.classList.add('active');
+                horizontalBtn.classList.remove('active');
+
+                // Сброс прокрутки
+                window.scrollTo(0, 0);
+            } else {
+                document.body.classList.remove('vertical-mode');
+                document.body.classList.add('horizontal-mode');
+                verticalBtn.classList.remove('active');
+                horizontalBtn.classList.add('active');
+
+                // Сброс прокрутки
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Смена темы
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme');
+                darkThemeBtn.classList.add('active');
+                lightThemeBtn.classList.remove('active');
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme');
+                darkThemeBtn.classList.remove('active');
+                lightThemeBtn.classList.add('active');
+            }
+        }
+
+        // Изменение яркости
+        function changeBrightness() {
+            const brightnessValue = brightnessSlider.value / 100;
+            comicImage.style.filter = `brightness(${brightnessValue})`;
+        }
+
+        // Обработчики свайпов для мобильных устройств
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+        const swipeThreshold = 30;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            // Если панель открыта - игнорируем свайпы
+            if (controlPanel.classList.contains('active')) return;
+
+            // Определяем направление свайпа
+            const xDiff = touchStartX - touchEndX;
+            const yDiff = touchStartY - touchEndY;
+
+            // Если в вертикальном режиме, реагируем на вертикальные свайпы
+            if (document.body.classList.contains('vertical-mode')) {
+                if (yDiff > swipeThreshold && Math.abs(yDiff) > Math.abs(xDiff)) {
+                    // Свайп вниз - следующая страница
+                    nextPage();
+                } else if (yDiff < -swipeThreshold && Math.abs(yDiff) > Math.abs(xDiff)) {
+                    // Свайп вверх - предыдущая страница
+                    prevPage();
+                }
+            }
+            // Если в горизонтальном режиме, реагируем на горизонтальные свайпы
+            else {
+                if (xDiff > swipeThreshold && Math.abs(xDiff) > Math.abs(yDiff)) {
+                    nextPage(); // Свайп влево
+                } else if (xDiff < -swipeThreshold && Math.abs(xDiff) > Math.abs(yDiff)) {
+                    prevPage(); // Свайп вправо
+                }
+            }
+        }
+
+        // Обработчики кликов по экрану
+        document.addEventListener('click', (e) => {
+            // Игнорируем клики по кнопкам и панели
+            if (e.target.closest('.toggle-panel-btn, .fullscreen-btn, .control-panel, .panel-overlay, .end-screen, .next-chapter-btn, .restart-chapter-btn, .close-end-btn')) {
+                return;
+            }
+
+            // Определяем, в какой части экрана был клик
+            const windowWidth = window.innerWidth;
+            const clickX = e.clientX;
+
+            if (clickX < windowWidth * 0.3) {
+                // Клик в левой части экрана - предыдущая страница
+                prevPage();
+            } else if (clickX > windowWidth * 0.7) {
+                // Клик в правой части экрана - следующая страница
+                nextPage();
+            }
+        });
+
+        // Обработчики клавиатуры
+        document.addEventListener('keydown', (e) => {
+            // Закрытие панели по ESC
+            if (e.key === 'Escape' && controlPanel.classList.contains('active')) {
+                togglePanel();
+                return;
+            }
+
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextPage();
+            } else if (e.key === 'ArrowLeft') {
+                prevPage();
+            } else if (e.key === 'ArrowDown' && document.body.classList.contains('vertical-mode')) {
+                nextPage();
+            } else if (e.key === 'ArrowUp' && document.body.classList.contains('vertical-mode')) {
+                prevPage();
+            } else if (e.key === 'Escape' && endScreen.classList.contains('active')) {
+                closeEndScreen();
+            }
+        });
+
+        // Функции для экрана окончания главы
+        function restartChapter() {
+            changePage(1);
+            endScreen.classList.remove('active');
+        }
+
+        function closeEndScreen() {
+            endScreen.classList.remove('active');
+        }
+
+        // Инициализация
+        setScrollMode('vertical');
+        preloadImages(); // Предзагрузка всех изображений
+    </script>
+</body>
+
+</html>

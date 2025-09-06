@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemisia - Комиксы</title>
+    <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Comic.css">
+    
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="index.html">
+                <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Логотип" class="logo">
+            </a>
+        </div>
+
+        <div class="search-container" id="searchContainer">
+            <div class="search-box">
+                <div class="search-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                    </svg>
+                </div>
+                <input type="text" id="searchInput" placeholder="Поиск комиксов, авторов, тегов..." autocomplete="off">
+                <button class="search-btn" onclick="searchComics()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#333" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <button class="mobile-search-btn" id="mobileSearchBtn" onclick="toggleSearch()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+            </svg>
+        </button>
+        <div class="search-backdrop" id="searchBackdrop" onclick="toggleSearch()"></div>
+    </header>
+
+    <!-- Menu Drawer -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="drawer" id="drawer">
+        <ul class="menu">
+            <li><a href="../index.html">
+                    <img src="https://i.postimg.cc/6p8Gfk0N/home.png" alt="Главная">
+                    Главная
+                </a>
+            </li>
+
+            <li>
+                <a href="Prem_Artist.html">
+                    <img src="https://i.postimg.cc/Z5Y5rqkg/prem-art.png" alt="Художники">
+                    Prem Artist
+                </a>
+            </li>
+
+            <li>
+                <a href="Artist.html">
+                    <img src="https://i.postimg.cc/MGRMh1NP/man-14816778.png" alt="Художники">
+                    Художники
+                </a>
+            </li>
+
+            <li>
+                <a href="Design.html">
+                    <img src="https://i.postimg.cc/t4xNXgTY/free-icon-pen-tablet-4861056.png" alt="Художники">
+                    Дизайнеры
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                    <img src="https://i.postimg.cc/85mFCN1L/mobile-shopping.png" alt="">
+                    Услуги
+                </a>
+
+                <ul class="submenu">
+                    <li>
+                        <a href="Services.html#Commission" class="submenu-link" onclick="openTabByLink('Commission')">
+                            COMMISSION ART
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Services.html#Yunchy" class="submenu-link" onclick="openTabByLink('Yunchy')">
+                            YCH
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Services.html#art" class="submenu-link" onclick="openTabByLink('art')">
+                            ADOPT
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="#">
+                    <img src="https://i.postimg.cc/bYRbyHJ4/draw.png" alt="">
+                    Комиксы
+                </a>
+            </li>
+
+            <li class="separator-menu"></li>
+
+            <li><a href="AboutUs.html#about-site">
+                    Подробности о сайте
+                </a>
+            </li>
+
+            <li><a href="AboutUs.html#publish-work">
+                    Опубликовать работу
+                </a>
+            </li>
+
+            <li><a href="AboutUs.html#guarantees">
+                    Гаранты
+                </a>
+            </li>
+
+            <li class="separator-menu"></li>
+
+            <li>
+                <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                    <img src="https://i.postimg.cc/sDXB3kbZ/image.png" alt="">
+                    Документы
+                </a>
+                <ul class="submenu">
+                    <li><a href="Document.html#user-agreement" class="submenu-link">Соглашение</a></li>
+                    <li><a href="Document.html#usage-rules" class="submenu-link">Правила использования</a></li>
+                    <li><a href="Document.html#guaranteed-deals" class="submenu-link">Гарантийные сделки</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Banner -->
+    <section>
+        <div class="banner">
+            <img src="https://i.postimg.cc/gJPMm5XT/photo-5359822369264366886-w-3.jpg" alt="Баннер">
+        </div>
+        <div class="black-stripe"></black-stripe>
+    </section>
+
+    <!-- Mobile Filters Toggle -->
+    <button class="mobile-filters-toggle" id="mobileFiltersToggle" onclick="openMobileFilters()">
+        <span>Фильтры</span>
+        <span class="arrow">▼</span>
+    </button>
+
+    <!-- Desktop Filters -->
+    <div class="filters-container" id="filtersContainer">
+        <!-- Genre Filter -->
+        <div class="filter-group">
+            <button class="filter-dropdown-btn" onclick="toggleDropdown(this)">
+                <span>Жанры</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="filter-dropdown-content">
+                <input type="text" class="filter-search" placeholder="Поиск жанров..." oninput="filterOptions(this)">
+                <div class="filter-option" onclick="selectFilter(this, 'superhero')">
+                    <span>Супергероика</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'adventure')">
+                    <span>Приключения</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'horror')">
+                    <span>Ужасы</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'fantasy')">
+                    <span>Фэнтези</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'sci-fi')">
+                    <span>Научная фантастика</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'romance')">
+                    <span>Романтика</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'comedy')">
+                    <span>Комедия</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'drama')">
+                    <span>Драма</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'manga')">
+                    <span>Манга</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'manhwa')">
+                    <span>Маньхва</span>
+                    <span class="checkmark">✓</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Format Filter -->
+        <div class="filter-group">
+            <button class="filter-dropdown-btn" onclick="toggleDropdown(this)">
+                <span>Форматы</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="filter-dropdown-content">
+                <input type="text" class="filter-search" placeholder="Поиск форматов..." oninput="filterOptions(this)">
+                <div class="filter-option" onclick="selectFilter(this, 'superhero-universe')">
+                    <span>Супергероика</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'anthology')">
+                    <span>Антологии</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'one-shot')">
+                    <span>One-shots</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'mini-series')">
+                    <span>Мини-сериалы</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'ongoing')">
+                    <span>Ongoing</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'graphic-novel')">
+                    <span>Graphic Novels</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'webcomic')">
+                    <span>Веб-комиксы</span>
+                    <span class="checkmark">✓</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audience Filter -->
+        <div class="filter-group">
+            <button class="filter-dropdown-btn" onclick="toggleDropdown(this)">
+                <span>Аудитория</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="filter-dropdown-content">
+                <div class="filter-option" onclick="selectFilter(this, 'kids')">
+                    <span>Детские</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'teen')">
+                    <span>Подростковые</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'adult')">
+                    <span>Взрослые</span>
+                    <span class="checkmark">✓</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Filter -->
+        <div class="filter-group">
+            <button class="filter-dropdown-btn" onclick="toggleDropdown(this)">
+                <span>Статус</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="filter-dropdown-content">
+                <div class="filter-option" onclick="selectFilter(this, 'ongoing')">
+                    <span>Онгоинг</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'completed')">
+                    <span>Завершен</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="filter-option" onclick="selectFilter(this, 'hiatus')">
+                    <span>Перерыв</span>
+                    <span class="checkmark">✓</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selected Filters -->
+        <div class="selected-filters" id="selectedFilters"></div>
+
+        <button class="filter-reset" onclick="resetFilters()">Сбросить фильтры</button>
+    </div>
+
+    <!-- Mobile Filters Modal -->
+    <div id="mobileFiltersModal" class="mobile-filters-modal">
+        <div class="mobile-filters-content">
+            <div class="mobile-filters-header">
+                <h2 class="mobile-filters-title">Фильтры</h2>
+                <span class="mobile-filters-close" onclick="closeMobileFilters()">&times;</span>
+            </div>
+
+            <div class="mobile-selected-filters" id="mobileSelectedFilters"></div>
+
+            <div class="mobile-filters-body">
+                <!-- Genre Filter -->
+                <div class="mobile-filter-group">
+                    <div class="mobile-filter-group-title" onclick="toggleMobileFilterGroup(this)">
+                        <span>Жанры</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="mobile-filter-options">
+                        <input type="text" class="mobile-filter-search" placeholder="Поиск жанров..."
+                            oninput="filterMobileOptions(this)">
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'superhero')">
+                            <span>Супергероика</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'adventure')">
+                            <span>Приключения</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'horror')">
+                            <span>Ужасы</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'fantasy')">
+                            <span>Фэнтези</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'sci-fi')">
+                            <span>Научная фантастика</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'romance')">
+                            <span>Романтика</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'comedy')">
+                            <span>Комедия</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'drama')">
+                            <span>Драма</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'manga')">
+                            <span>Манга</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'manhwa')">
+                            <span>Маньхва</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Format Filter -->
+                <div class="mobile-filter-group">
+                    <div class="mobile-filter-group-title" onclick="toggleMobileFilterGroup(this)">
+                        <span>Форматы</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="mobile-filter-options">
+                        <input type="text" class="mobile-filter-search" placeholder="Поиск форматов..."
+                            oninput="filterMobileOptions(this)">
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'superhero-universe')">
+                            <span>Супергероика</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'anthology')">
+                            <span>Антологии</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'one-shot')">
+                            <span>One-shots</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'mini-series')">
+                            <span>Мини-сериалы</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'ongoing')">
+                            <span>Ongoing</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'graphic-novel')">
+                            <span>Graphic Novels</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'webcomic')">
+                            <span>Веб-комиксы</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audience Filter -->
+                <div class="mobile-filter-group">
+                    <div class="mobile-filter-group-title" onclick="toggleMobileFilterGroup(this)">
+                        <span>Аудитория</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="mobile-filter-options">
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'kids')">
+                            <span>Детские</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'teen')">
+                            <span>Подростковые</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'adult')">
+                            <span>Взрослые</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Filter -->
+                <div class="mobile-filter-group">
+                    <div class="mobile-filter-group-title" onclick="toggleMobileFilterGroup(this)">
+                        <span>Статус</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="mobile-filter-options">
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'ongoing')">
+                            <span>Онгоинг</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'completed')">
+                            <span>Завершен</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="mobile-filter-option" onclick="selectMobileFilter(this, 'hiatus')">
+                            <span>Перерыв</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-filters-footer">
+                <button class="mobile-filter-reset" onclick="resetMobileFilters()">Сбросить</button>
+                <button class="mobile-filter-apply" onclick="applyMobileFilters()">Применить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comics Grid -->
+    <div class="comics-container">
+        <!-- Comic 1 -->
+        <div class="comic-card" data-tags="fantasy adventure ongoing drama ">
+            <img src="https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/IMG_20250318_164404_767.png?updatedAt=1751554974757"
+                alt="Название комикса" class="comic-cover" onclick="openComicModal('comic1')">
+            <div class="comic-status ongoing">Онгоинг</div>
+            <div class="comic-info">
+                <h3 class="comic-title">Минасун</h3>
+                <div class="comic-author" onclick="window.location.href='Artist.html#147'; event.stopPropagation();">
+                    <img src="https://i.postimg.cc/G2L3qqxy/6.jpg" alt="Автор">
+                    <span>Berge</span>
+                </div>
+                <div class="comic-tags">
+                    <span class="comic-tag">#фэнтези</span>
+                    <span class="comic-tag">#приключения</span>
+                    <span class="comic-tag">#драма</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомление о копировании ссылки -->
+    <div class="share-notification" id="shareNotification">Ссылка скопирована в буфер обмена!</div>
+
+    <!-- Modal -->
+    <section>
+        <!-- Modal 1 -->
+        <div id="comic1" class="comic-modal">
+            <!-- Navigation buttons for desktop -->
+            <div class="comic-modal-nav prev" onclick="navigateComicModal('prev')">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+                </svg>
+            </div>
+            <div class="comic-modal-nav next" onclick="navigateComicModal('next')">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+                </svg>
+            </div>
+
+            <!-- Swipe areas for mobile -->
+            <div class="comic-modal-swipe-area left" id="swipeLeft"></div>
+            <div class="comic-modal-swipe-area right" id="swipeRight"></div>
+
+            <div class="comic-modal-container">
+                <div class="comic-modal-header">
+                    <h2 class="comic-modal-title">Минасун</h2>
+                    <button class="comic-modal-close" onclick="closeComicModal('comic1')">&times;</button>
+                </div>
+                <div class="comic-modal-body">
+                    <div class="comic-modal-left">
+                        <div class="comic-modal-cover-container">
+                            <img src="https://ik.imagekit.io/1ig11ifpa/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%20%D0%9C%D0%B8%D0%BD%D0%B0%D1%81%D1%83%D0%BD%201%20%D1%87%D0%B0%D1%81%D1%82%D1%8C/IMG_20250318_164404_767.png?updatedAt=1751554974757"
+                                alt="Обложка" class="comic-modal-cover">
+                        </div>
+                        <div class="comic-modal-meta">
+                            <div class="comic-modal-author"
+                                onclick="window.location.href='artist-profile.html?id=alexia'">
+                                <img src="https://i.postimg.cc/G2L3qqxy/6.jpg" alt="Автор">
+                                Berge
+                            </div>
+                            <div class="comic-modal-date">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#aaa"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z" />
+                                </svg>
+                                Обновлено: 03.07.2025
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comic-modal-right">
+                        <div class="comic-modal-description">
+                            Далеко - далеко, на неизвестной планете, на маленьком острове окруженный океаном, появилась
+                            искра - душа. Она была совсем одна, и принялась изучать остров. Её любопытство не знало
+                            границ, а каждое новое открытие приносило большое удовольствие. Вот только... Как долго она
+                            сможет наслаждается этим спокойствием и бесконечным безделием?
+                        </div>
+
+                        <div class="comic-modal-tags">
+                            <span class="comic-tag">#фэнтези</span>
+                            <span class="comic-tag">#приключения</span>
+                            <span class="comic-tag">#драма</span>
+                        </div>
+
+                        <div class="comic-modal-chapters">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+                                </svg>
+                                Главы
+                            </h3>
+                            <div class="comic-modal-chapter-list">
+                                <div class="comic-modal-chapter">
+                                    <a href="../Comics.html/Minasun/Minasun_Ch1.html" class="chapter-link">
+                                        <div class="comic-modal-chapter-info">
+                                            <div class="comic-modal-chapter-title">Глава 1: Остров</div>
+                                            <div class="comic-modal-chapter-date">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                                    <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                                </svg>
+                                                03.07.2025
+                                            </div>
+                                        </div>
+                                        <div class="comic-modal-chapter-new">NEW</div>
+                                    </a>
+                                </div>
+                                <div class="comic-modal-chapter">
+                                    <a href="../Comics.html/Minasun/Minasun_Ch2.html" class="chapter-link">
+                                        <div class="comic-modal-chapter-info">
+                                            <div class="comic-modal-chapter-title">Глава 1: Океан</div>
+                                            <div class="comic-modal-chapter-date">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                                    <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                                </svg>
+                                                03.07.2025
+                                            </div>
+                                        </div>
+                                        
+                                    </a>
+                                </div>
+                                <div class="comic-modal-chapter">
+                                    <a href="../Comics.html/Minasun/Minasun_Ch3.html" class="chapter-link">
+                                        <div class="comic-modal-chapter-info">
+                                            <div class="comic-modal-chapter-title">Глава 3: Похищение</div>
+                                            <div class="comic-modal-chapter-date">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="#aaa"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                                                    <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                                </svg>
+                                                03.07.2025
+                                            </div>
+                                        </div>
+                                        
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="comic-modal-actions">
+                            <button class="comic-modal-btn comic-modal-btn-primary" onclick="window.location.href='../Comics.html/Minasun/Minasun_Ch1.html'">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#333"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+                                </svg>
+                                Читать первую главу
+                            </button>
+                            
+                            <!-- Кнопка поделиться для модального окна -->
+                            <button class="comic-modal-btn comic-modal-btn-secondary" onclick="shareComic('comic1', event)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                                </svg>
+                                Поделиться
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <a href="index.html" class="footer-logo-link">
+                <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Artemisia" class="footer-logo">
+            </a>
+
+            <div class="footer-links">
+                <a href="AboutUs.html#about-site" class="footer-link">Подробности о сайте</a>
+                <a href="https://t.me/Artemisia_publicationBot" class="footer-link">Опубликовать работу</a>
+                <a href="https://t.me/Gg00Se" class="footer-link">Связь с гарантом</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-text">
+                Следите за обновлениями
+                <a href="https://t.me/Artemisia_website" class="footer-link" target="_blank">@Artemisia_website</a>
+            </p>
+
+            <div class="footer-social">
+                <!-- Telegram -->
+                <a href="https://t.me/Artemisia_website" class="social-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM15.53 8.23C15.73 8.13 15.93 8.15 16.09 8.28C16.25 8.41 16.31 8.62 16.25 8.82L14.81 15.44C14.66 16.03 14.3 16.19 13.81 15.93L11.05 13.85L9.8 15.08C9.66 15.22 9.54 15.34 9.28 15.34L9.53 12.54L14.44 8.34C14.66 8.15 14.8 8.24 14.63 8.41L10.63 11.93L7.83 10.91C7.26 10.71 7.25 10.31 7.94 10.01L15.03 7.17C15.5 6.99 15.9 7.21 15.53 8.23Z" />
+                    </svg>
+                </a>
+
+                <!-- VK -->
+                <a href="https://vk.com" class="social-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93V15.07C2 20.67 3.33 22 8.93 22H15.07C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2M18.15 16.27H16.69C16.14 16.27 15.97 15.82 15 14.83C14.12 14 13.74 13.88 13.53 13.88C13.24 13.88 13.15 13.96 13.15 14.38V15.69C13.15 16.04 13.04 16.26 12.11 16.26C10.57 16.26 8.86 15.32 7.66 13.59C5.85 11.05 5.36 9.13 5.36 8.75C5.36 8.54 5.43 8.34 5.85 8.34H7.32C7.69 8.34 7.83 8.5 7.97 8.9C8.69 11 9.89 12.8 10.38 12.8C10.57 12.8 10.65 12.71 10.65 12.25V10.1C10.6 9.12 10.07 9.03 10.07 8.68C10.07 8.5 10.21 8.34 10.44 8.34H12.73C13.04 8.34 13.15 8.5 13.15 8.88V11.77C13.15 12.08 13.28 12.19 13.38 12.19C13.56 12.19 13.72 12.08 14.05 11.74C15.1 10.57 15.85 8.76 15.85 8.76C15.95 8.55 16.11 8.34 16.48 8.34H17.93C18.37 8.34 18.47 8.58 18.37 8.89C18.19 9.74 16.41 12.25 16.43 12.25C16.27 12.5 16.21 12.61 16.43 12.9C16.58 13.13 17.09 13.55 17.43 13.94C18.05 14.65 18.53 15.24 18.66 15.65C18.77 16.06 18.57 16.27 18.15 16.27Z" />
+                    </svg>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com" class="social-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                    </svg>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://tiktok.com" class="social-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div id="backToTopBtn" class="back-to-top-btn" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+        </svg>
+    </div>
+
+    <script>
+        // Menu Functions
+        let scrollPosition = 0;
+        let filtersScrollPosition = 0;
+        let isMenuOpen = false;
+        let isFiltersOpen = false;
+
+        function toggleMenu() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+            const body = document.body;
+            const searchInput = document.getElementById('searchInput');
+
+            if (isMenuOpen) {
+                // Close menu with animation
+                drawer.classList.remove('open');
+                overlay.classList.remove('active');
+                menuIcon.classList.remove('active');
+                body.classList.remove('menu-open');
+                searchInput.disabled = false;
+                isMenuOpen = false;
+
+                // Smooth scroll to saved position
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: scrollPosition,
+                        behavior: 'smooth'
+                    });
+                }, 300);
+            } else {
+                // Save scroll position before opening menu
+                scrollPosition = window.pageYOffset;
+
+                // Open menu with animation
+                drawer.classList.add('open');
+                overlay.classList.add('active');
+                menuIcon.classList.add('active');
+                body.classList.add('menu-open');
+                searchInput.disabled = true;
+                isMenuOpen = true;
+
+                // Close filters if open
+                if (isFiltersOpen) {
+                    closeFilters();
+                }
+            }
+        }
+
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const link = event.currentTarget;
+            const submenu = link.nextElementSibling;
+
+            link.classList.toggle('active');
+            submenu.classList.toggle('active');
+
+            // Close other submenus
+            document.querySelectorAll('.has-submenu').forEach(item => {
+                if (item !== link) {
+                    item.classList.remove('active');
+                    item.nextElementSibling.classList.remove('active');
+                }
+            });
+        }
+
+        // Search Functions
+        function toggleSearch() {
+            const searchContainer = document.getElementById('searchContainer');
+            const searchBackdrop = document.getElementById('searchBackdrop');
+            const isActive = searchContainer.classList.contains('active');
+
+            if (isActive) {
+                searchContainer.classList.remove('active');
+                searchBackdrop.classList.remove('active');
+                document.getElementById('searchResults').classList.remove('active');
+                document.getElementById('searchInput').value = '';
+            } else {
+                searchContainer.classList.add('active');
+                searchBackdrop.classList.add('active');
+                document.getElementById('searchInput').focus();
+            }
+
+            if (document.getElementById('drawer').classList.contains('open')) {
+                toggleMenu();
+            }
+        }
+
+        function searchComics() {
+            const searchText = document.getElementById('searchInput').value.trim().toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+
+            if (!searchText) {
+                resultsContainer.innerHTML = '<div class="no-results">Введите запрос для поиска</div>';
+                resultsContainer.classList.add('active');
+                return;
+            }
+
+            const comics = document.querySelectorAll('.comic-card');
+            let found = false;
+            resultsContainer.innerHTML = '';
+
+            comics.forEach(comic => {
+                const title = comic.querySelector('.comic-title').textContent.toLowerCase();
+                const author = comic.querySelector('.comic-author span').textContent.toLowerCase();
+                const tags = comic.getAttribute('data-tags').toLowerCase();
+
+                if (title.includes(searchText) || author.includes(searchText) || tags.includes(searchText)) {
+                    found = true;
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+
+                    const coverSrc = comic.querySelector('.comic-cover').src;
+                    const comicTitle = comic.querySelector('.comic-title').textContent;
+                    const comicTags = comic.getAttribute('data-tags').split(' ');
+
+                    resultItem.innerHTML = `
+                        <img src="${coverSrc}" alt="${comicTitle}">
+                        <div class="info">
+                            <div class="name">${comicTitle}</div>
+                            <div class="tags">
+                                ${comicTags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+
+                    resultItem.onclick = () => {
+                        document.getElementById('searchInput').value = '';
+                        scrollToComic(comic);
+                        toggleSearch();
+                    };
+                    resultsContainer.appendChild(resultItem);
+                }
+            });
+
+            if (!found) {
+                resultsContainer.innerHTML = '<div class="no-results">Ничего не найдено</div>';
+            }
+            resultsContainer.classList.add('active');
+        }
+
+        function scrollToComic(comic) {
+            comic.classList.add('highlight');
+
+            setTimeout(() => {
+                comic.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+
+            setTimeout(() => {
+                comic.classList.remove('highlight');
+            }, 3000);
+        }
+
+        // Filter Functions
+        let activeFilters = [];
+        const filterMap = {
+            'superhero': 'Супергероика',
+            'adventure': 'Приключения',
+            'horror': 'Ужасы',
+            'fantasy': 'Фэнтези',
+            'sci-fi': 'Научная фантастика',
+            'romance': 'Романтика',
+            'comedy': 'Комедия',
+            'drama': 'Драма',
+            'manga': 'Манга',
+            'manhwa': 'Маньхва',
+            'superhero-universe': 'Супергероика',
+            'anthology': 'Антологии',
+            'one-shot': 'One-shots',
+            'mini-series': 'Мини-сериалы',
+            'ongoing': 'Ongoing',
+            'graphic-novel': 'Graphic Novels',
+            'webcomic': 'Веб-комиксы',
+            'kids': 'Детские',
+            'teen': 'Подростковые',
+            'adult': 'Взрослые',
+            'completed': 'Завершен',
+            'hiatus': 'Перерыв'
+        };
+
+        // Desktop Filter Functions
+        function toggleDropdown(button) {
+            const dropdown = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+            const body = document.body;
+
+            // Close all other dropdowns
+            document.querySelectorAll('.filter-dropdown-btn').forEach(btn => {
+                if (btn !== button) {
+                    btn.classList.remove('active');
+                    btn.nextElementSibling.classList.remove('show');
+                }
+            });
+
+            if (isActive) {
+                // Close dropdown with animation
+                button.classList.remove('active');
+                dropdown.classList.remove('show');
+                body.classList.remove('filters-open');
+                isFiltersOpen = false;
+
+                // Smooth scroll to saved position
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: filtersScrollPosition,
+                        behavior: 'smooth'
+                    });
+                }, 300);
+            } else {
+                // Save scroll position before opening dropdown
+                filtersScrollPosition = window.pageYOffset;
+                // Open dropdown with animation
+                button.classList.add('active');
+                dropdown.classList.add('show');
+                body.classList.add('filters-open');
+                isFiltersOpen = true;
+
+                // Close menu if open
+                if (isMenuOpen) {
+                    toggleMenu();
+                }
+            }
+        }
+
+        function filterOptions(input) {
+            const searchText = input.value.toLowerCase();
+            const options = input.parentElement.querySelectorAll('.filter-option');
+
+            options.forEach(option => {
+                const text = option.textContent.toLowerCase();
+                if (text.includes(searchText)) {
+                    option.style.display = 'flex';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        }
+
+        function selectFilter(option, filterValue) {
+            option.classList.toggle('selected');
+            const filterName = filterMap[filterValue] || filterValue;
+
+            if (option.classList.contains('selected')) {
+                if (!activeFilters.includes(filterValue)) {
+                    activeFilters.push(filterValue);
+                    addSelectedFilter(filterValue, filterName);
+                }
+            } else {
+                activeFilters = activeFilters.filter(f => f !== filterValue);
+                removeSelectedFilter(filterValue);
+            }
+
+            applyFilters();
+        }
+
+        function addSelectedFilter(filterValue, filterName) {
+            const selectedFiltersContainer = document.getElementById('selectedFilters');
+            const filterElement = document.createElement('div');
+            filterElement.className = 'selected-filter';
+            filterElement.dataset.value = filterValue;
+            filterElement.innerHTML = `
+                <span>${filterName}</span>
+                <span class="remove" onclick="removeFilter('${filterValue}')">×</span>
+            `;
+            selectedFiltersContainer.appendChild(filterElement);
+
+            // Also update mobile selected filters
+            updateMobileSelectedFilters();
+        }
+
+        function removeSelectedFilter(filterValue) {
+            const filterElement = document.querySelector(`.selected-filter[data-value="${filterValue}"]`);
+            if (filterElement) {
+                filterElement.remove();
+            }
+
+            // Also unselect the option in dropdown
+            const option = document.querySelector(`.filter-option[onclick*="${filterValue}"]`);
+            if (option) {
+                option.classList.remove('selected');
+            }
+
+            // Also update mobile selected filters
+            updateMobileSelectedFilters();
+        }
+
+        function removeFilter(filterValue) {
+            activeFilters = activeFilters.filter(f => f !== filterValue);
+            removeSelectedFilter(filterValue);
+            applyFilters();
+
+            // Also update mobile filters
+            updateMobileFilters();
+
+            // Also update the dropdown button if it's active
+            const dropdownBtn = document.querySelector('.filter-dropdown-btn.active');
+            if (dropdownBtn) {
+                dropdownBtn.classList.remove('active');
+                dropdownBtn.nextElementSibling.classList.remove('show');
+                document.body.classList.remove('filters-open');
+                isFiltersOpen = false;
+            }
+        }
+
+        function applyFilters() {
+            const comics = document.querySelectorAll('.comic-card');
+
+            if (activeFilters.length === 0) {
+                comics.forEach(comic => {
+                    comic.style.display = 'block';
+                });
+                return;
+            }
+
+            comics.forEach(comic => {
+                const tags = comic.getAttribute('data-tags').split(' ');
+                const hasAllFilters = activeFilters.every(filter => tags.includes(filter));
+
+                if (hasAllFilters) {
+                    comic.style.display = 'block';
+                } else {
+                    comic.style.display = 'none';
+                }
+            });
+        }
+
+        function resetFilters() {
+            activeFilters = [];
+            document.getElementById('selectedFilters').innerHTML = '';
+
+            // Reset all selected options
+            document.querySelectorAll('.filter-option.selected').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Reset dropdown buttons
+            document.querySelectorAll('.filter-dropdown-btn.active').forEach(btn => {
+                btn.classList.remove('active');
+                btn.nextElementSibling.classList.remove('show');
+            });
+
+            document.body.classList.remove('filters-open');
+            isFiltersOpen = false;
+            applyFilters();
+
+            // Also reset mobile filters
+            resetMobileFilters();
+        }
+
+        function closeFilters() {
+            document.querySelectorAll('.filter-dropdown-content.show').forEach(dropdown => {
+                dropdown.classList.remove('show');
+                dropdown.previousElementSibling.classList.remove('active');
+            });
+            document.body.classList.remove('filters-open');
+            isFiltersOpen = false;
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.filter-group')) {
+                closeFilters();
+            }
+        });
+
+        // Mobile Filter Functions
+        function openMobileFilters() {
+            const modal = document.getElementById('mobileFiltersModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            document.body.classList.add('filters-open');
+            isFiltersOpen = true;
+            updateMobileFilters();
+
+            // Close menu if open
+            if (isMenuOpen) {
+                toggleMenu();
+            }
+        }
+
+        function closeMobileFilters() {
+            const modal = document.getElementById('mobileFiltersModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.body.classList.remove('filters-open');
+            isFiltersOpen = false;
+
+            // Smooth scroll to saved position
+            setTimeout(() => {
+                window.scrollTo({
+                    top: filtersScrollPosition,
+                    behavior: 'smooth'
+                });
+            }, 300);
+        }
+
+        function toggleMobileFilterGroup(title) {
+            const options = title.nextElementSibling;
+            const isActive = title.classList.contains('active');
+
+            if (isActive) {
+                title.classList.remove('active');
+                options.classList.remove('show');
+            } else {
+                title.classList.add('active');
+                options.classList.add('show');
+            }
+        }
+
+        function filterMobileOptions(input) {
+            const searchText = input.value.toLowerCase();
+            const options = input.parentElement.querySelectorAll('.mobile-filter-option');
+
+            options.forEach(option => {
+                const text = option.textContent.toLowerCase();
+                if (text.includes(searchText)) {
+                    option.style.display = 'flex';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        }
+
+        function selectMobileFilter(option, filterValue) {
+            option.classList.toggle('selected');
+
+            if (option.classList.contains('selected')) {
+                if (!activeFilters.includes(filterValue)) {
+                    activeFilters.push(filterValue);
+                }
+            } else {
+                activeFilters = activeFilters.filter(f => f !== filterValue);
+            }
+
+            updateMobileSelectedFilters();
+        }
+
+        function updateMobileSelectedFilters() {
+            const container = document.getElementById('mobileSelectedFilters');
+            container.innerHTML = '';
+
+            activeFilters.forEach(filter => {
+                const filterName = filterMap[filter] || filter;
+                const filterElement = document.createElement('div');
+                filterElement.className = 'selected-filter';
+                filterElement.dataset.value = filter;
+                filterElement.innerHTML = `
+                    <span>${filterName}</span>
+                    <span class="remove" onclick="removeMobileFilter('${filter}')">×</span>
+                `;
+                container.appendChild(filterElement);
+            });
+
+            // Also update desktop selected filters
+            const desktopContainer = document.getElementById('selectedFilters');
+            desktopContainer.innerHTML = '';
+
+            activeFilters.forEach(filter => {
+                const filterName = filterMap[filter] || filter;
+                const filterElement = document.createElement('div');
+                filterElement.className = 'selected-filter';
+                filterElement.dataset.value = filter;
+                filterElement.innerHTML = `
+                    <span>${filterName}</span>
+                    <span class="remove" onclick="removeFilter('${filter}')">×</span>
+                `;
+                desktopContainer.appendChild(filterElement);
+            });
+        }
+
+        function removeMobileFilter(filterValue) {
+            activeFilters = activeFilters.filter(f => f !== filterValue);
+
+            // Update mobile UI
+            updateMobileFilters();
+            updateMobileSelectedFilters();
+
+            // Also update desktop UI
+            const option = document.querySelector(`.filter-option[onclick*="${filterValue}"]`);
+            if (option) {
+                option.classList.remove('selected');
+            }
+        }
+
+        function updateMobileFilters() {
+            document.querySelectorAll('.mobile-filter-option').forEach(option => {
+                const filterValue = option.getAttribute('onclick').match(/'([^']+)'/)[1];
+                if (activeFilters.includes(filterValue)) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+
+            // Also update desktop filters
+            document.querySelectorAll('.filter-option').forEach(option => {
+                const filterValue = option.getAttribute('onclick').match(/'([^']+)'/)[1];
+                if (activeFilters.includes(filterValue)) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+        }
+
+        function resetMobileFilters() {
+            activeFilters = [];
+            document.getElementById('mobileSelectedFilters').innerHTML = '';
+
+            // Reset all selected options
+            document.querySelectorAll('.mobile-filter-option.selected').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Reset filter groups
+            document.querySelectorAll('.mobile-filter-group-title.active').forEach(title => {
+                title.classList.remove('active');
+                title.nextElementSibling.classList.remove('show');
+            });
+
+            // Also reset desktop filters
+            resetFilters();
+        }
+
+        function applyMobileFilters() {
+            applyFilters();
+            closeMobileFilters();
+        }
+
+        // Comic Modal Functions
+        let currentComicModal = null;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const comicModals = ['comic1', 'comic2', 'comic3', 'comic4'];
+
+        function openComicModal(modalId) {
+            currentComicModal = modalId;
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Add event listeners for swipe gestures on mobile
+            if (window.innerWidth <= 767) {
+                const modal = document.getElementById(modalId);
+                modal.addEventListener('touchstart', handleTouchStart, false);
+                modal.addEventListener('touchend', handleTouchEnd, false);
+            }
+
+            // Add keyboard event listener
+            document.addEventListener('keydown', handleKeyDown);
+
+            // Add event listeners for chapters
+            const chapters = document.querySelectorAll(`#${modalId} .comic-modal-chapter`);
+            chapters.forEach(chapter => {
+                chapter.addEventListener('click', function () {
+                    const comicId = modalId.replace('comic', '');
+                    const chapterTitle = this.querySelector('.comic-modal-chapter-title').textContent;
+                    const chapterNum = chapterTitle.match(/\d+/)[0]; // Extract chapter number
+
+                    // Navigate to the chapter reader page
+                    window.location.href = `comic-reader.html?comic=${comicId}&chapter=${chapterNum}`;
+                });
+            });
+        }
+
+        function closeComicModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+            currentComicModal = null;
+
+            // Remove event listeners for swipe gestures
+            if (window.innerWidth <= 767) {
+                const modal = document.getElementById(modalId);
+                modal.removeEventListener('touchstart', handleTouchStart, false);
+                modal.removeEventListener('touchend', handleTouchEnd, false);
+            }
+
+            // Remove keyboard event listener
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+
+        function navigateComicModal(direction) {
+            if (!currentComicModal) return;
+
+            const currentComicNum = parseInt(currentComicModal.replace('comic', ''));
+            let nextComicNum;
+
+            if (direction === 'prev') {
+                nextComicNum = currentComicNum - 1;
+                if (nextComicNum < 1) nextComicNum = comicModals.length; // Loop to last comic
+            } else {
+                nextComicNum = currentComicNum + 1;
+                if (nextComicNum > comicModals.length) nextComicNum = 1; // Loop to first comic
+            }
+
+            const nextComicId = `comic${nextComicNum}`;
+
+            // Close current modal and open next one
+            closeComicModal(currentComicModal);
+            openComicModal(nextComicId);
+        }
+
+        // Keyboard navigation handler
+        function handleKeyDown(event) {
+            if (!currentComicModal) return;
+
+            switch (event.key) {
+                case 'ArrowLeft':
+                    navigateComicModal('prev');
+                    break;
+                case 'ArrowRight':
+                    navigateComicModal('next');
+                    break;
+                case 'Escape':
+                    closeComicModal(currentComicModal);
+                    break;
+            }
+        }
+
+        // Touch event handlers for mobile swipe
+        function handleTouchStart(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        }
+
+        function handleTouchEnd(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50; // Minimum swipe distance to trigger navigation
+
+            if (touchStartX - touchEndX > swipeThreshold) {
+                // Swipe left - next comic
+                navigateComicModal('next');
+            } else if (touchEndX - touchStartX > swipeThreshold) {
+                // Swipe right - previous comic
+                navigateComicModal('prev');
+            }
+        }
+
+        // Функция для копирования ссылки на комикс
+        function shareComic(comicId, event) {
+            // Остановить всплытие события, чтобы не срабатывали другие обработчики
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            
+            // Создаем URL для текущего комикса
+            const currentUrl = window.location.href.split('#')[0]; // Убираем якорь если есть
+            const comicUrl = `${currentUrl}#${comicId}`;
+            
+            // Копируем URL в буфер обмена
+            navigator.clipboard.writeText(comicUrl).then(() => {
+                // Показываем уведомление
+                const notification = document.getElementById('shareNotification');
+                notification.style.display = 'block';
+                
+                // Анимация появления и исчезновения
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 2500);
+            }).catch(err => {
+                console.error('Не удалось скопировать ссылку: ', err);
+                // Альтернативный метод для старых браузеров
+                const textArea = document.createElement('textarea');
+                textArea.value = comicUrl;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    const notification = document.getElementById('shareNotification');
+                    notification.style.display = 'block';
+                    setTimeout(() => {
+                        notification.style.display = 'none';
+                    }, 2500);
+                } catch (err) {
+                    console.error('Не удалось скопировать ссылку: ', err);
+                }
+                document.body.removeChild(textArea);
+            });
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function (event) {
+            // Comic modals
+            document.querySelectorAll('.comic-modal').forEach(modal => {
+                if (event.target == modal) {
+                    closeComicModal(modal.id);
+                }
+            });
+
+            // Mobile filters modal
+            const mobileFiltersModal = document.getElementById('mobileFiltersModal');
+            if (event.target == mobileFiltersModal) {
+                closeMobileFilters();
+            }
+        }
+
+        // Back to Top Function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide back to top button on scroll
+        window.addEventListener('scroll', function () {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Highlight active menu item
+            const currentPage = window.location.pathname.split('/').pop();
+            document.querySelectorAll('.menu a').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Search on Enter key
+            document.getElementById('searchInput').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    searchComics();
+                }
+            });
+
+            // Real-time search on input
+            document.getElementById('searchInput').addEventListener('input', function () {
+                if (this.value.length > 2) {
+                    searchComics();
+                } else if (this.value.length === 0) {
+                    document.getElementById('searchResults').classList.remove('active');
+                }
+            });
+
+            // Close search when clicking outside (desktop)
+            document.addEventListener('click', function (e) {
+                const searchContainer = document.getElementById('searchContainer');
+                const searchResults = document.getElementById('searchResults');
+                const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+
+                if (!searchContainer.contains(e.target) &&
+                    e.target !== mobileSearchBtn &&
+                    !searchResults.contains(e.target)) {
+                    searchResults.classList.remove('active');
+                }
+            });
+
+            // Handle anchor links
+            if (window.location.hash) {
+                const comicId = window.location.hash.substring(1);
+                const comicCard = document.querySelector(`.comic-card[onclick*="${comicId}"]`);
+
+                if (comicCard) {
+                    setTimeout(() => {
+                        comicCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        comicCard.classList.add('highlight');
+
+                        setTimeout(() => {
+                            comicCard.classList.remove('highlight');
+                        }, 3000);
+                    }, 500);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
