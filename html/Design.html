@@ -178,10 +178,64 @@
         </div>
     </section>
 
-    
 
     <!-- Дизайнеры -->
     <section>
+
+        <!-- Potimuma -->
+        <section id="234">
+            <section class="profile-section" data-style="3D">
+                <img src="https://i.postimg.cc/Pf0qvxGt/7.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1>Potimuma</h1>
+                    <a href="https://t.me/Potimuma" class="profile-link"> @Potimuma
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: 3D</p>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@potimuma" class="social-link" target="_blank"
+                            rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube-1.png" alt="YouTube" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist234Carousel">
+                <div class="works-inner" id="artist234Works">
+                    <img src="https://i.postimg.cc/V6NxDjC3/1.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/ZnB1h4jH/2.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/Lsvdtynt/3.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/LX0r7nkh/4.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/fyG1zprN/5.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/2j165WKc/6.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/Pf0qvxGt/7.jpg" class="work-thumb-2" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist234Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist234Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal234')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal234" class="modal">
+                <span class="close-btn" onclick="closeModal('modal234')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/V6NxDjC3/1.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/ZnB1h4jH/2.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Lsvdtynt/3.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/LX0r7nkh/4.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/fyG1zprN/5.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/2j165WKc/6.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Pf0qvxGt/7.jpg" class="modal-img" alt="">
+                </div>
+        </section>
 
         <!-- Алексия -->
         <section id="Alexia">
@@ -1240,6 +1294,7 @@
             initCarousel('artist1Works');
             initCarousel('artist2Works');
             initCarousel('artist3Works');
+            initCarousel('artist234Works');
 
 
 

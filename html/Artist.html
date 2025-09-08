@@ -194,7 +194,79 @@
     </div>
 
     <!-- Художники -->
-    <section>      
+    <section>    
+        <!-- Catt Artifex -->
+        <section id="235">
+            <section class="profile-section" data-style="Мультяшная стилизация">
+                <img src="https://i.postimg.cc/9QCmYJGL/92.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1>Catt Artifex</h1>
+                    <a href="https://t.me/Arttifex" class="profile-link"> @Arttifex
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Мультяшная стилизация</p>
+                    <div class="social-links">
+                        <a href="https://youtube.com/@catt-artifex?si=XRS0o-6zNL5esVvV" class="social-link"
+                            target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube-1.png" alt="YouTube" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+                        <a href="https://www.instagram.com/cats_salnikova?igsh=NW5rZXBlcmFmbDVl" class="social-link"
+                            target="_blank" title="Инста">
+                            <img src="https://i.postimg.cc/yNzgZcft/image.png" alt="Инста" class="social-icon">
+                        </a>
+                        <a href="https://pin.it/5Eichdfsx" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="Pin">
+                            <img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pin" width="32"
+                                height="32" loading="lazy" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist235Carousel">
+                <div class="works-inner" id="artist235Works">
+                    <img src="https://i.postimg.cc/850g8bfg/1.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/fWVJV2KX/2.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/mZKhCYXn/3.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/K8DY6dGX/4.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/k5jg4KRf/5.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/d1LtT38v/6.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/76dP14Vz/7.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/7hzHmRsW/8.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/9F3FrWz5/9.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/fTxWd603/91.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/9QCmYJGL/92.jpg" class="work-thumb-2" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist235Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist235Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal235" class="modal">
+                <span class="close-btn" onclick="closeModal('modal235')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/850g8bfg/1.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/fWVJV2KX/2.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/mZKhCYXn/3.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/K8DY6dGX/4.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/k5jg4KRf/5.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/d1LtT38v/6.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/76dP14Vz/7.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/7hzHmRsW/8.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/9F3FrWz5/9.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/fTxWd603/91.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/9QCmYJGL/92.jpg" class="modal-img" alt="">
+                </div>
+            </div>
+        </section>
+
         <!-- Savory -->
         <section id="231">
             <section class="profile-section" data-style="Семиреализм">
@@ -3527,6 +3599,7 @@
            initCarousel('artist228Works');
            initCarousel('artist229Works');
            initCarousel('artist231Works');
+           initCarousel('artist235Works');
 
 
 
