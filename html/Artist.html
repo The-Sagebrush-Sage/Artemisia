@@ -195,6 +195,59 @@
 
     <!-- Художники -->
     <section>    
+        <!--  ivsha  -->
+        <section id="236">
+            <section class="profile-section" data-style="Семиреализм">
+                <img src="https://i.postimg.cc/FKSksJ06/photo-2025-09-09-22-37-04.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1> </h1>
+                    <a href="https://t.me/jaixxets" class="profile-link"> @jaixxets
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Cемиреализм</p>
+                    <div class="social-links">
+                        <a href="https://t.me/ivshabixx" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist236Carousel">
+                <div class="works-inner" id="artist236Works">
+                    <img src="https://i.postimg.cc/656ZLqN7/photo-2025-09-09-22-36-47.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/MpvjNLHq/photo-2025-09-09-22-36-51.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/zDFWgW4Z/photo-2025-09-09-22-36-55.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/gkMZMpYg/photo-2025-09-09-22-36-58.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/4xqhg1Ht/photo-2025-09-09-22-37-01.jpg" class="work-thumb-2" alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist236Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist236Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal236')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal236" class="modal">
+                <span class="close-btn" onclick="closeModal('modal236')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/656ZLqN7/photo-2025-09-09-22-36-47.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/MpvjNLHq/photo-2025-09-09-22-36-51.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/zDFWgW4Z/photo-2025-09-09-22-36-55.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/gkMZMpYg/photo-2025-09-09-22-36-58.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/4xqhg1Ht/photo-2025-09-09-22-37-01.jpg" class="modal-img" alt="">
+
+
+                </div>
+            </div>
+        </section>
+        
         <!-- Catt Artifex -->
         <section id="235">
             <section class="profile-section" data-style="Мультяшная стилизация">
@@ -3600,6 +3653,7 @@
            initCarousel('artist229Works');
            initCarousel('artist231Works');
            initCarousel('artist235Works');
+           initCarousel('artist236Works');
 
 
 
