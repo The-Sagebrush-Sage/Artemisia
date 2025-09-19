@@ -195,12 +195,64 @@
 
     <!-- Художники -->
     <section>    
+        <!-- Смайл -->
+        <section id="237">
+            <section class="profile-section" data-style="Cемиреализм">
+                <img src="https://i.postimg.cc/VL99CPqK/6.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1>Смайл</h1>
+                    <a href="https://t.me/Sm1le_K2" class="profile-link"> @Sm1le_K2
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Cемиреализм</p>
+                    <div class="social-links">
+                        <a href="https://t.me/Sk25smile" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist237Carousel">
+                <div class="works-inner" id="artist237Works">
+                    <img src="https://i.postimg.cc/k4VF6VsS/1.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/bvV9w0x8/2.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/nrB4266c/3.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/QtRgpXYy/4.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/Nfv7FjHy/5.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/VL99CPqK/6.jpg" class="work-thumb-3" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist237Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist237Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal237')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal237" class="modal">
+                <span class="close-btn" onclick="closeModal('modal237')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/k4VF6VsS/1.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/bvV9w0x8/2.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/nrB4266c/3.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/QtRgpXYy/4.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Nfv7FjHy/5.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/VL99CPqK/6.jpg" class="modal-img" alt="">
+                </div>
+            </div>
+        </section>
+
         <!--  ivsha  -->
         <section id="236">
             <section class="profile-section" data-style="Семиреализм">
                 <img src="https://i.postimg.cc/FKSksJ06/photo-2025-09-09-22-37-04.jpg" alt="Аватар" class="avatar">
                 <div class="profile-info">
-                    <h1> </h1>
+                    <h1>ivsha </h1>
                     <a href="https://t.me/jaixxets" class="profile-link"> @jaixxets
 
                         <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
@@ -3654,7 +3706,8 @@
            initCarousel('artist231Works');
            initCarousel('artist235Works');
            initCarousel('artist236Works');
-
+           initCarousel('artist237Works');
+         
 
 
             // Initialize filters
