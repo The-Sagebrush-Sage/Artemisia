@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemisia</title>
+    <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    <!-- Header с поисковой строкой -->
+    <header>
+        <div class="header-left">
+            <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="index.html"> <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Логотип" class="logo"> </a>
+        </div>
+
+        <div class="search-container" id="searchContainer">
+            <div class="search-box">
+                <div class="search-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                    </svg>
+                </div>
+                <input type="text" id="searchInput" placeholder="Поиск художников..." autocomplete="off">
+                <button class="search-btn" onclick="searchArtists()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#262626" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <button class="mobile-search-btn" id="mobileSearchBtn" onclick="toggleSearch()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+            </svg>
+        </button>
+        <div class="search-backdrop" id="searchBackdrop" onclick="toggleSearch()"></div>
+    </header>
+
+    <!-- Menu Drawer -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="drawer" id="drawer">
+        <ul class="menu">
+            <li><a href="index.html">
+                    <img src="https://i.postimg.cc/6p8Gfk0N/home.png" alt="Главная">
+                    Главная
+                </a>
+            </li>
+
+            <li>
+                <a href="html/Prem_Artist.html">
+                    <img src="https://i.postimg.cc/Z5Y5rqkg/prem-art.png" alt="Художники">
+                    Prem Artist
+                </a>
+            </li>
+
+            <li>
+                <a href="html/Artist.html">
+                    <img src="https://i.postimg.cc/MGRMh1NP/man-14816778.png" alt="Художники">
+                    Художники
+                </a>
+            </li>
+
+            <li>
+                <a href="html/Design.html">
+                    <img src="https://i.postimg.cc/t4xNXgTY/free-icon-pen-tablet-4861056.png" alt="Художники">
+                    Дизайнеры
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                    <img src="https://i.postimg.cc/85mFCN1L/mobile-shopping.png" alt="">
+                    Услуги
+                </a>
+
+                <ul class="submenu">
+                    <li>
+                        <a href="html/Services.html#Commission" class="submenu-link"
+                            onclick="openTabByLink('Commission')">
+                            COMMISSION ART
+                        </a>
+                    </li>
+                    <li>
+                        <a href="html/Services.html#Yunchy" class="submenu-link" onclick="openTabByLink('Yunchy')">
+                            YCH
+                        </a>
+                    </li>
+                    <li>
+                        <a href="html/Services.html#art" class="submenu-link" onclick="openTabByLink('art')">
+                            ADOPT
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="#">
+                    <img src="https://i.postimg.cc/bYRbyHJ4/draw.png" alt="">
+                    Комиксы
+                </a>
+            </li>
+
+            <li class="separator-menu"></li>
+
+            <li><a href="html/AboutUs.html#about-site">
+                    Подробности о сайте
+                </a>
+            </li>
+
+            <li><a href="html/AboutUs.html#publish-work">
+                    Опубликовать работу
+                </a>
+            </li>
+
+            <li><a href="html/AboutUs.html#guarantees">
+                    Гаранты
+                </a>
+            </li>
+
+            <li class="separator-menu"></li>
+
+            <li>
+                <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                    <img src="https://i.postimg.cc/sDXB3kbZ/image.png" alt="">
+                    Документы
+                </a>
+                <ul class="submenu">
+                    <li><a href="html/Document.html#user-agreement" class="submenu-link">Соглашение</a></li>
+                    <li><a href="html/Document.html#usage-rules" class="submenu-link">Правила использования</a></li>
+                    <li><a href="html/Document.html#guaranteed-deals" class="submenu-link">Гарантийные сделки</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Баннер -->
+    <section>
+        <div class="banner">
+            <img src="https://i.postimg.cc/xT1jzcjg/1.png" alt="Баннер">
+        </div>
+        <div class="black-stripe"></div>
+    </section>
+
+    <!-- Популярные художники -->
+    <section>
+        <div class="section-header">
+            <h2 class="section-title">Популярные художники</h2>
+        </div>
+
+        <div class="works-carousel" id="popularArtistsCarousel">
+            <div class="artists-inner" id="popularArtistsWorks">
+
+                <!-- Художник  Prem -->
+                <div class="artist-card">
+                    <div class="artist-card-inner">
+                        <div class="artist-avatar-container prem" onclick="window.location.href='Prem/mlemri.html'">
+                            <div class="artist-avatar-border"></div>
+                            <img src="https://i.postimg.cc/gkf8CvJT/image.png" alt="Ава" class="artist-avatar">
+                        </div>
+                        <div class="artist-info">
+                            <h3>mlemri</h3>
+                            <a href="https://t.me/kaktameo" class="artist-username" target="_blank">
+                                @kaktameo</a>
+                            <p class="artist-style">Авторский</p>
+                            <div class="artist-social-links">
+                                <!-- ВКонтакте -->
+                                <a href="https://vk.com/mlemri" class="social-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="ВКонтакте">
+                                    <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                        loading="lazy" class="social-icon">
+                                </a>
+
+                                <!-- Telegram -->
+                                <a href="https://t.me/mlemri" class="social-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Telegram">
+                                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32"
+                                        height="32" loading="lazy" class="social-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Художник  Prem -->
+                <div class="artist-card">
+                    <div class="artist-card-inner">
+                        <div class="artist-avatar-container prem"
+                            onclick="window.location.href='Prem/roklimorii.html'">
+                            <div class="artist-avatar-border"></div>
+                            <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg" alt="Ава"
+                                class="artist-avatar">
+                        </div>
+                        <div class="artist-info">
+                            <h3>roklimorii</h3>
+                            <a href="https://t.me/roklimoriii" class="artist-username" target="_blank">
+                                @roklimoriii</a>
+                            <p class="artist-style">Аниме</p>
+                            <div class="artist-social-links">
+                                <a href="https://t.me/rokliimoriii" class="social-link" target="_blank"
+                                    title="Telegram">
+                                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                        class="social-icon">
+                                </a>
+                                <a href="http://tiktok.com/@roklimorii" class="social-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="YouTube">
+                                    <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT"
+                                        width="32" height="32" loading="lazy" class="social-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Художник  Prem -->
+                <div class="artist-card">
+                    <div class="artist-card-inner">
+                        <div class="artist-avatar-container prem"
+                            onclick="window.location.href='Prem/creppylandau.html'">
+                            <div class="artist-avatar-border"></div>
+                            <img src="https://i.postimg.cc/gjHY8YW3/photo-2025-05-08-18-39-32.jpg" alt="Ава"
+                                class="artist-avatar">
+                        </div>
+                        <div class="artist-info">
+                            <h3>creppylandau</h3>
+                            <a href="https://t.me/DRUSTALCACALS" class="artist-username" target="_blank">
+                                @DRUSTALCACALS</a>
+                            <p class="artist-style">Семиреализм</p>
+                            <div class="artist-social-links">
+                                <a href="https://t.me/creppylandau1" class="social-link" target="_blank"
+                                    title="Telegram">
+                                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                        class="social-icon">
+                                </a>
+                                <a href="https://vk.com/creppylandau" class="social-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="ВКонтакте">
+                                    <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                        loading="lazy" class="social-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Художник  Prem -->
+                <div class="artist-card">
+                    <div class="artist-card-inner">
+                        <div class="artist-avatar-container prem" onclick="window.location.href='Prem/Elu.html'">
+                            <div class="artist-avatar-border"></div>
+                            <img src="https://i.postimg.cc/Nf23zjgT/493-20250518065634.png" alt="Ава"
+                                class="artist-avatar">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Ели</h3>
+                            <a href="https://t.me/talktondon" class="artist-username" target="_blank"> @talktondon</a>
+                            <p class="artist-style">Семиреализм</p>
+                            <div class="artist-social-links">
+                                <a href="https://t.me/yellisden" class="social-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Telegram">
+                                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32"
+                                        height="32" loading="lazy" class="social-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Художник  Prem -->
+                <div class="artist-card">
+                    <div class="artist-card-inner">
+                        <div class="artist-avatar-container prem" onclick="window.location.href='Prem/Mell.html'">
+                            <div class="artist-avatar-border"></div>
+                            <img src="https://i.postimg.cc/qMFN0HrQ/photo-5251654726016166479-x.jpg" alt="Ава"
+                                class="artist-avatar">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Mell</h3>
+                            <a href="https://t.me/Mell_Art11" class="artist-username" target="_blank"> @Mell_Art11</a>
+                            <p class="artist-style">Авторский</p>
+                            <div class="artist-social-links">
+                                <a href="https://t.me/liveIpaint" class="social-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Telegram">
+                                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32"
+                                        height="32" loading="lazy" class="social-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Худ Prem -->
+                <div class="artist-card">
+                    <div class="artist-card-inner">
+                        <div class="artist-avatar-container prem" onclick="window.location.href='Prem/Nance.html'">
+                            <div class="artist-avatar-border"></div>
+                            <img src="https://i.postimg.cc/RZHsMmkT/photo-5251455181835595579-y.jpg" alt="Ава"
+                                class="artist-avatar">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Nance</h3>
+                            <a href="https://t.me/nance_art" class="artist-username" target="_blank"> @nance_art</a>
+                            <p class="artist-style">Семиреализм</p>
+                            <div class="artist-social-links">
+                                <!-- ВКонтакте -->
+                                <a href=" https://vk.com/nensn5 " class="social-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="ВКонтакте">
+                                    <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                        loading="lazy" class="social-icon">
+                                </a>
+
+                                <!-- Telegram -->
+                                <a href=" https://t.me/nensn5 " class="social-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Telegram">
+                                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32"
+                                        height="32" loading="lazy" class="social-icon">
+                                </a>
+
+                                <!-- YouTube -->
+                                <a href=" https://www.youtube.com/@nensn5 " class="social-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="YouTube">
+                                    <img src="https://i.postimg.cc/fW5tnzqN/youtube-1.png" alt="YouTube" width="32"
+                                        height="32" loading="lazy" class="social-icon">
+                                </a>
+
+                                <!-- Пинтерест -->
+                                <a href="https://pin.it/2DbTWOypO" class="social-link" target="_blank"
+                                    rel="noopener noreferrer" aria-label="YouTube">
+                                    <img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="YouTube"
+                                        width="32" height="32" loading="lazy" class="social-icon">
+                                </a>
+
+                                <!-- ТТ -->
+                                <a href="https://www.tiktok.com/@nensn5_?_r=1&_d=eh83e1547be7il&sec_uid=MS4wLjABAAAALrSTNSIkiV3xErVnI8sQb01Iq5GX5Wgzt9JG01gcoeR26mXUpDDsdnpmqAcroE_f&share_author_id=7400529780627833861&sharer_language=ru&source=h5_m&u_code=efg187216geel8&ug_btm=b8727,b0&social_share_type=4&utm_source=copy&sec_user_id=MS4wLjABAAAALrSTNSIkiV3xErVnI8sQb01Iq5GX5Wgzt9JG01gcoeR26mXUpDDsdnpmqAcroE_f&tt_from=copy&utm_medium=ios&utm_campaign=client_share&enable_checksum=1&user_id=7400529780627833861&share_link_id=E15C10FC-48FE-40F5-BA15-A724E6FDC3CC&share_app_id=1233"
+                                    class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                    <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="YouTube"
+                                        width="32" height="32" loading="lazy" class="social-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Художник  -->
+                <div class="artist-card">
+                    <div class="artist-card-inner">
+                        <div class="artist-avatar-container" onclick="window.location.href='html/ArtistN.html#72'">
+                            <div class="artist-avatar-border"></div>
+                            <img src="https://i.postimg.cc/5yhfpNgj/photo-5251321767266478458-y.jpg" alt="Художник 2"
+                                class="artist-avatar">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Глазастик</h3>
+                            <a href="https://t.me/glaza3000" class="artist-username" target="_blank">
+                                @glaza3000 </a>
+                            <p class="artist-style">Семиреализм</p>
+                            <div class="artist-social-links">
+                                <a href="https://t.me/enotio4i" class="social-link" target="_blank" title="Telegram">
+                                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                        class="social-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Художник  -->
+                <div class="artist-card">
+                    <div class="artist-card-inner">
+                        <div class="artist-avatar-container" onclick="window.location.href='html/Artist.html#84'">
+                            <div class="artist-avatar-border"></div>
+                            <img src="https://i.postimg.cc/P5yV22zY/photo-5251391977096867032-x.jpg" alt="Художник 2"
+                                class="artist-avatar">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Shad0wHub</h3>
+                            <a href="https://t.me/Shadoww_Hub" class="artist-username" target="_blank"> @Shadoww_Hub
+                            </a>
+                            <p class="artist-style"> Семиреализм</p>
+                            <div class="artist-social-links">
+                                <a href="https://t.me/Shad0wHub" class="social-link" target="_blank" title="Telegram">
+                                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                        class="social-icon">
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Художник  -->
+                <div class="artist-card">
+                    <div class="artist-card-inner">
+                        <div class="artist-avatar-container" onclick="window.location.href='html/Artist.html#LiBi'">
+                            <div class="artist-avatar-border"></div>
+                            <img src="https://i.postimg.cc/MGpP2Bmh/photo-5249494709653596830-y.jpg" alt="Художник 2"
+                                class="artist-avatar">
+                        </div>
+                        <div class="artist-info">
+                            <h3>LiBi</h3>
+                            <a href="https://t.me/user_name_tupha" class="artist-username" target="_blank">
+                                @user_name_tupha </a>
+                            <p class="artist-style">Мультяшный</p>
+                            <div class="artist-social-links">
+                                <a href="https://t.me/ALIEN_A_R_T" class="social-link" target="_blank" title="Telegram">
+                                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                        class="social-icon">
+                                </a>
+                                <a href="https://www.tiktok.com/@frigsmt012?_t=ZS-8wP1c2tAUye&_r=1" class="social-link"
+                                    target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                    <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT"
+                                        width="32" height="32" loading="lazy" class="social-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="works-control prev" onclick="prevWork('popularArtistsWorks')">&#10094;</button>
+            <button class="works-control next" onclick="nextWork('popularArtistsWorks')">&#10095;</button>
+        </div>
+
+        <a href="html/Artist.html" class="find-artist-btn">Найти художника</a>
+    </section>
+
+    <!-- Новые публикации -->
+    <section>
+        <div class="section-header">
+            <h2 class="section-title">Новые публикации</h2>
+        </div>
+
+        <!-- Лента изображений с авторами -->
+        <div class="works-carousel" id="newPublicationsCarousel">
+            <div class="works-inner" id="newPublicationsWorks">
+                <!-- Пример работы с автором -->
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/q7fPpYfp/photo-5359447242525769491-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <div class="work-author" onclick="window.location.href='Prem/creppylandau.html'">
+                        <img src="https://i.postimg.cc/gjHY8YW3/photo-2025-05-08-18-39-32.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">creppylandau</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/90hFmFx9/photo-2025-09-15-03-29-43.jpg" class="work-thumb-3"
+                        alt="">
+                    <div class="work-author" onclick="window.location.href='Prem/sPartridge.html'">
+                        <img src="https://i.postimg.cc/zXpXNNTL/photo-2025-09-15-03-29-53.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">sPartridge</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/VL99CPqK/6.jpg" class="work-thumb-3"
+                        alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#237'">
+                        <img src="https://i.postimg.cc/VL99CPqK/6.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Смайл</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/90Yw0ySM/image.jpg" class="work-thumb-3"
+                        alt="">
+                    <div class="work-author" onclick="window.location.href='Prem/mlemri.html'">
+                        <img src="https://i.postimg.cc/gkf8CvJT/image.png" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">mlemri</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/h4ss2Pmw/3.jpg" class="work-thumb-2"
+                        alt="">
+                    <div class="work-author" onclick="window.location.href='html/Prem_Artist.html#233'">
+                        <img src="https://i.postimg.cc/6QVqWKKZ/IMG-0862.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Скалли</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/63YCgg2r/photo-5854921060703652493-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#230'">
+                        <img src="https://i.postimg.cc/gkf8CvJT/image.png" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">mlemri</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/SQGxzKsR/photo-5255945531488861706-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#29'">
+                        <img src="https://i.postimg.cc/MTM26kfq/photo-5366370261655483101-y.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">LiBi</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/05ckKjN9/1.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#229'">
+                        <img src="https://i.postimg.cc/R079SV85/6.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">K. Bunny</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/PqrFksbx/5.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#228'">
+                        <img src="https://i.postimg.cc/s26Hj6KJ/image.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Немезис</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/pX3bbKY4/2.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#227'">
+                        <img src="https://i.postimg.cc/BvcdKk9f/7.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Парсуна</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/mDJ9VjKZ/photo-2025-08-17-00-08-55.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#224'">
+                        <img src="https://i.postimg.cc/RVrfHPcX/photo-2025-08-17-00-09-03.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">HOODED CROW</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/RVD0tq59/photo-2025-08-17-00-25-59.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#226'">
+                        <img src="https://i.postimg.cc/FKQNbLPt/photo-2025-08-17-00-26-54.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Vuro</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/j2JRJHXh/2.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#225'">
+                        <img src="https://i.postimg.cc/1X0FGtBX/1.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">demonenik</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/tJkZMcxN/2.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#223'">
+                        <img src="https://i.postimg.cc/VkpSpndp/6.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">кокос</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/j2JRJHXh/2.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#222'">
+                        <img src="https://i.postimg.cc/YjKMNvDB/image.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">DARARARA</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/KvKXCsbq/photo-2025-08-08-01-31-58.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#221'">
+                        <img src="https://i.postimg.cc/qM6Y1hcW/photo-2025-08-08-01-32-43.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Рина Камуй</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/TwV45Jzq/photo-5233412397887256718-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <div class="work-author" onclick="window.location.href='Prem/GinGemin.html'">
+                        <img src="https://i.postimg.cc/1XM7J558/photo-5233412397887256722-y.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">GinGemin</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/rytN8zNY/photo-2025-07-31-23-30-19.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#216'">
+                        <img src="https://i.postimg.cc/hPL8dwwL/photo-2025-07-31-23-30-35.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Mouse</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/dtd8x42W/96.jpg" class="work-thumb-3" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#217'">
+                        <img src="https://i.postimg.cc/dtd8x42W/96.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">mickf1g</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/QCr9NNjR/photo-2025-07-31-23-32-27.jpg" class="work-thumb-2" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#215'">
+                        <img src="https://i.postimg.cc/JhftK7HG/photo-2025-07-31-23-32-43.jpg"
+                            class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">SosoPzh</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/DyjPpv3q/3.jpg" class="work-thumb-2" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#219'">
+                        <img src="https://i.postimg.cc/3xkCPs3z/6.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">Тапок</span>
+                    </div>
+                </div>
+
+                <div class="work-container">
+                    <img src="https://i.postimg.cc/Gh7SWS8c/2.jpg" class="work-thumb-2" alt="">
+                    <div class="work-author" onclick="window.location.href='html/Artist.html#215'">
+                        <img src="https://i.postimg.cc/Gh7SWS8c/2.jpg" class="work-author-avatar" alt="Аватар">
+                        <span class="work-author-name">An4ik_</span>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <button class="works-control prev" onclick="prevWork('newPublicationsWorks')">&#10094;</button>
+            <button class="works-control next" onclick="nextWork('newPublicationsWorks')">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Модальное окно для просмотра изображений с навигацией -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-close-btn" onclick="closeImageModal()">&times;</span>
+        <div class="image-modal-content">
+            <div class="image-nav image-prev" onclick="navigateImage(-1)">&#10094;</div>
+            <img id="expandedImg" class="image-modal-img" src="" alt="Expanded Image">
+            <div class="image-nav image-next" onclick="navigateImage(1)">&#10095;</div>
+            <div class="image-counter" id="imageCounter">1 / 4</div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Новая секция с подписками -->
+    <section class="subscription-section">
+        <h2 class="subscription-title">Статусы художников</h2>
+
+        <div class="subscription-cards">
+            <!-- Карточка Free Artist -->
+            <div class="subscription-card free">
+                <div class="subscription-header">
+                    <h3 class="subscription-name">Free Artist</h3>
+                </div>
+
+                <div class="subscription-price">
+                    Бесплатный доступ
+                </div>
+
+                <div class="subscription-features">
+                    <div class="subscription-feature">
+                        <span class="subscription-feature-icon">✓</span>
+                        <span>Базовый профиль художника</span>
+                    </div>
+                    <div class="subscription-feature">
+                        <span class="subscription-feature-icon">✓</span>
+                        <span>3 соцсети для связи с вами</span>
+                    </div>
+                    <div class="subscription-feature">
+                        <span class="subscription-feature-icon">✓</span>
+                        <span>Ограничение работ до категории 18+</span>
+                    </div>
+                    <div class="subscription-feature">
+                        <span class="subscription-feature-icon">✓</span>
+                        <span>Максимально 20 работ</span>
+                    </div>
+                    <div class="subscription-feature">
+                        <span class="subscription-feature-icon">✓</span>
+                        <span>Имеется возможность выложить свои услуги </span>
+                    </div>
+                    <div class="subscription-feature">
+                        <span class="subscription-feature-icon">✓</span>
+                        <span>Доступно получение заказов</span>
+                    </div>
+                    <div class="subscription-feature">
+                        <span class="subscription-feature-icon">✓</span>
+                        <span>Ссылка к своим работам</span>
+                    </div>
+                </div>
+
+                <div class="subscription-contact">
+                    <div class="subscription-contact-title">По вопросам регистрации:</div>
+                    <a href="https://t.me/ArtemisiaNEWS_bot" class="subscription-contact-link" target="_blank">
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" class="subscription-contact-icon"
+                            alt="Telegram">
+                        @ArtemisiaNEWS_bot
+                    </a>
+                </div>
+
+                <a href="https://t.me/Artemisia_publicationBot" class="subscription-btn free">Зарегистрироваться</a>
+            </div>
+
+            <!-- Карточка Prem Artist -->
+            <div class="subscription-card prem">
+
+
+                <div class="subscription-header">
+                    <h3 class="subscription-name prem">Prem Artist</h3>
+
+                </div>
+
+                <div class="subscription-price prem">
+                    <span class="old-price">250 ₽/мес</span>
+                    225 ₽/мес
+                </div>
+
+                <div class="subscription-features">
+                    <div class="subscription-feature prem">
+                        <span class="subscription-feature-icon">★</span>
+                        <span>Все функции Free Artist и еще больше функций </span>
+                    </div>
+                    <div class="subscription-feature prem">
+                        <span class="subscription-feature-icon">★</span>
+                        <span>Собственная веб-страница с профилем, на которой вы можете выложить свою информацию</span>
+                    </div>
+                    <div class="subscription-feature prem">
+                        <span class="subscription-feature-icon">★</span>
+                        <span>Неограниченное количество соцсетей</span>
+                    </div>
+                    <div class="subscription-feature prem">
+                        <span class="subscription-feature-icon">★</span>
+                        <span>Анимированный профиль</span>
+                    </div>
+                    <div class="subscription-feature prem">
+                        <span class="subscription-feature-icon">★</span>
+                        <span>Неограниченное количество работ даже с категорией 18+ с пометкой</span>
+                    </div>
+                    <div class="subscription-feature prem">
+                        <span class="subscription-feature-icon">★</span>
+                        <span>Приоритет в поиске и рекомендациях</span>
+                    </div>
+                    <div class="subscription-feature prem">
+                        <span class="subscription-feature-icon">★</span>
+                        <span>Для оформления заявки вам предоставляется модератор</span>
+                    </div>
+                    <div class="subscription-feature prem">
+                        <span class="subscription-feature-icon">★</span>
+                        <span>Автозагрузка ваших работ к вам в профиль </span>
+                    </div>
+                </div>
+
+                <div class="subscription-contact">
+                    <div class="subscription-contact-title">По вопросам премиум-статуса:</div>
+                    <a href="https://t.me/Gg00Se" class="subscription-contact-link" target="_blank">
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" class="subscription-contact-icon"
+                            alt="Telegram">
+                        @Gg00Se
+                    </a>
+                </div>
+
+                <a href="https://t.me/Gg00Se" class="subscription-btn prem" target="_blank">Оформить премиум</a>
+            </div>
+        </div>
+
+        <!-- Новая горизонтальная карточка для автозагрузки -->
+        <div class="auto-upload-card">
+            <div class="auto-upload-left">
+                <div class="auto-upload-header">
+                    <div class="auto-upload-discount">-50%</div>
+                    <h3 class="auto-upload-title">Автозагрузка работ</h3>
+                    <p class="auto-upload-subtitle">Ваши работы автоматически публикуются на сайте и вам не нужно будет
+                        кидать заявку в бота</p>
+                </div>
+
+                <div class="auto-upload-price">
+                    <span class="old-price">100 ₽/мес</span>
+                    <span class="current-price">70 ₽/мес</span>
+                </div>
+
+                <a href="https://t.me/Gg00Se" class="auto-upload-btn" target="_blank">
+                    Подключить
+                </a>
+            </div>
+
+            <div class="auto-upload-right">
+                <div class="auto-upload-features">
+                    <div class="auto-upload-feature">
+                        <span class="feature-icon">⚡</span>
+                        <span>Автоматическая публикация новых работ</span>
+                    </div>
+                    <div class="auto-upload-feature">
+                        <span class="feature-icon">📌</span>
+                        <span>Приоритетное размещение в ленте</span>
+                    </div>
+                    <div class="auto-upload-feature">
+                        <span class="feature-icon">🔔</span>
+                        <span>Уведомление о новых работах</span>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-close-btn" onclick="closeImageModal()">&times;</span>
+        <div class="image-modal-content">
+            <img id="expandedImg" class="image-modal-img" src="" alt="Expanded Image">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <a href="index.html" class="footer-logo-link">
+                <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Artemisia" class="footer-logo">
+            </a>
+
+            <div class="footer-links">
+                <a href="html/AboutUs.html#about-site" class="footer-link">Подробности о сайте</a>
+                <a href="https://t.me/Artemisia_publicationBot" class="footer-link">Опубликовать работу</a>
+                <a href="https://t.me/Gg00Se" class="footer-link">Связь с гарантом</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-text">
+                Следите за обновлениями
+                <a href="https://t.me/Artemisia_website" class="footer-link" target="_blank">@Artemisia_website</a>
+            </p>
+
+            <div class="footer-social">
+                <!-- Telegram -->
+                <a href="https://t.me/Artemisia_website" class="social-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM15.53 8.23C15.73 8.13 15.93 8.15 16.09 8.28C16.25 8.41 16.31 8.62 16.25 8.82L14.81 15.44C14.66 16.03 14.3 16.19 13.81 15.93L11.05 13.85L9.8 15.08C9.66 15.22 9.54 15.34 9.28 15.34L9.53 12.54L14.44 8.34C14.66 8.15 14.8 8.24 14.63 8.41L10.63 11.93L7.83 10.91C7.26 10.71 7.25 10.31 7.94 10.01L15.03 7.17C15.5 6.99 15.9 7.21 15.53 8.23Z" />
+                    </svg>
+                </a>
+
+                <!-- VK -->
+                <a href="https://vk.com" class="social-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93V15.07C2 20.67 3.33 22 8.93 22H15.07C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2M18.15 16.27H16.69C16.14 16.27 15.97 15.82 15 14.83C14.12 14 13.74 13.88 13.53 13.88C13.24 13.88 13.15 13.96 13.15 14.38V15.69C13.15 16.04 13.04 16.26 12.11 16.26C10.57 16.26 8.86 15.32 7.66 13.59C5.85 11.05 5.36 9.13 5.36 8.75C5.36 8.54 5.43 8.34 5.85 8.34H7.32C7.69 8.34 7.83 8.5 7.97 8.9C8.69 11 9.89 12.8 10.38 12.8C10.57 12.8 10.65 12.71 10.65 12.25V10.1C10.6 9.12 10.07 9.03 10.07 8.68C10.07 8.5 10.21 8.34 10.44 8.34H12.73C13.04 8.34 13.15 8.5 13.15 8.88V11.77C13.15 12.08 13.28 12.19 13.38 12.19C13.56 12.19 13.72 12.08 14.05 11.74C15.1 10.57 15.85 8.76 15.85 8.76C15.95 8.55 16.11 8.34 16.48 8.34H17.93C18.37 8.34 18.47 8.58 18.37 8.89C18.19 9.74 16.41 12.25 16.43 12.25C16.27 12.5 16.21 12.61 16.43 12.9C16.58 13.13 17.09 13.55 17.43 13.94C18.05 14.65 18.53 15.24 18.66 15.65C18.77 16.06 18.57 16.27 18.15 16.27Z" />
+                    </svg>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com" class="social-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                    </svg>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@artemisia_web_tt?_t=ZS-8xgqwBPHwfJ&_r=1" class="social-icon"
+                    target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Стрлека вверх -->
+    <div id="backToBottomBtn" class="back-to-bottom-btn" onclick="scrollToBottom()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+        </svg>
+    </div>
+
+    <div id="backToTopBtn" class="back-to-top-btn" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+        </svg>
+    </div>
+
+    <script>
+        // Menu Functions
+        function toggleMenu() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+            const body = document.body;
+            const searchInput = document.getElementById('searchInput');
+
+            // Сохраняем позицию прокрутки перед открытием
+            if (!body.classList.contains('menu-open')) {
+                body.style.top = `-${window.scrollY}px`;
+            }
+
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('active');
+            menuIcon.classList.toggle('active');
+            body.classList.toggle('menu-open');
+            searchInput.disabled = body.classList.contains('menu-open');
+
+            // Восстанавливаем позицию прокрутки при закрытии
+            if (!body.classList.contains('menu-open')) {
+                const scrollY = parseInt(body.style.top || '0');
+                body.style.top = '';
+                window.scrollTo(0, -scrollY);
+            }
+        }
+
+        function closeMenu() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+            const body = document.body;
+
+            drawer.classList.remove('open');
+            overlay.classList.remove('active');
+            menuIcon.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+
+        // Toggle submenus
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const link = event.currentTarget;
+            const submenu = link.nextElementSibling;
+
+            // Close all other submenus first
+            document.querySelectorAll('.submenu').forEach(menu => {
+                if (menu !== submenu) {
+                    menu.classList.remove('active');
+                    menu.previousElementSibling.classList.remove('active');
+                }
+            });
+
+            // Toggle current submenu
+            link.classList.toggle('active');
+            submenu.classList.toggle('active');
+        }
+
+        // Close menu when clicking on overlay
+        document.getElementById('overlay').addEventListener('click', closeMenu);
+
+        // New Search Functionality
+        function toggleSearch() {
+            const searchContainer = document.getElementById('searchContainer');
+            const searchBackdrop = document.getElementById('searchBackdrop');
+            const isActive = searchContainer.classList.contains('active');
+
+            if (isActive) {
+                searchContainer.classList.remove('active');
+                searchBackdrop.classList.remove('active');
+                document.getElementById('searchResults').classList.remove('active');
+                document.getElementById('searchInput').value = '';
+                document.body.style.overflow = 'auto';
+            } else {
+                searchContainer.classList.add('active');
+                searchBackdrop.classList.add('active');
+                document.getElementById('searchInput').focus();
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Close menu if open
+            if (document.getElementById('drawer').classList.contains('open')) {
+                toggleMenu();
+            }
+        }
+
+        function searchArtists() {
+            const searchText = document.getElementById('searchInput').value.trim().toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+
+            if (!searchText) {
+                resultsContainer.innerHTML = '<div class="no-results">Введите запрос для поиска</div>';
+                resultsContainer.classList.add('active');
+                return;
+            }
+
+            const artists = document.querySelectorAll('.profile-section');
+            let found = false;
+            resultsContainer.innerHTML = '';
+
+            artists.forEach(artist => {
+                const artistName = artist.querySelector('h1').textContent.toLowerCase();
+                const artistStyle = artist.querySelector('p').textContent.toLowerCase();
+                const artistLink = artist.querySelector('.profile-link').textContent.toLowerCase();
+                const artistAvatar = artist.querySelector('.avatar').src;
+
+                if (artistName.includes(searchText) || artistStyle.includes(searchText) || artistLink.includes(searchText)) {
+                    found = true;
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+
+                    resultItem.innerHTML = `
+                    <img src="${artistAvatar}" alt="${artistName}">
+                    <div class="info">
+                        <div class="name">${artist.querySelector('h1').textContent}</div>
+                        <div class="style">${artist.querySelector('p').textContent}</div>
+                    </div>
+                `;
+
+                    resultItem.onclick = () => {
+                        document.getElementById('searchInput').value = '';
+                        scrollToArtist(artist);
+                        toggleSearch();
+                    };
+                    resultsContainer.appendChild(resultItem);
+                }
+            });
+
+            if (!found) {
+                resultsContainer.innerHTML = '<div class="no-results">Поиск доступен на странице с Художниками </div>';
+            }
+            resultsContainer.classList.add('active');
+        }
+
+        // Highlight text
+        function highlightText(element, searchText) {
+            const text = element.textContent;
+            const regex = new RegExp(`(${searchText})`, 'gi');
+            element.innerHTML = text.replace(regex, match =>
+                `<span class="highlight">${match}</span>`
+            );
+        }
+
+        // Обновленная функция прокрутки к художнику
+        function scrollToArtist(artist) {
+            // Удаляем предыдущие подсветки
+            document.querySelectorAll('.artist-highlight').forEach(el => {
+                el.classList.remove('artist-highlight');
+            });
+
+            // Добавляем подсветку
+            artist.classList.add('artist-highlight');
+
+            // Прокручиваем плавно к элементу с учетом хедера
+            const yOffset = -80;
+            const y = artist.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+            window.scrollTo({
+                top: y,
+                behavior: 'smooth'
+            });
+
+            // Убираем подсветку через 3 секунды
+            setTimeout(() => {
+                artist.classList.remove('artist-highlight');
+            }, 3000);
+
+            // Упрощенная обработка прерывания прокрутки
+            const handleInterrupt = () => {
+                artist.classList.remove('artist-highlight');
+            };
+
+            // Добавляем однократный обработчик
+            window.addEventListener('scroll', handleInterrupt, {
+                once: true,
+                passive: true // Оптимизация для плавной прокрутки
+            });
+
+            // Гарантируем восстановление скролла
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+                document.body.style.position = 'static';
+            }, 500);
+        }
+
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                searchArtists();
+            }
+        });
+
+        // Real-time search on input
+        document.getElementById('searchInput').addEventListener('input', function () {
+            if (this.value.length > 0) {
+                searchArtists();
+            } else {
+                document.getElementById('searchResults').classList.remove('active');
+            }
+        });
+
+        // Close search when clicking outside (desktop)
+        document.addEventListener('click', function (e) {
+            const searchContainer = document.getElementById('searchContainer');
+            const searchResults = document.getElementById('searchResults');
+            const searchInput = document.getElementById('searchInput');
+            const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+
+            if (!searchContainer.contains(e.target) &&
+                e.target !== mobileSearchBtn &&
+                !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Close search when scrolling on mobile
+        window.addEventListener('scroll', function () {
+            if (window.innerWidth <= 768 &&
+                document.getElementById('searchContainer').classList.contains('active')) {
+                toggleSearch();
+            }
+        });
+
+        // Carousel Functionality
+        const carouselStates = {};
+        const autoScrollIntervals = {};
+
+        // Проверка, виден ли последний элемент
+        function isLastItemVisible(worksInnerId) {
+            const worksInner = document.getElementById(worksInnerId);
+            const container = worksInner.parentElement;
+            const lastItem = worksInner.lastElementChild;
+
+            if (!lastItem) return true;
+
+            const containerRect = container.getBoundingClientRect();
+            const lastItemRect = lastItem.getBoundingClientRect();
+
+            // Проверяем, виден ли последний элемент (с небольшим запасом)
+            return lastItemRect.right <= containerRect.right + 5;
+        }
+
+        // Initialize carousels when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            initCarousel('newPublicationsWorks');
+            initCarousel('popularArtistsWorks');
+
+            // Start auto-scrolling for both carousels
+            startAutoScroll('newPublicationsWorks');
+            startAutoScroll('popularArtistsWorks');
+
+            // Adapt carousels on window resize
+            window.addEventListener('resize', () => {
+                Object.keys(carouselStates).forEach(worksInnerId => {
+                    carouselStates[worksInnerId].currentTranslate = 0;
+                    setPosition(worksInnerId);
+                });
+            });
+        });
+
+        // Function to start auto-scrolling
+        function startAutoScroll(worksInnerId) {
+            // Clear any existing interval for this carousel
+            if (autoScrollIntervals[worksInnerId]) {
+                clearInterval(autoScrollIntervals[worksInnerId]);
+            }
+
+            // Set new interval
+            autoScrollIntervals[worksInnerId] = setInterval(() => {
+                const state = carouselStates[worksInnerId];
+                const worksInner = document.getElementById(worksInnerId);
+                const isArtistCarousel = worksInner.classList.contains('artists-inner');
+                const items = worksInner.querySelectorAll(isArtistCarousel ? '.artist-card' : '.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+
+                if (items.length === 0) return;
+
+                const itemWidth = isArtistCarousel ? items[0].offsetWidth + 30 : items[0].offsetWidth + 20;
+                const visibleItems = getVisibleItemsCount(worksInnerId);
+                const maxTranslate = -(items.length - visibleItems) * itemWidth;
+
+                // If we're at the end, reset to start
+                if (state.currentTranslate <= maxTranslate) {
+                    state.currentIndex = 0;
+                    state.currentTranslate = 0;
+                    worksInner.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
+                } else {
+                    // Otherwise, scroll to next item
+                    nextWork(worksInnerId, 1);
+                }
+            }, 3000); // Change slide every 5 seconds
+        }
+
+        // Pause auto-scroll on hover
+        function setupAutoScrollPause(worksInnerId) {
+            const worksInner = document.getElementById(worksInnerId);
+            const carousel = worksInner.parentElement;
+
+            carousel.addEventListener('mouseenter', () => {
+                if (autoScrollIntervals[worksInnerId]) {
+                    clearInterval(autoScrollIntervals[worksInnerId]);
+                }
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                startAutoScroll(worksInnerId);
+            });
+        }
+
+        function initCarousel(worksInnerId) {
+            if (!carouselStates[worksInnerId]) {
+                carouselStates[worksInnerId] = {
+                    currentTranslate: 0,
+                    prevTranslate: 0,
+                    isDragging: false,
+                    startPos: 0,
+                    animationID: 0,
+                    currentIndex: 0,
+                    velocity: 0,
+                    lastTime: 0,
+                    lastPos: 0
+                };
+            }
+
+            const worksInner = document.getElementById(worksInnerId);
+            const isArtistCarousel = worksInner.classList.contains('artists-inner');
+            const items = worksInner.querySelectorAll(isArtistCarousel ? '.artist-card' : '.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+
+            // Добавляем transition для плавности
+            worksInner.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+
+            // Setup auto-scroll pause on hover
+            setupAutoScrollPause(worksInnerId);
+
+            // Touch events для мобильных устройств
+            worksInner.addEventListener('touchstart', (e) => {
+                const state = carouselStates[worksInnerId];
+                state.isDragging = true;
+                state.startPos = e.touches[0].clientX;
+                state.prevTranslate = state.currentTranslate;
+                state.lastPos = state.startPos;
+                state.lastTime = performance.now();
+                state.velocity = 0;
+
+                // Отключаем transition во время драга
+                worksInner.style.transition = 'none';
+                cancelAnimationFrame(state.animationID);
+
+                // Pause auto-scroll during interaction
+                if (autoScrollIntervals[worksInnerId]) {
+                    clearInterval(autoScrollIntervals[worksInnerId]);
+                }
+            });
+
+            worksInner.addEventListener('touchmove', (e) => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+
+                const currentPos = e.touches[0].clientX;
+                const currentTime = performance.now();
+                const deltaTime = currentTime - state.lastTime;
+
+                if (deltaTime > 0) {
+                    state.velocity = (currentPos - state.lastPos) / deltaTime;
+                    state.lastPos = currentPos;
+                    state.lastTime = currentTime;
+                }
+
+                state.currentTranslate = state.prevTranslate + currentPos - state.startPos;
+
+                // Ограничиваем движение границами
+                const maxTranslate = 0;
+                const minTranslate = -getMaxTranslate(worksInnerId);
+                state.currentTranslate = Math.max(minTranslate, Math.min(maxTranslate, state.currentTranslate));
+
+                state.animationID = requestAnimationFrame(() => {
+                    worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
+                });
+            });
+
+            worksInner.addEventListener('touchend', () => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+                state.isDragging = false;
+                cancelAnimationFrame(state.animationID);
+
+                // Включаем transition для плавного завершения
+                worksInner.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+
+                // Применяем инерцию, если скорость достаточно высока
+                if (Math.abs(state.velocity) > 0.2) {
+                    const direction = state.velocity > 0 ? -1 : 1;
+                    const distance = Math.min(200, Math.abs(state.velocity * 200));
+
+                    state.currentTranslate += distance * direction;
+
+                    // Ограничиваем движение границами
+                    const maxTranslate = 0;
+                    const minTranslate = -getMaxTranslate(worksInnerId);
+                    state.currentTranslate = Math.max(minTranslate, Math.min(maxTranslate, state.currentTranslate));
+                }
+
+                // Корректируем позицию после инерции
+                snapToNearestItem(worksInnerId);
+
+                // Resume auto-scroll after interaction
+                startAutoScroll(worksInnerId);
+            });
+
+            // Mouse events для десктопа
+            worksInner.addEventListener('mousedown', (e) => {
+                const state = carouselStates[worksInnerId];
+                state.isDragging = true;
+                state.startPos = e.clientX;
+                state.prevTranslate = state.currentTranslate;
+                state.lastPos = state.startPos;
+                state.lastTime = performance.now();
+                state.velocity = 0;
+
+                worksInner.style.transition = 'none';
+                cancelAnimationFrame(state.animationID);
+                e.preventDefault();
+
+                // Pause auto-scroll during interaction
+                if (autoScrollIntervals[worksInnerId]) {
+                    clearInterval(autoScrollIntervals[worksInnerId]);
+                }
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+
+                const currentPos = e.clientX;
+                const currentTime = performance.now();
+                const deltaTime = currentTime - state.lastTime;
+
+                if (deltaTime > 0) {
+                    state.velocity = (currentPos - state.lastPos) / deltaTime;
+                    state.lastPos = currentPos;
+                    state.lastTime = currentTime;
+                }
+
+                state.currentTranslate = state.prevTranslate + currentPos - state.startPos;
+
+                const maxTranslate = 0;
+                const minTranslate = -getMaxTranslate(worksInnerId);
+                state.currentTranslate = Math.max(minTranslate, Math.min(maxTranslate, state.currentTranslate));
+
+                state.animationID = requestAnimationFrame(() => {
+                    worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
+                });
+            });
+
+            document.addEventListener('mouseup', () => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+                state.isDragging = false;
+                cancelAnimationFrame(state.animationID);
+
+                worksInner.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+
+                if (Math.abs(state.velocity) > 0.2) {
+                    const direction = state.velocity > 0 ? -1 : 1;
+                    const distance = Math.min(200, Math.abs(state.velocity * 200));
+
+                    state.currentTranslate += distance * direction;
+
+                    const maxTranslate = 0;
+                    const minTranslate = -getMaxTranslate(worksInnerId);
+                    state.currentTranslate = Math.max(minTranslate, Math.min(maxTranslate, state.currentTranslate));
+                }
+
+                snapToNearestItem(worksInnerId);
+
+                // Resume auto-scroll after interaction
+                startAutoScroll(worksInnerId);
+            });
+
+            // Функция для привязки к ближайшему элементу
+            function snapToNearestItem(worksInnerId) {
+                const state = carouselStates[worksInnerId];
+                const worksInner = document.getElementById(worksInnerId);
+                const isArtistCarousel = worksInner.classList.contains('artists-inner');
+                const items = worksInner.querySelectorAll(isArtistCarousel ? '.artist-card' : '.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+
+                if (items.length === 0) return;
+
+                const itemWidth = isArtistCarousel ? items[0].offsetWidth + 30 : items[0].offsetWidth + 20;
+                const newIndex = Math.round(-state.currentTranslate / itemWidth);
+                const maxIndex = items.length - getVisibleItemsCount(worksInnerId);
+
+                state.currentIndex = Math.max(0, Math.min(maxIndex, newIndex));
+                state.currentTranslate = -state.currentIndex * itemWidth;
+
+                worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
+                updateCarouselControls(worksInnerId);
+            }
+        }
+
+        // Функция для обновления состояния кнопок управления
+        function updateCarouselControls(worksInnerId) {
+            const state = carouselStates[worksInnerId];
+            const carousel = document.getElementById(worksInnerId).parentElement;
+            const nextBtn = carousel.querySelector('.next');
+            const prevBtn = carousel.querySelector('.prev');
+
+            if (!nextBtn || !prevBtn) return;
+
+            // Проверяем, достигли ли мы конца
+            const isEnd = isLastItemVisible(worksInnerId);
+
+            nextBtn.disabled = isEnd;
+            prevBtn.disabled = state.currentIndex === 0;
+
+            nextBtn.style.opacity = isEnd ? '0.5' : '1';
+            prevBtn.style.opacity = state.currentIndex === 0 ? '0.5' : '1';
+        }
+
+        // Функция для получения максимального смещения
+        function getMaxTranslate(worksInnerId) {
+            const worksInner = document.getElementById(worksInnerId);
+            const isArtistCarousel = worksInner.classList.contains('artists-inner');
+            const items = worksInner.querySelectorAll(isArtistCarousel ? '.artist-card' : '.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+
+            if (items.length === 0) return 0;
+
+            if (isArtistCarousel) {
+                const cardWidth = items[0].offsetWidth + 30; // Work width + gap
+                return (items.length - 1) * cardWidth;
+            } else {
+                const workWidth = items[0].offsetWidth + 20; // Work width + gap
+                return (items.length - 1) * workWidth;
+            }
+        }
+
+        function getVisibleItemsCount(worksInnerId) {
+            const worksInner = document.getElementById(worksInnerId);
+            const isArtistCarousel = worksInner.classList.contains('artists-inner');
+            const items = worksInner.querySelectorAll(isArtistCarousel ? '.artist-card' : '.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+            const containerWidth = worksInner.parentElement.offsetWidth;
+
+            if (items.length === 0) return 1;
+
+            if (isArtistCarousel) {
+                const cardWidth = items[0].offsetWidth + 30; // Work width + gap
+                return Math.floor(containerWidth / cardWidth);
+            } else {
+                const workWidth = items[0].offsetWidth + 20; // Work width + gap
+                return Math.floor(containerWidth / workWidth);
+            }
+        }
+
+        function animation(worksInnerId) {
+            setPosition(worksInnerId);
+            const state = carouselStates[worksInnerId];
+            if (state.isDragging) requestAnimationFrame(() => animation(worksInnerId));
+        }
+
+        function setPosition(worksInnerId) {
+            const state = carouselStates[worksInnerId];
+            const worksInner = document.getElementById(worksInnerId);
+
+            // Используем requestAnimationFrame для плавности
+            requestAnimationFrame(() => {
+                worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
+            });
+        }
+
+        function getVisibleWorksCount(worksInnerId) {
+            const worksInner = document.getElementById(worksInnerId);
+            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3, .artist-card');
+            const containerWidth = worksInner.parentElement.offsetWidth;
+
+            if (works[0] && works[0].classList.contains('artist-card')) {
+                const cardWidth = works[0].offsetWidth + 30; // Work width + gap
+                return Math.floor(containerWidth / cardWidth);
+            }
+
+            const workWidth = works[0].offsetWidth + 20; // Work width + gap
+            return Math.floor(containerWidth / workWidth);
+        }
+
+        function nextWork(worksInnerId, step = 1) {
+            const worksInner = document.getElementById(worksInnerId);
+            const isArtistCarousel = worksInner.classList.contains('artists-inner');
+            const items = worksInner.querySelectorAll(isArtistCarousel ? '.artist-card' : '.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+            const state = carouselStates[worksInnerId];
+
+            if (items.length === 0) return;
+
+            const itemWidth = isArtistCarousel ? items[0].offsetWidth + 30 : items[0].offsetWidth + 20;
+            const visibleItems = getVisibleItemsCount(worksInnerId);
+            const maxTranslate = -(items.length - visibleItems) * itemWidth;
+
+            if (state.currentTranslate <= maxTranslate) return;
+
+            state.currentIndex = Math.min(state.currentIndex + step, items.length - visibleItems);
+            state.currentTranslate = -state.currentIndex * itemWidth;
+
+            worksInner.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
+
+            // Обновляем состояние кнопок после завершения анимации
+            setTimeout(() => {
+                updateCarouselControls(worksInnerId);
+            }, 500);
+        }
+
+        function prevWork(worksInnerId, step = 1) {
+            const worksInner = document.getElementById(worksInnerId);
+            const isArtistCarousel = worksInner.classList.contains('artists-inner');
+            const items = worksInner.querySelectorAll(isArtistCarousel ? '.artist-card' : '.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+            const state = carouselStates[worksInnerId];
+
+            if (items.length === 0 || state.currentIndex === 0) return;
+
+            const itemWidth = isArtistCarousel ? items[0].offsetWidth + 30 : items[0].offsetWidth + 20;
+
+            state.currentIndex = Math.max(state.currentIndex - step, 0);
+            state.currentTranslate = -state.currentIndex * itemWidth;
+
+            worksInner.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
+
+            setTimeout(() => {
+                updateCarouselControls(worksInnerId);
+            }, 500);
+        }
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Full Image Modal Functions
+        function openImageModal(imgSrc) {
+            const imageModal = document.getElementById('imageModal');
+            const expandedImg = document.getElementById('expandedImg');
+
+            expandedImg.src = imgSrc;
+            imageModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function (event) {
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (event.target == modal) {
+                    closeModal(modal.id);
+                }
+            });
+
+            if (event.target === document.getElementById('imageModal')) {
+                closeImageModal();
+            }
+        }
+
+        // Close modals with ESC key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        closeModal(modal.id);
+                    }
+                });
+
+                if (document.getElementById('imageModal').style.display === 'block') {
+                    closeImageModal();
+                }
+            }
+        });
+
+        // Click on works in carousel opens corresponding modal
+        document.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3').forEach(thumb => {
+            thumb.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openImageModal(this.src);
+            });
+        });
+
+        // Click on images in artist modals
+        document.querySelectorAll('.modal-img').forEach(img => {
+            img.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openImageModal(this.src);
+            });
+        });
+
+        // Back to Top Function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide back to top button on scroll
+        window.addEventListener('scroll', function () {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            const backToBottomBtn = document.getElementById('backToBottomBtn');
+            const scrollPosition = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.body.scrollHeight;
+
+            // Определяем, находится ли пользователь внизу страницы
+            const isAtBottom = scrollPosition + windowHeight >= documentHeight - 100;
+
+            // Управление кнопкой "Вверх"
+            if (scrollPosition > 300 && !isAtBottom) {
+                backToTopBtn.classList.add('active');
+                backToBottomBtn.classList.add('with-up');
+            } else {
+                backToTopBtn.classList.remove('active');
+                backToBottomBtn.classList.remove('with-up');
+            }
+
+            // Управление кнопкой "Вниз"
+            if (!isAtBottom) {
+                backToBottomBtn.classList.add('active');
+            } else {
+                backToBottomBtn.classList.remove('active');
+            }
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize carousels
+            initCarousel('newPublicationsWorks');
+            initCarousel('popularArtistsWorks');
+
+            // Start auto-scrolling for both carousels
+            startAutoScroll('newPublicationsWorks');
+            startAutoScroll('popularArtistsWorks');
+
+            // Adapt carousels on window resize
+            window.addEventListener('resize', () => {
+                Object.keys(carouselStates).forEach(worksInnerId => {
+                    carouselStates[worksInnerId].currentTranslate = 0;
+                    setPosition(worksInnerId);
+                });
+            });
+
+            // Add intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+
+                        // Для модальных изображений
+                        if (entry.target.classList.contains('modal-img')) {
+                            setTimeout(() => {
+                                entry.target.classList.add('visible');
+                            }, 100 * index);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Наблюдаем за всеми элементами
+            document.querySelectorAll('.new-publications, .popular-artists, .works-carousel, .profile-section').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Для изображений в модалках
+            document.querySelectorAll('.modal-img').forEach((img, index) => {
+                observer.observe(img);
+            });
+
+            // Инициализация фильтрации иллюстраторов
+            filterIllustrators('week');
+        });
+
+        // Function to open tab by link
+        function openTabByLink(tabId) {
+            // This function would be implemented in the Services.html page
+            console.log('Opening tab:', tabId);
+        }
+
+        // Function to change illustrator filter
+        function changeIllustratorFilter(filterType) {
+            const buttons = document.querySelectorAll('.illustrator-filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Активируем нажатую кнопку
+            event.target.classList.add('active');
+
+            filterIllustrators(filterType);
+
+            // Сбрасываем кнопку "Смотреть всех" при смене фильтра
+            document.getElementById('viewAllBtn').textContent = 'Смотреть всех';
+        }
+
+        function filterIllustrators(filterType) {
+            const illustrators = document.querySelectorAll('.illustrator-card-v2');
+            const hiddenIllustrators = document.querySelectorAll('.hidden-illustrators');
+
+            // Сначала скрываем все работы
+            illustrators.forEach(illustrator => {
+                illustrator.style.display = 'none';
+            });
+
+            // Показываем только работы выбранного периода
+            const filteredIllustrators = document.querySelectorAll(`.illustrator-card-v2.${filterType}`);
+            filteredIllustrators.forEach((illustrator, index) => {
+                // Показываем первые 4 работы, остальные скрываем
+                if (index < 4) {
+                    illustrator.style.display = 'block';
+                } else {
+                    illustrator.style.display = 'none';
+                }
+            });
+
+            // Скрываем все дополнительные работы
+            hiddenIllustrators.forEach(illustrator => {
+                illustrator.style.display = 'none';
+            });
+        }
+
+        // Function to toggle view all illustrators
+        document.getElementById('viewAllBtn').addEventListener('click', function () {
+            const btn = document.getElementById('viewAllBtn');
+            const activeFilter = document.querySelector('.illustrator-filter-btn.active').textContent;
+            let filterType = 'week';
+
+            if (activeFilter === 'Неделя') filterType = 'week';
+            else if (activeFilter === 'Месяц') filterType = 'month';
+
+            const hiddenIllustrators = document.querySelectorAll(`.illustrator-card-v2.${filterType}.hidden-illustrators`);
+
+            if (btn.textContent === 'Смотреть всех') {
+                // Показываем скрытые работы текущего фильтра
+                hiddenIllustrators.forEach(illustrator => {
+                    illustrator.style.display = 'block';
+                });
+                btn.textContent = 'Скрыть';
+
+                // Прокручиваем к кнопке после раскрытия
+                setTimeout(() => {
+                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            } else {
+                // Скрываем дополнительные работы текущего фильтра
+                hiddenIllustrators.forEach(illustrator => {
+                    illustrator.style.display = 'none';
+                });
+                btn.textContent = 'Смотреть всех';
+
+                // Прокручиваем к началу секции
+                document.querySelector('.popular-illustrators-section').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+
+        // Инициализация фильтрации иллюстраторов - по умолчанию "неделя"
+        filterIllustrators('week');
+        // Активируем кнопку "неделя"
+        document.querySelector('.illustrator-filter-btn').classList.add('active');
+
+        // Добавьте эти функции в ваш JavaScript
+        function scrollToBottom() {
+            const footer = document.querySelector('.site-footer');
+            footer.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Инициализация карусели при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function () {
+            initCarousel('newPublicationsWorks');
+            updateCarouselControls('newPublicationsWorks');
+        });
+    </script>
+
+    <script>
+        // Глобальные переменные для управления галереей изображений
+        let currentImageIndex = 0;
+        let imageGallery = [];
+        let currentGalleryType = ''; // 'new-publications' или 'popular-illustrators'
+        let currentFilter = 'week'; // 'week' или 'month'
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // Модифицированная функция открытия изображения
+        function openImageModal(imgSrc, galleryType = 'new-publications', filterType = 'week') {
+            const imageModal = document.getElementById('imageModal');
+            const expandedImg = document.getElementById('expandedImg');
+
+            // Сохраняем тип галереи и фильтр
+            currentGalleryType = galleryType;
+            currentFilter = filterType;
+
+            // Собираем все изображения в галерею в зависимости от типа и фильтра
+            if (galleryType === 'new-publications') {
+                // Для новых публикаций - только изображения работ (исключаем аватарки)
+                imageGallery = Array.from(document.querySelectorAll('#newPublicationsWorks .work-container img')).filter(img =>
+                    !img.classList.contains('work-author-avatar')
+                );
+            } else {
+                // Для популярных иллюстраторов с учетом фильтра - только изображения работ
+                imageGallery = Array.from(document.querySelectorAll(`.illustrator-card-v2.${filterType} .illustrator-image`));
+            }
+
+            // Находим индекс текущего изображения
+            currentImageIndex = imageGallery.findIndex(img => img.src === imgSrc);
+
+            // Обновляем счетчик
+            updateImageCounter();
+
+            expandedImg.src = imgSrc;
+            imageModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Добавляем обработчики для свайпов
+            imageModal.addEventListener('touchstart', handleTouchStart, false);
+            imageModal.addEventListener('touchend', handleTouchEnd, false);
+        }
+
+        // Остальные функции остаются без изменений
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+
+            const imageModal = document.getElementById('imageModal');
+            imageModal.removeEventListener('touchstart', handleTouchStart, false);
+            imageModal.removeEventListener('touchend', handleTouchEnd, false);
+        }
+
+        function navigateImage(direction) {
+            if (imageGallery.length === 0) return;
+
+            currentImageIndex += direction;
+
+            if (currentImageIndex >= imageGallery.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = imageGallery.length - 1;
+            }
+
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.src = imageGallery[currentImageIndex].src;
+            updateImageCounter();
+
+            expandedImg.style.opacity = '0';
+            setTimeout(() => {
+                expandedImg.style.opacity = '1';
+            }, 50);
+        }
+
+        function updateImageCounter() {
+            const counter = document.getElementById('imageCounter');
+            if (counter && imageGallery.length > 0) {
+                counter.textContent = `${currentImageIndex + 1} / ${imageGallery.length}`;
+            }
+        }
+
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+
+        function handleSwipe() {
+            const threshold = 50;
+
+            if (touchEndX < touchStartX - threshold) {
+                navigateImage(1);
+            } else if (touchEndX > touchStartX + threshold) {
+                navigateImage(-1);
+            }
+        }
+
+        // Модифицируем обработчики кликов по изображениям
+        document.addEventListener('DOMContentLoaded', function () {
+            // Для новых публикаций - только изображения работ (исключаем аватарки)
+            document.querySelectorAll('#newPublicationsWorks .work-container img:not(.work-author-avatar)').forEach((thumb, index) => {
+                thumb.addEventListener('click', function (e) {
+                    // Дополнительная проверка, чтобы клик по автору не открывал модальное окно
+                    if (e.target.closest('.work-author')) {
+                        return;
+                    }
+                    e.stopPropagation();
+                    openImageModal(this.src, 'new-publications');
+                });
+            });
+
+            // Для популярных иллюстраторов (неделя)
+            document.querySelectorAll('.illustrator-card-v2.week .illustrator-image').forEach((thumb, index) => {
+                thumb.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    openImageModal(this.src, 'popular-illustrators', 'week');
+                });
+            });
+
+            // Для популярных иллюстраторов (месяц)
+            document.querySelectorAll('.illustrator-card-v2.month .illustrator-image').forEach((thumb, index) => {
+                thumb.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    openImageModal(this.src, 'popular-illustrators', 'month');
+                });
+            });
+        });
+
+        // Обработчики клавиш для навигации по изображениям
+        document.addEventListener('keydown', function (e) {
+            const imageModal = document.getElementById('imageModal');
+            if (imageModal.style.display !== 'block') return;
+
+            if (e.key === 'ArrowLeft') {
+                navigateImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                navigateImage(1);
+            } else if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+
+</html>

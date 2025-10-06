@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemisia</title>
+    <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Artist.css">
+    
+
+</head>
+
+<body>
+    <!-- Header с поисковой строкой -->
+    <header>
+        <div class="header-left">
+            <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="../index.html"> <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Логотип" class="logo"> </a>
+        </div>
+
+        <div class="search-container" id="searchContainer">
+            <div class="search-box">
+                <div class="search-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                    </svg>
+                </div>
+                <input type="text" id="searchInput" placeholder="Поиск художников..." autocomplete="off">
+                <button class="search-btn" onclick="searchArtists()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#262626" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <button class="mobile-search-btn" id="mobileSearchBtn" onclick="toggleSearch()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+            </svg>
+        </button>
+        <div class="search-backdrop" id="searchBackdrop" onclick="toggleSearch()"></div>
+    </header>
+
+    <!-- Menu Drawer -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="drawer" id="drawer">
+        <ul class="menu">
+            <li><a href="../index.html">
+                    <img src="https://i.postimg.cc/6p8Gfk0N/home.png" alt="Главная">
+                    Главная
+                </a>
+            </li>
+
+            <li>
+                <a href="Prem_Artist.html">
+                    <img src="https://i.postimg.cc/Z5Y5rqkg/prem-art.png" alt="Художники">
+                    Prem Artist
+                </a>
+            </li>
+
+            <li>
+                <a href="Artist.html">
+                    <img src="https://i.postimg.cc/MGRMh1NP/man-14816778.png" alt="Художники">
+                    Художники
+                </a>
+            </li>
+
+            <li>
+                <a href="Design.html">
+                    <img src="https://i.postimg.cc/t4xNXgTY/free-icon-pen-tablet-4861056.png" alt="Художники">
+                    Дизайнеры
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                    <img src="https://i.postimg.cc/85mFCN1L/mobile-shopping.png" alt="">
+                    Услуги
+                </a>
+
+                <ul class="submenu">
+                    <li>
+                        <a href="Services.html#Commission" class="submenu-link" onclick="openTabByLink('Commission')">
+                            COMMISSION ART
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Services.html#Yunchy" class="submenu-link" onclick="openTabByLink('Yunchy')">
+                            YCH
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Services.html#art" class="submenu-link" onclick="openTabByLink('art')">
+                            ADOPT
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="#">
+                    <img src="https://i.postimg.cc/bYRbyHJ4/draw.png" alt="">
+                    Комиксы
+                </a>
+            </li>
+
+            <li class="separator-menu"></li>
+
+            <li><a href="AboutUs.html#about-site">
+                    Подробности о сайте
+                </a>
+            </li>
+
+            <li><a href="AboutUs.html#publish-work">
+                    Опубликовать работу
+                </a>
+            </li>
+
+            <li><a href="AboutUs.html#guarantees">
+                    Гаранты
+                </a>
+            </li>
+
+            <li class="separator-menu"></li>
+
+            <li>
+                <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                    <img src="https://i.postimg.cc/sDXB3kbZ/image.png" alt="">
+                    Документы
+                </a>
+                <ul class="submenu">
+                    <li><a href="Document.html#user-agreement" class="submenu-link">Соглашение</a></li>
+                    <li><a href="Document.html#usage-rules" class="submenu-link">Правила использования</a></li>
+                    <li><a href="Document.html#guaranteed-deals" class="submenu-link">Гарантийные сделки</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Баннер -->
+    <section>
+        <div class="banner">
+            <img src="https://i.postimg.cc/DfSNsVrN/2.png" alt="Баннер">
+        </div>
+        <div class="black-stripe"></div>
+    </section>
+
+    <!-- Фильтры -->
+    <section>
+        <div class="filters-container">
+            <button class="filters-button" onclick="toggleFilters(event)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 21V14" stroke="currentColor" stroke-width="2" />
+                    <path d="M4 10V3" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 21V12" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 8V3" stroke="currentColor" stroke-width="2" />
+                    <path d="M20 21V16" stroke="currentColor" stroke-width="2" />
+                    <path d="M20 12V3" stroke="currentColor" stroke-width="2" />
+                    <path d="M1 14H7" stroke="currentColor" stroke-width="2" />
+                    <path d="M9 8H15" stroke="currentColor" stroke-width="2" />
+                    <path d="M17 16H23" stroke="currentColor" stroke-width="2" />
+                </svg>
+                Фильтры
+            </button>
+            <div class="filters-dropdown" id="filtersDropdown">
+                <a href="#" onclick="applyFilter('all', event)" class="active-filter">Все стили</a>
+                <a href="#" onclick="applyFilter('prem', event)">Prem Artist</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Дизайнеры -->
+    <section>
+
+        <!-- Potimuma -->
+        <section id="234">
+            <section class="profile-section" data-style="3D">
+                <img src="https://i.postimg.cc/Pf0qvxGt/7.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1>Potimuma</h1>
+                    <a href="https://t.me/Potimuma" class="profile-link"> @Potimuma
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: 3D</p>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@potimuma" class="social-link" target="_blank"
+                            rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube-1.png" alt="YouTube" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist234Carousel">
+                <div class="works-inner" id="artist234Works">
+                    <img src="https://i.postimg.cc/V6NxDjC3/1.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/ZnB1h4jH/2.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/Lsvdtynt/3.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/LX0r7nkh/4.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/fyG1zprN/5.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/2j165WKc/6.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/Pf0qvxGt/7.jpg" class="work-thumb-2" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist234Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist234Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal234')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal234" class="modal">
+                <span class="close-btn" onclick="closeModal('modal234')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/V6NxDjC3/1.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/ZnB1h4jH/2.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Lsvdtynt/3.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/LX0r7nkh/4.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/fyG1zprN/5.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/2j165WKc/6.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Pf0qvxGt/7.jpg" class="modal-img" alt="">
+                </div>
+        </section>
+
+        <!-- Алексия -->
+        <section id="Alexia">
+            <section class="profile-section" data-style="Дизайн" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('')">
+                <div class="avatar-container">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" alt="Аватар"
+                        class="avatar">
+
+                </div>
+
+                <div class="profile-info">
+                    <h1>Алексия</h1>
+                    <a href="https://t.me/" class="profile-link">
+                        @Ha0ruka
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Специальность: Дизайн </p>
+
+
+                    <div class="social-links">
+                        <a href="https://t.me/A0lexyaa0" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist1Carousel">
+                <div class="works-inner" id="artist1Works">
+                    <img src="https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/Pf9GVnCH/photo-5244699232638725578-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/NfH3WCXH/photo-5244699232638725579-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/Cxp3YCC6/photo-5244699232638725580-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/xTxzdnJn/photo-5226705699080367474-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/pVBjgDP9/photo-5226705699080367475-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/d3Jyh0jt/photo-5226705699080367476-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/5NNz16ts/photo-5226705699080367477-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/J0KBZWp3/photo-5226705699080367478-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/13bVpBrd/photo-5226705699080367485-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" class="work-thumb-2"
+                        alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist1Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist1Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal1')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal1" class="modal">
+                <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Pf9GVnCH/photo-5244699232638725578-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/NfH3WCXH/photo-5244699232638725579-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Cxp3YCC6/photo-5244699232638725580-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/xTxzdnJn/photo-5226705699080367474-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/pVBjgDP9/photo-5226705699080367475-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/d3Jyh0jt/photo-5226705699080367476-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/5NNz16ts/photo-5226705699080367477-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/J0KBZWp3/photo-5226705699080367478-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/13bVpBrd/photo-5226705699080367485-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Rikoto -->
+        <section id="3">
+            <section class="profile-section" data-style="Дизайн">
+                <img src="https://i.postimg.cc/6qvPXv17/photo-5305270117032127745-y.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1>Rikoto </h1>
+                    <a href="https://t.me/riikoto" class="profile-link">
+                        @riikoto
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Специальность: Дизайн </p>
+                    <div class="social-links">
+                        <a href="https://t.me/portriikoto" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                        <a href="https://pin.it/12X1xzRJa" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="Pin">
+                            <img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pin" width="32"
+                                height="32" loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- ТТ -->
+                        <a href="https://www.tiktok.com/@riikoto?_t=ZS-8wekeUsZwAr&_r=1" class="social-link"
+                            target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT" width="32"
+                                height="32" loading="lazy" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist3Carousel">
+                <div class="works-inner" id="artist3Works">
+                    <img src="https://i.postimg.cc/XYcTq9Nd/photo-5305270117032127729-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/SKSHMjj5/photo-5305270117032127730-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/xd6hyYzd/photo-5305270117032127731-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/hGvpnmXS/photo-5305270117032127748-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/dV44g6tH/photo-5305270117032127749-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/6p9MHgw4/photo-5305270117032127751-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/8PdymN8V/photo-5305270117032127752-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/rpHgwp45/photo-5305270117032127758-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/C1dtctGs/photo-5330442873109346267-y.jpg" class="work-thumb-1"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist3Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist3Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal3')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal3" class="modal">
+                <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/XYcTq9Nd/photo-5305270117032127729-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/SKSHMjj5/photo-5305270117032127730-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/xd6hyYzd/photo-5305270117032127731-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/hGvpnmXS/photo-5305270117032127748-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/dV44g6tH/photo-5305270117032127749-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/6p9MHgw4/photo-5305270117032127751-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/8PdymN8V/photo-5305270117032127752-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/rpHgwp45/photo-5305270117032127758-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/C1dtctGs/photo-5330442873109346267-y.jpg" class="modal-img" alt="">
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- coenabi -->
+        <section id="2">
+            <section class="profile-section" data-style="Веб-дизайн">
+                <img src="https://i.postimg.cc/6Q7fPCjP/photo-5287398650739285319-y.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1> coenabi</h1>
+                    <a href="https://t.me/@rayahrr" class="profile-link">
+                        @rayahrr
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Специальность: Веб-дизайн </p>
+                    <div class="social-links">
+                        <a href="https://t.me/coenabi" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist2Carousel">
+                <div class="works-inner" id="artist2Works">
+                    <img src="https://i.postimg.cc/bJNXtyz8/photo-5244777448288154711-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/gjnfggXT/photo-5244777448288154710-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/YSxK0GBb/photo-5244777448288154712-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/Bv3fJ5kj/photo-5244777448288154713-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/Y9X5N59F/photo-5244777448288154714-x.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/K8ByXpqX/photo-5244777448288154715-y.jpg" class="work-thumb-1"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist2Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist2Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal2')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal2" class="modal">
+                <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/bJNXtyz8/photo-5244777448288154711-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/gjnfggXT/photo-5244777448288154710-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/YSxK0GBb/photo-5244777448288154712-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Bv3fJ5kj/photo-5244777448288154713-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Y9X5N59F/photo-5244777448288154714-x.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/K8ByXpqX/photo-5244777448288154715-y.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </section>
+
+    
+
+    <!-- Image Modal - обновленная версия -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-close-btn" onclick="closeImageModal()">&times;</span>
+        <div class="image-modal-content" id="imageModalContent">
+            <button class="modal-nav-btn modal-prev" onclick="navigateImage(-1)">&#10094;</button>
+            <img id="expandedImg" class="image-modal-img" src="" alt="Expanded Image">
+            <button class="modal-nav-btn modal-next" onclick="navigateImage(1)">&#10095;</button>
+            <div class="image-counter" id="imageCounter"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-container">
+        <section class="footer-main-section">
+            <a href="index.html" class="footer-brand-link">
+                <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Artemisia" class="footer-brand-logo">
+            </a>
+
+            <nav class="footer-navigation">
+                <a href="AboutUs.html#about-site" class="footer-nav-item">Подробности о сайте</a>
+                <a href="https://t.me/Artemisia_publicationBot" class="footer-nav-item">Опубликовать работу</a>
+                <a href="https://t.me/Gg00Se" class="footer-nav-item">Связь с гарантом</a>
+            </nav>
+        </section>
+
+        <section class="footer-secondary-section">
+            <p class="footer-copyright">
+                Следите за обновлениями
+                <a href="https://t.me/Artemisia_website" class="footer-nav-item" target="_blank">@Artemisia_website</a>
+            </p>
+
+            <div class="footer-social-links">
+                <!-- Telegram -->
+                <a href="https://t.me/Artemisia_website" class="social-media-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM15.53 8.23C15.73 8.13 15.93 8.15 16.09 8.28C16.25 8.41 16.31 8.62 16.25 8.82L14.81 15.44C14.66 16.03 14.3 16.19 13.81 15.93L11.05 13.85L9.8 15.08C9.66 15.22 9.54 15.34 9.28 15.34L9.53 12.54L14.44 8.34C14.66 8.15 14.8 8.24 14.63 8.41L10.63 11.93L7.83 10.91C7.26 10.71 7.25 10.31 7.94 10.01L15.03 7.17C15.5 6.99 15.9 7.21 15.53 8.23Z" />
+                    </svg>
+                </a>
+
+                <!-- VK -->
+                <a href="https://vk.com/artemisia_website" class="social-media-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93V15.07C2 20.67 3.33 22 8.93 22H15.07C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2M18.15 16.27H16.69C16.14 16.27 15.97 15.82 15 14.83C14.12 14 13.74 13.88 13.53 13.88C13.24 13.88 13.15 13.96 13.15 14.38V15.69C13.15 16.04 13.04 16.26 12.11 16.26C10.57 16.26 8.86 15.32 7.66 13.59C5.85 11.05 5.36 9.13 5.36 8.75C5.36 8.54 5.43 8.34 5.85 8.34H7.32C7.69 8.34 7.83 8.5 7.97 8.9C8.69 11 9.89 12.8 10.38 12.8C10.57 12.8 10.65 12.71 10.65 12.25V10.1C10.6 9.12 10.07 9.03 10.07 8.68C10.07 8.5 10.21 8.34 10.44 8.34H12.73C13.04 8.34 13.15 8.5 13.15 8.88V11.77C13.15 12.08 13.28 12.19 13.38 12.19C13.56 12.19 13.72 12.08 14.05 11.74C15.1 10.57 15.85 8.76 15.85 8.76C15.95 8.55 16.11 8.34 16.48 8.34H17.93C18.37 8.34 18.47 8.58 18.37 8.89C18.19 9.74 16.41 12.25 16.43 12.25C16.27 12.5 16.21 12.61 16.43 12.9C16.58 13.13 17.09 13.55 17.43 13.94C18.05 14.65 18.53 15.24 18.66 15.65C18.77 16.06 18.57 16.27 18.15 16.27Z" />
+                    </svg>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com/@artemisia_website?si=gOfyLPoGY8a4QrFF" class="social-media-icon"
+                    target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                    </svg>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@artemisia_web_tt?_t=ZS-8xgqwBPHwfJ&_r=1" class="social-media-icon"
+                    target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </footer>
+
+    <!-- Стрлека вверх -->
+    <div id="backToTopBtn" class="back-to-top-btn" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+        </svg>
+    </div>
+
+    <script>
+        // Menu Functions
+        function toggleMenu() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+            const body = document.body;
+            const searchInput = document.getElementById('searchInput');
+
+            // Сохраняем позицию прокрутки перед открытием
+            if (!body.classList.contains('menu-open')) {
+                body.style.top = `-${window.scrollY}px`;
+            }
+
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('active');
+            menuIcon.classList.toggle('active');
+            body.classList.toggle('menu-open');
+            searchInput.disabled = body.classList.contains('menu-open');
+
+            // Восстанавливаем позицию прокрутки при закрытии
+            if (!body.classList.contains('menu-open')) {
+                const scrollY = parseInt(body.style.top || '0');
+                body.style.top = '';
+                window.scrollTo(0, -scrollY);
+            }
+        }
+
+        function closeMenu() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+            const body = document.body;
+
+            drawer.classList.remove('open');
+            overlay.classList.remove('active');
+            menuIcon.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+
+        // Toggle submenus
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const link = event.currentTarget;
+            const submenu = link.nextElementSibling;
+
+            // Close all other submenus first
+            document.querySelectorAll('.submenu').forEach(menu => {
+                if (menu !== submenu) {
+                    menu.classList.remove('active');
+                    menu.previousElementSibling.classList.remove('active');
+                }
+            });
+
+            // Toggle current submenu
+            link.classList.toggle('active');
+            submenu.classList.toggle('active');
+        }
+
+        // Close menu when clicking on overlay
+        document.getElementById('overlay').addEventListener('click', closeMenu);
+
+        // New Search Functionality
+        function toggleSearch() {
+            const searchContainer = document.getElementById('searchContainer');
+            const searchBackdrop = document.getElementById('searchBackdrop');
+            const isActive = searchContainer.classList.contains('active');
+
+            if (isActive) {
+                searchContainer.classList.remove('active');
+                searchBackdrop.classList.remove('active');
+                document.getElementById('searchResults').classList.remove('active');
+                document.getElementById('searchInput').value = '';
+                document.body.style.overflow = 'auto';
+            } else {
+                searchContainer.classList.add('active');
+                searchBackdrop.classList.add('active');
+                document.getElementById('searchInput').focus();
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Close menu if open
+            if (document.getElementById('drawer').classList.contains('open')) {
+                toggleMenu();
+            }
+        }
+
+        function searchArtists() {
+            const searchText = document.getElementById('searchInput').value.trim().toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+
+            if (!searchText) {
+                resultsContainer.innerHTML = '<div class="no-results">Введите запрос для поиска</div>';
+                resultsContainer.classList.add('active');
+                return;
+            }
+
+            const artists = document.querySelectorAll('.profile-section');
+            let found = false;
+            resultsContainer.innerHTML = '';
+
+            artists.forEach(artist => {
+                const artistName = artist.querySelector('h1').textContent.toLowerCase();
+                const artistStyle = artist.querySelector('p').textContent.toLowerCase();
+                const artistLink = artist.querySelector('.profile-link').textContent.toLowerCase();
+                const artistAvatar = artist.querySelector('.avatar').src;
+
+                if (artistName.includes(searchText) || artistStyle.includes(searchText) || artistLink.includes(searchText)) {
+                    found = true;
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+
+                    resultItem.innerHTML = `
+                        <img src="${artistAvatar}" alt="${artistName}">
+                        <div class="info">
+                            <div class="name">${artist.querySelector('h1').textContent}</div>
+                            <div class="style">${artist.querySelector('p').textContent}</div>
+                        </div>
+                    `;
+
+                    resultItem.onclick = () => {
+                        document.getElementById('searchInput').value = '';
+                        scrollToArtist(artist);
+                        toggleSearch();
+                    };
+                    resultsContainer.appendChild(resultItem);
+                }
+            });
+
+            if (!found) {
+                resultsContainer.innerHTML = '<div class="no-results">Ничего не найдено</div>';
+            }
+            resultsContainer.classList.add('active');
+        }
+
+        // Highlight text
+        function highlightText(element, searchText) {
+            const text = element.textContent;
+            const regex = new RegExp(`(${searchText})`, 'gi');
+            element.innerHTML = text.replace(regex, match =>
+                `<span class="highlight">${match}</span>`
+            );
+        }
+
+        // Обновленная функция прокрутки к художнику
+        function scrollToArtist(artist) {
+            // Удаляем предыдущие подсветки
+            document.querySelectorAll('.artist-highlight').forEach(el => {
+                el.classList.remove('artist-highlight');
+            });
+
+            // Добавляем подсветку
+            artist.classList.add('artist-highlight');
+
+            // Прокручиваем плавно к элементу с учетом хедера
+            const yOffset = -80;
+            const y = artist.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+            window.scrollTo({
+                top: y,
+                behavior: 'smooth'
+            });
+
+            // Убираем подсветку через 3 секунды
+            setTimeout(() => {
+                artist.classList.remove('artist-highlight');
+            }, 3000);
+
+            // Упрощенная обработка прерывания прокрутки
+            const handleInterrupt = () => {
+                artist.classList.remove('artist-highlight');
+            };
+
+            // Добавляем однократный обработчик
+            window.addEventListener('scroll', handleInterrupt, {
+                once: true,
+                passive: true // Оптимизация для плавной прокрутки
+            });
+
+            // Гарантируем восстановление скролла
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+                document.body.style.position = 'static';
+            }, 500);
+        }
+
+        // Обновленный обработчик клика в результатах поиска
+        function setupSearchResults() {
+            document.querySelectorAll('.search-result-item').forEach(item => {
+                item.onclick = (e) => {
+                    e.preventDefault();
+                    const artist = document.querySelector(
+                        `.profile-section:has([alt="${item.querySelector('img').alt}"])`
+                    );
+
+                    document.getElementById('searchInput').value = '';
+                    toggleSearch();
+
+                    setTimeout(() => {
+                        if (artist) {
+                            scrollToArtist(artist);
+
+                            // Обработчик прерывания прокрутки
+                            const handleInterrupt = () => {
+                                artist.classList.remove('artist-highlight');
+                                window.removeEventListener('scroll', handleInterrupt);
+                            };
+                            window.addEventListener('scroll', handleInterrupt, { once: true });
+                        }
+                    }, 100);
+                };
+            });
+        }
+
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                searchArtists();
+            }
+        });
+
+        // Real-time search on input
+        document.getElementById('searchInput').addEventListener('input', function () {
+            if (this.value.length > 0) {
+                searchArtists();
+            } else {
+                document.getElementById('searchResults').classList.remove('active');
+            }
+        });
+
+        // Close search when clicking outside (desktop)
+        document.addEventListener('click', function (e) {
+            const searchContainer = document.getElementById('searchContainer');
+            const searchResults = document.getElementById('searchResults');
+            const searchInput = document.getElementById('searchInput');
+            const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+
+            if (!searchContainer.contains(e.target) &&
+                e.target !== mobileSearchBtn &&
+                !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Close search when scrolling on mobile
+        window.addEventListener('scroll', function () {
+            if (window.innerWidth <= 768 &&
+                document.getElementById('searchContainer').classList.contains('active')) {
+                toggleSearch();
+            }
+        });
+
+        // Filters Functionality
+        function initFilters() {
+            const styles = new Set();
+            const filterDropdown = document.getElementById('filtersDropdown');
+
+            // Collect all artist styles
+            document.querySelectorAll('.profile-section').forEach(section => {
+                const style = section.getAttribute('data-style');
+                if (style) styles.add(style);
+            });
+
+            // Clear existing filters
+            filterDropdown.innerHTML = '';
+
+            // Add "All" button
+            const allItem = document.createElement('a');
+            allItem.href = '#';
+            allItem.textContent = 'Все стили';
+            allItem.onclick = (e) => {
+                applyFilter('all', e);
+                updateActiveFilter(e.target);
+            };
+            filterDropdown.appendChild(allItem);
+
+            // Add "Prem Artist" filter
+            const premItem = document.createElement('a');
+            premItem.href = '#';
+            premItem.textContent = 'Prem Artist';
+            premItem.onclick = (e) => {
+                applyFilter('prem', e);
+                updateActiveFilter(e.target);
+            };
+            filterDropdown.appendChild(premItem);
+
+            // Add filters for each style
+            styles.forEach(style => {
+                const item = document.createElement('a');
+                item.href = '#';
+                item.textContent = style;
+                item.onclick = (e) => {
+                    applyFilter(style, e);
+                    updateActiveFilter(e.target);
+                };
+                filterDropdown.appendChild(item);
+            });
+        }
+
+        function updateActiveFilter(clickedElement) {
+            document.querySelectorAll('.filters-dropdown a').forEach(a => {
+                a.classList.remove('active-filter');
+            });
+            clickedElement.classList.add('active-filter');
+        }
+
+
+
+        function getNextElements(element) {
+            const elements = [];
+            let next = element.nextElementSibling;
+
+            while (next) {
+                if (next.classList.contains('favorite-works') ||
+                    next.classList.contains('works-carousel') ||
+                    next.classList.contains('show-works-btn')) {
+                    elements.push(next);
+                } else if (next.classList.contains('profile-section')) {
+                    break;
+                }
+                next = next.nextElementSibling;
+            }
+
+            return elements;
+        }
+
+        function toggleFilters(event) {
+            event.stopPropagation();
+            const filtersDropdown = document.getElementById('filtersDropdown');
+            filtersDropdown.classList.toggle('active');
+            document.querySelector('.filters-button').classList.toggle('active');
+
+            if (filtersDropdown.classList.contains('active')) {
+                document.addEventListener('click', closeFiltersOnClickOutside);
+            } else {
+                document.removeEventListener('click', closeFiltersOnClickOutside);
+            }
+        }
+
+        function closeFiltersOnClickOutside(event) {
+            const filtersContainer = document.querySelector('.filters-container');
+            if (!filtersContainer.contains(event.target)) {
+                document.getElementById('filtersDropdown').classList.remove('active');
+                document.querySelector('.filters-button').classList.remove('active');
+                document.removeEventListener('click', closeFiltersOnClickOutside);
+            }
+        }
+
+        // Carousel Functionality
+        const carouselStates = {};
+
+        function initCarousel(worksInnerId) {
+            if (!carouselStates[worksInnerId]) {
+                carouselStates[worksInnerId] = {
+                    currentTranslate: 0,
+                    prevTranslate: 0,
+                    isDragging: false,
+                    startPos: 0,
+                    animationID: 0
+                };
+            }
+
+            const worksInner = document.getElementById(worksInnerId);
+            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+
+            // Add event handlers
+            worksInner.addEventListener('mousedown', (e) => {
+                const state = carouselStates[worksInnerId];
+                state.isDragging = true;
+                state.startPos = e.clientX;
+                state.prevTranslate = state.currentTranslate;
+                state.animationID = requestAnimationFrame(() => animation(worksInnerId));
+                worksInner.style.cursor = 'grabbing';
+                worksInner.style.transition = 'none';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+                const currentPosition = e.clientX;
+                state.currentTranslate = state.prevTranslate + currentPosition - state.startPos;
+            });
+
+            window.addEventListener('mouseup', () => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+                state.isDragging = false;
+                cancelAnimationFrame(state.animationID);
+                worksInner.style.cursor = 'grab';
+
+                const movedBy = state.currentTranslate - state.prevTranslate;
+                const visibleWorks = getVisibleWorksCount(worksInnerId);
+
+                if (movedBy < -100) nextWork(worksInnerId, visibleWorks);
+                else if (movedBy > 100) prevWork(worksInnerId, visibleWorks);
+                else setPosition(worksInnerId);
+
+                worksInner.style.transition = 'transform 0.5s ease';
+            });
+
+            // Touch events
+            worksInner.addEventListener('touchstart', (e) => {
+                const state = carouselStates[worksInnerId];
+                state.isDragging = true;
+                state.startPos = e.touches[0].clientX;
+                state.prevTranslate = state.currentTranslate;
+                state.animationID = requestAnimationFrame(() => animation(worksInnerId));
+                worksInner.style.transition = 'none';
+            });
+
+            window.addEventListener('touchmove', (e) => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+
+                const currentPosition = e.touches[0].clientX;
+                const newTranslate = state.prevTranslate + currentPosition - state.startPos;
+
+                // Для мобильных устройств ограничиваем перетаскивание
+                if (window.innerWidth <= 768) {
+                    const totalWorksWidth = Array.from(works).reduce((sum, work) => sum + work.offsetWidth + 35, 0);
+                    const containerWidth = worksInner.parentElement.offsetWidth;
+                    const maxTranslate = -(totalWorksWidth - containerWidth);
+
+                    // Ограничиваем значение newTranslate между 0 и maxTranslate
+                    state.currentTranslate = Math.max(Math.min(newTranslate, 0), maxTranslate);
+                } else {
+                    state.currentTranslate = newTranslate;
+                }
+            });
+
+            window.addEventListener('touchend', () => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+                state.isDragging = false;
+                cancelAnimationFrame(state.animationID);
+
+                const movedBy = state.currentTranslate - state.prevTranslate;
+                const visibleWorks = getVisibleWorksCount(worksInnerId);
+
+                if (movedBy < -100) nextWork(worksInnerId, visibleWorks);
+                else if (movedBy > 100) prevWork(worksInnerId, visibleWorks);
+                else setPosition(worksInnerId);
+
+                worksInner.style.transition = 'transform 0.5s ease';
+            });
+        }
+
+        function animation(worksInnerId) {
+            setPosition(worksInnerId);
+            const state = carouselStates[worksInnerId];
+            if (state.isDragging) requestAnimationFrame(() => animation(worksInnerId));
+        }
+
+        function setPosition(worksInnerId) {
+            const state = carouselStates[worksInnerId];
+            const worksInner = document.getElementById(worksInnerId);
+            worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
+        }
+
+        function getVisibleWorksCount(worksInnerId) {
+            const worksInner = document.getElementById(worksInnerId);
+            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+            if (works.length === 0) return 1;
+
+            const containerWidth = worksInner.parentElement.offsetWidth;
+            const workWidth = works[0].offsetWidth + 35; // Work width + gap
+            return Math.floor(containerWidth / workWidth);
+        }
+
+        function nextWork(worksInnerId, step = null) {
+            const worksInner = document.getElementById(worksInnerId);
+            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+            const state = carouselStates[worksInnerId];
+
+            if (step === null) step = getVisibleWorksCount(worksInnerId);
+
+            // Получаем ширину контейнера и общую ширину всех работ
+            const containerWidth = worksInner.parentElement.offsetWidth;
+            const totalWorksWidth = Array.from(works).reduce((sum, work) => sum + work.offsetWidth + 35, 0);
+
+            // Рассчитываем максимальное смещение (чтобы последний элемент был виден)
+            const maxPosition = containerWidth - totalWorksWidth - 35; // Добавляем отступ для последнего элемента
+
+            // Рассчитываем новое положение
+            const newPosition = state.currentTranslate - (step * (works[0].offsetWidth + 35));
+
+            // Для мобильных устройств делаем дополнительную проверку
+            if (window.innerWidth <= 768) {
+                // Проверяем, не выходим ли мы за пределы
+                if (Math.abs(newPosition) > (totalWorksWidth - containerWidth)) {
+                    // Если пытаемся пролистать дальше последнего элемента, останавливаемся
+                    state.currentTranslate = -(totalWorksWidth - containerWidth);
+                } else {
+                    state.currentTranslate = newPosition;
+                }
+            } else {
+                // Для десктопной версии оставляем прежнюю логику
+                state.currentTranslate = Math.max(newPosition, maxPosition);
+            }
+
+            worksInner.style.transition = 'transform 0.5s ease';
+            setPosition(worksInnerId);
+        }
+
+        function prevWork(worksInnerId, step = null) {
+            const worksInner = document.getElementById(worksInnerId);
+            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+            const state = carouselStates[worksInnerId];
+
+            if (step === null) step = getVisibleWorksCount(worksInnerId);
+
+            // Рассчитываем новое положение
+            const newPosition = state.currentTranslate + (step * (works[0].offsetWidth + 35));
+
+            // Ограничиваем смещение, чтобы не выйти за пределы (не больше 0)
+            state.currentTranslate = Math.min(newPosition, 0);
+
+            worksInner.style.transition = 'transform 0.5s ease';
+            setPosition(worksInnerId);
+        }
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Full Image Modal Functions
+        function openImageModal(imgSrc) {
+            const imageModal = document.getElementById('imageModal');
+            const expandedImg = document.getElementById('expandedImg');
+
+            expandedImg.src = imgSrc;
+            imageModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function (event) {
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (event.target == modal) {
+                    closeModal(modal.id);
+                }
+            });
+
+            if (event.target === document.getElementById('imageModal')) {
+                closeImageModal();
+            }
+        }
+
+        // Close modals with ESC key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        closeModal(modal.id);
+                    }
+                });
+
+                if (document.getElementById('imageModal').style.display === 'block') {
+                    closeImageModal();
+                }
+            }
+        });
+
+        // Click on works in carousel opens corresponding modal
+        document.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3').forEach(thumb => {
+            thumb.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openImageModal(this.src);
+            });
+        });
+
+        // Click on images in artist modals
+        document.querySelectorAll('.modal-img').forEach(img => {
+            img.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openImageModal(this.src);
+            });
+        });
+
+        // Back to Top Function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide back to top button on scroll
+        window.addEventListener('scroll', function () {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+
+
+        // Function to open tab by link
+        function openTabByLink(tabId) {
+            // This function would be implemented in the Services.html page
+            console.log('Opening tab:', tabId);
+        }
+
+        // Добавим этот код в раздел скриптов
+        document.addEventListener('DOMContentLoaded', function () {
+            // Настройка Intersection Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+
+                        // Для модальных изображений
+                        if (entry.target.classList.contains('modal-img')) {
+                            setTimeout(() => {
+                                entry.target.classList.add('visible');
+                            }, 100 * index);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Наблюдаем за всеми элементами
+            document.querySelectorAll('.profile-section, .favorite-works, .works-carousel, .show-works-btn').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Для изображений в модалках
+            document.querySelectorAll('.modal-img').forEach((img, index) => {
+                observer.observe(img);
+            });
+        });
+
+        // Модифицируем функцию фильтрации
+        function applyFilter(selectedStyle, event) {
+            event.preventDefault();
+
+            // Закрываем фильтры после выбора
+            closeFilters();
+
+            document.querySelectorAll('.profile-section').forEach(profile => {
+                const style = profile.getAttribute('data-style');
+                const isPrem = profile.getAttribute('data-prem') === 'true';
+                const nextElements = getNextElements(profile);
+
+                if (selectedStyle === 'all' ||
+                    (selectedStyle === 'prem' && isPrem) ||
+                    (selectedStyle !== 'prem' && style === selectedStyle)) {
+                    profile.classList.remove('hidden');
+                    nextElements.forEach(el => {
+                        el.classList.remove('hidden');
+                        el.style.transitionDelay = '0.2s';
+                    });
+                } else {
+                    profile.classList.add('hidden');
+                    nextElements.forEach(el => el.classList.add('hidden'));
+                }
+            });
+
+            // Smooth scroll to top after applying filter
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function closeFilters() {
+            const filtersDropdown = document.getElementById('filtersDropdown');
+            const filtersButton = document.querySelector('.filters-button');
+
+            filtersDropdown.classList.remove('active');
+            filtersButton.classList.remove('active');
+            document.removeEventListener('click', closeFiltersOnClickOutside);
+        }
+
+        // Обновим функцию для модальных окон
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Запуск анимации для изображений
+            setTimeout(() => {
+                modal.querySelectorAll('.modal-img').forEach((img, index) => {
+                    setTimeout(() => img.classList.add('visible'), 50 * index);
+                });
+            }, 100);
+        }
+
+        // Функция для обработки якорных ссылок при загрузке страницы
+        function handleAnchorLinks() {
+            // Проверяем, есть ли якорь в URL
+            if (window.location.hash) {
+                const artistId = window.location.hash.substring(1); // Убираем # из начала
+                const artistSection = document.getElementById(artistId);
+
+                if (artistSection) {
+                    // Прокручиваем к секции художника
+                    setTimeout(() => {
+                        artistSection.scrollIntoView({ behavior: 'smooth' });
+
+                        // Подсвечиваем профиль художника
+                        const profile = artistSection.querySelector('.profile-section');
+                        if (profile) {
+                            profile.classList.add('artist-highlight');
+
+                            // Убираем подсветку через 3 секунды
+                            setTimeout(() => {
+                                profile.classList.remove('artist-highlight');
+                            }, 3000);
+                        }
+                    }, 100);
+                }
+            }
+        }
+
+        // Вызываем функцию при загрузке страницы
+        window.addEventListener('load', handleAnchorLinks);
+
+        // Также обрабатываем изменения hash (если пользователь кликает на якорные ссылки на той же странице)
+        window.addEventListener('hashchange', handleAnchorLinks);
+
+
+    </script>
+
+    <script>
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize carousels for each artist
+            initCarousel('artist1Works');
+            initCarousel('artist2Works');
+            initCarousel('artist3Works');
+            initCarousel('artist234Works');
+
+
+
+
+
+
+            // Initialize filters
+            initFilters();
+
+            // Add class to first "All styles" element
+            const firstFilter = document.querySelector('.filters-dropdown a:first-child');
+            if (firstFilter) firstFilter.classList.add('active-filter');
+
+            // Adapt carousels on window resize
+            window.addEventListener('resize', () => {
+                Object.keys(carouselStates).forEach(worksInnerId => {
+                    carouselStates[worksInnerId].currentTranslate = 0;
+                    setPosition(worksInnerId);
+                });
+            });
+        });
+    </script>
+
+    <!-- Листние модального окна -->
+    <script>
+        // Глобальные переменные для управления галереей
+        let currentImageIndex = 0;
+        let imageElements = [];
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let modalIsDragging = false;
+        let modalStartPos = 0;
+        let modalCurrentTranslate = 0;
+        let modalPrevTranslate = 0;
+        let modalAnimationID = 0;
+
+        // Функция для открытия модального окна с изображением
+        function openImageModal(imgSrc, clickedElement = null) {
+            const imageModal = document.getElementById('imageModal');
+            const expandedImg = document.getElementById('expandedImg');
+
+            // Получаем все изображения в текущей галерее
+            let galleryContainer;
+            if (clickedElement) {
+                // Если кликнули на изображение в карусели
+                galleryContainer = clickedElement.closest('.works-inner');
+            } else {
+                // Если кликнули на изображение в модалке художника
+                galleryContainer = clickedElement ? clickedElement.closest('.modal-content') : null;
+            }
+
+            if (galleryContainer) {
+                imageElements = Array.from(galleryContainer.querySelectorAll('img')).filter(img => img.src);
+
+                // Находим индекс текущего изображения
+                currentImageIndex = imageElements.findIndex(img => img.src === imgSrc);
+                updateImageCounter();
+            }
+
+            expandedImg.src = imgSrc;
+            imageModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Добавляем обработчики событий для свайпа
+            const modalContent = document.getElementById('imageModalContent');
+            modalContent.addEventListener('touchstart', handleTouchStart, { passive: false });
+            modalContent.addEventListener('touchmove', handleTouchMove, { passive: false });
+            modalContent.addEventListener('touchend', handleTouchEnd);
+
+            // Для ПК добавляем обработчики drag
+            modalContent.addEventListener('mousedown', handleMouseDown);
+            window.addEventListener('mousemove', handleMouseMove);
+            window.addEventListener('mouseup', handleMouseUp);
+        }
+
+        // Функция для закрытия модального окна
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+
+            // Удаляем обработчики событий
+            const modalContent = document.getElementById('imageModalContent');
+            modalContent.removeEventListener('touchstart', handleTouchStart);
+            modalContent.removeEventListener('touchmove', handleTouchMove);
+            modalContent.removeEventListener('touchend', handleTouchEnd);
+            modalContent.removeEventListener('mousedown', handleMouseDown);
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+
+            // Сбрасываем состояние
+            modalIsDragging = false;
+            cancelAnimationFrame(modalAnimationID);
+        }
+
+        // Функция для навигации по изображениям
+        function navigateImage(direction) {
+            if (imageElements.length === 0) return;
+
+            currentImageIndex += direction;
+
+            // Проверяем границы
+            if (currentImageIndex < 0) {
+                currentImageIndex = imageElements.length - 1;
+            } else if (currentImageIndex >= imageElements.length) {
+                currentImageIndex = 0;
+            }
+
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.src = imageElements[currentImageIndex].src;
+            updateImageCounter();
+
+            // Анимация перехода
+            expandedImg.style.opacity = '0';
+            setTimeout(() => {
+                expandedImg.style.opacity = '1';
+            }, 10);
+        }
+
+        // Обновление счетчика изображений
+        function updateImageCounter() {
+            if (imageElements.length > 1) {
+                const counter = document.getElementById('imageCounter');
+                counter.textContent = `${currentImageIndex + 1} / ${imageElements.length}`;
+                counter.style.display = 'block';
+            } else {
+                document.getElementById('imageCounter').style.display = 'none';
+            }
+        }
+
+        // Обработчики событий для свайпа на мобильных устройствах
+        function handleTouchStart(e) {
+            touchStartX = e.touches[0].clientX;
+            e.preventDefault(); // Предотвращаем прокрутку страницы
+        }
+
+        function handleTouchMove(e) {
+            if (!touchStartX) return;
+            touchEndX = e.touches[0].clientX;
+            const diff = touchStartX - touchEndX;
+
+            // Если горизонтальный свайп достаточно большой, предотвращаем вертикальную прокрутку
+            if (Math.abs(diff) > 10) {
+                e.preventDefault();
+            }
+        }
+
+        function handleTouchEnd() {
+            if (!touchStartX || !touchEndX) return;
+
+            const diff = touchStartX - touchEndX;
+            const threshold = 50; // Минимальное расстояние свайпа для смены изображения
+
+            if (diff > threshold) {
+                // Свайп влево - следующее изображение
+                navigateImage(1);
+            } else if (diff < -threshold) {
+                // Свайп вправо - предыдущее изображение
+                navigateImage(-1);
+            }
+
+            // Сбрасываем значения
+            touchStartX = 0;
+            touchEndX = 0;
+        }
+
+        // Обработчики событий для drag на ПК
+        function handleMouseDown(e) {
+            if (e.button !== 0) return; // Только левая кнопка мыши
+
+            modalIsDragging = true;
+            modalStartPos = e.clientX;
+            modalPrevTranslate = modalCurrentTranslate;
+            modalAnimationID = requestAnimationFrame(modalAnimation);
+
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.style.transition = 'none';
+            expandedImg.style.cursor = 'grabbing';
+        }
+
+        function handleMouseMove(e) {
+            if (!modalIsDragging) return;
+            const currentPosition = e.clientX;
+            modalCurrentTranslate = modalPrevTranslate + currentPosition - modalStartPos;
+
+            // Применяем трансформацию к изображению
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.style.transform = `translateX(${modalCurrentTranslate}px)`;
+        }
+
+        function handleMouseUp() {
+            if (!modalIsDragging) return;
+            modalIsDragging = false;
+            cancelAnimationFrame(modalAnimationID);
+
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.style.cursor = 'grab';
+            expandedImg.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+
+            const movedBy = modalCurrentTranslate - modalPrevTranslate;
+            const threshold = 100; // Минимальное расстояние для смены изображения
+
+            if (movedBy < -threshold) {
+                // Движение влево - следующее изображение
+                navigateImage(1);
+            } else if (movedBy > threshold) {
+                // Движение вправо - предыдущее изображение
+                navigateImage(-1);
+            }
+
+            // Возвращаем изображение в исходное положение
+            expandedImg.style.transform = 'translateX(0)';
+            modalCurrentTranslate = 0;
+            modalPrevTranslate = 0;
+        }
+
+        function modalAnimation() {
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.style.transform = `translateX(${modalCurrentTranslate}px)`;
+            if (modalIsDragging) requestAnimationFrame(modalAnimation);
+        }
+
+        // Обновляем обработчики кликов для изображений
+        document.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3').forEach(thumb => {
+            thumb.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openImageModal(this.src, this);
+            });
+        });
+
+        document.querySelectorAll('.modal-img').forEach(img => {
+            img.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openImageModal(this.src, this);
+            });
+        });
+
+        // Закрытие модального окна при клике вне изображения
+        document.getElementById('imageModal').addEventListener('click', function (e) {
+            if (e.target === this || e.target.classList.contains('image-modal-content')) {
+                closeImageModal();
+            }
+        });
+
+        // Закрытие модального окна по клавише ESC
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && document.getElementById('imageModal').style.display === 'block') {
+                closeImageModal();
+            }
+
+            // Навигация по изображениям с помощью клавиш
+            if (document.getElementById('imageModal').style.display === 'block') {
+                if (e.key === 'ArrowLeft') {
+                    navigateImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateImage(1);
+                }
+            }
+        });
+    </script>
+
+    <!-- Переход 1/2 -->
+    <script>
+        // Функция для подсветки активной страницы в пагинации
+        function highlightActivePage() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const paginationLinks = document.querySelectorAll('.pagination-link:not(.prev-next)');
+
+            paginationLinks.forEach(link => {
+                const linkPage = link.getAttribute('href').split('/').pop();
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Функция для навигации по страницам с помощью стрелок
+        function navigatePagination(direction) {
+            const activeLink = document.querySelector('.pagination-link.active');
+            if (!activeLink) return;
+
+            const links = Array.from(document.querySelectorAll('.pagination-link:not(.prev-next)'));
+            const currentIndex = links.findIndex(link => link.classList.contains('active'));
+            let newIndex = currentIndex + direction;
+
+            // Проверяем границы
+            if (newIndex < 0) newIndex = links.length - 1;
+            if (newIndex >= links.length) newIndex = 0;
+
+            // Переходим на новую страницу
+            window.location.href = links[newIndex].getAttribute('href');
+        }
+
+        // Вызываем функцию при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function () {
+            highlightActivePage();
+
+            // Добавляем обработчик для плавного нажатия кнопок
+            document.querySelectorAll('.pagination-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    if (this.classList.contains('prev-next')) {
+                        e.preventDefault();
+                    }
+
+                    // Анимация нажатия
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+        });
+
+        // Обработка изменения хэша (если используются якорные ссылки)
+        window.addEventListener('hashchange', highlightActivePage);
+    </script>
+</body>
+
+</html>

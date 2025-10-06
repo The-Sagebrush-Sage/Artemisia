@@ -1,0 +1,2772 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemisia</title>
+    <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Artist.css">
+</head>
+
+<body>
+    <!-- Header с поисковой строкой -->
+    <header>
+        <div class="header-left">
+            <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="../index.html"> <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Логотип" class="logo"> </a>
+        </div>
+
+        <div class="search-container" id="searchContainer">
+            <div class="search-box">
+                <div class="search-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                    </svg>
+                </div>
+                <input type="text" id="searchInput" placeholder="Поиск художников..." autocomplete="off">
+                <button class="search-btn" onclick="searchArtists()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#262626" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <button class="mobile-search-btn" id="mobileSearchBtn" onclick="toggleSearch()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+            </svg>
+        </button>
+        <div class="search-backdrop" id="searchBackdrop" onclick="toggleSearch()"></div>
+    </header>
+
+    <!-- Menu Drawer -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="drawer" id="drawer">
+        <ul class="menu">
+            <li><a href="../index.html">
+                    <img src="https://i.postimg.cc/6p8Gfk0N/home.png" alt="Главная">
+                    Главная
+                </a>
+            </li>
+
+            <li>
+                <a href="Prem_Artist.html">
+                    <img src="https://i.postimg.cc/Z5Y5rqkg/prem-art.png" alt="Художники">
+                    Prem Artist
+                </a>
+            </li>
+
+            <li>
+                <a href="Artist.html">
+                    <img src="https://i.postimg.cc/MGRMh1NP/man-14816778.png" alt="Художники">
+                    Художники
+                </a>
+            </li>
+
+            <li>
+                <a href="Design.html">
+                    <img src="https://i.postimg.cc/t4xNXgTY/free-icon-pen-tablet-4861056.png" alt="Художники">
+                    Дизайнеры
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                    <img src="https://i.postimg.cc/85mFCN1L/mobile-shopping.png" alt="">
+                    Услуги
+                </a>
+
+                <ul class="submenu">
+                    <li>
+                        <a href="Services.html#Commission" class="submenu-link" onclick="openTabByLink('Commission')">
+                            COMMISSION ART
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Services.html#Yunchy" class="submenu-link" onclick="openTabByLink('Yunchy')">
+                            YCH
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Services.html#art" class="submenu-link" onclick="openTabByLink('art')">
+                            ADOPT
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="#">
+                    <img src="https://i.postimg.cc/bYRbyHJ4/draw.png" alt="">
+                    Комиксы
+                </a>
+            </li>
+
+            <li class="separator-menu"></li>
+
+            <li><a href="AboutUs.html#about-site">
+                    Подробности о сайте
+                </a>
+            </li>
+
+            <li><a href="AboutUs.html#publish-work">
+                    Опубликовать работу
+                </a>
+            </li>
+
+            <li><a href="AboutUs.html#guarantees">
+                    Гаранты
+                </a>
+            </li>
+
+            <li class="separator-menu"></li>
+
+            <li>
+                <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                    <img src="https://i.postimg.cc/sDXB3kbZ/image.png" alt="">
+                    Документы
+                </a>
+                <ul class="submenu">
+                    <li><a href="Document.html#user-agreement" class="submenu-link">Соглашение</a></li>
+                    <li><a href="Document.html#usage-rules" class="submenu-link">Правила использования</a></li>
+                    <li><a href="Document.html#guaranteed-deals" class="submenu-link">Гарантийные сделки</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Баннер -->
+    <section>
+        <div class="banner">
+            <img src="https://i.postimg.cc/DfSNsVrN/2.png" alt="Баннер">
+        </div>
+        <div class="black-stripe"></div>
+    </section>
+
+    <!-- Фильтры -->
+    <section>
+        <div class="filters-container">
+            <button class="filters-button" onclick="toggleFilters(event)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 21V14" stroke="currentColor" stroke-width="2" />
+                    <path d="M4 10V3" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 21V12" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 8V3" stroke="currentColor" stroke-width="2" />
+                    <path d="M20 21V16" stroke="currentColor" stroke-width="2" />
+                    <path d="M20 12V3" stroke="currentColor" stroke-width="2" />
+                    <path d="M1 14H7" stroke="currentColor" stroke-width="2" />
+                    <path d="M9 8H15" stroke="currentColor" stroke-width="2" />
+                    <path d="M17 16H23" stroke="currentColor" stroke-width="2" />
+                </svg>
+                Фильтры
+            </button>
+            <div class="filters-dropdown" id="filtersDropdown">
+                <a href="#" onclick="applyFilter('all', event)" class="active-filter">Все стили</a>
+                <a href="#" onclick="applyFilter('prem', event)">Prem Artist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Художники -->
+    <section>
+        <!-- 6 чувство Prem -->
+        <section id="239">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/CMBx7RGt/photo-5355064267054906535-y.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/6th_sense.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/Kc6vHmQY/photo-5355064267054906536-x.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>6 чувство</h1>
+                    <a href="https://t.me/anastasiyaartisy" class="profile-link"> @anastasiyaartisy
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский </p>
+
+
+                    <div class="social-links">
+                        <!-- ВКонтакте -->
+                        <a href="https://vk.com/sixfe_eling" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Telegram -->
+                        <a href="https://t.me/sixfe_eling" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://youtube.com/@sixfeeling?si=y5mGkPxgOWWaaT8K" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube-1.png" alt="YouTube" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Пинтерест -->
+                        <a href="https://pin.it/1bimFhenf" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Pin">
+                            <img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pin" width="32"
+                                height="32" loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Инстаграмм -->
+                        <a href="https://www.instagram.com/sixfe_eling?igsh=MW44M2Q5bnZ2czV1dA==" class="social-link" target="_blank" title="Инста">
+                            <img src="https://i.postimg.cc/yNzgZcft/image.png" alt="Инста" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist239Carousel">
+                <div class="works-inner" id="artist239Works">
+                    <img src="https://i.postimg.cc/SRz39FzT/photo-5357316066868591764-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/BncWN07R/photo-5357316066868591765-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/vmQJNNpT/photo-5357316066868591766-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/wxZdjFs4/photo-5357316066868591767-x.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/d1fgDtDZ/photo-5357316066868591768-y.jpg" class="work-thumb-3" alt="">
+                    
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist239Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist239Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal239')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal239" class="modal">
+                <span class="close-btn" onclick="closeModal('modal239')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/SRz39FzT/photo-5357316066868591764-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/BncWN07R/photo-5357316066868591765-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/vmQJNNpT/photo-5357316066868591766-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/wxZdjFs4/photo-5357316066868591767-x.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/d1fgDtDZ/photo-5357316066868591768-y.jpg" class="modal-img" alt="">
+                    
+
+                </div>
+            </div>
+        </section>
+
+        <!-- sPartridge Prem -->
+        <section id="238">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/026ZwvFG/sp-org.png')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/sPartridge.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/zXpXNNTL/photo-2025-09-15-03-29-53.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>sPartridge</h1>
+                    <a href="https://t.me/s_Partridge" class="profile-link"> @s_Partridge
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский </p>
+
+
+                    <div class="social-links">
+                        <a href="https://t.me/supPartridge" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist238Carousel">
+                <div class="works-inner" id="artist238Works">
+                    <img src="https://i.postimg.cc/yd98CSTB/photo-2025-09-15-03-29-37.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/446x8VdQ/photo-2025-09-15-03-29-40.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/90hFmFx9/photo-2025-09-15-03-29-43.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/x83jcD74/photo-2025-09-15-03-29-47.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/VLzL2v0Q/photo-2025-09-15-03-29-50.jpg" class="work-thumb-3" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist238Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist238Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal238')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal238" class="modal">
+                <span class="close-btn" onclick="closeModal('modal238')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/yd98CSTB/photo-2025-09-15-03-29-37.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/446x8VdQ/photo-2025-09-15-03-29-40.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/90hFmFx9/photo-2025-09-15-03-29-43.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/x83jcD74/photo-2025-09-15-03-29-47.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/VLzL2v0Q/photo-2025-09-15-03-29-50.jpg" class="modal-img" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- mlemri Prem -->
+        <section id="230">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/9fYrxkrc/image.png')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/mlemri.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/gkf8CvJT/image.png" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1> mlemri </h1>
+                    <a href="https://t.me/kaktameo" class="profile-link"> @kaktameo
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский</p>
+
+
+                    <div class="social-links">
+                        <!-- ВКонтакте -->
+                        <a href="https://vk.com/mlemri" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="ВКонтакте">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Telegram -->
+                        <a href="https://t.me/mlemri" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- ТТ -->
+                        <a href="https://www.tiktok.com/@mlemri?_t=ZN-8z5FtoEXv9O&_r=1" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="YouTube"
+                                width="32" height="32" loading="lazy" class="social-icon">
+                        </a>
+
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist230Carousel">
+                <div class="works-inner" id="artist230Works">
+                    <img src="https://i.postimg.cc/90Yw0ySM/image.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/NfyRCNgX/photo-5854921060703652490-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/HnNXsMtj/photo-5854921060703652491-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/ryZSJ6Lc/photo-5854921060703652489-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/k4nxjq4M/photo-5854921060703652492-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/63YCgg2r/photo-5854921060703652493-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/rss5kjxv/photo-5854921060703652494-y.jpg" class="work-thumb-1"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist230Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist230Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal230')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal230" class="modal">
+                <span class="close-btn" onclick="closeModal('modal230')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/90Yw0ySM/image.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/NfyRCNgX/photo-5854921060703652490-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/HnNXsMtj/photo-5854921060703652491-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/ryZSJ6Lc/photo-5854921060703652489-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/k4nxjq4M/photo-5854921060703652492-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/63YCgg2r/photo-5854921060703652493-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/rss5kjxv/photo-5854921060703652494-y.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- GinGemin Prem -->
+        <section id="220">
+            <section class="profile-section" data-style="Семиреализм" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/V6QhNVVk/photo-5233305891288249347-y.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/GinGemin.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/1XM7J558/photo-5233412397887256722-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1> GinGemin </h1>
+                    <a href="https://t.me/ur_cosmo_gemini" class="profile-link"> @ur_cosmo_gemini
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Семиреализм </p>
+
+
+                    <div class="social-links">
+                        <!-- ВКонтакте -->
+                        <a href="https://vk.com/gingemin" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="ВКонтакте">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Telegram -->
+                        <a href="https://t.me/gingemin" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist220Carousel">
+                <div class="works-inner" id="artist220Works">
+                    <img src="https://i.postimg.cc/Kc5WZQrm/photo-5221991856508892160-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/mkT6YFRx/photo-5226727457384690968-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/TwV45Jzq/photo-5233412397887256718-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/7YYWb7m0/photo-5233412397887256719-y.jpg" class="work-thumb-2"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist220Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist220Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal220')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal220" class="modal">
+                <span class="close-btn" onclick="closeModal('modal220')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/Kc5WZQrm/photo-5221991856508892160-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/mkT6YFRx/photo-5226727457384690968-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/TwV45Jzq/photo-5233412397887256718-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/7YYWb7m0/photo-5233412397887256719-y.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- creppylandau Prem -->
+        <section id="46">
+            <section class="profile-section" data-style="Семиреализм" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/t4LjM129/Banner.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/creppylandau.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/gjHY8YW3/photo-2025-05-08-18-39-32.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>creppylandau</h1>
+                    <a href="https://t.me/DRUSTALCACALS" class="profile-link">
+                        @DRUSTALCACALS
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Семиреализм</p>
+
+                    <div class="social-links">
+                        <a href="https://t.me/creppylandau1" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                        <a href="https://vk.com/creppylandau" class="social-link" target="_blank"
+                            rel="noopener noreferrer" aria-label="ВКонтакте">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist46Carousel">
+                <div class="works-inner" id="artist46Works">
+                    <img src="https://i.postimg.cc/fbzgm7Gn/photo-5208934919705851336-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/Bvm7gL38/photo-5226449594475477044-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/kG1PZxhk/photo-5460950011358605594-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/KjZwQ8Dk/photo-5366078714980464303-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/zBt6gBfL/photo-5341651054124723738-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/hPV4rcmK/photo-5303040401940280450-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/y6fhfN6F/photo-5294258787252827605-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/DZDf4MQn/photo-5255780755068546889-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/tgMjmXt3/photo-5253778643178614888-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/PqF393r1/photo-5246765090433265896-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/wBB4W8H6/photo-5247234873956103373-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/G287CFHV/photo-5247249064528047688-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/Pxg6rCDx/photo-5247249064528047689-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/C5bcZwC4/photo-5247249064528047690-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/L4PCQVdZ/photo-5247249064528047691-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/9F3ScnPp/photo-5247249064528047699-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/nhpPD9P9/photo-5247249064528047698-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/zXnQvF01/photo-5247249064528047700-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/BZPk90Fb/photo-5247249064528047701-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/qvwZXBPb/photo-5247249064528047702-y.jpg" class="work-thumb-3"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist46Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist46Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal46')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal46" class="modal">
+                <span class="close-btn" onclick="closeModal('modal46')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/fbzgm7Gn/photo-5208934919705851336-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Bvm7gL38/photo-5226449594475477044-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/kG1PZxhk/photo-5460950011358605594-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/KjZwQ8Dk/photo-5366078714980464303-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/zBt6gBfL/photo-5341651054124723738-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/hPV4rcmK/photo-5303040401940280450-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/y6fhfN6F/photo-5294258787252827605-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/DZDf4MQn/photo-5255780755068546889-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/tgMjmXt3/photo-5253778643178614888-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/PqF393r1/photo-5246765090433265896-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/wBB4W8H6/photo-5247234873956103373-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/G287CFHV/photo-5247249064528047688-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Pxg6rCDx/photo-5247249064528047689-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/C5bcZwC4/photo-5247249064528047690-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/L4PCQVdZ/photo-5247249064528047691-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/9F3ScnPp/photo-5247249064528047699-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/nhpPD9P9/photo-5247249064528047698-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/zXnQvF01/photo-5247249064528047700-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/BZPk90Fb/photo-5247249064528047701-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/qvwZXBPb/photo-5247249064528047702-y.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- madison Prem -->
+        <section id="193">
+            <section class="profile-section" data-style="Аниме" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/v8KCJLJP/image.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/madison.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/bN0K8Xdh/32.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1> madison </h1>
+                    <a href="https://t.me/Kkaor1sn" class="profile-link"> @Kkaor1sn
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Аниме </p>
+                    <div class="social-links">
+                        <a href="https://t.me/madisonjj" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                        <a href="https://vk.com/madsonjj" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="ВКонтакте">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist193Carousel">
+                <div class="works-inner" id="artist193Works">
+                    <img src="https://i.postimg.cc/t4kQd0H5/1.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/PqqG26Xk/2.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/HLvqKQn8/3.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/nzsytC9R/4.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/RhK2NyRw/5.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/W3QQpTM2/6.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/HWyqZ8gj/7.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/28NPPjkG/8.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/XYVtY2yy/9.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/cJdNRjFQ/91.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/9QdhqVYm/92.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/FKr02FCR/93.jpg" class="work-thumb-3" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist193Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist193Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal193')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal193" class="modal">
+                <span class="close-btn" onclick="closeModal('modal193')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/t4kQd0H5/1.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/PqqG26Xk/2.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/HLvqKQn8/3.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/nzsytC9R/4.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/RhK2NyRw/5.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/W3QQpTM2/6.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/HWyqZ8gj/7.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/28NPPjkG/8.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/XYVtY2yy/9.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/cJdNRjFQ/91.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/9QdhqVYm/92.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/FKr02FCR/93.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Ели Prem -->
+        <section id="79">
+            <section class="profile-section" data-style="Семиреализм" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/VshygCcm/497-20250518082324.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/Elu.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/Nf23zjgT/493-20250518065634.png" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>Ели </h1>
+                    <a href="https://t.me/talktondon" class="profile-link">
+                        @talktondon
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Семиреализм </p>
+                    <div class="social-links">
+                        <a href="https://t.me/yellisden" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist79Carousel">
+                <div class="works-inner" id="artist79Works">
+                    <img src="https://i.postimg.cc/SsNZB8d3/photo-5253724685504477297-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/HLmvtFyp/photo-5188494496034318756-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/Px36TxFx/photo-5215330151779398555-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/Qd1n1jV4/photo-5253724685504477473-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/02645Yvq/photo-5215330151779398558-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/Y2DVwXJ3/photo-5253724685504477472-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/431L2w6p/photo-5253488715706271305-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/kXkp22MR/photo-5253724685504477296-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/nh8ybfzW/IMG-20240819-124157-889.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/jSzGR3nS/390-20240909011917.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/m2MbFw10/404-20241010184428.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/y621d5xm/446-20250122131600.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/WzBHv02Z/447-20250124173900.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/dQhQJvsQ/455-20250228230502.png" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/gjXTQgPd/456-20250308120808.png" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/RF08QMsW/458-20250311143644.png" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/8CNxcdLB/460-20250311143502.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/ZqH2d9ck/462-20250312135614.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/1tYdvL2J/498-20250518002907.png" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/pLHPQFDy/398-20240918150641.jpg" class="work-thumb-3" alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist79Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist79Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal79')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal79" class="modal">
+                <span class="close-btn" onclick="closeModal('modal79')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/SsNZB8d3/photo-5253724685504477297-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/HLmvtFyp/photo-5188494496034318756-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Px36TxFx/photo-5215330151779398555-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Qd1n1jV4/photo-5253724685504477473-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/02645Yvq/photo-5215330151779398558-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Y2DVwXJ3/photo-5253724685504477472-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/431L2w6p/photo-5253488715706271305-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/kXkp22MR/photo-5253724685504477296-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/nh8ybfzW/IMG-20240819-124157-889.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/jSzGR3nS/390-20240909011917.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/m2MbFw10/404-20241010184428.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/y621d5xm/446-20250122131600.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/WzBHv02Z/447-20250124173900.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/dQhQJvsQ/455-20250228230502.png" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/gjXTQgPd/456-20250308120808.png" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/RF08QMsW/458-20250311143644.png" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/8CNxcdLB/460-20250311143502.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/ZqH2d9ck/462-20250312135614.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/1tYdvL2J/498-20250518002907.png" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/pLHPQFDy/398-20240918150641.jpg" class="modal-img" alt="">
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Сандра Prem -->
+        <section id="102">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/ncggRd6d/photo-5388837776746738829-y.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/Sandra.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/hPQQLycZ/photo-5265078410076617465-x.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1> Сандра </h1>
+                    <a href="https://t.me/alewqno" class="profile-link">
+                        @alewqno
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский </p>
+
+                    <div class="social-links">
+                        <div class="social-links">
+                            <a href="https://t.me/riskqwort" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist102Carousel">
+                <div class="works-inner" id="artist102Works">
+                    <img src="https://i.postimg.cc/xCNyF3HQ/photo-5442690254252405902-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/7ZB3HWnD/photo-5442789270428448628-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/k5pvcp2w/photo-5442789270428448633-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/Z5jc9RZG/photo-5442789270428448635-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/MHy0zZdr/photo-5442789270428448804-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/4x4vTgtB/photo-5442789270428448805-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/vmBv5sZc/photo-5442789270428448806-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/zvmSmHSg/photo-5442789270428448807-y.jpg" class="work-thumb-3"
+                        alt="">
+
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist102Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist102Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal102')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal102" class="modal">
+                <span class="close-btn" onclick="closeModal('modal102')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/xCNyF3HQ/photo-5442690254252405902-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/7ZB3HWnD/photo-5442789270428448628-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/k5pvcp2w/photo-5442789270428448633-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Z5jc9RZG/photo-5442789270428448635-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/MHy0zZdr/photo-5442789270428448804-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/4x4vTgtB/photo-5442789270428448805-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/vmBv5sZc/photo-5442789270428448806-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/zvmSmHSg/photo-5442789270428448807-y.jpg" class="modal-img" alt="">
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- roklimorii Prem -->
+        <section id="91">
+            <section class="profile-section" data-style="Аниме" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/cLQ0sP3z/77-20250626013703.png')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/roklimorii.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/jdsjSd50/photo-5443079588742822324-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1> roklimorii </h1>
+                    <a href="https://t.me/roklimoriii" class="profile-link">
+                        @roklimoriii
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Аниме </p>
+
+                    <div class="social-links">
+                        <a href="https://t.me/rokliimoriii" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                        <a href="http://tiktok.com/@roklimorii" class="social-link" target="_blank"
+                            rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT" width="32"
+                                height="32" loading="lazy" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist91Carousel">
+                <div class="works-inner" id="artist91Works">
+                    <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/B6rcvfg2/photo-5201909001749656903-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/15xJmwCb/photo-5220197105640008853-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/NFR89CJS/photo-5255966898951155532-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/SQYgbDrW/photo-5255966898951155533-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/sXQ4ygpV/photo-5255966898951155534-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/6ptcRwN0/photo-5255966898951155535-y.jpg" class="work-thumb-3"
+                        alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist91Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist91Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal91')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal91" class="modal">
+                <span class="close-btn" onclick="closeModal('modal91')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/B6rcvfg2/photo-5201909001749656903-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/15xJmwCb/photo-5220197105640008853-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/NFR89CJS/photo-5255966898951155532-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/SQYgbDrW/photo-5255966898951155533-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/sXQ4ygpV/photo-5255966898951155534-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/6ptcRwN0/photo-5255966898951155535-y.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Фродо Prem -->
+        <section id="232">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/Frodo.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/Px4Xzwst/photo-5249205404951508337-c.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>Фродо</h1>
+                    <a href="https://t.me/Kerpichikc" class="profile-link"> @Kerpichikc
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский </p>
+
+
+                    <div class="social-links">
+                       
+                        <!-- Telegram -->
+                        <a href="https://t.me/darbojiyi" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist232Carousel">
+                <div class="works-inner" id="artist232Works">
+                    <img src="https://i.postimg.cc/nhDnS5bS/photo-5253540822249501590-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/tJv98G4w/photo-5253540822249501592-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/HsKp2mK7/photo-5253540822249501591-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/QNfNF1Jm/photo-5253540822249501593-y.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/hPhDTvCB/photo-5253540822249501594-y.jpg" class="work-thumb-3" alt="">
+                   
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist232Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist232Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal232')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal232" class="modal">
+                <span class="close-btn" onclick="closeModal('modal232')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/nhDnS5bS/photo-5253540822249501590-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/tJv98G4w/photo-5253540822249501592-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/HsKp2mK7/photo-5253540822249501591-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/QNfNF1Jm/photo-5253540822249501593-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/hPhDTvCB/photo-5253540822249501594-y.jpg" class="modal-img" alt="">
+                   
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ich.morro Prem -->
+        <section id="150">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/1RbbvnLZ/image.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/ich.morro.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/BvDGbkmK/2.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1> ich.morro </h1>
+                    <a href="https://t.me/ich_morro" class="profile-link"> @ich_morro
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский</p>
+
+                    <div class="social-links">
+                        <a href="https://t.me/MorrosKabinett" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist150Carousel">
+                <div class="works-inner" id="artist150Works">
+                    <img src="https://i.postimg.cc/sXdsJsMm/image.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/c1c0Qq07/image.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/5N7JRwH6/image.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/3xkh5dp9/image.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/BvDGbkmK/2.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/d1jPmdPQ/image.jpg" class="work-thumb-1" alt="">
+                    <img src="https://i.postimg.cc/gjc9MJmV/image.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/GtXW6CmZ/AC.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/FsR537Pm/image.jpg" class="work-thumb-1" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist150Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist150Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal150')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal150" class="modal">
+                <span class="close-btn" onclick="closeModal('modal150')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/sXdsJsMm/image.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/c1c0Qq07/image.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/5N7JRwH6/image.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/3xkh5dp9/image.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/BvDGbkmK/2.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/d1jPmdPQ/image.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/gjc9MJmV/image.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/GtXW6CmZ/AC.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/FsR537Pm/image.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Скалли Prem -->
+        <section id="233">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/hPwfMMMX/IMG-0863.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/6QVqWKKZ/IMG-0862.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1> Скалли </h1>
+                    <a href="https://t.me/Skalli_S_T_92" class="profile-link">@Skalli_S_T_92
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский </p>
+                    <div class="social-links">
+                        <a href="t.me/sarra_skalli_92_13" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                        <!-- ВКонтакте -->
+                        <a href="http://vk.com/sarra.toniya_skalli_92" class="social-link" target="_blank"
+                            rel="noopener noreferrer" aria-label="ВКонтакте">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist233Carousel">
+                <div class="works-inner" id="artist233Works">
+                    <img src="https://i.postimg.cc/h4ss2Pmw/3.jpg" class="work-thumb-2" alt="">
+                    <img src="https://i.postimg.cc/hvYPyPLk/IMG-0858.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/05XQ2ZTV/IMG-0860.jpg" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/2yyS7BZd/IMG-0861.jpg" class="work-thumb-2" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist233Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist233Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal233')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal233" class="modal">
+                <span class="close-btn" onclick="closeModal('modal233')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/h4ss2Pmw/3.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/hvYPyPLk/IMG-0858.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/05XQ2ZTV/IMG-0860.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/2yyS7BZd/IMG-0861.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+        <!--Шушу Prem -->
+        <section id="45">
+            <section class="profile-section" data-style="Аниме" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/MKVGJ6ZC/115-20250520145317.png')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/Huhu.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/zBPxkTn0/photo-5249086700645379434-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>Шушу</h1>
+                    <a href="https://t.me/serrinss" class="profile-link">
+                        @serrinss
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Аниме </p>
+                    <div class="social-links">
+                        <a href="https://t.me/shushussy" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist45Carousel">
+                <div class="works-inner" id="artist45Works">
+                    <img src="https://i.postimg.cc/qqW45BcN/photo-5274079729521127147-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/c1gTq40X/photo-5269636804896749357-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/HsDTnZW3/photo-5242419098925791705-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/PJZhKZym/photo-5242276372867576317-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/hPLcdLfn/photo-5233351452301323670-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/3rDKK5hd/photo-5242419098925791702-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/SsHkWV6S/photo-5242419098925791703-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/zBPxkTn0/photo-5249086700645379434-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/4y91pwBr/photo-5274007290602713430-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/TP07pzh8/photo-5242276372867576319-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/4d38tWhY/photo-5244559238179714269-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/3xgbH4Tx/photo-5249120845635383421-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/FKNCFrrg/photo-5249120845635383422-y.jpg" class="work-thumb-3"
+                        alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist45Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist45Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal45')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal45" class="modal">
+                <span class="close-btn" onclick="closeModal('modal45')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/qqW45BcN/photo-5274079729521127147-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/c1gTq40X/photo-5269636804896749357-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/HsDTnZW3/photo-5242419098925791705-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/PJZhKZym/photo-5242276372867576317-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/hPLcdLfn/photo-5233351452301323670-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/3rDKK5hd/photo-5242419098925791702-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/SsHkWV6S/photo-5242419098925791703-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/zBPxkTn0/photo-5249086700645379434-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/4y91pwBr/photo-5274007290602713430-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/TP07pzh8/photo-5242276372867576319-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/4d38tWhY/photo-5244559238179714269-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/3xgbH4Tx/photo-5249120845635383421-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/FKNCFrrg/photo-5249120845635383422-y.jpg" class="modal-img" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!--  Mell Prem -->
+        <section id="71">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/Vk6XWPBc/photo-5251691868893342952-y.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/Mell.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/qMFN0HrQ/photo-5251654726016166479-x.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>Mell</h1>
+                    <a href="https://t.me/Mell_Art11" class="profile-link">
+                        @Mell_Art11
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский</p>
+
+
+                    <div class="social-links">
+                        <!-- Telegram -->
+                        <a href="https://t.me/liveIpaint" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist71Carousel">
+                <div class="works-inner" id="artist71Works">
+                    <img src="https://i.postimg.cc/qMFN0HrQ/photo-5251654726016166479-x.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/7Y5LKtzz/photo-5215280102525500754-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/3xDdxfJh/photo-5224685990709423492-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/N0cffgz8/photo-5246961190050067582-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/Pf3xznCh/photo-5249212989863751410-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/zvcGJKs3/photo-5456620774518551587-y.jpg" class="work-thumb-3"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist71Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist71Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal71')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal71" class="modal">
+                <span class="close-btn" onclick="closeModal('modal71')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/qMFN0HrQ/photo-5251654726016166479-x.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/7Y5LKtzz/photo-5215280102525500754-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/3xDdxfJh/photo-5224685990709423492-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/N0cffgz8/photo-5246961190050067582-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Pf3xznCh/photo-5249212989863751410-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/zvcGJKs3/photo-5456620774518551587-y.jpg" class="modal-img" alt="">
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ArfoniaA Prem-->
+        <section id="10">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/DZ32mDJ0/photo-5210776013271856172-x.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/ArfoniA.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/J0S9tkGL/photo-5204444239340105646-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>ArfoniaA</h1>
+                    <a href="https://t.me/The_forbidden_fruit_is_sweet" class="profile-link">
+                        @The_forbidden_fruit_is_sweet
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский</p>
+                    <div class="social-links">
+                        <a href="https://t.me/Viktoria_secret08" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist10Carousel">
+                <div class="works-inner" id="artist10Works">
+                    <img src="https://i.postimg.cc/gc3T1GmV/photo-5255998247917449468-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/pLkxzQm1/photo-5253904021863919143-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/J0S9tkGL/photo-5204444239340105646-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/MZ4k9htF/photo-5204444239340105647-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/XYfT7XWR/photo-5204444239340105648-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/htWkBTk8/photo-5204444239340105649-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/jdJpmZFd/photo-5204444239340105650-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/MT3k24wX/photo-5204444239340105651-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/SKrFVRt6/photo-5204444239340105652-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/SKqbWCVQ/photo-5204444239340105653-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/fyVGwKWC/photo-5204444239340105654-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/DZwVNhtt/photo-5204444239340105655-x.jpg" class="work-thumb-3"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist10Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist10Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal10')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal10" class="modal">
+                <span class="close-btn" onclick="closeModal('modal10')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/gc3T1GmV/photo-5255998247917449468-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/pLkxzQm1/photo-5253904021863919143-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/J0S9tkGL/photo-5204444239340105646-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/MZ4k9htF/photo-5204444239340105647-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/XYfT7XWR/photo-5204444239340105648-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/htWkBTk8/photo-5204444239340105649-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/jdJpmZFd/photo-5204444239340105650-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/MT3k24wX/photo-5204444239340105651-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/SKrFVRt6/photo-5204444239340105652-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/SKqbWCVQ/photo-5204444239340105653-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/fyVGwKWC/photo-5204444239340105654-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/DZwVNhtt/photo-5204444239340105655-x.jpg" class="modal-img" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- Nance Prem-->
+        <section id="1">
+            <section class="profile-section" data-style="Семиреализм" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/8zGLmfKb/image.png')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/Nance.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/RZHsMmkT/photo-5251455181835595579-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>Nance</h1>
+                    <a href="https://t.me/nance_art" class="profile-link">
+                        @nance_art
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Семиреализм</p>
+
+
+                    <div class="social-links">
+                        <!-- ВКонтакте -->
+                        <a href="https://vk.com/nensn5" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="ВКонтакте">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Telegram -->
+                        <a href="https://t.me/nensn5" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@nensn5" class="social-link" target="_blank"
+                            rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube-1.png" alt="YouTube" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Пинтерест -->
+                        <a href="https://pin.it/2DbTWOypO" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="Pin">
+                            <img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pin" width="32"
+                                height="32" loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- ТТ -->
+                        <a href="https://www.tiktok.com/@nensn5_?_r=1&_d=eh83e1547be7il&sec_uid=MS4wLjABAAAALrSTNSIkiV3xErVnI8sQb01Iq5GX5Wgzt9JG01gcoeR26mXUpDDsdnpmqAcroE_f&share_author_id=7400529780627833861&sharer_language=ru&source=h5_m&u_code=efg187216geel8&ug_btm=b8727,b0&social_share_type=4&utm_source=copy&sec_user_id=MS4wLjABAAAALrSTNSIkiV3xErVnI8sQb01Iq5GX5Wgzt9JG01gcoeR26mXUpDDsdnpmqAcroE_f&tt_from=copy&utm_medium=ios&utm_campaign=client_share&enable_checksum=1&user_id=7400529780627833861&share_link_id=E15C10FC-48FE-40F5-BA15-A724E6FDC3CC&share_app_id=1233"
+                            class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="YouTube"
+                                width="32" height="32" loading="lazy" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist1Carousel">
+                <div class="works-inner" id="artist1Works">
+                    <img src="https://i.postimg.cc/qBmm1LLn/photo-5417891542582033554-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/MHfrG8QS/image.png" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/wM5kHSrr/image.png" class="work-thumb-1" alt="Работа 1">
+                    <img src="https://i.postimg.cc/L4PCNWxL/Vfx-Kt-YPVQM.jpg" class="work-thumb-1" alt="Работа 2">
+                    <img src="https://i.postimg.cc/CLVvt42t/Ad-I8-TXcrs.jpg" class="work-thumb-3" alt="Работа 3">
+                    <img src="https://i.postimg.cc/zGzxDG8F/photo-5424785192725377471-y-copy.jpg" class="work-thumb-3"
+                        alt="Работа 4">
+                    <img src="https://i.postimg.cc/P5S2Cnqs/photo-5424785192725377473-y.jpg" class="work-thumb-3"
+                        alt="Работа 5">
+                    <img src="https://i.postimg.cc/d0X69Rd5/photo-5424785192725377475-y.jpg" class="work-thumb-3"
+                        alt="Работа 6">
+                    <img src="https://i.postimg.cc/nrf1yH37/photo-5424785192725377476-y.jpg" class="work-thumb-3"
+                        alt="Работа 7">
+                    <img src="https://i.postimg.cc/xdN8rrpy/IMG-9175.png" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/g2nkRFpF/IMG-9173.png" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/vZk8tq81/IMG-9171.png" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/JhXr6Ntp/IMG-9170.png" class="work-thumb-3" alt="">
+                    <img src="https://i.postimg.cc/MH6t3YZR/IMG-9174.png" class="work-thumb-3" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist1Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist1Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal1')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal1" class="modal">
+                <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/qBmm1LLn/photo-5417891542582033554-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/MHfrG8QS/image.png" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/wM5kHSrr/image.png" class="modal-img" alt="Работа 1">
+                    <img src="https://i.postimg.cc/L4PCNWxL/Vfx-Kt-YPVQM.jpg" class="modal-img" alt="Работа 2">
+                    <img src="https://i.postimg.cc/CLVvt42t/Ad-I8-TXcrs.jpg" class="modal-img" alt="Работа 3">
+                    <img src="https://i.postimg.cc/zGzxDG8F/photo-5424785192725377471-y-copy.jpg" class="modal-img"
+                        alt="Работа 4">
+                    <img src="https://i.postimg.cc/P5S2Cnqs/photo-5424785192725377473-y.jpg" class="modal-img"
+                        alt="Работа 5">
+                    <img src="https://i.postimg.cc/d0X69Rd5/photo-5424785192725377475-y.jpg" class="modal-img"
+                        alt="Работа 6">
+                    <img src="https://i.postimg.cc/nrf1yH37/photo-5424785192725377476-y.jpg" class="modal-img"
+                        alt="Работа 7">
+                    <img src="https://i.postimg.cc/xdN8rrpy/IMG-9175.png" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/g2nkRFpF/IMG-9173.png" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/vZk8tq81/IMG-9171.png" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/JhXr6Ntp/IMG-9170.png" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/MH6t3YZR/IMG-9174.png" class="modal-img" alt="">
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Айкуб Prem -->
+        <section id="142">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/02CXSdgG/IMG-0287.png')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/Aukyb.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/zB9T1R6D/photo-5235480669453412917-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>Айкуб</h1>
+                    <a href="https://t.me/AIcube618" class="profile-link"> @AIcube618
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский</p>
+                    <div class="social-links">
+                        <a href="https://t.me/AIcubeHome" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist142Carousel">
+                <div class="works-inner" id="artist142Works">
+                    <img src="https://i.postimg.cc/cHKfjcD5/photo-5247076509921963995-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/fRK70yt5/photo-5256068230114570707-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/k5YxfHyb/photo-5323686623264765277-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/vZMLBfBc/photo-5323686623264765278-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/6QprVKCK/photo-5323686623264765279-y.jpg" class="work-thumb-1"
+                        alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist142Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist142Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal142')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal142" class="modal">
+                <span class="close-btn" onclick="closeModal('modal142')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/cHKfjcD5/photo-5247076509921963995-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/fRK70yt5/photo-5256068230114570707-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/k5YxfHyb/photo-5323686623264765277-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/vZMLBfBc/photo-5323686623264765278-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/6QprVKCK/photo-5323686623264765279-y.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Касцюшка Prem -->
+        <section id="96">
+            <section class="profile-section" data-style="Аниме" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/PxBnyZcn/photo-5262518283150683490-y.jpg')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/Kastsyushka.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/vB1d5X0v/photo-5260368274061914320-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>Касцюшка</h1>
+                    <a href="https://t.me/bimbovna" class="profile-link">
+                        @bimbovna
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Аниме</p>
+
+
+                    <div class="social-links">
+                        <!-- Telegram -->
+                        <a href="https://t.me/kasciuszka" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist96Carousel">
+                <div class="works-inner" id="artist96Works">
+                    <img src="https://i.postimg.cc/qvL0rNt2/photo-5260368274061914309-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/Pq5H5dZ9/photo-5260368274061914310-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/3x77zXwK/photo-5260764467615099561-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/fbqN31fL/photo-5472009638045148320-y.jpg" class="work-thumb-3"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist96Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist96Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal96')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal96" class="modal">
+                <span class="close-btn" onclick="closeModal('modal96')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/qvL0rNt2/photo-5260368274061914309-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/Pq5H5dZ9/photo-5260368274061914310-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/3x77zXwK/photo-5260764467615099561-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/fbqN31fL/photo-5472009638045148320-y.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+
+    </section>
+
+    <!-- Image Modal - обновленная версия -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-close-btn" onclick="closeImageModal()">&times;</span>
+        <div class="image-modal-content" id="imageModalContent">
+            <button class="modal-nav-btn modal-prev" onclick="navigateImage(-1)">&#10094;</button>
+            <img id="expandedImg" class="image-modal-img" src="" alt="Expanded Image">
+            <button class="modal-nav-btn modal-next" onclick="navigateImage(1)">&#10095;</button>
+            <div class="image-counter" id="imageCounter"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-container">
+        <section class="footer-main-section">
+            <a href="index.html" class="footer-brand-link">
+                <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Artemisia" class="footer-brand-logo">
+            </a>
+
+            <nav class="footer-navigation">
+                <a href="AboutUs.html#about-site" class="footer-nav-item">Подробности о сайте</a>
+                <a href="https://t.me/Artemisia_publicationBot" class="footer-nav-item">Опубликовать работу</a>
+                <a href="https://t.me/Gg00Se" class="footer-nav-item">Связь с гарантом</a>
+            </nav>
+        </section>
+
+        <section class="footer-secondary-section">
+            <p class="footer-copyright">
+                Следите за обновлениями
+                <a href="https://t.me/Artemisia_website" class="footer-nav-item" target="_blank">@Artemisia_website</a>
+            </p>
+
+            <div class="footer-social-links">
+                <!-- Telegram -->
+                <a href="https://t.me/Artemisia_website" class="social-media-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM15.53 8.23C15.73 8.13 15.93 8.15 16.09 8.28C16.25 8.41 16.31 8.62 16.25 8.82L14.81 15.44C14.66 16.03 14.3 16.19 13.81 15.93L11.05 13.85L9.8 15.08C9.66 15.22 9.54 15.34 9.28 15.34L9.53 12.54L14.44 8.34C14.66 8.15 14.8 8.24 14.63 8.41L10.63 11.93L7.83 10.91C7.26 10.71 7.25 10.31 7.94 10.01L15.03 7.17C15.5 6.99 15.9 7.21 15.53 8.23Z" />
+                    </svg>
+                </a>
+
+                <!-- VK -->
+                <a href="https://vk.com/artemisia_website" class="social-media-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93V15.07C2 20.67 3.33 22 8.93 22H15.07C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2M18.15 16.27H16.69C16.14 16.27 15.97 15.82 15 14.83C14.12 14 13.74 13.88 13.53 13.88C13.24 13.88 13.15 13.96 13.15 14.38V15.69C13.15 16.04 13.04 16.26 12.11 16.26C10.57 16.26 8.86 15.32 7.66 13.59C5.85 11.05 5.36 9.13 5.36 8.75C5.36 8.54 5.43 8.34 5.85 8.34H7.32C7.69 8.34 7.83 8.5 7.97 8.9C8.69 11 9.89 12.8 10.38 12.8C10.57 12.8 10.65 12.71 10.65 12.25V10.1C10.6 9.12 10.07 9.03 10.07 8.68C10.07 8.5 10.21 8.34 10.44 8.34H12.73C13.04 8.34 13.15 8.5 13.15 8.88V11.77C13.15 12.08 13.28 12.19 13.38 12.19C13.56 12.19 13.72 12.08 14.05 11.74C15.1 10.57 15.85 8.76 15.85 8.76C15.95 8.55 16.11 8.34 16.48 8.34H17.93C18.37 8.34 18.47 8.58 18.37 8.89C18.19 9.74 16.41 12.25 16.43 12.25C16.27 12.5 16.21 12.61 16.43 12.9C16.58 13.13 17.09 13.55 17.43 13.94C18.05 14.65 18.53 15.24 18.66 15.65C18.77 16.06 18.57 16.27 18.15 16.27Z" />
+                    </svg>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com/@artemisia_website?si=gOfyLPoGY8a4QrFF" class="social-media-icon"
+                    target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                    </svg>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@artemisia_web_tt?_t=ZS-8xgqwBPHwfJ&_r=1" class="social-media-icon"
+                    target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </footer>
+
+    <!-- Стрлека вверх -->
+    <div id="backToTopBtn" class="back-to-top-btn" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+        </svg>
+    </div>
+
+    <script>
+        // Menu Functions
+        function toggleMenu() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+            const body = document.body;
+            const searchInput = document.getElementById('searchInput');
+
+            // Сохраняем позицию прокрутки перед открытием
+            if (!body.classList.contains('menu-open')) {
+                body.style.top = `-${window.scrollY}px`;
+            }
+
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('active');
+            menuIcon.classList.toggle('active');
+            body.classList.toggle('menu-open');
+            searchInput.disabled = body.classList.contains('menu-open');
+
+            // Восстанавливаем позицию прокрутки при закрытии
+            if (!body.classList.contains('menu-open')) {
+                const scrollY = parseInt(body.style.top || '0');
+                body.style.top = '';
+                window.scrollTo(0, -scrollY);
+            }
+        }
+
+        function closeMenu() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+            const body = document.body;
+
+            drawer.classList.remove('open');
+            overlay.classList.remove('active');
+            menuIcon.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+
+        // Toggle submenus
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const link = event.currentTarget;
+            const submenu = link.nextElementSibling;
+
+            // Close all other submenus first
+            document.querySelectorAll('.submenu').forEach(menu => {
+                if (menu !== submenu) {
+                    menu.classList.remove('active');
+                    menu.previousElementSibling.classList.remove('active');
+                }
+            });
+
+            // Toggle current submenu
+            link.classList.toggle('active');
+            submenu.classList.toggle('active');
+        }
+
+        // Close menu when clicking on overlay
+        document.getElementById('overlay').addEventListener('click', closeMenu);
+
+        // New Search Functionality
+        function toggleSearch() {
+            const searchContainer = document.getElementById('searchContainer');
+            const searchBackdrop = document.getElementById('searchBackdrop');
+            const isActive = searchContainer.classList.contains('active');
+
+            if (isActive) {
+                searchContainer.classList.remove('active');
+                searchBackdrop.classList.remove('active');
+                document.getElementById('searchResults').classList.remove('active');
+                document.getElementById('searchInput').value = '';
+                document.body.style.overflow = 'auto';
+            } else {
+                searchContainer.classList.add('active');
+                searchBackdrop.classList.add('active');
+                document.getElementById('searchInput').focus();
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Close menu if open
+            if (document.getElementById('drawer').classList.contains('open')) {
+                toggleMenu();
+            }
+        }
+
+        function searchArtists() {
+            const searchText = document.getElementById('searchInput').value.trim().toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+
+            if (!searchText) {
+                resultsContainer.innerHTML = '<div class="no-results">Введите запрос для поиска</div>';
+                resultsContainer.classList.add('active');
+                return;
+            }
+
+            const artists = document.querySelectorAll('.profile-section');
+            let found = false;
+            resultsContainer.innerHTML = '';
+
+            artists.forEach(artist => {
+                const artistName = artist.querySelector('h1').textContent.toLowerCase();
+                const artistStyle = artist.querySelector('p').textContent.toLowerCase();
+                const artistLink = artist.querySelector('.profile-link').textContent.toLowerCase();
+                const artistAvatar = artist.querySelector('.avatar').src;
+
+                if (artistName.includes(searchText) || artistStyle.includes(searchText) || artistLink.includes(searchText)) {
+                    found = true;
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+
+                    resultItem.innerHTML = `
+                        <img src="${artistAvatar}" alt="${artistName}">
+                        <div class="info">
+                            <div class="name">${artist.querySelector('h1').textContent}</div>
+                            <div class="style">${artist.querySelector('p').textContent}</div>
+                        </div>
+                    `;
+
+                    resultItem.onclick = () => {
+                        document.getElementById('searchInput').value = '';
+                        scrollToArtist(artist);
+                        toggleSearch();
+                    };
+                    resultsContainer.appendChild(resultItem);
+                }
+            });
+
+            if (!found) {
+                resultsContainer.innerHTML = '<div class="no-results">Ничего не найдено</div>';
+            }
+            resultsContainer.classList.add('active');
+        }
+
+        // Highlight text
+        function highlightText(element, searchText) {
+            const text = element.textContent;
+            const regex = new RegExp(`(${searchText})`, 'gi');
+            element.innerHTML = text.replace(regex, match =>
+                `<span class="highlight">${match}</span>`
+            );
+        }
+
+        // Обновленная функция прокрутки к художнику
+        function scrollToArtist(artist) {
+            // Удаляем предыдущие подсветки
+            document.querySelectorAll('.artist-highlight').forEach(el => {
+                el.classList.remove('artist-highlight');
+            });
+
+            // Добавляем подсветку
+            artist.classList.add('artist-highlight');
+
+            // Прокручиваем плавно к элементу с учетом хедера
+            const yOffset = -80;
+            const y = artist.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+            window.scrollTo({
+                top: y,
+                behavior: 'smooth'
+            });
+
+            // Убираем подсветку через 3 секунды
+            setTimeout(() => {
+                artist.classList.remove('artist-highlight');
+            }, 3000);
+
+            // Упрощенная обработка прерывания прокрутки
+            const handleInterrupt = () => {
+                artist.classList.remove('artist-highlight');
+            };
+
+            // Добавляем однократный обработчик
+            window.addEventListener('scroll', handleInterrupt, {
+                once: true,
+                passive: true // Оптимизация для плавной прокрутки
+            });
+
+            // Гарантируем восстановление скролла
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+                document.body.style.position = 'static';
+            }, 500);
+        }
+
+        // Обновленный обработчик клика в результатах поиска
+        function setupSearchResults() {
+            document.querySelectorAll('.search-result-item').forEach(item => {
+                item.onclick = (e) => {
+                    e.preventDefault();
+                    const artist = document.querySelector(
+                        `.profile-section:has([alt="${item.querySelector('img').alt}"])`
+                    );
+
+                    document.getElementById('searchInput').value = '';
+                    toggleSearch();
+
+                    setTimeout(() => {
+                        if (artist) {
+                            scrollToArtist(artist);
+
+                            // Обработчик прерывания прокрутки
+                            const handleInterrupt = () => {
+                                artist.classList.remove('artist-highlight');
+                                window.removeEventListener('scroll', handleInterrupt);
+                            };
+                            window.addEventListener('scroll', handleInterrupt, { once: true });
+                        }
+                    }, 100);
+                };
+            });
+        }
+
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                searchArtists();
+            }
+        });
+
+        // Real-time search on input
+        document.getElementById('searchInput').addEventListener('input', function () {
+            if (this.value.length > 0) {
+                searchArtists();
+            } else {
+                document.getElementById('searchResults').classList.remove('active');
+            }
+        });
+
+        // Close search when clicking outside (desktop)
+        document.addEventListener('click', function (e) {
+            const searchContainer = document.getElementById('searchContainer');
+            const searchResults = document.getElementById('searchResults');
+            const searchInput = document.getElementById('searchInput');
+            const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+
+            if (!searchContainer.contains(e.target) &&
+                e.target !== mobileSearchBtn &&
+                !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Close search when scrolling on mobile
+        window.addEventListener('scroll', function () {
+            if (window.innerWidth <= 768 &&
+                document.getElementById('searchContainer').classList.contains('active')) {
+                toggleSearch();
+            }
+        });
+
+        // Filters Functionality
+        function initFilters() {
+            const styles = new Set();
+            const filterDropdown = document.getElementById('filtersDropdown');
+
+            // Collect all artist styles
+            document.querySelectorAll('.profile-section').forEach(section => {
+                const style = section.getAttribute('data-style');
+                if (style) styles.add(style);
+            });
+
+            // Clear existing filters
+            filterDropdown.innerHTML = '';
+
+            // Add "All" button
+            const allItem = document.createElement('a');
+            allItem.href = '#';
+            allItem.textContent = 'Все стили';
+            allItem.onclick = (e) => {
+                applyFilter('all', e);
+                updateActiveFilter(e.target);
+            };
+            filterDropdown.appendChild(allItem);
+
+            // Add "Prem Artist" filter
+            const premItem = document.createElement('a');
+            premItem.href = '#';
+            premItem.textContent = 'Prem Artist';
+            premItem.onclick = (e) => {
+                applyFilter('prem', e);
+                updateActiveFilter(e.target);
+            };
+            filterDropdown.appendChild(premItem);
+
+            // Add filters for each style
+            styles.forEach(style => {
+                const item = document.createElement('a');
+                item.href = '#';
+                item.textContent = style;
+                item.onclick = (e) => {
+                    applyFilter(style, e);
+                    updateActiveFilter(e.target);
+                };
+                filterDropdown.appendChild(item);
+            });
+        }
+
+        function updateActiveFilter(clickedElement) {
+            document.querySelectorAll('.filters-dropdown a').forEach(a => {
+                a.classList.remove('active-filter');
+            });
+            clickedElement.classList.add('active-filter');
+        }
+
+
+
+        function getNextElements(element) {
+            const elements = [];
+            let next = element.nextElementSibling;
+
+            while (next) {
+                if (next.classList.contains('favorite-works') ||
+                    next.classList.contains('works-carousel') ||
+                    next.classList.contains('show-works-btn')) {
+                    elements.push(next);
+                } else if (next.classList.contains('profile-section')) {
+                    break;
+                }
+                next = next.nextElementSibling;
+            }
+
+            return elements;
+        }
+
+        function toggleFilters(event) {
+            event.stopPropagation();
+            const filtersDropdown = document.getElementById('filtersDropdown');
+            filtersDropdown.classList.toggle('active');
+            document.querySelector('.filters-button').classList.toggle('active');
+
+            if (filtersDropdown.classList.contains('active')) {
+                document.addEventListener('click', closeFiltersOnClickOutside);
+            } else {
+                document.removeEventListener('click', closeFiltersOnClickOutside);
+            }
+        }
+
+        function closeFiltersOnClickOutside(event) {
+            const filtersContainer = document.querySelector('.filters-container');
+            if (!filtersContainer.contains(event.target)) {
+                document.getElementById('filtersDropdown').classList.remove('active');
+                document.querySelector('.filters-button').classList.remove('active');
+                document.removeEventListener('click', closeFiltersOnClickOutside);
+            }
+        }
+
+        // Carousel Functionality
+        const carouselStates = {};
+
+        function initCarousel(worksInnerId) {
+            if (!carouselStates[worksInnerId]) {
+                carouselStates[worksInnerId] = {
+                    currentTranslate: 0,
+                    prevTranslate: 0,
+                    isDragging: false,
+                    startPos: 0,
+                    animationID: 0
+                };
+            }
+
+            const worksInner = document.getElementById(worksInnerId);
+            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+
+            // Add event handlers
+            worksInner.addEventListener('mousedown', (e) => {
+                const state = carouselStates[worksInnerId];
+                state.isDragging = true;
+                state.startPos = e.clientX;
+                state.prevTranslate = state.currentTranslate;
+                state.animationID = requestAnimationFrame(() => animation(worksInnerId));
+                worksInner.style.cursor = 'grabbing';
+                worksInner.style.transition = 'none';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+                const currentPosition = e.clientX;
+                state.currentTranslate = state.prevTranslate + currentPosition - state.startPos;
+            });
+
+            window.addEventListener('mouseup', () => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+                state.isDragging = false;
+                cancelAnimationFrame(state.animationID);
+                worksInner.style.cursor = 'grab';
+
+                const movedBy = state.currentTranslate - state.prevTranslate;
+                const visibleWorks = getVisibleWorksCount(worksInnerId);
+
+                if (movedBy < -100) nextWork(worksInnerId, visibleWorks);
+                else if (movedBy > 100) prevWork(worksInnerId, visibleWorks);
+                else setPosition(worksInnerId);
+
+                worksInner.style.transition = 'transform 0.5s ease';
+            });
+
+            // Touch events
+            worksInner.addEventListener('touchstart', (e) => {
+                const state = carouselStates[worksInnerId];
+                state.isDragging = true;
+                state.startPos = e.touches[0].clientX;
+                state.prevTranslate = state.currentTranslate;
+                state.animationID = requestAnimationFrame(() => animation(worksInnerId));
+                worksInner.style.transition = 'none';
+            });
+
+            window.addEventListener('touchmove', (e) => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+
+                const currentPosition = e.touches[0].clientX;
+                const newTranslate = state.prevTranslate + currentPosition - state.startPos;
+
+                // Для мобильных устройств ограничиваем перетаскивание
+                if (window.innerWidth <= 768) {
+                    const totalWorksWidth = Array.from(works).reduce((sum, work) => sum + work.offsetWidth + 35, 0);
+                    const containerWidth = worksInner.parentElement.offsetWidth;
+                    const maxTranslate = -(totalWorksWidth - containerWidth);
+
+                    // Ограничиваем значение newTranslate между 0 и maxTranslate
+                    state.currentTranslate = Math.max(Math.min(newTranslate, 0), maxTranslate);
+                } else {
+                    state.currentTranslate = newTranslate;
+                }
+            });
+
+            window.addEventListener('touchend', () => {
+                const state = carouselStates[worksInnerId];
+                if (!state.isDragging) return;
+                state.isDragging = false;
+                cancelAnimationFrame(state.animationID);
+
+                const movedBy = state.currentTranslate - state.prevTranslate;
+                const visibleWorks = getVisibleWorksCount(worksInnerId);
+
+                if (movedBy < -100) nextWork(worksInnerId, visibleWorks);
+                else if (movedBy > 100) prevWork(worksInnerId, visibleWorks);
+                else setPosition(worksInnerId);
+
+                worksInner.style.transition = 'transform 0.5s ease';
+            });
+        }
+
+        function animation(worksInnerId) {
+            setPosition(worksInnerId);
+            const state = carouselStates[worksInnerId];
+            if (state.isDragging) requestAnimationFrame(() => animation(worksInnerId));
+        }
+
+        function setPosition(worksInnerId) {
+            const state = carouselStates[worksInnerId];
+            const worksInner = document.getElementById(worksInnerId);
+            worksInner.style.transform = `translateX(${state.currentTranslate}px)`;
+        }
+
+        function getVisibleWorksCount(worksInnerId) {
+            const worksInner = document.getElementById(worksInnerId);
+            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+            if (works.length === 0) return 1;
+
+            const containerWidth = worksInner.parentElement.offsetWidth;
+            const workWidth = works[0].offsetWidth + 35; // Work width + gap
+            return Math.floor(containerWidth / workWidth);
+        }
+
+        function nextWork(worksInnerId, step = null) {
+            const worksInner = document.getElementById(worksInnerId);
+            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+            const state = carouselStates[worksInnerId];
+
+            if (step === null) step = getVisibleWorksCount(worksInnerId);
+
+            // Получаем ширину контейнера и общую ширину всех работ
+            const containerWidth = worksInner.parentElement.offsetWidth;
+            const totalWorksWidth = Array.from(works).reduce((sum, work) => sum + work.offsetWidth + 35, 0);
+
+            // Рассчитываем максимальное смещение (чтобы последний элемент был виден)
+            const maxPosition = containerWidth - totalWorksWidth - 35; // Добавляем отступ для последнего элемента
+
+            // Рассчитываем новое положение
+            const newPosition = state.currentTranslate - (step * (works[0].offsetWidth + 35));
+
+            // Для мобильных устройств делаем дополнительную проверку
+            if (window.innerWidth <= 768) {
+                // Проверяем, не выходим ли мы за пределы
+                if (Math.abs(newPosition) > (totalWorksWidth - containerWidth)) {
+                    // Если пытаемся пролистать дальше последнего элемента, останавливаемся
+                    state.currentTranslate = -(totalWorksWidth - containerWidth);
+                } else {
+                    state.currentTranslate = newPosition;
+                }
+            } else {
+                // Для десктопной версии оставляем прежнюю логику
+                state.currentTranslate = Math.max(newPosition, maxPosition);
+            }
+
+            worksInner.style.transition = 'transform 0.5s ease';
+            setPosition(worksInnerId);
+        }
+
+        function prevWork(worksInnerId, step = null) {
+            const worksInner = document.getElementById(worksInnerId);
+            const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+            const state = carouselStates[worksInnerId];
+
+            if (step === null) step = getVisibleWorksCount(worksInnerId);
+
+            // Рассчитываем новое положение
+            const newPosition = state.currentTranslate + (step * (works[0].offsetWidth + 35));
+
+            // Ограничиваем смещение, чтобы не выйти за пределы (не больше 0)
+            state.currentTranslate = Math.min(newPosition, 0);
+
+            worksInner.style.transition = 'transform 0.5s ease';
+            setPosition(worksInnerId);
+        }
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Full Image Modal Functions
+        function openImageModal(imgSrc) {
+            const imageModal = document.getElementById('imageModal');
+            const expandedImg = document.getElementById('expandedImg');
+
+            expandedImg.src = imgSrc;
+            imageModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function (event) {
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (event.target == modal) {
+                    closeModal(modal.id);
+                }
+            });
+
+            if (event.target === document.getElementById('imageModal')) {
+                closeImageModal();
+            }
+        }
+
+        // Close modals with ESC key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        closeModal(modal.id);
+                    }
+                });
+
+                if (document.getElementById('imageModal').style.display === 'block') {
+                    closeImageModal();
+                }
+            }
+        });
+
+        // Click on works in carousel opens corresponding modal
+        document.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3').forEach(thumb => {
+            thumb.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openImageModal(this.src);
+            });
+        });
+
+        // Click on images in artist modals
+        document.querySelectorAll('.modal-img').forEach(img => {
+            img.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openImageModal(this.src);
+            });
+        });
+
+        // Back to Top Function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide back to top button on scroll
+        window.addEventListener('scroll', function () {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+
+
+        // Function to open tab by link
+        function openTabByLink(tabId) {
+            // This function would be implemented in the Services.html page
+            console.log('Opening tab:', tabId);
+        }
+
+        // Добавим этот код в раздел скриптов
+        document.addEventListener('DOMContentLoaded', function () {
+            // Настройка Intersection Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+
+                        // Для модальных изображений
+                        if (entry.target.classList.contains('modal-img')) {
+                            setTimeout(() => {
+                                entry.target.classList.add('visible');
+                            }, 100 * index);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Наблюдаем за всеми элементами
+            document.querySelectorAll('.profile-section, .favorite-works, .works-carousel, .show-works-btn').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Для изображений в модалках
+            document.querySelectorAll('.modal-img').forEach((img, index) => {
+                observer.observe(img);
+            });
+        });
+
+        // Модифицируем функцию фильтрации
+        function applyFilter(selectedStyle, event) {
+            event.preventDefault();
+
+            // Закрываем фильтры после выбора
+            closeFilters();
+
+            document.querySelectorAll('.profile-section').forEach(profile => {
+                const style = profile.getAttribute('data-style');
+                const isPrem = profile.getAttribute('data-prem') === 'true';
+                const nextElements = getNextElements(profile);
+
+                if (selectedStyle === 'all' ||
+                    (selectedStyle === 'prem' && isPrem) ||
+                    (selectedStyle !== 'prem' && style === selectedStyle)) {
+                    profile.classList.remove('hidden');
+                    nextElements.forEach(el => {
+                        el.classList.remove('hidden');
+                        el.style.transitionDelay = '0.2s';
+                    });
+                } else {
+                    profile.classList.add('hidden');
+                    nextElements.forEach(el => el.classList.add('hidden'));
+                }
+            });
+
+            // Smooth scroll to top after applying filter
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function closeFilters() {
+            const filtersDropdown = document.getElementById('filtersDropdown');
+            const filtersButton = document.querySelector('.filters-button');
+
+            filtersDropdown.classList.remove('active');
+            filtersButton.classList.remove('active');
+            document.removeEventListener('click', closeFiltersOnClickOutside);
+        }
+
+        // Обновим функцию для модальных окон
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Запуск анимации для изображений
+            setTimeout(() => {
+                modal.querySelectorAll('.modal-img').forEach((img, index) => {
+                    setTimeout(() => img.classList.add('visible'), 50 * index);
+                });
+            }, 100);
+        }
+
+        // Функция для обработки якорных ссылок при загрузке страницы
+        function handleAnchorLinks() {
+            // Проверяем, есть ли якорь в URL
+            if (window.location.hash) {
+                const artistId = window.location.hash.substring(1); // Убираем # из начала
+                const artistSection = document.getElementById(artistId);
+
+                if (artistSection) {
+                    // Прокручиваем к секции художника
+                    setTimeout(() => {
+                        artistSection.scrollIntoView({ behavior: 'smooth' });
+
+                        // Подсвечиваем профиль художника
+                        const profile = artistSection.querySelector('.profile-section');
+                        if (profile) {
+                            profile.classList.add('artist-highlight');
+
+                            // Убираем подсветку через 3 секунды
+                            setTimeout(() => {
+                                profile.classList.remove('artist-highlight');
+                            }, 3000);
+                        }
+                    }, 100);
+                }
+            }
+        }
+
+        // Вызываем функцию при загрузке страницы
+        window.addEventListener('load', handleAnchorLinks);
+
+        // Также обрабатываем изменения hash (если пользователь кликает на якорные ссылки на той же странице)
+        window.addEventListener('hashchange', handleAnchorLinks);
+
+
+    </script>
+
+    <script>
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize carousels for each artist
+            initCarousel('artist1Works');
+            initCarousel('artist10Works');
+            initCarousel('artist45Works');
+            initCarousel('artist46Works');
+
+
+            initCarousel('artist71Works');
+            initCarousel('artist79Works');
+
+            initCarousel('artist91Works');
+            initCarousel('artist96Works');
+
+            initCarousel('artist102Works');
+
+            initCarousel('artist142Works');
+            initCarousel('artist150Works');
+
+            initCarousel('artist193Works');
+            initCarousel('artist220Works');
+            initCarousel('artist230Works');
+            initCarousel('artist232Works');
+            initCarousel('artist233Works');
+            initCarousel('artist238Works');
+            initCarousel('artist239Works');
+
+
+
+
+
+
+            // Initialize filters
+            initFilters();
+
+            // Add class to first "All styles" element
+            const firstFilter = document.querySelector('.filters-dropdown a:first-child');
+            if (firstFilter) firstFilter.classList.add('active-filter');
+
+            // Adapt carousels on window resize
+            window.addEventListener('resize', () => {
+                Object.keys(carouselStates).forEach(worksInnerId => {
+                    carouselStates[worksInnerId].currentTranslate = 0;
+                    setPosition(worksInnerId);
+                });
+            });
+        });
+    </script>
+
+    <!-- Листние модального окна -->
+    <script>
+        // Глобальные переменные для управления галереей
+        let currentImageIndex = 0;
+        let imageElements = [];
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let modalIsDragging = false;
+        let modalStartPos = 0;
+        let modalCurrentTranslate = 0;
+        let modalPrevTranslate = 0;
+        let modalAnimationID = 0;
+
+        // Функция для открытия модального окна с изображением
+        function openImageModal(imgSrc, clickedElement = null) {
+            const imageModal = document.getElementById('imageModal');
+            const expandedImg = document.getElementById('expandedImg');
+
+            // Получаем все изображения в текущей галерее
+            let galleryContainer;
+            if (clickedElement) {
+                // Если кликнули на изображение в карусели
+                galleryContainer = clickedElement.closest('.works-inner');
+            } else {
+                // Если кликнули на изображение в модалке художника
+                galleryContainer = clickedElement ? clickedElement.closest('.modal-content') : null;
+            }
+
+            if (galleryContainer) {
+                imageElements = Array.from(galleryContainer.querySelectorAll('img')).filter(img => img.src);
+
+                // Находим индекс текущего изображения
+                currentImageIndex = imageElements.findIndex(img => img.src === imgSrc);
+                updateImageCounter();
+            }
+
+            expandedImg.src = imgSrc;
+            imageModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Добавляем обработчики событий для свайпа
+            const modalContent = document.getElementById('imageModalContent');
+            modalContent.addEventListener('touchstart', handleTouchStart, { passive: false });
+            modalContent.addEventListener('touchmove', handleTouchMove, { passive: false });
+            modalContent.addEventListener('touchend', handleTouchEnd);
+
+            // Для ПК добавляем обработчики drag
+            modalContent.addEventListener('mousedown', handleMouseDown);
+            window.addEventListener('mousemove', handleMouseMove);
+            window.addEventListener('mouseup', handleMouseUp);
+        }
+
+        // Функция для закрытия модального окна
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+
+            // Удаляем обработчики событий
+            const modalContent = document.getElementById('imageModalContent');
+            modalContent.removeEventListener('touchstart', handleTouchStart);
+            modalContent.removeEventListener('touchmove', handleTouchMove);
+            modalContent.removeEventListener('touchend', handleTouchEnd);
+            modalContent.removeEventListener('mousedown', handleMouseDown);
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+
+            // Сбрасываем состояние
+            modalIsDragging = false;
+            cancelAnimationFrame(modalAnimationID);
+        }
+
+        // Функция для навигации по изображениям
+        function navigateImage(direction) {
+            if (imageElements.length === 0) return;
+
+            currentImageIndex += direction;
+
+            // Проверяем границы
+            if (currentImageIndex < 0) {
+                currentImageIndex = imageElements.length - 1;
+            } else if (currentImageIndex >= imageElements.length) {
+                currentImageIndex = 0;
+            }
+
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.src = imageElements[currentImageIndex].src;
+            updateImageCounter();
+
+            // Анимация перехода
+            expandedImg.style.opacity = '0';
+            setTimeout(() => {
+                expandedImg.style.opacity = '1';
+            }, 10);
+        }
+
+        // Обновление счетчика изображений
+        function updateImageCounter() {
+            if (imageElements.length > 1) {
+                const counter = document.getElementById('imageCounter');
+                counter.textContent = `${currentImageIndex + 1} / ${imageElements.length}`;
+                counter.style.display = 'block';
+            } else {
+                document.getElementById('imageCounter').style.display = 'none';
+            }
+        }
+
+        // Обработчики событий для свайпа на мобильных устройствах
+        function handleTouchStart(e) {
+            touchStartX = e.touches[0].clientX;
+            e.preventDefault(); // Предотвращаем прокрутку страницы
+        }
+
+        function handleTouchMove(e) {
+            if (!touchStartX) return;
+            touchEndX = e.touches[0].clientX;
+            const diff = touchStartX - touchEndX;
+
+            // Если горизонтальный свайп достаточно большой, предотвращаем вертикальную прокрутку
+            if (Math.abs(diff) > 10) {
+                e.preventDefault();
+            }
+        }
+
+        function handleTouchEnd() {
+            if (!touchStartX || !touchEndX) return;
+
+            const diff = touchStartX - touchEndX;
+            const threshold = 50; // Минимальное расстояние свайпа для смены изображения
+
+            if (diff > threshold) {
+                // Свайп влево - следующее изображение
+                navigateImage(1);
+            } else if (diff < -threshold) {
+                // Свайп вправо - предыдущее изображение
+                navigateImage(-1);
+            }
+
+            // Сбрасываем значения
+            touchStartX = 0;
+            touchEndX = 0;
+        }
+
+        // Обработчики событий для drag на ПК
+        function handleMouseDown(e) {
+            if (e.button !== 0) return; // Только левая кнопка мыши
+
+            modalIsDragging = true;
+            modalStartPos = e.clientX;
+            modalPrevTranslate = modalCurrentTranslate;
+            modalAnimationID = requestAnimationFrame(modalAnimation);
+
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.style.transition = 'none';
+            expandedImg.style.cursor = 'grabbing';
+        }
+
+        function handleMouseMove(e) {
+            if (!modalIsDragging) return;
+            const currentPosition = e.clientX;
+            modalCurrentTranslate = modalPrevTranslate + currentPosition - modalStartPos;
+
+            // Применяем трансформацию к изображению
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.style.transform = `translateX(${modalCurrentTranslate}px)`;
+        }
+
+        function handleMouseUp() {
+            if (!modalIsDragging) return;
+            modalIsDragging = false;
+            cancelAnimationFrame(modalAnimationID);
+
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.style.cursor = 'grab';
+            expandedImg.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+
+            const movedBy = modalCurrentTranslate - modalPrevTranslate;
+            const threshold = 100; // Минимальное расстояние для смены изображения
+
+            if (movedBy < -threshold) {
+                // Движение влево - следующее изображение
+                navigateImage(1);
+            } else if (movedBy > threshold) {
+                // Движение вправо - предыдущее изображение
+                navigateImage(-1);
+            }
+
+            // Возвращаем изображение в исходное положение
+            expandedImg.style.transform = 'translateX(0)';
+            modalCurrentTranslate = 0;
+            modalPrevTranslate = 0;
+        }
+
+        function modalAnimation() {
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.style.transform = `translateX(${modalCurrentTranslate}px)`;
+            if (modalIsDragging) requestAnimationFrame(modalAnimation);
+        }
+
+        // Обновляем обработчики кликов для изображений
+        document.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3').forEach(thumb => {
+            thumb.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openImageModal(this.src, this);
+            });
+        });
+
+        document.querySelectorAll('.modal-img').forEach(img => {
+            img.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openImageModal(this.src, this);
+            });
+        });
+
+        // Закрытие модального окна при клике вне изображения
+        document.getElementById('imageModal').addEventListener('click', function (e) {
+            if (e.target === this || e.target.classList.contains('image-modal-content')) {
+                closeImageModal();
+            }
+        });
+
+        // Закрытие модального окна по клавише ESC
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && document.getElementById('imageModal').style.display === 'block') {
+                closeImageModal();
+            }
+
+            // Навигация по изображениям с помощью клавиш
+            if (document.getElementById('imageModal').style.display === 'block') {
+                if (e.key === 'ArrowLeft') {
+                    navigateImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateImage(1);
+                }
+            }
+        });
+    </script>
+
+    <!-- Переход 1/2 -->
+    <script>
+        // Функция для подсветки активной страницы в пагинации
+        function highlightActivePage() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const paginationLinks = document.querySelectorAll('.pagination-link:not(.prev-next)');
+
+            paginationLinks.forEach(link => {
+                const linkPage = link.getAttribute('href').split('/').pop();
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Функция для навигации по страницам с помощью стрелок
+        function navigatePagination(direction) {
+            const activeLink = document.querySelector('.pagination-link.active');
+            if (!activeLink) return;
+
+            const links = Array.from(document.querySelectorAll('.pagination-link:not(.prev-next)'));
+            const currentIndex = links.findIndex(link => link.classList.contains('active'));
+            let newIndex = currentIndex + direction;
+
+            // Проверяем границы
+            if (newIndex < 0) newIndex = links.length - 1;
+            if (newIndex >= links.length) newIndex = 0;
+
+            // Переходим на новую страницу
+            window.location.href = links[newIndex].getAttribute('href');
+        }
+
+        // Вызываем функцию при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function () {
+            highlightActivePage();
+
+            // Добавляем обработчик для плавного нажатия кнопок
+            document.querySelectorAll('.pagination-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    if (this.classList.contains('prev-next')) {
+                        e.preventDefault();
+                    }
+
+                    // Анимация нажатия
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+        });
+
+        // Обработка изменения хэша (если используются якорные ссылки)
+        window.addEventListener('hashchange', highlightActivePage);
+    </script>
+</body>
+
+</html>

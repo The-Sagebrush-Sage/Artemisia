@@ -1,0 +1,2899 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemisia</title>
+    <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
+    <link rel="stylesheet" href="Artist.css">
+</head>
+
+<body>
+
+    <!-- Художники -->
+    <section>
+
+        <!-- Free -->
+        <section id="">
+            <section class="profile-section" data-style="">
+                <img src="" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1> </h1>
+                    <a href="https://t.me/" class="profile-link">
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: </p>
+                    <div class="social-links">
+                        <a href="" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artistCarousel">
+                <div class="works-inner" id="artistWorks">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-3" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-3" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artistWorks')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artistWorks')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal" class="modal">
+                <span class="close-btn" onclick="closeModal('modal')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Prem -->
+        <section id="">
+            <section class="profile-section" data-style="" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('')">
+                <div class="avatar-container" onclick="window.location.href='../'">
+                    <div class="avatar-border"></div>
+                    <img src="" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1></h1>
+                    <a href="https://t.me/" class="profile-link">
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: </p>
+
+
+                    <div class="social-links">
+                        <!-- ВКонтакте -->
+                        <a href="" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Telegram -->
+                        <a href="" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube-1.png" alt="YouTube" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Пинтерест -->
+                        <a href="" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Pin">
+                            <img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pin" width="32"
+                                height="32" loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- ТТ -->
+                        <a href="" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT" width="32"
+                                height="32" loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Инстаграмм -->
+                        <a href="" class="social-link" target="_blank" title="Инста">
+                            <img src="https://i.postimg.cc/yNzgZcft/image.png" alt="Инста" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist1Carousel">
+                <div class="works-inner" id="artist1Works">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-3" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-3" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-3" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                    <img src="" class="work-thumb-1" alt="">
+                    <img src="" class="work-thumb-2" alt="">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist1Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist1Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal1')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal1" class="modal">
+                <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+                    <img src="" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+    </section>
+
+
+    <section>
+        <!-- sPartridge Prem -->
+        <section>
+            <!-- sPartridge Prem -->
+            <section id="238">
+                <section class="profile-section" data-style="Авторский" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/026ZwvFG/sp-org.png')">
+                    <div class="avatar-container" onclick="window.location.href='../'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/zXpXNNTL/photo-2025-09-15-03-29-53.jpg" alt="Аватар"
+                            class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1>sPartridge</h1>
+                        <a href="https://t.me/s_Partridge" class="profile-link"> @s_Partridge
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский </p>
+
+
+                        <div class="social-links">
+                            <a href="https://t.me/supPartridge" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist1Carousel">
+                    <div class="works-inner" id="artist1Works">
+                        <img src="https://i.postimg.cc/yd98CSTB/photo-2025-09-15-03-29-37.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/446x8VdQ/photo-2025-09-15-03-29-40.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/90hFmFx9/photo-2025-09-15-03-29-43.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/x83jcD74/photo-2025-09-15-03-29-47.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/VLzL2v0Q/photo-2025-09-15-03-29-50.jpg" class="work-thumb-3"
+                            alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist238Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist238Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal238')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal238" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal238')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/yd98CSTB/photo-2025-09-15-03-29-37.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/446x8VdQ/photo-2025-09-15-03-29-40.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/90hFmFx9/photo-2025-09-15-03-29-43.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/x83jcD74/photo-2025-09-15-03-29-47.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/VLzL2v0Q/photo-2025-09-15-03-29-50.jpg" class="modal-img" alt="">
+                    </div>
+                </div>
+            </section>
+
+            <!-- sPartridge -->
+            <section id="238">
+                <section class="profile-section" data-style="Авторский">
+                    <img src="https://i.postimg.cc/zXpXNNTL/photo-2025-09-15-03-29-53.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-info">
+                        <h1> </h1>
+                        <a href="https://t.me/s_Partridge" class="profile-link"> @s_Partridge
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский </p>
+                        <div class="social-links">
+                            <a href="https://t.me/supPartridge" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist238Carousel">
+                    <div class="works-inner" id="artist238Works">
+                        <img src="https://i.postimg.cc/yd98CSTB/photo-2025-09-15-03-29-37.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/446x8VdQ/photo-2025-09-15-03-29-40.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/90hFmFx9/photo-2025-09-15-03-29-43.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/x83jcD74/photo-2025-09-15-03-29-47.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/VLzL2v0Q/photo-2025-09-15-03-29-50.jpg" class="work-thumb-3"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist238Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist238Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal238')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal238" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal238')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/yd98CSTB/photo-2025-09-15-03-29-37.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/446x8VdQ/photo-2025-09-15-03-29-40.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/90hFmFx9/photo-2025-09-15-03-29-43.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/x83jcD74/photo-2025-09-15-03-29-47.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/VLzL2v0Q/photo-2025-09-15-03-29-50.jpg" class="modal-img" alt="">
+
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Damae -->
+        <section id="124">
+            <section class="profile-section" data-style="Авторский">
+                <img src="https://i.postimg.cc/L6dzMvz5/photo-5282750937779273055-y.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1> Damae </h1>
+                    <a href="https://t.me/DamaeXD" class="profile-link">
+                        @DamaeXD
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский </p>
+                    <div class="social-links">
+                        <a href="https://t.me/DAMAE_RABOTA" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist124Carousel">
+                <div class="works-inner" id="artist124Works">
+                    <img src="https://i.postimg.cc/vZzMdCcd/photo-5361680234677665136-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/dV6drYgZ/photo-5282750937779273050-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/j5pJtdnm/photo-5282750937779273051-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/4ypHdkzd/photo-5282750937779273053-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/bwpkZJVj/photo-5282750937779273054-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/zffhkQ1t/photo-5282750937779273057-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/hP9V4xrr/photo-5282767636612117160-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/1zYq7Km9/photo-5282926391488280535-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/1tnNkNXD/photo-5282926391488280536-y.jpg" class="work-thumb-3"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist124Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist124Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal124')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal124" class="modal">
+                <span class="close-btn" onclick="closeModal('modal124')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/vZzMdCcd/photo-5361680234677665136-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/dV6drYgZ/photo-5282750937779273050-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/j5pJtdnm/photo-5282750937779273051-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/4ypHdkzd/photo-5282750937779273053-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/bwpkZJVj/photo-5282750937779273054-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/zffhkQ1t/photo-5282750937779273057-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/hP9V4xrr/photo-5282767636612117160-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/1zYq7Km9/photo-5282926391488280535-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/1tnNkNXD/photo-5282926391488280536-y.jpg" class="modal-img" alt="">
+
+
+                </div>
+            </div>
+        </section>
+       
+        <!-- Скалли -->
+        <section>
+            <section id="233">
+                <section class="profile-section" data-style="Авторский">
+                    <img src="https://i.postimg.cc/6QVqWKKZ/IMG-0862.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-info">
+                        <h1> Скалли </h1>
+                        <a href="https://t.me/Skalli_S_T_92" class="profile-link">@Skalli_S_T_92
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский </p>
+                        <div class="social-links">
+                            <a href="t.me/sarra_skalli_92_13" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                            <!-- ВКонтакте -->
+                            <a href="http://vk.com/sarra.toniya_skalli_92" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="ВКонтакте">
+                                <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                    loading="lazy" class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist233Carousel">
+                    <div class="works-inner" id="artist233Works">
+                        <img src="https://i.postimg.cc/hvYPyPLk/IMG-0858.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/05XQ2ZTV/IMG-0860.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/2yyS7BZd/IMG-0861.jpg" class="work-thumb-2" alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist233Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist233Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal233')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal233" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal233')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/hvYPyPLk/IMG-0858.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/05XQ2ZTV/IMG-0860.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/2yyS7BZd/IMG-0861.jpg" class="modal-img" alt="">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Скалли Prem -->
+            <section id="233">
+                <section class="profile-section" data-style="" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/hPwfMMMX/IMG-0863.jpg')">
+                    <div class="avatar-container" onclick="window.location.href='../'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/6QVqWKKZ/IMG-0862.jpg" alt="Аватар" class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1> Скалли </h1>
+                        <a href="https://t.me/Skalli_S_T_92" class="profile-link">@Skalli_S_T_92
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский </p>
+                        <div class="social-links">
+                            <a href="t.me/sarra_skalli_92_13" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                            <!-- ВКонтакте -->
+                            <a href="http://vk.com/sarra.toniya_skalli_92" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="ВКонтакте">
+                                <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                    loading="lazy" class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist233Carousel">
+                    <div class="works-inner" id="artist233Works">
+                        <img src="https://i.postimg.cc/hvYPyPLk/IMG-0858.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/05XQ2ZTV/IMG-0860.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/2yyS7BZd/IMG-0861.jpg" class="work-thumb-2" alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist233Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist233Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal233')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal233" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal233')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/hvYPyPLk/IMG-0858.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/05XQ2ZTV/IMG-0860.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/2yyS7BZd/IMG-0861.jpg" class="modal-img" alt="">
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Айкуб -->
+        <section>
+            <section id="142">
+                <section class="profile-section" data-style="Авторский">
+                    <img src="https://i.postimg.cc/zB9T1R6D/photo-5235480669453412917-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1> Айкуб </h1>
+                        <a href="https://t.me/AIcube618" class="profile-link">
+                            @AIcube618
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский </p>
+                        <div class="social-links">
+                            <a href="https://t.me/AIcubeHome" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist142Carousel">
+                    <div class="works-inner" id="artist142Works">
+                        <img src="https://i.postimg.cc/cHKfjcD5/photo-5247076509921963995-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/fRK70yt5/photo-5256068230114570707-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/k5YxfHyb/photo-5323686623264765277-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/vZMLBfBc/photo-5323686623264765278-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/6QprVKCK/photo-5323686623264765279-y.jpg" class="work-thumb-1"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist142Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist142Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal142')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal142" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal142')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/cHKfjcD5/photo-5247076509921963995-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/fRK70yt5/photo-5256068230114570707-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/k5YxfHyb/photo-5323686623264765277-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/vZMLBfBc/photo-5323686623264765278-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/6QprVKCK/photo-5323686623264765279-y.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Айкуб Prem -->
+            <section id="142">
+                <section class="profile-section" data-style="Авторский" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/02CXSdgG/IMG-0287.png')">
+                    <div class="avatar-container" onclick="window.location.href='../Prem/Aukyb.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/zB9T1R6D/photo-5235480669453412917-y.jpg" alt="Аватар"
+                            class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1>Айкуб</h1>
+                        <a href="https://t.me/AIcube618" class="profile-link"> @AIcube618
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский</p>
+                        <div class="social-links">
+                            <a href="https://t.me/AIcubeHome" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist142Carousel">
+                    <div class="works-inner" id="artist142Works">
+                        <img src="https://i.postimg.cc/cHKfjcD5/photo-5247076509921963995-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/fRK70yt5/photo-5256068230114570707-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/k5YxfHyb/photo-5323686623264765277-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/vZMLBfBc/photo-5323686623264765278-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/6QprVKCK/photo-5323686623264765279-y.jpg" class="work-thumb-1"
+                            alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist142Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist142Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal142')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal142" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal142')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/cHKfjcD5/photo-5247076509921963995-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/fRK70yt5/photo-5256068230114570707-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/k5YxfHyb/photo-5323686623264765277-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/vZMLBfBc/photo-5323686623264765278-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/6QprVKCK/photo-5323686623264765279-y.jpg" class="modal-img"
+                            alt="">
+
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- madison -->
+        <section>
+            <section id="193">
+                <section class="profile-section" data-style="Аниме">
+                    <img src="https://i.postimg.cc/bN0K8Xdh/32.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-info">
+                        <h1>madison</h1>
+                        <a href="https://t.me/Kkaor1sn" class="profile-link"> @Kkaor1sn
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Аниме</p>
+                        <div class="social-links">
+                            <a href="https://t.me/madisonjj" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                            <a href="https://vk.com/madsonjj" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="ВКонтакте">
+                                <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                    loading="lazy" class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist193Carousel">
+                    <div class="works-inner" id="artist193Works">
+                        <img src="https://i.postimg.cc/t4kQd0H5/1.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/PqqG26Xk/2.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/HLvqKQn8/3.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/nzsytC9R/4.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/RhK2NyRw/5.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/W3QQpTM2/6.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/HWyqZ8gj/7.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/28NPPjkG/8.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/XYVtY2yy/9.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/cJdNRjFQ/91.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/9QdhqVYm/92.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/FKr02FCR/93.jpg" class="work-thumb-3" alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist193Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist193Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal193')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal193" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal193')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/t4kQd0H5/1.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/PqqG26Xk/2.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/HLvqKQn8/3.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/nzsytC9R/4.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/RhK2NyRw/5.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/W3QQpTM2/6.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/HWyqZ8gj/7.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/28NPPjkG/8.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/XYVtY2yy/9.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/cJdNRjFQ/91.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/9QdhqVYm/92.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/FKr02FCR/93.jpg" class="modal-img" alt="">
+                    </div>
+                </div>
+            </section>
+
+            <!-- madison Prem -->
+            <section id="193">
+                <section class="profile-section" data-style="Аниме" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/v8KCJLJP/image.jpg')">
+                    <div class="avatar-container" onclick="window.location.href='../Prem/madison.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/bN0K8Xdh/32.jpg" alt="Аватар" class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1> madison </h1>
+                        <a href="https://t.me/Kkaor1sn" class="profile-link"> @Kkaor1sn
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Аниме </p>
+                        <div class="social-links">
+                            <a href="https://t.me/madisonjj" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                            <a href="https://vk.com/madsonjj" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="ВКонтакте">
+                                <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                    loading="lazy" class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist193Carousel">
+                    <div class="works-inner" id="artist193Works">
+                        <img src="https://i.postimg.cc/t4kQd0H5/1.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/PqqG26Xk/2.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/HLvqKQn8/3.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/nzsytC9R/4.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/RhK2NyRw/5.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/W3QQpTM2/6.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/HWyqZ8gj/7.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/28NPPjkG/8.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/XYVtY2yy/9.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/cJdNRjFQ/91.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/9QdhqVYm/92.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/FKr02FCR/93.jpg" class="work-thumb-3" alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist193Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist193Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal193')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal193" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal193')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/t4kQd0H5/1.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/PqqG26Xk/2.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/HLvqKQn8/3.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/nzsytC9R/4.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/RhK2NyRw/5.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/W3QQpTM2/6.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/HWyqZ8gj/7.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/28NPPjkG/8.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/XYVtY2yy/9.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/cJdNRjFQ/91.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/9QdhqVYm/92.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/FKr02FCR/93.jpg" class="modal-img" alt="">
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- GinGemin Prem -->
+        <section id="220">
+            <section class="profile-section" data-style="Семиреализм" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('')">
+                <div class="avatar-container"
+                    onclick="window.location.href='../https://i.postimg.cc/V6QhNVVk/photo-5233305891288249347-y.jpg'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/1XM7J558/photo-5233412397887256722-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1> GinGemin </h1>
+                    <a href="https://t.me/ur_cosmo_gemini" class="profile-link"> @ur_cosmo_gemini
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Семиреализм </p>
+
+
+                    <div class="social-links">
+                        <!-- ВКонтакте -->
+                        <a href="https://vk.com/gingemin" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="ВКонтакте">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                        <!-- Telegram -->
+                        <a href="https://t.me/gingemin" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32"
+                                loading="lazy" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist220Carousel">
+                <div class="works-inner" id="artist220Works">
+                    <img src="https://i.postimg.cc/Kc5WZQrm/photo-5221991856508892160-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/mkT6YFRx/photo-5226727457384690968-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/TwV45Jzq/photo-5233412397887256718-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/7YYWb7m0/photo-5233412397887256719-y.jpg" class="work-thumb-2"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist220Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist220Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal220')">Ознакомиться со всеми работами</button>
+
+            <!-- Модальное окно для второго художника -->
+            <div id="modal220" class="modal">
+                <span class="close-btn" onclick="closeModal('modal220')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/Kc5WZQrm/photo-5221991856508892160-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/mkT6YFRx/photo-5226727457384690968-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/TwV45Jzq/photo-5233412397887256718-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/7YYWb7m0/photo-5233412397887256719-y.jpg" class="modal-img" alt="">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Эми Авагрей 4 месяца 05.05 мая начало  до 5 сентября-->
+        <section>
+            <section id="Amy_Avagray">
+                <section class="profile-section" data-style="Аниме">
+                    <img src="https://i.postimg.cc/Z5YmMCrZ/photo-5228988237974990784-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1> Эми Авагрей </h1>
+                        <a href="https://t.me/IrumaKirio" class="profile-link">
+                            @IrumaKirio
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Аниме</p>
+                        <div class="social-links">
+                            <a href="https://t.me/Amy_Avagre" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist32Carousel">
+                    <div class="works-inner" id="artist32Works">
+                        <img src="https://i.postimg.cc/y8D9MPCh/photo-5402315478610868843-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/LsMnc42Z/photo-5339423112854370931-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/sfq8brD3/photo-5256156637721392178-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/2SZzvVNx/photo-5222237842170834041-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/kXZJBWz4/photo-5228936625352993699-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/Z5YmMCrZ/photo-5228988237974990784-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/76JwndS2/photo-5222237842170834040-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/ZKxZHrvV/photo-5222237842170834044-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/bNhp16rZ/photo-5228988237974990775-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/cJbdY0tW/photo-5222237842170834046-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/kM876rJr/photo-5228988237974990776-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/zvnN9htD/photo-5228988237974990777-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/prNxGCB1/photo-5228988237974990778-y.jpg" class="work-thumb-1"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist32Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist32Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal32')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal32" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal32')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/y8D9MPCh/photo-5402315478610868843-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/LsMnc42Z/photo-5339423112854370931-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/sfq8brD3/photo-5256156637721392178-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/2SZzvVNx/photo-5222237842170834041-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/kXZJBWz4/photo-5228936625352993699-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Z5YmMCrZ/photo-5228988237974990784-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/76JwndS2/photo-5222237842170834040-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/ZKxZHrvV/photo-5222237842170834044-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/bNhp16rZ/photo-5228988237974990775-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/cJbdY0tW/photo-5222237842170834046-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/kM876rJr/photo-5228988237974990776-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/zvnN9htD/photo-5228988237974990777-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/prNxGCB1/photo-5228988237974990778-y.jpg" class="modal-img"
+                            alt="">
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Эми Авагрей Prem -->
+            <section id="Amy_Avagray">
+                <section class="profile-section" data-style="Аниме" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('')">
+                    <div class="avatar-container" onclick="window.location.href='../Amy_Avagray.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/Z5YmMCrZ/photo-5228988237974990784-y.jpg" alt="Аватар"
+                            class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1>Эми Авагрей</h1>
+                        <a href="https://t.me/IrumaKirio" class="profile-link">
+                            @IrumaKirio
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Аниме</p>
+
+
+                        <div class="social-links">
+                            <a href="https://t.me/Amy_Avagre" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist32Carousel">
+                    <div class="works-inner" id="artist32Works">
+                        <img src="https://i.postimg.cc/2SZzvVNx/photo-5222237842170834041-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/kXZJBWz4/photo-5228936625352993699-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/Z5YmMCrZ/photo-5228988237974990784-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/76JwndS2/photo-5222237842170834040-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/ZKxZHrvV/photo-5222237842170834044-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/bNhp16rZ/photo-5228988237974990775-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/cJbdY0tW/photo-5222237842170834046-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/kM876rJr/photo-5228988237974990776-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/zvnN9htD/photo-5228988237974990777-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/prNxGCB1/photo-5228988237974990778-y.jpg" class="work-thumb-1"
+                            alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist32Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist32Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal32')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal32" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal32')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/2SZzvVNx/photo-5222237842170834041-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/kXZJBWz4/photo-5228936625352993699-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Z5YmMCrZ/photo-5228988237974990784-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/76JwndS2/photo-5222237842170834040-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/ZKxZHrvV/photo-5222237842170834044-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/bNhp16rZ/photo-5228988237974990775-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/cJbdY0tW/photo-5222237842170834046-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/kM876rJr/photo-5228988237974990776-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/zvnN9htD/photo-5228988237974990777-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/prNxGCB1/photo-5228988237974990778-y.jpg" class="modal-img"
+                            alt="">
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Алексия на пару месяцев -->
+        <section>
+            <section id="Alexia">
+                <section class="profile-section" data-style="Дизайн">
+                    <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1>Алексия</h1>
+                        <a href="https://t.me/Ha0ruka" class="profile-link">
+                            @Ha0ruka
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Дизайн</p>
+                        <div class="social-links">
+                            <a href="https://t.me/A0lexyaa0" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist1Carousel">
+                    <div class="works-inner" id="artist1Works">
+                        <img src="https://i.postimg.cc/xTxzdnJn/photo-5226705699080367474-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/pVBjgDP9/photo-5226705699080367475-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/d3Jyh0jt/photo-5226705699080367476-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/5NNz16ts/photo-5226705699080367477-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/J0KBZWp3/photo-5226705699080367478-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/13bVpBrd/photo-5226705699080367485-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" class="work-thumb-2"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist1Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist1Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal1')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal1" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/xTxzdnJn/photo-5226705699080367474-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/pVBjgDP9/photo-5226705699080367475-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/d3Jyh0jt/photo-5226705699080367476-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/5NNz16ts/photo-5226705699080367477-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/J0KBZWp3/photo-5226705699080367478-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/13bVpBrd/photo-5226705699080367485-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Алексия -->
+            <section id="Alexia">
+                <section class="profile-section" data-style="Графический дизайн">
+                    <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1>Алексия</h1>
+                        <a href="https://t.me/Ha0ruka" class="profile-link">
+                            @Ha0ruka
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Графический дизайн</p>
+                        <div class="social-links">
+                            <a href="https://t.me/A0lexyaa0" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist23Carousel">
+                    <div class="works-inner" id="artist23Works">
+                        <img src="https://i.postimg.cc/xTxzdnJn/photo-5226705699080367474-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/pVBjgDP9/photo-5226705699080367475-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/d3Jyh0jt/photo-5226705699080367476-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/5NNz16ts/photo-5226705699080367477-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/J0KBZWp3/photo-5226705699080367478-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/13bVpBrd/photo-5226705699080367485-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" class="work-thumb-2"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist23Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist23Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal23')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal23" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal23')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/xTxzdnJn/photo-5226705699080367474-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/pVBjgDP9/photo-5226705699080367475-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/d3Jyh0jt/photo-5226705699080367476-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/5NNz16ts/photo-5226705699080367477-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/J0KBZWp3/photo-5226705699080367478-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/13bVpBrd/photo-5226705699080367485-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- creppylandau на 3 месяца оплата 08.05 начало до 8 августа -->
+        <section>
+            <section id="46">
+                <section class="profile-section" data-style="Семиреализм">
+                    <img src="https://i.postimg.cc/RVzPkn9p/photo-5247249064528047696-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1> creppylandau </h1>
+                        <a href="https://t.me/DRUSTALCACALS" class="profile-link">
+                            @DRUSTALCACALS
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Семиреализм</p>
+                        <div class="social-links">
+                            <a href="https://t.me/creppylandau1" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                            <a href="https://vk.com/creppylandau" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="ВКонтакте">
+                                <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                    loading="lazy" class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist46Carousel">
+                    <div class="works-inner" id="artist46Works">
+                        <img src="https://i.postimg.cc/PqF393r1/photo-5246765090433265896-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/wBB4W8H6/photo-5247234873956103373-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/G287CFHV/photo-5247249064528047688-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/Pxg6rCDx/photo-5247249064528047689-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/C5bcZwC4/photo-5247249064528047690-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/L4PCQVdZ/photo-5247249064528047691-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/9F3ScnPp/photo-5247249064528047699-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/nhpPD9P9/photo-5247249064528047698-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/zXnQvF01/photo-5247249064528047700-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/BZPk90Fb/photo-5247249064528047701-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/qvwZXBPb/photo-5247249064528047702-y.jpg" class="work-thumb-3"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist46Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist46Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal46')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal46" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal46')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/PqF393r1/photo-5246765090433265896-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/wBB4W8H6/photo-5247234873956103373-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/G287CFHV/photo-5247249064528047688-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Pxg6rCDx/photo-5247249064528047689-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/C5bcZwC4/photo-5247249064528047690-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/L4PCQVdZ/photo-5247249064528047691-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/9F3ScnPp/photo-5247249064528047699-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/nhpPD9P9/photo-5247249064528047698-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/zXnQvF01/photo-5247249064528047700-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/BZPk90Fb/photo-5247249064528047701-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/qvwZXBPb/photo-5247249064528047702-y.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- creppylandau Prem -->
+            <section id="46">
+                <section class="profile-section" data-style="Семиреализм" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/t4LjM129/Banner.jpg')">
+                    <div class="avatar-container" onclick="window.location.href='../html/creppylandau.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/RVzPkn9p/photo-5247249064528047696-y.jpg" alt="Аватар"
+                            class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1>creppylandau</h1>
+                        <a href="https://t.me/DRUSTALCACALS" class="profile-link">
+                            @DRUSTALCACALS
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Семиреализм</p>
+
+                        <div class="social-links">
+                            <a href="https://t.me/creppylandau1" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                            <a href="https://vk.com/creppylandau" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="ВКонтакте">
+                                <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                    loading="lazy" class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist46Carousel">
+                    <div class="works-inner" id="artist46Works">
+                        <img src="https://i.postimg.cc/PqF393r1/photo-5246765090433265896-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/wBB4W8H6/photo-5247234873956103373-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/G287CFHV/photo-5247249064528047688-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/Pxg6rCDx/photo-5247249064528047689-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/C5bcZwC4/photo-5247249064528047690-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/L4PCQVdZ/photo-5247249064528047691-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/9F3ScnPp/photo-5247249064528047699-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/nhpPD9P9/photo-5247249064528047698-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/zXnQvF01/photo-5247249064528047700-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/BZPk90Fb/photo-5247249064528047701-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/qvwZXBPb/photo-5247249064528047702-y.jpg" class="work-thumb-3"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist46Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist46Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal46')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal46" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal46')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/PqF393r1/photo-5246765090433265896-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/wBB4W8H6/photo-5247234873956103373-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/G287CFHV/photo-5247249064528047688-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Pxg6rCDx/photo-5247249064528047689-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/C5bcZwC4/photo-5247249064528047690-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/L4PCQVdZ/photo-5247249064528047691-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/9F3ScnPp/photo-5247249064528047699-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/nhpPD9P9/photo-5247249064528047698-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/zXnQvF01/photo-5247249064528047700-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/BZPk90Fb/photo-5247249064528047701-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/qvwZXBPb/photo-5247249064528047702-y.jpg" class="modal-img"
+                            alt="">
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Ели до 18 июня-->
+        <section>
+            <section id="79">
+                <section class="profile-section" data-style="Семиреализм">
+                    <img src="https://i.postimg.cc/SsNZB8d3/photo-5253724685504477297-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1> Ели</h1>
+                        <a href="https://t.me/talktondon" class="profile-link">
+                            @talktondon
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Семиреализм</p>
+                        <div class="social-links">
+                            <a href="https://t.me/yellisden" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist79Carousel">
+                    <div class="works-inner" id="artist79Works">
+                        <img src="https://i.postimg.cc/SsNZB8d3/photo-5253724685504477297-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/HLmvtFyp/photo-5188494496034318756-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Px36TxFx/photo-5215330151779398555-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Qd1n1jV4/photo-5253724685504477473-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/02645Yvq/photo-5215330151779398558-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Y2DVwXJ3/photo-5253724685504477472-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/431L2w6p/photo-5253488715706271305-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/kXkp22MR/photo-5253724685504477296-y.jpg" class="work-thumb-3"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist79Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist79Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal79')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal79" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal79')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/SsNZB8d3/photo-5253724685504477297-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/HLmvtFyp/photo-5188494496034318756-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Px36TxFx/photo-5215330151779398555-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Qd1n1jV4/photo-5253724685504477473-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/02645Yvq/photo-5215330151779398558-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Y2DVwXJ3/photo-5253724685504477472-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/431L2w6p/photo-5253488715706271305-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/kXkp22MR/photo-5253724685504477296-y.jpg" class="modal-img"
+                            alt="">
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ели Prem -->
+            <section id="79">
+                <section class="profile-section" data-style="Семиреализм" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/VshygCcm/497-20250518082324.jpg')">
+                    <div class="avatar-container" onclick="window.location.href='../Prem/Elu.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/Nf23zjgT/493-20250518065634.png" alt="Аватар" class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1>Ели </h1>
+                        <a href="https://t.me/talktondon" class="profile-link">
+                            @talktondon
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Семиреализм </p>
+                        <div class="social-links">
+                            <a href="https://t.me/yellisden" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist1Carousel">
+                    <div class="works-inner" id="artist1Works">
+                        <img src="https://i.postimg.cc/SsNZB8d3/photo-5253724685504477297-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/HLmvtFyp/photo-5188494496034318756-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Px36TxFx/photo-5215330151779398555-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Qd1n1jV4/photo-5253724685504477473-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/02645Yvq/photo-5215330151779398558-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Y2DVwXJ3/photo-5253724685504477472-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/431L2w6p/photo-5253488715706271305-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/kXkp22MR/photo-5253724685504477296-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/nh8ybfzW/IMG-20240819-124157-889.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/jSzGR3nS/390-20240909011917.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/m2MbFw10/404-20241010184428.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/y621d5xm/446-20250122131600.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/WzBHv02Z/447-20250124173900.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/dQhQJvsQ/455-20250228230502.png" class="work-thumb-2" alt="">
+                        <img src="https://i.postimg.cc/gjXTQgPd/456-20250308120808.png" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/RF08QMsW/458-20250311143644.png" class="work-thumb-2" alt="">
+                        <img src="https://i.postimg.cc/8CNxcdLB/460-20250311143502.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/ZqH2d9ck/462-20250312135614.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/1tYdvL2J/498-20250518002907.png" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/pLHPQFDy/398-20240918150641.jpg" class="work-thumb-3" alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist1Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist1Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal1')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal1" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/SsNZB8d3/photo-5253724685504477297-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/HLmvtFyp/photo-5188494496034318756-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Px36TxFx/photo-5215330151779398555-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Qd1n1jV4/photo-5253724685504477473-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/02645Yvq/photo-5215330151779398558-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Y2DVwXJ3/photo-5253724685504477472-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/431L2w6p/photo-5253488715706271305-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/kXkp22MR/photo-5253724685504477296-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/nh8ybfzW/IMG-20240819-124157-889.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/jSzGR3nS/390-20240909011917.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/m2MbFw10/404-20241010184428.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/y621d5xm/446-20250122131600.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/WzBHv02Z/447-20250124173900.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/dQhQJvsQ/455-20250228230502.png" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/gjXTQgPd/456-20250308120808.png" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/RF08QMsW/458-20250311143644.png" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/8CNxcdLB/460-20250311143502.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/ZqH2d9ck/462-20250312135614.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/1tYdvL2J/498-20250518002907.png" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/pLHPQFDy/398-20240918150641.jpg" class="modal-img" alt="">
+
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- pirozhoksmyatoy на 1 мес -->
+        <section>
+            <section id="109">
+                <section class="profile-section" data-style="Семиреализм">
+                    <img src="https://i.postimg.cc/NMR8vG59/photo-5269364224797308830-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1> pirozhoksmyatoy</h1>
+                        <a href="https://t.me/pirozhokssmyatoy" class="profile-link">
+                            @pirozhokssmyatoy
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Семиреализм</p>
+                        <div class="social-links">
+                            <a href="https://t.me/pirozhoksmyatoy" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                            <a href="https://www.tiktok.com/@pirozhoksmyatoy?_t=ZM-8suF1ItWaxx&_r=1" class="social-link"
+                                target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT"
+                                    width="32" height="32" loading="lazy" class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist109Carousel">
+                    <div class="works-inner" id="artist109Works">
+                        <img src="https://i.postimg.cc/JzhQHWdv/photo-5269364224797308828-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/NMR8vG59/photo-5269364224797308830-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/vTMrYRVP/photo-5269364224797308829-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/Bvr5zPQf/photo-5269364224797308831-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/YSGf8z7x/photo-5269364224797308832-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/8P4HCCwL/photo-5269364224797308833-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/rwYNSYBm/photo-5269364224797308834-y.jpg" class="work-thumb-3"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist109Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist109Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal109')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal109" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal109')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/JzhQHWdv/photo-5269364224797308828-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/NMR8vG59/photo-5269364224797308830-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/vTMrYRVP/photo-5269364224797308829-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Bvr5zPQf/photo-5269364224797308831-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/YSGf8z7x/photo-5269364224797308832-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/8P4HCCwL/photo-5269364224797308833-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/rwYNSYBm/photo-5269364224797308834-y.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- pirozhoksmyatoy Prem -->
+            <section id="109">
+                <section class="profile-section" data-style="Семиреализм" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/63wkZcL5/photo-5289694173320048750-y.jpg')">
+                    <div class="avatar-container" onclick="window.location.href='../Prem/pirozhoksmyatoy.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/NMR8vG59/photo-5269364224797308830-y.jpg" alt="Аватар"
+                            class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1>pirozhoksmyatoy</h1>
+                        <a href="https://t.me/pirozhokssmyatoy" class="profile-link">
+                            @pirozhokssmyatoy
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Семиреализм </p>
+
+
+                        <div class="social-links">
+                            <a href="https://t.me/pirozhoksmyatoy" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                            <a href="https://www.tiktok.com/@pirozhoksmyatoy?_t=ZM-8suF1ItWaxx&_r=1" class="social-link"
+                                target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT"
+                                    width="32" height="32" loading="lazy" class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist109Carousel">
+                    <div class="works-inner" id="artist109Works">
+                        <img src="https://i.postimg.cc/JzhQHWdv/photo-5269364224797308828-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/NMR8vG59/photo-5269364224797308830-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/vTMrYRVP/photo-5269364224797308829-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/Bvr5zPQf/photo-5269364224797308831-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/YSGf8z7x/photo-5269364224797308832-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/8P4HCCwL/photo-5269364224797308833-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/rwYNSYBm/photo-5269364224797308834-y.jpg" class="work-thumb-3"
+                            alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist109Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist109Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal109')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal109" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal109')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/JzhQHWdv/photo-5269364224797308828-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/NMR8vG59/photo-5269364224797308830-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/vTMrYRVP/photo-5269364224797308829-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Bvr5zPQf/photo-5269364224797308831-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/YSGf8z7x/photo-5269364224797308832-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/8P4HCCwL/photo-5269364224797308833-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/rwYNSYBm/photo-5269364224797308834-y.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- Шушу на 2 мес-->
+        <section>
+            <section id="45">
+                <section class="profile-section" data-style="Аниме">
+                    <img src="https://i.postimg.cc/zBPxkTn0/photo-5249086700645379434-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1> Шушу </h1>
+                        <a href="https://t.me/serrinss" class="profile-link">
+                            @serrinss
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Аниме</p>
+                        <div class="social-links">
+                            <a href="https://t.me/shushussy" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist45Carousel">
+                    <div class="works-inner" id="artist45Works">
+                        <img src="https://i.postimg.cc/qqW45BcN/photo-5274079729521127147-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/c1gTq40X/photo-5269636804896749357-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/HsDTnZW3/photo-5242419098925791705-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/PJZhKZym/photo-5242276372867576317-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/hPLcdLfn/photo-5233351452301323670-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/3rDKK5hd/photo-5242419098925791702-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/SsHkWV6S/photo-5242419098925791703-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/zBPxkTn0/photo-5249086700645379434-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/4y91pwBr/photo-5274007290602713430-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/TP07pzh8/photo-5242276372867576319-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/4d38tWhY/photo-5244559238179714269-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/3xgbH4Tx/photo-5249120845635383421-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/FKNCFrrg/photo-5249120845635383422-y.jpg" class="work-thumb-3"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist45Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist45Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal45')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal45" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal45')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/qqW45BcN/photo-5274079729521127147-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/c1gTq40X/photo-5269636804896749357-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/HsDTnZW3/photo-5242419098925791705-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/PJZhKZym/photo-5242276372867576317-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/hPLcdLfn/photo-5233351452301323670-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/3rDKK5hd/photo-5242419098925791702-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/SsHkWV6S/photo-5242419098925791703-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/zBPxkTn0/photo-5249086700645379434-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/4y91pwBr/photo-5274007290602713430-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/TP07pzh8/photo-5242276372867576319-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/4d38tWhY/photo-5244559238179714269-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/3xgbH4Tx/photo-5249120845635383421-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/FKNCFrrg/photo-5249120845635383422-y.jpg" class="modal-img"
+                            alt="">
+
+                    </div>
+                </div>
+            </section>
+
+            <!--Шушу Prem -->
+            <section id="45">
+                <section class="profile-section" data-style="Аниме" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/MKVGJ6ZC/115-20250520145317.png')">
+                    <div class="avatar-container" onclick="window.location.href='../Prem/Huhu.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/zBPxkTn0/photo-5249086700645379434-y.jpg" alt="Аватар"
+                            class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1>Шушу</h1>
+                        <a href="https://t.me/serrinss" class="profile-link">
+                            @serrinss
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Аниме </p>
+                        <div class="social-links">
+                            <a href="https://t.me/shushussy" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist45Carousel">
+                    <div class="works-inner" id="artist45Works">
+                        <img src="https://i.postimg.cc/qqW45BcN/photo-5274079729521127147-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/c1gTq40X/photo-5269636804896749357-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/HsDTnZW3/photo-5242419098925791705-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/PJZhKZym/photo-5242276372867576317-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/hPLcdLfn/photo-5233351452301323670-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/3rDKK5hd/photo-5242419098925791702-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/SsHkWV6S/photo-5242419098925791703-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/zBPxkTn0/photo-5249086700645379434-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/4y91pwBr/photo-5274007290602713430-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/TP07pzh8/photo-5242276372867576319-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/4d38tWhY/photo-5244559238179714269-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/3xgbH4Tx/photo-5249120845635383421-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/FKNCFrrg/photo-5249120845635383422-y.jpg" class="work-thumb-3"
+                            alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist45Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist45Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal45')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal45" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal45')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/qqW45BcN/photo-5274079729521127147-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/c1gTq40X/photo-5269636804896749357-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/HsDTnZW3/photo-5242419098925791705-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/PJZhKZym/photo-5242276372867576317-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/hPLcdLfn/photo-5233351452301323670-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/3rDKK5hd/photo-5242419098925791702-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/SsHkWV6S/photo-5242419098925791703-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/zBPxkTn0/photo-5249086700645379434-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/4y91pwBr/photo-5274007290602713430-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/TP07pzh8/photo-5242276372867576319-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/4d38tWhY/photo-5244559238179714269-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/3xgbH4Tx/photo-5249120845635383421-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/FKNCFrrg/photo-5249120845635383422-y.jpg" class="modal-img"
+                            alt="">
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- DeerPink на 3 мес -->
+        <section>
+            <section id="113">
+                <section class="profile-section" data-style="Семиреализм">
+                    <img src="https://i.postimg.cc/6qc4k4HH/photo-5276267611631512902-x.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1> DeerPink </h1>
+                        <a href="https://t.me/Dear_deer_DDT" class="profile-link">
+                            @Dear_deer_DDT
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Семиреализм </p>
+                        <div class="social-links">
+                            <a href="https://t.me/ddtarisu" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                            <a href="https://pin.it/tgUC0cSre" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="Pin">
+                                <img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pin" width="32"
+                                    height="32" loading="lazy" class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist113Carousel">
+                    <div class="works-inner" id="artist113Works">
+                        <img src="https://i.postimg.cc/zDFhb4Jn/photo-5276267611631512889-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/D0nbpPcJ/photo-5276267611631512890-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/W3Mk7H0c/photo-5276267611631512891-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/0NKmzQQQ/photo-5276267611631512892-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/pTNjzHhB/photo-5276267611631512893-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/ydzJWytQ/photo-5276267611631512894-y-1.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/Gh3ykz26/photo-5276267611631512897-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/rp408PnR/photo-5276267611631512895-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/7YBTX7Jh/photo-5276267611631512896-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Nj52nMR4/photo-5276267611631512898-y.jpg" class="work-thumb-3"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist113Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist113Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal113')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal113" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal113')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/zDFhb4Jn/photo-5276267611631512889-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/D0nbpPcJ/photo-5276267611631512890-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/W3Mk7H0c/photo-5276267611631512891-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/0NKmzQQQ/photo-5276267611631512892-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/pTNjzHhB/photo-5276267611631512893-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/ydzJWytQ/photo-5276267611631512894-y-1.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Gh3ykz26/photo-5276267611631512897-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/rp408PnR/photo-5276267611631512895-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/7YBTX7Jh/photo-5276267611631512896-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Nj52nMR4/photo-5276267611631512898-y.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- DeerPink Prem -->
+            <section id="113">
+                <section class="profile-section" data-style="Семиреализм" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/sXdNdKCS/photo-5294121451378570074-y.jpg')">
+                    <div class="avatar-container" onclick="window.location.href='../Prem/DeerPink.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/6qc4k4HH/photo-5276267611631512902-x.jpg" alt="Аватар"
+                            class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1>DeerPink </h1>
+                        <a href="https://t.me/Dear_deer_DDT" class="profile-link">
+                            @Dear_deer_DDT
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Семиреализм</p>
+
+
+                        <div class="social-links">
+                            <a href="https://t.me/ddtarisu" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                            <a href="https://pin.it/tgUC0cSre" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="Pin">
+                                <img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pin" width="32"
+                                    height="32" loading="lazy" class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist113Carousel">
+                    <div class="works-inner" id="artist113Works">
+                        <img src="https://i.postimg.cc/zDFhb4Jn/photo-5276267611631512889-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/D0nbpPcJ/photo-5276267611631512890-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/W3Mk7H0c/photo-5276267611631512891-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/0NKmzQQQ/photo-5276267611631512892-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/pTNjzHhB/photo-5276267611631512893-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/ydzJWytQ/photo-5276267611631512894-y-1.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/Gh3ykz26/photo-5276267611631512897-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/rp408PnR/photo-5276267611631512895-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/7YBTX7Jh/photo-5276267611631512896-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Nj52nMR4/photo-5276267611631512898-y.jpg" class="work-thumb-3"
+                            alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist113Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist113Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal113')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal113" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal113')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/zDFhb4Jn/photo-5276267611631512889-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/D0nbpPcJ/photo-5276267611631512890-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/W3Mk7H0c/photo-5276267611631512891-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/0NKmzQQQ/photo-5276267611631512892-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/pTNjzHhB/photo-5276267611631512893-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/ydzJWytQ/photo-5276267611631512894-y-1.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Gh3ykz26/photo-5276267611631512897-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/rp408PnR/photo-5276267611631512895-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/7YBTX7Jh/photo-5276267611631512896-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Nj52nMR4/photo-5276267611631512898-y.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Leya_12151 на 2 мес -->
+        <section>
+            <section id="55">
+                <section class="profile-section" data-style="Аниме">
+                    <img src="https://i.postimg.cc/QxSJgQh5/photo-5246753949288100419-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1>Leya_12151 </h1>
+                        <a href="https://t.me/Leya_12151" class="profile-link">
+                            @Leya_12151
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Аниме </p>
+                        <div class="social-links">
+                            <a href="https://t.me/Leya_1215111" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist55Carousel">
+                    <div class="works-inner" id="artist55Works">
+                        <img src="https://i.postimg.cc/KYK1nyVW/photo-5251447712887470148-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/zBK3cFqS/photo-5251447712887470149-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/7Lpf9WrZ/photo-5251447712887470150-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/QxSJgQh5/photo-5246753949288100419-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Cx1HcRx2/photo-5246753949288100420-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/q76cdWnX/photo-5246753949288100421-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/13j02yg3/photo-5246753949288100422-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/G2kk4YX4/photo-5246753949288100423-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/k4rQMwvr/photo-5246753949288100424-y.jpg" class="work-thumb-3"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist55Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist55Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal55')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal55" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal55')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/KYK1nyVW/photo-5251447712887470148-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/zBK3cFqS/photo-5251447712887470149-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/7Lpf9WrZ/photo-5251447712887470150-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/QxSJgQh5/photo-5246753949288100419-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Cx1HcRx2/photo-5246753949288100420-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/q76cdWnX/photo-5246753949288100421-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/13j02yg3/photo-5246753949288100422-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/G2kk4YX4/photo-5246753949288100423-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/k4rQMwvr/photo-5246753949288100424-y.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leya_12151 Prem -->
+            <section id="55">
+                <section class="profile-section" data-style="Аниме" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/0N7Gx0rF/photo-5326038465751674371-y.jpg')">
+                    <div class="avatar-container" onclick="window.location.href='../Prem/Leya_12151.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/QxSJgQh5/photo-5246753949288100419-y.jpg" alt="Аватар"
+                            class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1>Leya_12151</h1>
+                        <a href="https://t.me/Leya_12151" class="profile-link">
+                            @Leya_12151
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Аниме</p>
+
+                        <div class="social-links">
+                            <a href="https://t.me/Leya_1215111" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist55Carousel">
+                    <div class="works-inner" id="artist55Works">
+                        <img src="https://i.postimg.cc/KYK1nyVW/photo-5251447712887470148-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/zBK3cFqS/photo-5251447712887470149-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/7Lpf9WrZ/photo-5251447712887470150-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/QxSJgQh5/photo-5246753949288100419-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Cx1HcRx2/photo-5246753949288100420-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/q76cdWnX/photo-5246753949288100421-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/13j02yg3/photo-5246753949288100422-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/G2kk4YX4/photo-5246753949288100423-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/k4rQMwvr/photo-5246753949288100424-y.jpg" class="work-thumb-3"
+                            alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist55Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist55Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal55')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal55" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal55')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/KYK1nyVW/photo-5251447712887470148-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/zBK3cFqS/photo-5251447712887470149-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/7Lpf9WrZ/photo-5251447712887470150-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/QxSJgQh5/photo-5246753949288100419-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Cx1HcRx2/photo-5246753949288100420-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/q76cdWnX/photo-5246753949288100421-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/13j02yg3/photo-5246753949288100422-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/G2kk4YX4/photo-5246753949288100423-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/k4rQMwvr/photo-5246753949288100424-y.jpg" class="modal-img"
+                            alt="">
+
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- Kert -->
+        <section>
+
+            <section id="102">
+                <section class="profile-section" data-style="Авторский">
+                    <img src="https://i.postimg.cc/s2sBR3Sb/photo-5264992484960892458-x.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1> Kert</h1>
+                        <a href="https://t.me/alewqno" class="profile-link">
+                            @alewqno
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский</p>
+                        <div class="social-links">
+                            <a href="https://t.me/riskqwort" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist102Carousel">
+                    <div class="works-inner" id="artist102Works">
+                        <img src="https://i.postimg.cc/s2sBR3Sb/photo-5264992484960892458-x.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Nj1yVKy1/photo-5265078410076617462-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/CK7Rh9s5/photo-5265078410076617463-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/0QNbbZVf/photo-5265078410076617464-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/hPQQLycZ/photo-5265078410076617465-x.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Qt6KbvFw/photo-5267076811114802277-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/HxW7bTkb/photo-5267076811114802278-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/hj3hxxwq/photo-5244867908889340913-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/NF59PbTM/photo-5267076811114802279-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/ZYMyytty/photo-5267076811114802280-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/qqShfnXG/photo-5267298160844336357-y.jpg" class="work-thumb-3"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist102Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist102Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal102')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal102" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal102')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/s2sBR3Sb/photo-5264992484960892458-x.jpg" class="modal-img"
+                            alt="">
+
+                        <img src="https://i.postimg.cc/Nj1yVKy1/photo-5265078410076617462-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/CK7Rh9s5/photo-5265078410076617463-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/0QNbbZVf/photo-5265078410076617464-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/hPQQLycZ/photo-5265078410076617465-x.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Qt6KbvFw/photo-5267076811114802277-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/HxW7bTkb/photo-5267076811114802278-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/hj3hxxwq/photo-5244867908889340913-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/NF59PbTM/photo-5267076811114802279-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/ZYMyytty/photo-5267076811114802280-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/qqShfnXG/photo-5267298160844336357-y.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kert Prem -->
+            <section id="102">
+                <section class="profile-section" data-style="Авторский" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/ncggRd6d/photo-5388837776746738829-y.jpg')">
+                    <div class="avatar-container" onclick="window.location.href='../Prem/Kert.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/s2sBR3Sb/photo-5264992484960892458-x.jpg" alt="Аватар"
+                            class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1> Kert </h1>
+                        <a href="https://t.me/alewqno" class="profile-link">
+                            @alewqno
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский </p>
+
+                        <div class="social-links">
+                            <div class="social-links">
+                                <a href="https://t.me/riskqwort" class="social-link" target="_blank" title="Telegram">
+                                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                        class="social-icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist102Carousel">
+                    <div class="works-inner" id="artist102Works">
+                        <img src="https://i.postimg.cc/s2sBR3Sb/photo-5264992484960892458-x.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Nj1yVKy1/photo-5265078410076617462-y.jpg" class="work-thumb-2"
+                            alt="">
+                        <img src="https://i.postimg.cc/CK7Rh9s5/photo-5265078410076617463-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/0QNbbZVf/photo-5265078410076617464-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/hPQQLycZ/photo-5265078410076617465-x.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/Qt6KbvFw/photo-5267076811114802277-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/HxW7bTkb/photo-5267076811114802278-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/hj3hxxwq/photo-5244867908889340913-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/NF59PbTM/photo-5267076811114802279-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/ZYMyytty/photo-5267076811114802280-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/qqShfnXG/photo-5267298160844336357-y.jpg" class="work-thumb-3"
+                            alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist102Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist102Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal102')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal102" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal102')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/s2sBR3Sb/photo-5264992484960892458-x.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Nj1yVKy1/photo-5265078410076617462-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/CK7Rh9s5/photo-5265078410076617463-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/0QNbbZVf/photo-5265078410076617464-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/hPQQLycZ/photo-5265078410076617465-x.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/Qt6KbvFw/photo-5267076811114802277-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/HxW7bTkb/photo-5267076811114802278-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/hj3hxxwq/photo-5244867908889340913-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/NF59PbTM/photo-5267076811114802279-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/ZYMyytty/photo-5267076811114802280-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/qqShfnXG/photo-5267298160844336357-y.jpg" class="modal-img"
+                            alt="">
+
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- roklimorii -->
+        <section>
+            <section id="91">
+                <section class="profile-section" data-style="Аниме">
+                    <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg" alt="Аватар"
+                        class="avatar">
+                    <div class="profile-info">
+                        <h1>roklimorii </h1>
+                        <a href="https://t.me/roklimoriii" class="profile-link">
+                            @roklimoriii
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Аниме</p>
+                        <div class="social-links">
+                            <a href="https://t.me/rokliimoriii" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                            <a href="http://tiktok.com/@roklimorii" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="YouTube">
+                                <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT"
+                                    width="32" height="32" loading="lazy" class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist91Carousel">
+                    <div class="works-inner" id="artist91Works">
+                        <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/B6rcvfg2/photo-5201909001749656903-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/15xJmwCb/photo-5220197105640008853-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/NFR89CJS/photo-5255966898951155532-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/SQYgbDrW/photo-5255966898951155533-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/sXQ4ygpV/photo-5255966898951155534-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/6ptcRwN0/photo-5255966898951155535-y.jpg" class="work-thumb-3"
+                            alt="">
+
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist91Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist91Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal91')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal91" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal91')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/B6rcvfg2/photo-5201909001749656903-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/15xJmwCb/photo-5220197105640008853-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/NFR89CJS/photo-5255966898951155532-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/SQYgbDrW/photo-5255966898951155533-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/sXQ4ygpV/photo-5255966898951155534-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/6ptcRwN0/photo-5255966898951155535-y.jpg" class="modal-img"
+                            alt="">
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- roklimorii Prem -->
+            <section id="91">
+                <section class="profile-section" data-style="Аниме" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/cLQ0sP3z/77-20250626013703.png')">
+                    <div class="avatar-container" onclick="window.location.href='../Prem/roklimorii.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg" alt="Аватар"
+                            class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1> roklimorii </h1>
+                        <a href="https://t.me/roklimoriii" class="profile-link">
+                            @roklimoriii
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Аниме </p>
+
+                        <div class="social-links">
+                            <a href="https://t.me/rokliimoriii" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+                            <a href="http://tiktok.com/@roklimorii" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="YouTube">
+                                <img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TT"
+                                    width="32" height="32" loading="lazy" class="social-icon">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist91Carousel">
+                    <div class="works-inner" id="artist91Works">
+                        <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/B6rcvfg2/photo-5201909001749656903-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/15xJmwCb/photo-5220197105640008853-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/NFR89CJS/photo-5255966898951155532-y.jpg" class="work-thumb-1"
+                            alt="">
+                        <img src="https://i.postimg.cc/SQYgbDrW/photo-5255966898951155533-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/sXQ4ygpV/photo-5255966898951155534-y.jpg" class="work-thumb-3"
+                            alt="">
+                        <img src="https://i.postimg.cc/6ptcRwN0/photo-5255966898951155535-y.jpg" class="work-thumb-3"
+                            alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist91Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist91Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal91')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal91" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal91')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/qM8QzqWq/photo-5244899575683215394-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/B6rcvfg2/photo-5201909001749656903-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/15xJmwCb/photo-5220197105640008853-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/NFR89CJS/photo-5255966898951155532-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/SQYgbDrW/photo-5255966898951155533-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/sXQ4ygpV/photo-5255966898951155534-y.jpg" class="modal-img"
+                            alt="">
+                        <img src="https://i.postimg.cc/6ptcRwN0/photo-5255966898951155535-y.jpg" class="modal-img"
+                            alt="">
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- ich.morro -->
+        <section>
+            <section id="150">
+                <section class="profile-section" data-style="Авторский">
+                    <img src="https://i.postimg.cc/BvDGbkmK/2.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-info">
+                        <h1> ich.morro </h1>
+                        <a href="https://t.me/ich_morro" class="profile-link"> @ich_morro
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский </p>
+                        <div class="social-links">
+                            <a href="https://t.me/MorrosKabinett" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist150Carousel">
+                    <div class="works-inner" id="artist150Works">
+                        <img src="https://i.postimg.cc/sXdsJsMm/image.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/c1c0Qq07/image.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/5N7JRwH6/image.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/3xkh5dp9/image.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/BvDGbkmK/2.jpg" class="work-thumb-2" alt="">
+                        <img src="https://i.postimg.cc/d1jPmdPQ/image.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/gjc9MJmV/image.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/GtXW6CmZ/AC.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/FsR537Pm/image.jpg" class="work-thumb-1" alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist150Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist150Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal150')">Ознакомиться со всеми работами</button>
+
+                <!-- Modal -->
+                <div id="modal150" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal150')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/sXdsJsMm/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/c1c0Qq07/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/5N7JRwH6/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/3xkh5dp9/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/BvDGbkmK/2.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/d1jPmdPQ/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/gjc9MJmV/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/GtXW6CmZ/AC.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/FsR537Pm/image.jpg" class="modal-img" alt="">
+                    </div>
+                </div>
+            </section>
+
+            <!-- ich.morro Prem -->
+            <section id="150">
+                <section class="profile-section" data-style="Авторский" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('')">
+                    <div class="avatar-container" onclick="window.location.href='../'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/BvDGbkmK/2.jpg" alt="Аватар" class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1> ich.morro </h1>
+                        <a href="https://t.me/ich_morro" class="profile-link"> @ich_morro
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский</p>
+
+                        <div class="social-links">
+                            <a href="https://t.me/MorrosKabinett" class="social-link" target="_blank" title="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                    class="social-icon">
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist150Carousel">
+                    <div class="works-inner" id="artist150Works">
+                        <img src="https://i.postimg.cc/sXdsJsMm/image.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/c1c0Qq07/image.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/5N7JRwH6/image.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/3xkh5dp9/image.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/BvDGbkmK/2.jpg" class="work-thumb-2" alt="">
+                        <img src="https://i.postimg.cc/d1jPmdPQ/image.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/gjc9MJmV/image.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/GtXW6CmZ/AC.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/FsR537Pm/image.jpg" class="work-thumb-1" alt="">
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist150Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist150Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal150')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal150" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal150')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/sXdsJsMm/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/c1c0Qq07/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/5N7JRwH6/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/3xkh5dp9/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/BvDGbkmK/2.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/d1jPmdPQ/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/gjc9MJmV/image.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/GtXW6CmZ/AC.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/FsR537Pm/image.jpg" class="modal-img" alt="">
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- mlemri Prem -->
+        <section>
+            <section id="230">
+                <section class="profile-section" data-style="Авторский" data-prem="true"
+                    style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/9fYrxkrc/image.png')">
+                    <div class="avatar-container" onclick="window.location.href='../Prem/mlemri.html'">
+                        <div class="avatar-border"></div>
+                        <img src="https://i.postimg.cc/gkf8CvJT/image.png" alt="Аватар" class="avatar">
+                        <div class="profile-button"> Профиль</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1> mlemri </h1>
+                        <a href="https://t.me/kaktameo" class="profile-link"> @kaktameo
+
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram"
+                                class="profile-link-icon">
+                        </a>
+                        <p>Стиль: Авторский</p>
+
+
+                        <div class="social-links">
+                            <!-- ВКонтакте -->
+                            <a href="https://vk.com/mlemri" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="ВКонтакте">
+                                <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32"
+                                    loading="lazy" class="social-icon">
+                            </a>
+
+                            <!-- Telegram -->
+                            <a href="https://t.me/mlemri" class="social-link" target="_blank" rel="noopener noreferrer"
+                                aria-label="Telegram">
+                                <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32"
+                                    height="32" loading="lazy" class="social-icon">
+                            </a>
+
+
+                        </div>
+                    </div>
+                </section>
+
+                <h2 class="favorite-works">Публикации автора</h2>
+                <div class="works-carousel" id="artist230Carousel">
+                    <div class="works-inner" id="artist230Works">
+                        <img src="https://i.postimg.cc/NfyRCNgX/photo-5854921060703652490-y.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/HnNXsMtj/photo-5854921060703652491-y.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/ryZSJ6Lc/photo-5854921060703652489-y.jpg" class="work-thumb-1" alt="">
+                        <img src="https://i.postimg.cc/k4nxjq4M/photo-5854921060703652492-y.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/63YCgg2r/photo-5854921060703652493-y.jpg" class="work-thumb-3" alt="">
+                        <img src="https://i.postimg.cc/rss5kjxv/photo-5854921060703652494-y.jpg" class="work-thumb-1" alt="">
+                        
+                    </div>
+                    <button class="works-control prev" onclick="prevWork('artist230Works')">&#10094;</button>
+                    <button class="works-control next" onclick="nextWork('artist230Works')">&#10095;</button>
+                </div>
+                <button class="show-works-btn" onclick="openModal('modal230')">Ознакомиться со всеми работами</button>
+
+                <!-- Модальное окно для второго художника -->
+                <div id="modal230" class="modal">
+                    <span class="close-btn" onclick="closeModal('modal230')">&times;</span>
+                    <div class="modal-header">
+                        <h2>Галерея работ</h2>
+                    </div>
+                    <div class="modal-content">
+                        <img src="https://i.postimg.cc/NfyRCNgX/photo-5854921060703652490-y.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/HnNXsMtj/photo-5854921060703652491-y.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/ryZSJ6Lc/photo-5854921060703652489-y.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/k4nxjq4M/photo-5854921060703652492-y.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/63YCgg2r/photo-5854921060703652493-y.jpg" class="modal-img" alt="">
+                        <img src="https://i.postimg.cc/rss5kjxv/photo-5854921060703652494-y.jpg" class="modal-img" alt="">
+                        
+                    </div>
+                </div>
+            </section>
+        </section>
+
+    </section>
+</body>
+
+</html>

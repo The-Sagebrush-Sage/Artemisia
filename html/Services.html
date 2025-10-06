@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemisia</title>
+    <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Services.css">
+</head>
+
+<body>
+
+    <!-- Меню с header -->
+    <section>
+        <header>
+            <div class="header-left">
+                <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <a href="../index.html"> <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Логотип" class="logo"> </a>
+            </div>
+
+            <div class="search-container" id="searchContainer">
+                <div class="search-box">
+                    <div class="search-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#aaa" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                        </svg>
+                    </div>
+                    <input type="text" id="searchInput" placeholder="Поиск по сайту..." autocomplete="off">
+                    <button class="search-btn" onclick="performSearch()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#262626"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
+            <button class="mobile-search-btn" id="mobileSearchBtn" onclick="toggleSearch()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" />
+                </svg>
+            </button>
+            <div class="search-backdrop" id="searchBackdrop" onclick="toggleSearch()"></div>
+        </header>
+
+        <!-- Menu Drawer -->
+        <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+        <div class="drawer" id="drawer">
+            <ul class="menu">
+                <li><a href="../index.html">
+                        <img src="https://i.postimg.cc/6p8Gfk0N/home.png" alt="Главная">
+                        Главная
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Prem_Artist.html">
+                        <img src="https://i.postimg.cc/Z5Y5rqkg/prem-art.png" alt="Художники">
+                        Prem Artist
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Artist.html">
+                        <img src="https://i.postimg.cc/MGRMh1NP/man-14816778.png" alt="Художники">
+                        Художники
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Design.html">
+                        <img src="https://i.postimg.cc/t4xNXgTY/free-icon-pen-tablet-4861056.png" alt="Художники">
+                        Дизайнеры
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                        <img src="https://i.postimg.cc/85mFCN1L/mobile-shopping.png" alt="">
+                        Услуги
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="Services.html#Commission" class="submenu-link"
+                                onclick="openTabByLink('Commission')">
+                                COMMISSION ART
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Services.html#Yunchy" class="submenu-link" onclick="openTabByLink('Yunchy')">
+                                YCH
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Services.html#art" class="submenu-link" onclick="openTabByLink('art')">
+                                ADOPT
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a href="#">
+                        <img src="https://i.postimg.cc/bYRbyHJ4/draw.png" alt="">
+                        Комиксы
+                    </a>
+                </li>
+
+                <li class="separator-menu"></li>
+
+                <li><a href="AboutUs.html#about-site">
+                        Подробности о сайте
+                    </a>
+                </li>
+
+                <li><a href="AboutUs.html#publish-work">
+                        Опубликовать работу
+                    </a>
+                </li>
+
+                <li><a href="AboutUs.html#guarantees">
+                        Гаранты
+                    </a>
+                </li>
+
+                <li class="separator-menu"></li>
+
+                <li>
+                    <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                        <img src="https://i.postimg.cc/sDXB3kbZ/image.png" alt="">
+                        Документы
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="Document.html#user-agreement" class="submenu-link">Соглашение</a></li>
+                        <li><a href="Document.html#usage-rules" class="submenu-link">Правила использования</a></li>
+                        <li><a href="Document.html#guaranteed-deals" class="submenu-link">Гарантийные сделки</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="main-content">
+
+        <!-- Новое окно с правилами -->
+        <section>
+            <div class="rules-notification" id="rulesNotification">
+                <div class="rules-header">
+                    <h3 class="rules-title">Важная информация перед заказом</h3>
+                    <button class="close-rules" onclick="closeRules()">&times;</button>
+                </div>
+                <div class="rules-content">
+                    <p>Уважаемый пользователь, прежде чем приступить к оформлению заказа или приобретению каких-либо
+                        услуг в
+                        нашем сервисе, настоятельно рекомендуем вам ознакомиться с <a href="Document.html#usage-rules"
+                            class="rules-link" target="_blank">Правилами использования</a> и <a
+                            href="Document.html#user-agreement" class="rules-link" target="_blank">Пользовательским
+                            соглашением</a>.</p>
+                    <p>Эти документы содержат важную информацию о ваших правах и обязанностях, а также о наших условиях
+                        предоставления услуг.</p>
+                    <p>Ознакомление с данными документами поможет вам избежать недоразумений и убедиться, что вы
+                        полностью
+                        понимаете порядок взаимодействия с нашим сервисом.</p>
+                    <p>Если у вас возникнут вопросы или потребуется уточнение каких-либо пунктов, пожалуйста, свяжитесь
+                        с
+                        нашим <a href="https://t.me/Gg00Se" class="rules-link">главным модератором</a>. Мы всегда готовы
+                        помочь!</p>
+                    <div class="rules-signature">
+                        Спасибо за ваше внимание и доверие!<br>
+                        <strong>Команда Artemisia</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="filter-container">
+            <button class="filter-btn" onclick="toggleFilterModal()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 21V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M4 10V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M12 21V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M12 8V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M20 21V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M20 12V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M1 14H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M9 8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M17 16H23" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                Фильтры
+            </button>
+        </div>
+
+        <!-- Модальное окно фильтров -->
+        <div class="filter-modal" id="filterModal">
+            <div class="filter-modal-content">
+                <span class="close-filter"
+                    onclick="typeof toggleFilterModal === 'function' && toggleFilterModal()">&times;</span>
+                <h3>Фильтр по цене</h3>
+                <div class="price-range-container">
+                    <div class="price-inputs">
+                        <div class="price-input">
+                            <label for="minPrice">От</label>
+                            <input type="number" id="minPrice" placeholder="0" min="0">
+                        </div>
+                        <div class="price-input">
+                            <label for="maxPrice">До</label>
+                            <input type="number" id="maxPrice" placeholder="∞">
+                        </div>
+                    </div>
+                    <div class="range-slider">
+                        <input type="range" min="0" max="20000" value="0" class="min-range" id="minRange">
+                        <input type="range" min="0" max="20000" value="20000" class="max-range" id="maxRange">
+                    </div>
+                </div>
+                <button class="apply-filter-btn" onclick="applyPriceFilter()">Применить фильтр</button>
+                <button class="reset-filter-btn" onclick="resetPriceFilter()">Сбросить фильтр</button>
+            </div>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tabs">
+                <div class="tab" id="commission-tab" onclick="openTab(event, 'Commission')">COMMISSION </div>
+                <div class="tab" id="yunchy-tab" onclick="openTab(event, 'Yunchy')">YCH</div>
+                <div class="tab" id="art-tab" onclick="openTab(event, 'art')">ADOPT</div>
+            </div>
+        </div>
+
+        <div id="art" class="tab-content active">
+            <div class="anime-section">
+                Приносим свои извинения, но, к сожалению, на данный момент ADOPT мы не принимаем
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+        <div id="Commission" class="tab-content">
+            <div class="anime-section">
+                <img src="https://i.postimg.cc/wvXy2xr7/photo-5237902700295879739-w.jpg"
+                    alt="Персонализированный комишн"
+                    data-fullsize="https://i.postimg.cc/wvXy2xr7/photo-5237902700295879739-w.jpg">
+                <div class="text">
+                    <h3>Commission</h3>
+                    <div class="author">
+                        <img src="https://i.postimg.cc/V6x7z9kJ/photo-5276041150890895665-x-1.jpg" alt="Художник"
+                            onclick="window.location.href='../html/Nance.html'">
+                        <span>Автор: Nance </span>
+                    </div>
+                    <div class="description">
+                        Открыты комишн! Цены и условия представлены на изображении)
+                    </div>
+                    <div class="price">
+                        <span> Цена от </span> 600 ₽
+                    </div>
+                    <button class="order-btn"
+                        onclick="openOrderModal('Commission', 'Nance', 'от 600 ₽ (в зависимости от сложности)', 'https://t.me/enhchx')">Заказать</button>
+                </div>
+            </div>
+
+            <div class="anime-section">
+                <img src="https://i.postimg.cc/sxqXQd04/image.png"
+                    alt="Персонализированный комишн"
+                    data-fullsize="https://i.postimg.cc/sxqXQd04/image.png">
+                <div class="text">
+                    <h3>Commission</h3>
+                    <div class="author">
+                        <img src="https://i.postimg.cc/gkf8CvJT/image.png" alt="Художник"
+                            onclick="window.location.href='../Prem/mlemri.html'">
+                        <span>Автор: mlemri </span>
+                    </div>
+                    <div class="description">
+                        Открыты комишн! Цены и условия представлены на изображении)
+                    </div>
+                    <div class="price">
+                        <span> Цена от </span> 500 ₽
+                    </div>
+                    <button class="order-btn"
+                        onclick="openOrderModal('Commission', 'Nance', 'от 500 ₽ (в зависимости от сложности)', 'https://t.me/kaktameo')">Заказать</button>
+                </div>
+            </div>
+
+            <div class="anime-section">
+                <img src="https://i.postimg.cc/90KvmVdr/photo-5215311314052838510-y.jpg"
+                    alt="Персонализированный комишн"
+                    data-fullsize=" https://i.postimg.cc/90KvmVdr/photo-5215311314052838510-y.jpg">
+                <div class="text">
+                    <h3>Commission</h3>
+                    <div class="author">
+                        <img src=" https://i.postimg.cc/FKhM5XYg/photo-5193156524120337662-y.jpg " alt="Художник"
+                            onclick="window.location.href='../html/Artist.html#lulu'">
+                        <span>Автор: Лулу </span>
+                    </div>
+                    <div class="description">
+                        Открыты комишн! Цены и условия представлены на изображении)
+                    </div>
+                    <div class="price">
+                        <span> Цена от </span> 150 ₽
+                    </div>
+                    <button class="order-btn"
+                        onclick="openOrderModal('Commission', '  Лулу ', 'от 150 ₽ (в зависимости от сложности)', 'https://t.me/lulu_vvvp')">Заказать</button>
+                </div>
+            </div>
+
+            <div class="anime-section">
+                <img src="  https://i.postimg.cc/3NgrwqCg/photo-5219959559588804654-y.jpg"
+                    alt="Персонализированный комишн"
+                    data-fullsize="https://i.postimg.cc/3NgrwqCg/photo-5219959559588804654-y.jpg">
+                <div class="text">
+                    <h3>Commission</h3>
+                    <div class="author">
+                        <img src=" https://i.postimg.cc/nhCxyvJp/photo-5221955460956024539-y.jpg" alt="Художник"
+                            onclick="window.location.href='../html/Artist.html#Greentea'">
+                        <span>Автор: Greentea </span>
+                    </div>
+                    <div class="description">
+                        Открыты комишн! Цены и условия представлены на изображении)
+                    </div>
+                    <div class="price">
+                        <span> Цена от </span> 250 ₽
+                    </div>
+                    <button class="order-btn"
+                        onclick="openOrderModal('Commission', '  Greentea  ', 'от 250 ₽ (в зависимости от сложности)', 'https://t.me/Polinagreentea')">Заказать</button>
+                </div>
+            </div>
+
+            <div class="anime-section">
+                <img src="https://i.postimg.cc/JnqXm8M5/496-20250518072338.png" alt="Персонализированный комишн"
+                    data-fullsize="https://i.postimg.cc/JnqXm8M5/496-20250518072338.png">
+                <div class="text">
+                    <h3>Commission</h3>
+                    <div class="author">
+                        <img src="https://i.postimg.cc/Nf23zjgT/493-20250518065634.png" alt="Художник"
+                            onclick="window.location.href='../Prem/Elu.html'">
+                        <span>Автор: Ели </span>
+                    </div>
+                    <div class="description">
+                        Открыты комишн! Цены и условия представлены на изображении)
+                    </div>
+                    <div class="price">
+                        <span> Цена от </span> 250 ₽
+                    </div>
+                    <button class="order-btn"
+                        onclick="openOrderModal('Commission', '  Ели  ', 'от 250 ₽ (в зависимости от сложности)', 'https://t.me/talktondon')">Заказать</button>
+                </div>
+            </div>
+
+            <div class="anime-section">
+                <img src="https://i.postimg.cc/zfXDhTwN/photo-5287556911694215946-y.jpg"
+                    alt="Персонализированный комишн"
+                    data-fullsize="https://i.postimg.cc/zfXDhTwN/photo-5287556911694215946-y.jpg">
+                <div class="text">
+                    <h3>Commission</h3>
+                    <div class="author">
+                        <img src="https://i.postimg.cc/zBPxkTn0/photo-5249086700645379434-y.jpg" alt="Художник"
+                            onclick="window.location.href='../html/Artist.html#45'">
+                        <span>Автор: Шушу </span>
+                    </div>
+                    <div class="description">
+                        Открыты комишн! Цены и условия представлены на изображении)
+                    </div>
+                    <div class="price">
+                        <span> Цена от </span> 50 ₽
+                    </div>
+                    <button class="order-btn"
+                        onclick="openOrderModal('Commission', '  Шушу  ', 'от 50 ₽ (в зависимости от сложности)', 'https://t.me/serrinss')">Заказать</button>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+        <div id="Yunchy" class="tab-content">
+            <div class="anime-section">
+                <img src="" alt="Изображение" data-fullsize="">
+                <div class="text">
+                    <h3></h3>
+                    <div class="author">
+
+                    </div>
+                    <div class="description">
+                        Ждем ваши работы!
+                    </div>
+                    <div class="price">
+                        <span> </span>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+        <!-- Модальное окно для изображений -->
+        <div id="imageModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+
+        <!-- Модальное окно для заказа -->
+        <div id="orderModal" class="order-modal">
+            <div class="order-modal-content">
+                <span class="close-order-modal" onclick="closeOrderModal()">&times;</span>
+                <h3>Оформление заказа</h3>
+                <p>Для оформления заказа свяжитесь с автором напрямую через указанные контакты.</p>
+                <div class="contact-info">
+                    <p><strong>Автор:</strong> <span id="modalAuthorName"></span></p>
+                    <p><strong>Работа:</strong> <span id="modalWorkTitle"></span></p>
+                    <p><strong>Цена:</strong> <span id="modalWorkPrice"></span></p>
+                </div>
+                <a href="#" class="contact-link" id="modalContactLink" target="_blank">Связаться с автором</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <a href="../index.html" class="footer-logo-link">
+                <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Artemisia" class="footer-logo">
+            </a>
+
+            <div class="footer-links">
+                <a href="AboutUs.html#about-site" class="footer-link">Подробности о сайте</a>
+                <a href="https://t.me/Artemisia_publicationBot" class="footer-link">Опубликовать работу</a>
+                <a href="https://t.me/Gg00Se" class="footer-link">Связь с гарантом</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-text">
+                Следите за обновлениями
+                <a href="https://t.me/Artemisia_website" class="footer-link" target="_blank">@Artemisia_website</a>
+            </p>
+
+            <div class="footer-social">
+                <!-- Telegram -->
+                <a href="https://t.me/Artemisia_website" class="social-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM15.53 8.23C15.73 8.13 15.93 8.15 16.09 8.28C16.25 8.41 16.31 8.62 16.25 8.82L14.81 15.44C14.66 16.03 14.3 16.19 13.81 15.93L11.05 13.85L9.8 15.08C9.66 15.22 9.54 15.34 9.28 15.34L9.53 12.54L14.44 8.34C14.66 8.15 14.8 8.24 14.63 8.41L10.63 11.93L7.83 10.91C7.26 10.71 7.25 10.31 7.94 10.01L15.03 7.17C15.5 6.99 15.9 7.21 15.53 8.23Z" />
+                    </svg>
+                </a>
+
+                <!-- VK -->
+                <a href="https://vk.com" class="social-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93V15.07C2 20.67 3.33 22 8.93 22H15.07C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2M18.15 16.27H16.69C16.14 16.27 15.97 15.82 15 14.83C14.12 14 13.74 13.88 13.53 13.88C13.24 13.88 13.15 13.96 13.15 14.38V15.69C13.15 16.04 13.04 16.26 12.11 16.26C10.57 16.26 8.86 15.32 7.66 13.59C5.85 11.05 5.36 9.13 5.36 8.75C5.36 8.54 5.43 8.34 5.85 8.34H7.32C7.69 8.34 7.83 8.5 7.97 8.9C8.69 11 9.89 12.8 10.38 12.8C10.57 12.8 10.65 12.71 10.65 12.25V10.1C10.6 9.12 10.07 9.03 10.07 8.68C10.07 8.5 10.21 8.34 10.44 8.34H12.73C13.04 8.34 13.15 8.5 13.15 8.88V11.77C13.15 12.08 13.28 12.19 13.38 12.19C13.56 12.19 13.72 12.08 14.05 11.74C15.1 10.57 15.85 8.76 15.85 8.76C15.95 8.55 16.11 8.34 16.48 8.34H17.93C18.37 8.34 18.47 8.58 18.37 8.89C18.19 9.74 16.41 12.25 16.43 12.25C16.27 12.5 16.21 12.61 16.43 12.9C16.58 13.13 17.09 13.55 17.43 13.94C18.05 14.65 18.53 15.24 18.66 15.65C18.77 16.06 18.57 16.27 18.15 16.27Z" />
+                    </svg>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com" class="social-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                    </svg>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@artemisia_web_tt?_t=ZS-8xgqwBPHwfJ&_r=1" class="social-icon"
+                    target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Стрелка вверх -->
+    <div id="backToTopBtn" class="back-to-top-btn" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+        </svg>
+    </div>
+
+    <script>
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function () {
+            // Проверяем хэш URL
+            const hash = window.location.hash.substring(1);
+            const availableTabs = ['art', 'Commission', 'Yunchy'];
+
+            if (availableTabs.includes(hash)) {
+                openTab(null, hash);
+            } else {
+                // Если хэша нет, открываем первую вкладку по умолчанию
+                openTab(null, 'art');
+            }
+
+            // Добавляем обработчики для всех изображений
+            initImageModals();
+
+            // Show/hide back to top button on scroll
+            window.addEventListener('scroll', function () {
+                const backToTopBtn = document.getElementById('backToTopBtn');
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('active');
+                } else {
+                    backToTopBtn.classList.remove('active');
+                }
+            });
+
+            // Добавляем обработчик клика вне модального окна фильтров
+            document.getElementById('filterModal').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    toggleFilterModal();
+                }
+            });
+        });
+
+        // Функция для открытия/закрытия меню
+        function toggleMenu() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+            const body = document.body;
+            const searchInput = document.getElementById('searchInput');
+
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('active');
+            menuIcon.classList.toggle('active');
+            body.classList.toggle('no-scroll');
+
+            // Блокируем или разблокируем поисковую строку
+            if (drawer.classList.contains('open')) {
+                searchInput.disabled = true;
+                searchInput.placeholder = 'Поиск недоступен при открытом меню';
+            } else {
+                searchInput.disabled = false;
+                searchInput.placeholder = 'Поиск по сайту...';
+            }
+        }
+
+
+        // Функция для открытия/закрытия подменю
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const submenu = event.currentTarget.nextElementSibling;
+            submenu.classList.toggle('active');
+            event.currentTarget.classList.toggle('active');
+        }
+
+        // Функция для открытия вкладки
+        function openTab(event, tabName) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Активируем нужную вкладку
+            document.getElementById(tabName).classList.add('active');
+
+            // Активируем соответствующую кнопку таба
+            if (event) {
+                event.currentTarget.classList.add('active');
+            } else {
+                const tabButtons = document.querySelectorAll('.tab');
+                tabButtons.forEach(button => {
+                    if (button.getAttribute('onclick').includes(tabName)) {
+                        button.classList.add('active');
+                    }
+                });
+            }
+
+            // Прокручиваем страницу к открытой вкладке
+            document.getElementById(tabName).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Функция для открытия вкладки через меню
+        function openTabByLink(tabName) {
+            toggleMenu();
+            openTab(null, tabName);
+        }
+
+        // Функция для сворачивания/разворачивания контента
+        function toggleCollapse(element) {
+            element.classList.toggle('active');
+        }
+
+        // Инициализация модальных окон для всех изображений
+        function initImageModals() {
+            document.querySelectorAll('.anime-section img').forEach(image => {
+                // Проверяем, не является ли изображение аватаркой (находится внутри элемента с классом author)
+                if (!image.closest('.author')) {
+                    image.addEventListener('click', () => {
+                        openModal(image);
+                    });
+                }
+            });
+        }
+
+        // Модальное окно для изображений
+        function openModal(imageElement) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const fullsizeSrc = imageElement.getAttribute('data-fullsize');
+            modal.style.display = 'block';
+            modalImg.src = fullsizeSrc || imageElement.src;
+            document.body.classList.add('no-scroll');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.classList.remove('no-scroll');
+        }
+
+        // Модальное окно для заказа
+        function openOrderModal(title, author, price, contactLink) {
+            document.getElementById('modalWorkTitle').textContent = title;
+            document.getElementById('modalAuthorName').textContent = author;
+            document.getElementById('modalWorkPrice').textContent = price;
+            document.getElementById('modalContactLink').href = contactLink;
+
+            document.getElementById('orderModal').style.display = 'block';
+            document.body.classList.add('no-scroll');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+            document.body.classList.remove('no-scroll');
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('imageModal');
+            const orderModal = document.getElementById('orderModal');
+            const filterModal = document.getElementById('filterModal');
+
+            if (event.target === modal) {
+                closeModal();
+            }
+
+            if (event.target === orderModal) {
+                closeOrderModal();
+            }
+
+            if (event.target === filterModal) {
+                toggleFilterModal();
+            }
+        };
+
+        // Search functionality
+        function toggleSearch() {
+            const searchContainer = document.getElementById('searchContainer');
+            const searchBackdrop = document.getElementById('searchBackdrop');
+            const isActive = searchContainer.classList.contains('active');
+
+            if (isActive) {
+                searchContainer.classList.remove('active');
+                searchBackdrop.classList.remove('active');
+                document.getElementById('searchResults').classList.remove('active');
+                document.getElementById('searchInput').value = '';
+                document.body.style.overflow = 'auto';
+            } else {
+                searchContainer.classList.add('active');
+                searchBackdrop.classList.add('active');
+                document.getElementById('searchInput').focus();
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Close menu if open
+            if (document.getElementById('drawer').classList.contains('open')) {
+                toggleMenu();
+            }
+        }
+
+        // Remove all highlights from text
+        function removeHighlights() {
+            document.querySelectorAll('.search-highlight').forEach(el => {
+                const parent = el.parentNode;
+                parent.replaceChild(document.createTextNode(el.textContent), el);
+                parent.normalize();
+            });
+        }
+
+        // Highlight text in element
+        function highlightText(element, searchText) {
+            if (!searchText) return;
+
+            const regex = new RegExp(searchText, 'gi');
+            const text = element.textContent;
+
+            if (regex.test(text)) {
+                element.innerHTML = text.replace(regex, match =>
+                    `<span class="search-highlight">${match}</span>`
+                );
+            }
+        }
+
+        // Функция для выполнения поиска
+        function performSearch() {
+            const searchText = document.getElementById('searchInput').value.trim();
+            const resultsContainer = document.getElementById('searchResults');
+
+            if (!searchText) {
+                resultsContainer.innerHTML = '<div class="no-results">Введите поисковый запрос</div>';
+                resultsContainer.classList.add('active');
+                removeHighlights();
+                return;
+            }
+
+            // Удаляем предыдущие подсветки
+            removeHighlights();
+
+            // Ищем по всем вкладкам
+            const tabContents = document.querySelectorAll('.tab-content');
+            let found = false;
+            let firstMatchElement = null;
+            resultsContainer.innerHTML = '';
+
+            tabContents.forEach(tab => {
+                const tabId = tab.id;
+                const tabName = document.querySelector(`.tab[onclick*="${tabId}"]`).textContent;
+                let tabHasResults = false;
+
+                // Ищем в текстовом содержимом
+                const textElements = tab.querySelectorAll('.text h3, .text .description, .text .author span');
+
+                textElements.forEach(el => {
+                    const text = el.textContent;
+                    if (text.toLowerCase().includes(searchText.toLowerCase())) {
+                        found = true;
+                        tabHasResults = true;
+                        highlightText(el, searchText);
+
+                        // Сохраняем первый найденный элемент
+                        if (!firstMatchElement) {
+                            firstMatchElement = el;
+                        }
+                    }
+                });
+
+                // Добавляем в результаты, если найдено в этой вкладке
+                if (tabHasResults) {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.innerHTML = `
+                <div class="info">
+                    <div class="name">${tabName}</div>
+                    <div class="style">Найдено в разделе</div>
+                </div>`;
+                    resultItem.onclick = () => {
+                        openTab(null, tabId);
+                        resultsContainer.classList.remove('active');
+                        // Прокручиваем к первому совпадению в этой вкладке
+                        const firstInTab = tab.querySelector('.search-highlight');
+                        if (firstInTab) {
+                            firstInTab.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
+                        }
+                    };
+                    resultsContainer.appendChild(resultItem);
+                }
+            });
+
+            if (!found) {
+                resultsContainer.innerHTML = '<div class="no-results">Ничего не найдено</div>';
+            } else {
+                // Прокручиваем к первому совпадению на странице
+                if (firstMatchElement) {
+                    firstMatchElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            }
+
+            resultsContainer.classList.add('active');
+        }
+
+        // Поиск по нажатию Enter
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Поиск по клику на кнопку
+        document.querySelector('.search-btn').addEventListener('click', function () {
+            performSearch();
+        });
+
+        // Убираем поиск при вводе (оставляем только по явному запросу)
+        document.getElementById('searchInput').addEventListener('input', function () {
+            // Только очищаем результаты, если поле пустое
+            if (this.value.length === 0) {
+                document.getElementById('searchResults').classList.remove('active');
+                removeHighlights();
+            }
+        });
+
+        // Close search when clicking outside (desktop)
+        document.addEventListener('click', function (e) {
+            const searchContainer = document.getElementById('searchContainer');
+            const searchResults = document.getElementById('searchResults');
+            const searchInput = document.getElementById('searchInput');
+            const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+
+            if (!searchContainer.contains(e.target) &&
+                e.target !== mobileSearchBtn &&
+                !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Close search when scrolling on mobile
+        window.addEventListener('scroll', function () {
+            if (window.innerWidth <= 768 &&
+                document.getElementById('searchContainer').classList.contains('active')) {
+                toggleSearch();
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Функции для работы с фильтрами
+        function toggleFilterModal() {
+            const modal = document.getElementById('filterModal');
+            modal.classList.toggle('active');
+            document.body.classList.toggle('no-scroll', modal.classList.contains('active'));
+        }
+
+        function closeFilterModal() {
+            const modal = document.getElementById('filterModal');
+            modal.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+
+        // Закрытие при клике вне области
+        document.getElementById('filterModal').addEventListener('click', function (e) {
+            if (e.target === this) closeFilterModal();
+        });
+
+        // Функция для применения фильтра цен
+        function applyPriceFilter() {
+            const minPriceInput = document.getElementById('minPrice');
+            const maxPriceInput = document.getElementById('maxPrice');
+
+            // Получаем значения и преобразуем их в числа
+            const minPrice = minPriceInput.value ? parseInt(minPriceInput.value) : 0;
+            const maxPrice = maxPriceInput.value ? parseInt(maxPriceInput.value) : Infinity;
+
+            const tabContents = document.querySelectorAll('.tab-content');
+            let anyVisibleInAnyTab = false;
+
+            tabContents.forEach(tab => {
+                const animeSections = tab.querySelectorAll('.anime-section');
+                let anyVisibleInTab = false;
+
+                animeSections.forEach(section => {
+                    const priceElement = section.querySelector('.price');
+                    if (!priceElement) {
+                        section.style.display = 'none';
+                        return;
+                    }
+
+                    // Извлекаем цену из текста (ищем первое число)
+                    const priceText = priceElement.textContent;
+                    const priceMatch = priceText.match(/\d+/);
+                    const price = priceMatch ? parseInt(priceMatch[0]) : 0;
+
+                    if (price >= minPrice && price <= maxPrice) {
+                        section.style.display = 'flex';
+                        anyVisibleInTab = true;
+                        anyVisibleInAnyTab = true;
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+
+                // Удаляем старое сообщение, если есть
+                const existingMessage = tab.querySelector('.no-results-filter');
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+
+                // Показываем сообщение, если ничего не найдено в этой вкладке
+                if (!anyVisibleInTab) {
+                    const noResultsMessage = document.createElement('div');
+                    noResultsMessage.className = 'no-results-filter';
+                    noResultsMessage.textContent = 'Нет работ в выбранном диапазоне цен';
+                    tab.insertBefore(noResultsMessage, tab.firstChild);
+                }
+            });
+
+            closeFilterModal();
+        }
+
+
+        // Функция для сброса фильтров
+        function resetPriceFilter() {
+            document.getElementById('minPrice').value = '';
+            document.getElementById('maxPrice').value = '';
+            document.getElementById('minRange').value = 0;
+            document.getElementById('maxRange').value = 20000;
+
+            const animeSections = document.querySelectorAll('.anime-section');
+            animeSections.forEach(section => {
+                section.style.display = 'flex';
+            });
+
+            // Удаляем все сообщения "нет результатов"
+            document.querySelectorAll('.no-results-filter').forEach(msg => {
+                msg.remove();
+            });
+
+            closeFilterModal();
+        }
+
+
+
+        // Синхронизация полей ввода и слайдеров
+        document.getElementById('minPrice').addEventListener('input', function () {
+            document.getElementById('minRange').value = this.value || 0;
+        });
+
+        document.getElementById('maxPrice').addEventListener('input', function () {
+            const maxRange = document.getElementById('maxRange');
+            maxRange.value = this.value || 20000;
+        });
+
+        document.getElementById('minRange').addEventListener('input', function () {
+            document.getElementById('minPrice').value = this.value;
+        });
+
+        document.getElementById('maxRange').addEventListener('input', function () {
+            document.getElementById('maxPrice').value = this.value;
+        });
+
+        // Функция для закрытия окна с правилами
+        function closeRules() {
+            document.getElementById('rulesNotification').classList.add('hidden');
+
+            // Можно также сохранить в localStorage, что пользователь закрыл уведомление
+            localStorage.setItem('rulesNotificationClosed', 'true');
+        }
+
+        // Показываем уведомление только если пользователь его еще не закрывал
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!localStorage.getItem('rulesNotificationClosed')) {
+                document.getElementById('rulesNotification').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html>

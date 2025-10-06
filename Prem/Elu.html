@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemisia - Ели </title>
+    <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Prem.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="../index.html"> <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Логотип" class="logo"> </a>
+
+        </div>
+    </header>
+
+    <!-- Menu Drawer -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="drawer" id="drawer">
+        <ul class="menu">
+            <li><a href="../index.html">
+                    <img src="https://i.postimg.cc/6p8Gfk0N/home.png" alt="Главная">
+                    Главная
+                </a>
+            </li>
+
+            <li>
+                <a href="../html/Prem_Artist.html">
+                    <img src="https://i.postimg.cc/Z5Y5rqkg/prem-art.png" alt="Художники">
+                    Prem Artist
+                </a>
+            </li>
+
+            <li>
+                <a href="../html/Artist.html">
+                    <img src="https://i.postimg.cc/MGRMh1NP/man-14816778.png" alt="Художники">
+                    Художники
+                </a>
+            </li>
+
+            <li>
+                <a href="../html/Design.html">
+                    <img src="https://i.postimg.cc/t4xNXgTY/free-icon-pen-tablet-4861056.png" alt="Художники">
+                    Дизайнеры
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                    <img src="https://i.postimg.cc/85mFCN1L/mobile-shopping.png" alt="">
+                    Услуги
+                </a>
+
+                <ul class="submenu">
+                    <li>
+                        <a href="../html/Services.html#Commission" class="submenu-link" onclick="openTabByLink('Commission')">
+                            COMMISSION ART
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/Services.html#Yunchy" class="submenu-link" onclick="openTabByLink('Yunchy')">
+                            YCH
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/Services.html#art" class="submenu-link" onclick="openTabByLink('art')">
+                            ADOPT
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="#">
+                    <img src="https://i.postimg.cc/bYRbyHJ4/draw.png" alt="">
+                    Комиксы
+                </a>
+            </li>
+
+            <li class="separator-menu"></li>
+
+            <li><a href="../html/AboutUs.html#about-site">
+                    Подробности о сайте
+                </a>
+            </li>
+
+            <li><a href="../html/AboutUs.html#publish-work">
+                    Опубликовать работу
+                </a>
+            </li>
+
+            <li><a href="../html/AboutUs.html#guarantees">
+                    Гаранты
+                </a>
+            </li>
+
+            <li class="separator-menu"></li>
+
+            <li>
+                <a href="#" class="has-submenu" onclick="toggleSubmenu(event)">
+                    <img src="https://i.postimg.cc/sDXB3kbZ/image.png" alt="">
+                    Документы
+                </a>
+                <ul class="submenu">
+                    <li><a href="../html/Document.html#user-agreement" class="submenu-link">Соглашение</a></li>
+                    <li><a href="../html/Document.html#usage-rules" class="submenu-link">Правила использования</a></li>
+                    <li><a href="../html/Document.html#guaranteed-deals" class="submenu-link">Гарантийные сделки</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Карточка профиля -->
+    <div class="profile-card">
+        <div class="profile-header"
+            style="background: url('https://i.postimg.cc/VshygCcm/497-20250518082324.jpg') center/cover no-repeat">
+            <div class="header-overlay"></div>
+        </div>
+        <div class="profile-content">
+            <div class="avatar-container">
+                <div class="avatar-border"></div>
+                <img src="https://i.postimg.cc/Nf23zjgT/493-20250518065634.png" alt="Аватар" class="avatar">
+            </div>
+            <div class="profile-info">
+                <h1 class="profile-name"> Ели</h1>
+                <a href="https://t.me/talktondon" class="profile-link">
+                    @talktondon
+                    <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                </a>
+                <p class="profile-bio">Стиль: Семиреализм</p>
+
+                <div class="profile-badges">
+
+                    <span class="badge experience"><i class="fas fa-hourglass-half"></i> 8 лет опыта</span>
+                    <span class="badge pro"><i class="fas fa-star"></i> Prem Artist</span>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://t.me/yellisden" class="social-link" target="_blank" title="Telegram">
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabs section -->
+    <div class="tabs-container">
+        <div class="tabs-header">
+            <button class="tab-btn active" onclick="openTab(event, 'tab1')">Работы</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab2')">Обо мне</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab3')">Услуги</button>
+
+        </div>
+
+        <div id="tab1" class="tab-content active">
+            <div class="works-header">
+                <h3>
+                    <i class="fas fa-palette"></i> Мои работы
+                </h3>
+
+            </div>
+
+            <p class="gallery-description">Здесь представлены мои последние работы. Кликните на изображение для
+                просмотра в полном размере.</p>
+
+           
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/FzCT5Ctp/20250611-063015.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/FzCT5Ctp/20250611-063015.jpg" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/kXZTTHvX/513-20250609150709.png', '', this, true)">
+                    <img src="https://i.postimg.cc/kXZTTHvX/513-20250609150709.png" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/Gh9MJRY5/514-20250609235307.png', '', this, true)">
+                    <img src="https://i.postimg.cc/Gh9MJRY5/514-20250609235307.png" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/6pvYghMV/518-20250629045938.png', '', this, true)">
+                    <img src="https://i.postimg.cc/6pvYghMV/518-20250629045938.png" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/KY7Qv8SR/528-20250731053625.png', '', this, true)">
+                    <img src="https://i.postimg.cc/KY7Qv8SR/528-20250731053625.png" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/KYhJ2gW6/501-20250524165521.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/KYhJ2gW6/501-20250524165521.jpg" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/SsNZB8d3/photo-5253724685504477297-y.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/SsNZB8d3/photo-5253724685504477297-y.jpg" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/HLmvtFyp/photo-5188494496034318756-y.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/HLmvtFyp/photo-5188494496034318756-y.jpg" alt="">
+                    <div class="hashtags-container">
+                       
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/Px36TxFx/photo-5215330151779398555-y.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/Px36TxFx/photo-5215330151779398555-y.jpg" alt="">
+                    <div class="hashtags-container">
+                       
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/Qd1n1jV4/photo-5253724685504477473-y.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/Qd1n1jV4/photo-5253724685504477473-y.jpg" alt="">
+                    <div class="hashtags-container">
+                       
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/02645Yvq/photo-5215330151779398558-y.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/02645Yvq/photo-5215330151779398558-y.jpg" alt="">
+                    <div class="hashtags-container">
+                       
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/Y2DVwXJ3/photo-5253724685504477472-y.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/Y2DVwXJ3/photo-5253724685504477472-y.jpg" alt="">
+                    <div class="hashtags-container">
+                       
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/431L2w6p/photo-5253488715706271305-y.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/431L2w6p/photo-5253488715706271305-y.jpg" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/kXkp22MR/photo-5253724685504477296-y.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/kXkp22MR/photo-5253724685504477296-y.jpg" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/nh8ybfzW/IMG-20240819-124157-889.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/nh8ybfzW/IMG-20240819-124157-889.jpg" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/jSzGR3nS/390-20240909011917.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/jSzGR3nS/390-20240909011917.jpg" alt="">
+                    <div class="hashtags-container">
+                      
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/m2MbFw10/404-20241010184428.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/m2MbFw10/404-20241010184428.jpg" alt="">
+                    <div class="hashtags-container">
+                       
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/y621d5xm/446-20250122131600.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/y621d5xm/446-20250122131600.jpg" alt="">
+                    <div class="hashtags-container">
+                      
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/WzBHv02Z/447-20250124173900.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/WzBHv02Z/447-20250124173900.jpg" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/dQhQJvsQ/455-20250228230502.png', '', this, true)">
+                    <img src="https://i.postimg.cc/dQhQJvsQ/455-20250228230502.png" alt="">
+                    <div class="hashtags-container">
+                       
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/gjXTQgPd/456-20250308120808.png', '', this, true)">
+                    <img src="https://i.postimg.cc/gjXTQgPd/456-20250308120808.png" alt="">
+                    <div class="hashtags-container">
+                       
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/RF08QMsW/458-20250311143644.png', '', this, true)">
+                    <img src="https://i.postimg.cc/RF08QMsW/458-20250311143644.png" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/8CNxcdLB/460-20250311143502.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/8CNxcdLB/460-20250311143502.jpg" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/ZqH2d9ck/462-20250312135614.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/ZqH2d9ck/462-20250312135614.jpg" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/1tYdvL2J/498-20250518002907.png', '', this, true)">
+                    <img src="https://i.postimg.cc/1tYdvL2J/498-20250518002907.png" alt="">
+                    <div class="hashtags-container">
+                        
+                    </div>
+                </div>
+                <div class="gallery-item" data-tags=""
+                    onclick="openModal('https://i.postimg.cc/pLHPQFDy/398-20240918150641.jpg', '', this, true)">
+                    <img src="https://i.postimg.cc/pLHPQFDy/398-20240918150641.jpg" alt="">
+                    <div class="hashtags-container">
+                       
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <p><strong> Рисую оригинальных персонажей различной направленностей. У меня есть:</strong><br>
+                <li> 🌲ОСы которые у меня создавались в процессе моего обучения</li>
+                <li>🌲ОСы которые составляют часть большой мифологии (собственного сочинения) </li>
+                <li> 🌲ОСы-монстрики для моих попыток в хоррор-арт</li>
+                <li> 🌲Адопты</li>
+            </p>
+
+            <p> Так-же у меня в тг-канале лежат мои пробы в веб-дизайне, и различнейшие фан-арты из различнейших
+                фандомов (Disco
+                Elisium, Arcane и др.)</p>
+
+            <p>
+                + коллабы с другими художниками, стадики и прочие художественные шалости</p>
+
+            
+        </div>
+       
+        <div id="tab3" class="tab-content">
+            <div class="anime-section">
+                <img src="https://i.postimg.cc/JnqXm8M5/496-20250518072338.png" alt="Commission" onclick="openModal('https://i.postimg.cc/JnqXm8M5/496-20250518072338.png', 'Commission')">
+                <div class="text">
+                    <h3>Commission</h3>
+                    <div class="description">
+                        Открыты комишн! Цены и условия представлены на изображении)
+                    </div>
+                    <div class="price">
+                        <span> Цена от </span> 250 ₽
+                    </div>
+                    <a href="https://t.me/talktondon" target="_blank" class="order-btn">
+                        <span>Заказать через Telegram</span>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div id="modalNav" class="modal-nav" style="display: none;">
+                <button class="modal-nav-btn prev" onclick="navigateModal(-1)">❮</button>
+                <button class="modal-nav-btn next" onclick="navigateModal(1)">❯</button>
+            </div>
+            <div class="image-container">
+                <img id="modalImage" class="modal-image" src="" alt="">
+            </div>
+            <div id="modalCaption" class="modal-caption"></div>
+            <div id="modalHashtags" class="hashtags-container"></div>
+            <div id="modalIndicator" class="modal-indicator" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-container">
+        <section class="footer-main-section">
+            <a href="index.html" class="footer-brand-link">
+                <img src="https://i.postimg.cc/hjBzgfqS/1.png" alt="Artemisia" class="footer-brand-logo">
+            </a>
+
+            <nav class="footer-navigation">
+                <a href="AboutUs.html#about-site" class="footer-nav-item">Подробности о сайте</a>
+                <a href="https://t.me/Artemisia_publicationBot" class="footer-nav-item">Опубликовать работу</a>
+                <a href="https://t.me/Gg00Se" class="footer-nav-item">Связь с гарантом</a>
+            </nav>
+        </section>
+
+        <section class="footer-secondary-section">
+            <p class="footer-copyright">
+                Следите за обновлениями
+                <a href="https://t.me/Artemisia_website" class="footer-nav-item" target="_blank">@Artemisia_website</a>
+            </p>
+
+            <div class="footer-social-links">
+                <!-- Telegram -->
+                <a href="https://t.me/Artemisia_website" class="social-media-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM15.53 8.23C15.73 8.13 15.93 8.15 16.09 8.28C16.25 8.41 16.31 8.62 16.25 8.82L14.81 15.44C14.66 16.03 14.3 16.19 13.81 15.93L11.05 13.85L9.8 15.08C9.66 15.22 9.54 15.34 9.28 15.34L9.53 12.54L14.44 8.34C14.66 8.15 14.8 8.24 14.63 8.41L10.63 11.93L7.83 10.91C7.26 10.71 7.25 10.31 7.94 10.01L15.03 7.17C15.5 6.99 15.9 7.21 15.53 8.23Z" />
+                    </svg>
+                </a>
+
+                <!-- VK -->
+                <a href="https://vk.com/artemisia_website" class="social-media-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93V15.07C2 20.67 3.33 22 8.93 22H15.07C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2M18.15 16.27H16.69C16.14 16.27 15.97 15.82 15 14.83C14.12 14 13.74 13.88 13.53 13.88C13.24 13.88 13.15 13.96 13.15 14.38V15.69C13.15 16.04 13.04 16.26 12.11 16.26C10.57 16.26 8.86 15.32 7.66 13.59C5.85 11.05 5.36 9.13 5.36 8.75C5.36 8.54 5.43 8.34 5.85 8.34H7.32C7.69 8.34 7.83 8.5 7.97 8.9C8.69 11 9.89 12.8 10.38 12.8C10.57 12.8 10.65 12.71 10.65 12.25V10.1C10.6 9.12 10.07 9.03 10.07 8.68C10.07 8.5 10.21 8.34 10.44 8.34H12.73C13.04 8.34 13.15 8.5 13.15 8.88V11.77C13.15 12.08 13.28 12.19 13.38 12.19C13.56 12.19 13.72 12.08 14.05 11.74C15.1 10.57 15.85 8.76 15.85 8.76C15.95 8.55 16.11 8.34 16.48 8.34H17.93C18.37 8.34 18.47 8.58 18.37 8.89C18.19 9.74 16.41 12.25 16.43 12.25C16.27 12.5 16.21 12.61 16.43 12.9C16.58 13.13 17.09 13.55 17.43 13.94C18.05 14.65 18.53 15.24 18.66 15.65C18.77 16.06 18.57 16.27 18.15 16.27Z" />
+                    </svg>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com/@artemisia_website?si=gOfyLPoGY8a4QrFF" class="social-media-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                    </svg>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@artemisia_web_tt?_t=ZS-8xgqwBPHwfJ&_r=1" class="social-media-icon" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </footer>
+
+    <div id="backToTopBtn" class="back-to-top-btn" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+        </svg>
+    </div>
+
+    <script>
+        // Глобальные переменные для управления галереей
+        let currentGalleryItems = [];
+        let currentIndex = 0;
+        let isGalleryMode = false;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let allHashtags = [];
+        let activeFilter = 'all';
+
+        // Функции для меню и поиска
+        function toggleMenu() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menuIcon');
+            const body = document.body;
+
+            // Сохраняем текущую позицию прокрутки
+            if (!body.classList.contains('menu-open')) {
+                body.style.top = `-${window.scrollY}px`;
+            }
+
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('active');
+            menuIcon.classList.toggle('active');
+            body.classList.toggle('menu-open');
+
+            // Восстанавливаем позицию прокрутки при закрытии меню
+            if (!body.classList.contains('menu-open')) {
+                const scrollY = parseInt(body.style.top || '0');
+                body.style.top = '';
+                window.scrollTo(0, -scrollY);
+            }
+        }
+
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const submenu = event.currentTarget.nextElementSibling;
+            submenu.classList.toggle('active');
+            event.currentTarget.classList.toggle('active');
+        }
+
+        function removeHighlights() {
+            const highlights = document.querySelectorAll('.highlight');
+            highlights.forEach(highlight => {
+                const parent = highlight.parentNode;
+                parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+                parent.normalize();
+            });
+        }
+
+        function openTabByLink(tabId) {
+            const tab = document.getElementById(tabId);
+            if (tab) {
+                tab.style.display = 'block';
+            }
+        }
+
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Функция для сбора всех хештегов
+        function collectAllHashtags() {
+            const items = document.querySelectorAll('.gallery-item');
+            const hashtagMap = {};
+            
+            items.forEach(item => {
+                const tags = item.getAttribute('data-tags').split(' ');
+                const hashtags = item.querySelectorAll('.hashtag');
+                
+                tags.forEach(tag => {
+                    if (!hashtagMap[tag]) {
+                        hashtagMap[tag] = 0;
+                    }
+                    hashtagMap[tag]++;
+                });
+                
+                // Добавляем обработчики для хештегов в галерее
+                hashtags.forEach(hashtag => {
+                    hashtag.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const tag = this.textContent.substring(1); // Убираем #
+                        filterGallery(tag);
+                    });
+                });
+            });
+            
+            // Преобразуем в массив и сортируем по популярности
+            allHashtags = Object.entries(hashtagMap)
+                .sort((a, b) => b[1] - a[1])
+                .map(([tag, count]) => ({ tag, count }));
+            
+            // Создаем кнопки фильтров
+            createHashtagFilters();
+        }
+        
+        // Создание кнопок фильтров по хештегам
+        function createHashtagFilters() {
+            const filterContainer = document.getElementById('hashtagFilter');
+            
+            // Добавляем только топ-10 хештегов, чтобы не перегружать интерфейс
+            const topHashtags = allHashtags.slice(0, 10);
+            
+            topHashtags.forEach(({tag, count}) => {
+                const btn = document.createElement('button');
+                btn.className = 'hashtag-filter-btn';
+                btn.innerHTML = `#${tag} <span class="hashtag-count">${count}</span>`;
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    filterGallery(tag);
+                };
+                filterContainer.appendChild(btn);
+            });
+        }
+        
+        // Фильтрация галереи по хештегу
+        function filterGallery(tag) {
+            activeFilter = tag;
+            const items = document.querySelectorAll('.gallery-item');
+            const filterButtons = document.querySelectorAll('.hashtag-filter-btn');
+            
+            // Обновляем активную кнопку фильтра
+            filterButtons.forEach(btn => {
+                if (btn.textContent.includes(`#${tag}`) || (tag === 'all' && btn.textContent.includes('Все работы'))) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Показываем/скрываем элементы галереи
+            items.forEach(item => {
+                if (tag === 'all' || item.getAttribute('data-tags').includes(tag)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Обновляем текущие элементы галереи для модального окна
+            if (isGalleryMode) {
+                const gallery = document.getElementById('galleryGrid');
+                currentGalleryItems = Array.from(gallery.querySelectorAll(`.gallery-item${tag === 'all' ? '' : `[data-tags*="${tag}"]`}`))
+                    .filter(item => window.getComputedStyle(item).display !== 'none');
+                
+                // Обновляем индикатор в модальном окне
+                updateIndicator();
+            }
+        }
+
+        // Функции для модального окна галереи
+        function openModal(imageSrc, caption, clickedElement = null, galleryMode = false) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('modalCaption');
+            const hashtagsContainer = document.getElementById('modalHashtags');
+            const indicator = document.getElementById('modalIndicator');
+            const nav = document.getElementById('modalNav');
+
+            isGalleryMode = galleryMode;
+            
+            if (galleryMode && clickedElement) {
+                // Собираем все элементы галереи из текущего фильтра
+                const gallery = document.getElementById('galleryGrid');
+                const visibleItems = Array.from(gallery.querySelectorAll(`.gallery-item${activeFilter === 'all' ? '' : `[data-tags*="${activeFilter}"]`}`));
+                currentGalleryItems = visibleItems.filter(item => window.getComputedStyle(item).display !== 'none');
+                currentIndex = currentGalleryItems.indexOf(clickedElement);
+                
+                // Показываем навигацию и индикатор
+                nav.style.display = 'flex';
+                updateIndicator();
+                
+                // Добавляем хештеги в модальное окно (только те, что есть в hashtags-container)
+                const hashtagElements = clickedElement.querySelectorAll('.hashtag');
+                hashtagsContainer.innerHTML = '';
+                hashtagElements.forEach(hashtagEl => {
+                    const tag = hashtagEl.textContent.substring(1); // Убираем #
+                    const span = document.createElement('span');
+                    span.className = 'hashtag';
+                    span.textContent = `#${tag}`;
+                    span.onclick = (e) => {
+                        e.stopPropagation();
+                        closeModal();
+                        filterGallery(tag);
+                    };
+                    hashtagsContainer.appendChild(span);
+                });
+                hashtagsContainer.style.display = 'flex';
+            } else {
+                currentGalleryItems = [];
+                currentIndex = 0;
+                nav.style.display = 'none';
+                indicator.style.display = 'none';
+                hashtagsContainer.style.display = 'none';
+            }
+
+            modal.style.display = "flex";
+            modalImg.src = imageSrc;
+            captionText.innerHTML = caption;
+            document.body.classList.add('no-scroll');
+
+            // Сброс анимации для нового изображения
+            modalImg.classList.remove('visible');
+            setTimeout(() => {
+                modalImg.classList.add('visible');
+            }, 50);
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+            document.body.classList.remove('no-scroll');
+            currentGalleryItems = [];
+            currentIndex = 0;
+        }
+
+        function navigateModal(direction) {
+            if (!isGalleryMode || currentGalleryItems.length === 0) return;
+            
+            currentIndex += direction;
+            
+            // Проверка границ
+            if (currentIndex < 0) {
+                currentIndex = currentGalleryItems.length - 1;
+            } else if (currentIndex >= currentGalleryItems.length) {
+                currentIndex = 0;
+            }
+            
+            const newItem = currentGalleryItems[currentIndex];
+            const newImgSrc = newItem.querySelector('img').src;
+            const modalImg = document.getElementById('modalImage');
+            const hashtagsContainer = document.getElementById('modalHashtags');
+            
+            // Обновляем хештеги (только те, что есть в hashtags-container)
+            const hashtagElements = newItem.querySelectorAll('.hashtag');
+            hashtagsContainer.innerHTML = '';
+            hashtagElements.forEach(hashtagEl => {
+                const tag = hashtagEl.textContent.substring(1); // Убираем #
+                const span = document.createElement('span');
+                span.className = 'hashtag';
+                span.textContent = `#${tag}`;
+                span.onclick = (e) => {
+                    e.stopPropagation();
+                    closeModal();
+                    filterGallery(tag);
+                };
+                hashtagsContainer.appendChild(span);
+            });
+            
+            // Анимация перехода
+            modalImg.classList.remove('visible');
+            setTimeout(() => {
+                modalImg.src = newImgSrc;
+                modalImg.classList.add('visible');
+                updateIndicator();
+            }, 300);
+        }
+        
+        function updateIndicator() {
+            const indicator = document.getElementById('modalIndicator');
+            if (isGalleryMode && currentGalleryItems.length > 0) {
+                indicator.textContent = `${currentIndex + 1} / ${currentGalleryItems.length}`;
+                indicator.style.display = 'block';
+            } else {
+                indicator.style.display = 'none';
+            }
+        }
+
+        // Обработчики событий для свайпов на мобильных устройствах
+        document.addEventListener('touchstart', function(e) {
+            if (document.getElementById('imageModal').style.display === 'flex' && isGalleryMode) {
+                touchStartX = e.changedTouches[0].screenX;
+            }
+        }, false);
+
+        document.addEventListener('touchend', function(e) {
+            if (document.getElementById('imageModal').style.display === 'flex' && isGalleryMode) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }
+        }, false);
+
+        function handleSwipe() {
+            const threshold = 50; // Минимальное расстояние для свайпа
+            
+            if (touchEndX < touchStartX - threshold) {
+                // Свайп влево - следующее изображение
+                navigateModal(1);
+            } else if (touchEndX > touchStartX + threshold) {
+                // Свайп вправо - предыдущее изображение
+                navigateModal(-1);
+            }
+        }
+
+        // Обработчик клика по модальному окну
+        document.getElementById('imageModal').addEventListener('click', function(event) {
+            // Закрываем модальное окно только если клик был не по изображению или его контейнеру
+            if (!event.target.closest('.image-container') && !event.target.closest('.modal-nav-btn') && !event.target.closest('.hashtag')) {
+                closeModal();
+            }
+        });
+
+        document.onkeydown = function (evt) {
+            evt = evt || window.event;
+            if (evt.key === "Escape") {
+                closeModal();
+            } else if (isGalleryMode) {
+                if (evt.key === "ArrowLeft") {
+                    navigateModal(-1);
+                } else if (evt.key === "ArrowRight") {
+                    navigateModal(1);
+                }
+            }
+        };
+
+        // Инициализация - открываем первую вкладку по умолчанию
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.tab-btn').click();
+            collectAllHashtags(); // Собираем хештеги после загрузки страницы
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const showMoreBtn = document.getElementById('showMoreBtn');
+            const additionalReviews = document.getElementById('additionalReviews');
+
+            if (showMoreBtn && additionalReviews) {
+                showMoreBtn.addEventListener('click', function () {
+                    additionalReviews.classList.toggle('expanded');
+                    this.classList.toggle('expanded');
+
+                    // Меняем текст кнопки
+                    if (additionalReviews.classList.contains('expanded')) {
+                        this.innerHTML = '<i class="fas fa-chevron-up"></i> Свернуть отзывы';
+                    } else {
+                        this.innerHTML = '<i class="fas fa-chevron-down"></i> Ещё отзывы';
+                    }
+                });
+            }
+        });
+
+        function openOrderModal(title, artist, price, telegramLink) {
+            window.open(telegramLink, '_blank');
+        }
+
+        // Back to Top Function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide back to top button on scroll
+        window.addEventListener('scroll', function () {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        // Анимация появления элементов
+        document.addEventListener('DOMContentLoaded', function () {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+
+                        // Для модальных изображений
+                        if (entry.target.classList.contains('modal-img')) {
+                            setTimeout(() => {
+                                entry.target.classList.add('visible');
+                            }, 100 * index);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Наблюдаем за всеми элементами
+            document.querySelectorAll('.profile-card, .tabs-container, .gallery-item, .archive-btn, .anime-section').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Для изображений в модалках
+            document.querySelectorAll('.modal-image').forEach((img, index) => {
+                img.classList.add('modal-img');
+                observer.observe(img);
+            });
+        });
+    </script>
+</body>
+
+</html>
