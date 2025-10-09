@@ -1962,6 +1962,65 @@
             </div>
         </section>
 
+        <!-- Айкуб -->
+        <section id="142">
+            <section class="profile-section" data-style="Авторский">
+                <img src="https://i.postimg.cc/zB9T1R6D/photo-5235480669453412917-y.jpg" alt="Аватар" class="avatar">
+                <div class="profile-info">
+                    <h1> Айкуб </h1>
+                    <a href="https://t.me/AIcube618" class="profile-link">
+                        @AIcube618
+
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                    </a>
+                    <p>Стиль: Авторский </p>
+                    <div class="social-links">
+                        <a href="https://t.me/AIcubeHome" class="social-link" target="_blank" title="Telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artist142Carousel">
+                <div class="works-inner" id="artist142Works">
+                    <img src="https://i.postimg.cc/cHKfjcD5/photo-5247076509921963995-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/fRK70yt5/photo-5256068230114570707-y.jpg" class="work-thumb-1"
+                        alt="">
+                    <img src="https://i.postimg.cc/k5YxfHyb/photo-5323686623264765277-y.jpg" class="work-thumb-2"
+                        alt="">
+                    <img src="https://i.postimg.cc/vZMLBfBc/photo-5323686623264765278-y.jpg" class="work-thumb-3"
+                        alt="">
+                    <img src="https://i.postimg.cc/6QprVKCK/photo-5323686623264765279-y.jpg" class="work-thumb-1"
+                        alt="">
+
+                </div>
+                <button class="works-control prev" onclick="prevWork('artist142Works')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artist142Works')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modal142')">Ознакомиться со всеми работами</button>
+
+            <!-- Modal -->
+            <div id="modal142" class="modal">
+                <span class="close-btn" onclick="closeModal('modal142')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/cHKfjcD5/photo-5247076509921963995-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/fRK70yt5/photo-5256068230114570707-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/k5YxfHyb/photo-5323686623264765277-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/vZMLBfBc/photo-5323686623264765278-y.jpg" class="modal-img" alt="">
+                    <img src="https://i.postimg.cc/6QprVKCK/photo-5323686623264765279-y.jpg" class="modal-img" alt="">
+
+
+                </div>
+            </div>
+        </section>
+
         <!-- Кику -->
         <section id="194">
             <section class="profile-section" data-style="Авторский">
@@ -3676,6 +3735,7 @@
            initCarousel('artist157Works');
 
            initCarousel('artist137Works');
+           initCarousel('artist142Works');
            initCarousel('artist147Works');
            initCarousel('artist201Works');
            initCarousel('artist129Works');
