@@ -443,15 +443,18 @@ body.menu-open {
     list-style: none;
     padding-left: 15px;
     max-height: 0;
+    /* Было 0 */
     overflow: hidden;
     transition: 0.3s;
     background: #2d2d2d;
     margin-top: 5px;
     border-radius: 4px;
+
+
 }
 
 .submenu.active {
-    max-height: 200px;
+    max-height: 500px;
 }
 
 .submenu a {
