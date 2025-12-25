@@ -156,7 +156,7 @@
                 </ul>
             </li>
 
-            <li><a href="E25(1).html">
+            <li><a href="E24.html">
                     <img src="https://i.postimg.cc/bYRbyHJ4/draw.png" alt="">
                     Комиксы
                 </a>
@@ -1823,15 +1823,11 @@
         const MAX_SOCIAL_LINKS = 6;
         const MAX_WORKS = Infinity;
 
-        // Переменные для полноэкранного просмотра работ в профиле
+        // Переменные для полноэкранного просмотра
         let profileWorks = [];
         let currentProfileWorkIndex = 0;
-
-        // Переменные для полноэкранного просмотра изображений
         let currentImages = [];
         let currentImageIndex = 0;
-
-        // Переменные для полноэкранного просмотра работ в личном кабинете
         let cabinetWorks = [];
         let currentCabinetWorkIndex = 0;
 
@@ -1844,6 +1840,7 @@
             if (userData) {
                 try {
                     currentUser = JSON.parse(userData);
+                    console.log('👤 Текущий пользователь:', currentUser.username);
                     updateAuthUI();
                 } catch (e) {
                     console.error('Ошибка при чтении данных пользователя:', e);
@@ -1854,8 +1851,18 @@
                 updateAuthUI();
             }
 
-            // кнопки регистрации/входа
             updateRegistrationButton();
+        }
+
+        // Уникальный идентификатор устройства
+        const DEVICE_ID = localStorage.getItem('artemisia_device_id') ||
+            generateDeviceId();
+
+        function generateDeviceId() {
+            const deviceId = 'device_' + Math.random().toString(36).substring(2, 15) +
+                Math.random().toString(36).substring(2, 15);
+            localStorage.setItem('artemisia_device_id', deviceId);
+            return deviceId;
         }
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -2508,22 +2515,27 @@
 
             loginBtn.disabled = true;
             loginBtn.textContent = 'Вход...';
+
             setTimeout(() => {
                 if (verifyUserPassword(username, password)) {
-                    const userData = {
-                        username: username,
-                        registrationDate: new Date().toISOString(),
-                        profileComplete: true
-                    };
+                    // Синхронизируем данные пользователя
+                    const userProfile = syncUserProfile(username);
 
-                    const profileData = syncUserData(username);
+                    if (userProfile) {
+                        // Создаем объект пользователя для сессии
+                        const userData = {
+                            username: username,
+                            registrationDate: userProfile.lastUpdated || new Date().toISOString(),
+                            profileComplete: true,
+                            profileName: userProfile.profileName,
+                            profileNickname: userProfile.profileNickname
+                        };
 
-                    if (profileData) {
-                        userData.profileName = profileData.profileName;
-                        userData.profileNickname = profileData.profileNickname;
+                        // Сохраняем в сессии
                         localStorage.setItem('currentUser', JSON.stringify(userData));
                         currentUser = userData;
 
+                        // Обновляем UI
                         updateAuthUI();
                         showLoginMessage('Вход выполнен успешно!', 'success');
 
@@ -2533,7 +2545,7 @@
                                 loadPersonalCabinetData();
                             }
 
-                            showProfileSuccess(`Добро пожаловать, ${profileData.profileName}!`);
+                            showProfileSuccess(`Добро пожаловать, ${userProfile.profileName}!`);
                         }, 1500);
                     } else {
                         showLoginMessage('Ошибка загрузки профиля', 'error');
@@ -2569,23 +2581,65 @@
             return userDatabase[username] !== undefined;
         }
 
-        function loadUserProfileFromDatabase(username) {
-            let userProfile = localStorage.getItem('userProfile_' + username);
+        // Функция для синхронизации локальных данных с базой данных
+        function syncUserProfile(username) {
+            const localProfileKey = 'userProfile_' + username;
+            const localProfile = localStorage.getItem(localProfileKey);
+            const dbProfile = userDatabase[username];
 
-            if (userProfile) {
-                const profileData = JSON.parse(userProfile);
-                console.log(' Загружен локальный профиль для:', username);
-                return profileData;
+            if (!dbProfile && !localProfile) {
+                console.log('❌ Профиль не найден ни локально, ни в базе:', username);
+                return null;
             }
 
-            const userDatabase = getUserDatabase();
-            const userData = userDatabase[username];
+            let mergedProfile;
 
-            if (userData) {
+            if (dbProfile && localProfile) {
+                // Синхронизируем: приоритет у более свежих данных
+                try {
+                    const localData = JSON.parse(localProfile);
+                    const dbData = dbProfile;
 
-                localStorage.setItem('userProfile_' + username, JSON.stringify(userData));
-                console.log('📁 Загружен профиль из глобальной базы для:', username);
-                return userData;
+                    // Сравниваем даты обновления
+                    const localDate = new Date(localData.lastUpdated || 0);
+                    const dbDate = new Date(dbData.lastUpdated || 0);
+
+                    if (localDate > dbDate) {
+                        // Локальные данные новее
+                        mergedProfile = { ...dbData, ...localData };
+                        saveUserToDatabase(username, mergedProfile);
+                    } else {
+                        // Данные из базы новее
+                        mergedProfile = { ...localData, ...dbData };
+                        localStorage.setItem(localProfileKey, JSON.stringify(mergedProfile));
+                    }
+
+                    console.log('🔄 Профиль синхронизирован:', username);
+                } catch (error) {
+                    console.error('Ошибка синхронизации:', error);
+                    mergedProfile = dbProfile || JSON.parse(localProfile);
+                }
+            } else if (dbProfile) {
+                // Только в базе
+                mergedProfile = dbProfile;
+                localStorage.setItem(localProfileKey, JSON.stringify(mergedProfile));
+            } else {
+                // Только локально
+                mergedProfile = JSON.parse(localProfile);
+                saveUserToDatabase(username, mergedProfile);
+            }
+
+            return mergedProfile;
+        }
+
+
+        function loadUserProfileFromDatabase(username) {
+            // Пытаемся получить данные из синхронизированной базы
+            const userProfile = syncUserProfile(username);
+
+            if (userProfile) {
+                console.log('📁 Загружен профиль для:', username);
+                return userProfile;
             }
 
             console.log('❌ Профиль не найден:', username);
@@ -6191,78 +6245,71 @@ ${index + 1}. ${profile.profileData.profileName}
         function loadPersonalCabinetData() {
             if (!currentUser) return;
 
-
-            const userProfile = loadUserProfileFromDatabase(currentUser.username);
+            // Синхронизируем профиль с базой данных
+            const userProfile = syncUserProfile(currentUser.username);
 
             if (userProfile) {
-
+                // Загружаем баннер
                 const bannerContainer = document.getElementById('cabinetBannerContainer');
                 const bannerImg = document.getElementById('cabinetBanner');
 
                 if (userProfile.banner && userProfile.banner.trim() !== '') {
                     bannerImg.src = userProfile.banner;
                     bannerContainer.style.display = 'block';
-
-
                     bannerImg.onerror = function () {
-                        console.error('Ошибка загрузки баннера:', userProfile.banner);
                         bannerContainer.style.display = 'none';
                     };
                 } else {
                     bannerContainer.style.display = 'none';
                 }
 
-
+                // Загружаем основную информацию
                 document.getElementById('cabinetAvatar').src = userProfile.avatar || 'https://i.postimg.cc/Rhz86Z09/photo_5337314107818374848_c.jpg';
                 document.getElementById('cabinetUsername').textContent = userProfile.profileName || currentUser.username;
                 document.getElementById('cabinetUserId').textContent = 'ID: ' + currentUser.username;
                 document.getElementById('cabinetTelegramText').textContent = userProfile.profileNickname || '@username';
                 document.getElementById('cabinetTelegramLink').href = 'https://t.me/' + (userProfile.profileNickname || 'username').replace('@', '');
 
+                // Обновляем статус публикации
+                updatePublicationStatus();
 
-                if (userProfile.publishedOn) {
-                    updatePublicationStatus();
-                }
-
-
+                // Загружаем социальные сети
                 loadCabinetSocialLinks(userProfile.socialLinks);
 
-
+                // Загружаем описание
                 loadCabinetDescription(userProfile.profileDescription);
 
-
+                // Загружаем работы
                 loadCabinetWorks(userProfile.works);
 
-
+                // Обновляем кнопки действий
                 updateCabinetActionsForMobile();
+
+                console.log(`✅ Личный кабинет загружен для: ${currentUser.username}`);
             }
-
-            setTimeout(() => {
-                setupIdCopyFunctionality();
-            }, 100);
-
         }
 
 
-        function updateUserInDatabase(username, profileData) {
-            if (userDatabase[username]) {
 
-                userDatabase[username] = {
-                    ...userDatabase[username],
-                    ...profileData,
-                    lastUpdated: new Date().toISOString()
-                };
-
-                console.log('✓ Данные пользователя обновлены в базе:', username);
-
-
-                localStorage.setItem('userProfile_' + username, JSON.stringify(userDatabase[username]));
-
-                return true;
+        function updateUserInDatabase(username, updates) {
+            if (!userDatabase[username]) {
+                console.error('Пользователь не найден в базе:', username);
+                return false;
             }
 
-            console.log('✗ Пользователь не найден в базе:', username);
-            return false;
+            // Обновляем данные пользователя
+            userDatabase[username] = {
+                ...userDatabase[username],
+                ...updates,
+                lastUpdated: new Date().toISOString(),
+                deviceId: DEVICE_ID
+            };
+
+            // Синхронизируем с localStorage
+            saveUserDatabase();
+
+            console.log('🔄 Данные пользователя обновлены:', username);
+            return true;
         }
 
 
@@ -6480,15 +6527,7 @@ ${index + 1}. ${profile.profileData.profileName}
             saveBtn.disabled = true;
             saveBtn.textContent = 'Сохранение...';
 
-
-            const isNewProfile = !currentUser;
-            const isEditing = currentUser && localStorage.getItem('userProfile_' + currentUser.username);
-
-            console.log(`Режим операции: ${isNewProfile ? 'НОВЫЙ ПРОФИЛЬ' : 'РЕДАКТИРОВАНИЕ'}`);
-
-
-
-
+            // Проверка аватара
             const avatarSrc = getAvatarSrc();
             if (!avatarSrc) {
                 alert('❌ Пожалуйста, загрузите аватарку профиля');
@@ -6498,29 +6537,27 @@ ${index + 1}. ${profile.profileData.profileName}
                 return;
             }
 
-
+            // Проверка имени
             const profileName = document.getElementById('profileName').value.trim();
-            if (isNewProfile) {
-                if (!profileName) {
-                    alert('✗ Пожалуйста, введите имя или псевдоним');
-                    document.getElementById('profileName').focus();
-                    saveBtn.disabled = false;
-                    saveBtn.textContent = 'Сохранить профиль';
-                    return;
-                }
-
-                if (profileName.length > 20) {
-                    alert('✗ Имя/псевдоним не может превышать 20 символов');
-                    document.getElementById('profileName').focus();
-                    saveBtn.disabled = false;
-                    saveBtn.textContent = 'Сохранить профиль';
-                    return;
-                }
+            if (!profileName) {
+                alert('✗ Пожалуйста, введите имя или псевдоним');
+                document.getElementById('profileName').focus();
+                saveBtn.disabled = false;
+                saveBtn.textContent = 'Сохранить профиль';
+                return;
             }
 
+            if (profileName.length > 20) {
+                alert('✗ Имя/псевдоним не может превышать 20 символов');
+                document.getElementById('profileName').focus();
+                saveBtn.disabled = false;
+                saveBtn.textContent = 'Сохранить профиль';
+                return;
+            }
 
+            // Проверка никнейма
             const profileNickname = document.getElementById('profileNickname').value.trim();
-            if (isNewProfile && !profileNickname) {
+            if (!profileNickname) {
                 alert('✗ Пожалуйста, укажите ваш никнейм в Telegram');
                 document.getElementById('profileNickname').focus();
                 saveBtn.disabled = false;
@@ -6528,9 +6565,9 @@ ${index + 1}. ${profile.profileData.profileName}
                 return;
             }
 
-
+            // Проверка специальности
             const profileStyle = document.getElementById('profileStyle').value;
-            if (isNewProfile && !profileStyle) {
+            if (!profileStyle) {
                 alert('✗ Пожалуйста, выберите специальность');
                 document.getElementById('profileStyle').focus();
                 saveBtn.disabled = false;
@@ -6538,19 +6575,7 @@ ${index + 1}. ${profile.profileData.profileName}
                 return;
             }
 
-
-            if (isNewProfile && profileStyle === 'Другое') {
-                const customStyle = document.getElementById('profileCustomStyle').value.trim();
-                if (!customStyle) {
-                    alert('✗ Пожалуйста, укажите вашу специальность в поле "Другая специальность"');
-                    document.getElementById('profileCustomStyle').focus();
-                    saveBtn.disabled = false;
-                    saveBtn.textContent = 'Сохранить профиль';
-                    return;
-                }
-            }
-
-
+            // Проверка социальных сетей
             const socialLinks = collectSocialLinks();
             if (socialLinks.length === 0) {
                 alert('✗ Пожалуйста, добавьте хотя бы одну социальную сеть');
@@ -6559,7 +6584,7 @@ ${index + 1}. ${profile.profileData.profileName}
                 return;
             }
 
-
+            // Проверка работ
             if (uploadedWorksCount < 5) {
                 alert(`✗ Пожалуйста, добавьте минимум 5 примеров работ. Сейчас добавлено: ${uploadedWorksCount}/5`);
                 saveBtn.disabled = false;
@@ -6567,7 +6592,7 @@ ${index + 1}. ${profile.profileData.profileName}
                 return;
             }
 
-
+            // Проверка пароля
             const userPassword = document.getElementById('profilePassword').value;
             if (!userPassword) {
                 alert('✗ Пожалуйста, придумайте пароль для входа на сайт');
@@ -6585,76 +6610,49 @@ ${index + 1}. ${profile.profileData.profileName}
                 return;
             }
 
-
-            if (socialLinksCount > MAX_SOCIAL_LINKS) {
-                alert(`✗ Максимум ${MAX_SOCIAL_LINKS} социальных сетей в бесплатном профиле`);
-                saveBtn.disabled = false;
-                saveBtn.textContent = 'Сохранить профиль';
-                return;
-            }
-
-            if (uploadedWorksCount > MAX_WORKS) {
-                alert(`✗ Максимум ${MAX_WORKS} работ в бесплатном профиле`);
-                saveBtn.disabled = false;
-                saveBtn.textContent = 'Сохранить профиль';
-                return;
-            }
-
-
-
-
+            // Генерация или поиск ID пользователя
             let username;
             const existingUserId = findExistingUserId(profileNickname);
 
             if (existingUserId) {
-
+                // Обновление существующего профиля
                 username = existingUserId;
-                console.log(`🔄 Найден существующий профиль: ${username}`);
+                console.log(`🔄 Обновление существующего профиля: ${username}`);
             } else {
-
+                // Создание нового профиля
                 username = generateUserId(profileNickname);
-                console.log(`🆕 Создан новый профиль: ${username}`);
+                console.log(`🆕 Создание нового профиля: ${username}`);
             }
 
-
-            let existingProfileData = {};
-            if (isEditing) {
-                const existingProfile = localStorage.getItem('userProfile_' + currentUser.username);
-                if (existingProfile) {
-                    existingProfileData = JSON.parse(existingProfile);
-                    console.log('📁 Загружены существующие данные профиля для сохранения');
-                }
-            }
-
-
+            // Собираем данные профиля
             const profileData = {
-                profileName: isEditing ? existingProfileData.profileName : profileName,
-                profileNickname: isEditing ? existingProfileData.profileNickname : profileNickname,
-                profileStyle: isEditing ? existingProfileData.profileStyle :
-                    (profileStyle === 'Другое' ? document.getElementById('profileCustomStyle').value : profileStyle),
-                profileCustomStyle: isEditing ? existingProfileData.profileCustomStyle :
-                    (profileStyle === 'Другое' ? document.getElementById('profileCustomStyle').value : ''),
+                username: username,
+                profileName: profileName,
+                profileNickname: profileNickname,
+                profileStyle: profileStyle === 'Другое' ?
+                    document.getElementById('profileCustomStyle').value : profileStyle,
+                profileCustomStyle: profileStyle === 'Другое' ?
+                    document.getElementById('profileCustomStyle').value : '',
                 profileDescription: document.getElementById('profileDescription').value,
-                userPassword: userPassword,
+                password: userPassword,
+                userPassword: userPassword, // Дублируем для совместимости
                 avatar: avatarSrc,
                 banner: getBannerSrc(),
                 socialLinks: socialLinks,
                 works: collectWorks(),
                 lastUpdated: new Date().toISOString(),
                 publicationStatus: 'pending',
-                userId: username,
+                deviceId: DEVICE_ID,
                 basicInfoLocked: true
             };
 
+            // Сохраняем в базу данных
+            saveUserToDatabase(username, profileData);
 
+            // Сохраняем локально для быстрого доступа
             localStorage.setItem('userProfile_' + username, JSON.stringify(profileData));
 
-
-            if (!existingUserId) {
-                localStorage.setItem('profilePublished_' + username, 'false');
-            }
-
-
+            // Создаем сессию пользователя
             const userData = {
                 username: username,
                 profileComplete: true,
@@ -6666,27 +6664,23 @@ ${index + 1}. ${profile.profileData.profileName}
 
             localStorage.setItem('currentUser', JSON.stringify(userData));
             localStorage.setItem('user_' + username, JSON.stringify(userData));
-
-
             currentUser = userData;
 
-
+            // Обновляем UI
             updateAuthUI();
 
-
+            // Генерируем код профиля для модератора
             const profileCode = generateProfileCode(profileData, username, userPassword);
-
 
             setTimeout(() => {
                 if (existingUserId) {
-                    showProfileSuccess('✓ Профиль успешно обновлен! Основная информация сохранена.');
+                    showProfileSuccess('✓ Профиль успешно обновлен!');
                 } else {
-                    showProfileSuccess('');
+                    showProfileSuccess('✓ Профиль успешно создан!');
                 }
 
                 saveBtn.disabled = false;
                 saveBtn.textContent = 'Сохранить профиль';
-
 
                 setTimeout(() => {
                     closeProfileSetupModal();
@@ -6694,14 +6688,9 @@ ${index + 1}. ${profile.profileData.profileName}
                 }, 1500);
             }, 1500);
 
-
             localStorage.setItem('device_registered', 'true');
-
-            if (existingUserId) {
-
-                updateUserInDatabase(username, profileData);
-            }
         }
+
 
 
         function syncUserData(username) {
@@ -7100,6 +7089,44 @@ ${index + 1}. ${profile.profileData.profileName}
             return null;
         }
 
+        document.addEventListener('DOMContentLoaded', function () {
+            // Загружаем базу данных
+            loadUserDatabase();
+
+            // Проверяем статус авторизации
+            checkAuthStatus();
+
+            // Инициализируем другие компоненты
+            initImageModal();
+            setTimeout(openModalFromUrl, 100);
+            updateModalLinks();
+
+            // Инициализируем карусели
+            initAllCarousels();
+
+            console.log('📱 Идентификатор устройства:', DEVICE_ID);
+            console.log('👥 Пользователей в базе:', Object.keys(userDatabase).length);
+        });
+
+        // Функция для получения пользователя из базы данных
+        function getUserFromDatabase(username) {
+            return userDatabase[username];
+        }
+
+        // Функция для сохранения пользователя в базу данных
+        function saveUserToDatabase(username, userData) {
+            // Добавляем информацию об устройстве и времени обновления
+            userData.lastUpdated = new Date().toISOString();
+            userData.deviceId = DEVICE_ID;
+
+            userDatabase[username] = userData;
+
+            // Синхронизируем с localStorage
+            saveUserDatabase();
+
+            console.log('✅ Пользователь сохранен в базу:', username);
+            return true;
+        }
 
         document.addEventListener('DOMContentLoaded', function () {
             checkAuthStatus();
@@ -7485,11 +7512,28 @@ ${index + 1}. ${profile.profileData.profileName}
         function verifyUserPassword(username, password) {
             const user = userDatabase[username];
             if (!user) {
+                // Проверяем локальные данные
+                const localProfileKey = 'userProfile_' + username;
+                const localProfile = localStorage.getItem(localProfileKey);
+
+                if (localProfile) {
+                    try {
+                        const localData = JSON.parse(localProfile);
+                        if (localData.userPassword === password) {
+                            // Пароль найден локально, синхронизируем с базой
+                            saveUserToDatabase(username, localData);
+                            return true;
+                        }
+                    } catch (e) {
+                        console.error('Ошибка проверки локального профиля:', e);
+                    }
+                }
+
                 console.log('❌ Пользователь не найден:', username);
                 return false;
             }
 
-            const isPasswordCorrect = user.password === password;
+            const isPasswordCorrect = user.password === password || user.userPassword === password;
             console.log(`🔐 Проверка пароля для ${username}: ${isPasswordCorrect ? '✅' : '❌'}`);
             return isPasswordCorrect;
         }
@@ -7824,6 +7868,46 @@ ${index + 1}. ${profile.profileData.profileName}
             textarea.style.transition = 'height 0.2s ease-out';
         }
 
+        // ========== УПРАВЛЕНИЕ ПОЛЬЗОВАТЕЛЯМИ И ПРОФИЛЯМИ ==========
+
+        // Глобальная база данных пользователей (теперь синхронизируется между устройствами)
+        let userDatabase = {};
+
+        // Функция для загрузки базы данных из localStorage
+        function loadUserDatabase() {
+            const savedDatabase = localStorage.getItem('artemisia_user_database');
+            if (savedDatabase) {
+                try {
+                    userDatabase = JSON.parse(savedDatabase);
+                    console.log('✅ База данных загружена из localStorage:', Object.keys(userDatabase).length, 'пользователей');
+                } catch (e) {
+                    console.error('❌ Ошибка при загрузке базы данных:', e);
+                    userDatabase = {};
+                }
+            } else {
+                console.log('📁 База данных не найдена, создаем новую');
+                userDatabase = {};
+                initializeDefaultUsers();
+            }
+        }
+
+        // Функция для сохранения базы данных в localStorage
+        function saveUserDatabase() {
+            try {
+                localStorage.setItem('artemisia_user_database', JSON.stringify(userDatabase));
+                console.log('💾 База данных сохранена в localStorage');
+            } catch (e) {
+                console.error('❌ Ошибка при сохранении базы данных:', e);
+            }
+        }
+
+        // Функция для синхронизации с центральной базой (если будет сервер)
+        function syncWithCentralDatabase() {
+            // Здесь можно добавить синхронизацию с сервером
+            // Пока что просто сохраняем локально
+            saveUserDatabase();
+        }
+
         // Проверка авторизации при загрузке страницы
         document.addEventListener('DOMContentLoaded', function () {
             checkAuthStatus();
@@ -7930,37 +8014,39 @@ ${index + 1}. ${profile.profileData.profileName}
         publishUserProfileOnPage("user_5sjr50", "prem_artist");   // Дизайнеры  
         publishUserProfileOnPage("user_prem789", "prem_artist");  // Prem Artist
 
-        const userDatabase = {
+        function initializeDefaultUsers() {
+            const defaultUsers = {
+                "user_5sjr50": {
+                    username: "user_5sjr50",
+                    profileName: "Дизайнер Профи",
+                    profileNickname: "_pro",
+                    profileStyle: "Дизайн",
+                    avatar: "https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg",
+                    socialLinks: [
+                        { platform: "telegram", username: "_pro" },
+                        { platform: "instagram", username: "pro" }
+                    ],
+                    works: [
+                        "https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg",
+                        "https://i.postimg.cc/Pf9GVnCH/photo-5244699232638725578-y.jpg",
+                        "https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg",
+                        "https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg",
+                        "https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg"
+                    ],
+                    publishedOn: "design",
+                    password: "1234590",
+                    profileDescription: "Профессиональный дизайнер",
+                },
+            };
 
-            "user_5sjr50": {
-                username: "user_5sjr50",
-                profileName: "Дизайнер Профи",
-                profileNickname: "_pro",
-                profileStyle: "Дизайн",
-                avatar: "https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg",
-                socialLinks: [
-                    { platform: "telegram", username: "_pro" },
-                    { platform: "instagram", username: "pro" }
-                ],
-                works: [
-                    "https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg",
-                    "https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg",
-                    "https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg",
-                    "https://i.postimg.cc/Pf9GVnCH/photo-5244699232638725578-y.jpg",
-                    "https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg"
-                ],
-                publishedOn: "design",
-                password: "1234590",
-                profileDescription: "",
-            },
-
-
+            userDatabase = { ...defaultUsers };
+            saveUserDatabase();
         }
 
 
     </script>
 
-    
+
 
 </body>
 
