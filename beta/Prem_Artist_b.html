@@ -235,7 +235,7 @@
 
             <div class="registration-modal-header">
                 <h3 class="registration-modal-title">Регистрация в Artemisia</h3>
-                <p class="registration-modal-subtitle">Введите код подтверждения из Telegram-бота</p>
+                <p class="registration-modal-subtitle">Введите код подтверждения из Telegram-канала</p>
 
                 <div class="bot-info">
                     <svg class="bot-icon" viewBox="0 0 24 24" fill="#ffcc00">
@@ -3489,6 +3489,7 @@ ${index + 1}. ${user.name}
         <div class="social-link-input" id="${socialId}">
             <select class="social-platform-select" onchange="updateSocialLinkPrefix(this)">
                 <option value="telegram">Telegram</option>
+                <option value="vk">VK</option>
                 <option value="tiktok">Tik Tok</option>
                 <option value="instagram">Instagram</option>
                 <option value="pinterest">Pinterest</option>
@@ -3524,7 +3525,7 @@ ${index + 1}. ${user.name}
 
             const prefixes = {
                 'telegram': 'https://t.me/',
-                'tt': 'https://www.tiktok.com/',
+                'tik tok': 'https://www.tiktok.com/',
                 'vk': 'https://vk.com/',
                 'instagram': 'https://instagram.com/',
                 'pinterest': 'https://pinterest.com/',
