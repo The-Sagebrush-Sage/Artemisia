@@ -437,20 +437,23 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label required" for="profileStyle">Специальность</label>
+                            <label class="form-label required" for="profileStyle">Стиль</label>
                             <select id="profileStyle" class="form-select" required>
-                                <option value="">Выберите специальность</option>
-                                <option value="Дизайн">Дизайн</option>
-                                <option value="Веб-дизайн">Веб-дизайн</option>
-                                <option value="Графический дизайн">Графический дизайн</option>
-                                <option value="Иллюстрация">Иллюстрация</option>
+                                <option value="">Выберите стиль</option>
+                                <option value="Авторский">Авторский</option>
+                                <option value="Аниме">Аниме</option>
+                                <option value="Графика">Графика</option>                                
+                                <option value="Реализм">Реализм</option>
+                                <option value="Мультяшный">Мультяшный</option>
+                                <option value="Cемиреализм">Cемиреализм</option>
+                                <option value="Сюрреализм">Сюрреализм</option>
                                 <option value="Другое">Другое</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label required" for="profileCustomStyle">Другая специальность</label>
+                            <label class="form-label required" for="profileCustomStyle">Другой стиль</label>
                             <input type="text" id="profileCustomStyle" class="form-input"
-                                placeholder="Укажите вашу специальность" disabled required>
+                                placeholder="Укажите ваш стиль" disabled required>
                         </div>
                     </div>
                     <!-- В секции описания профиля в модальном окне настройки профиля -->
@@ -4008,7 +4011,7 @@ publishUserProfileOnPage("${username}", "${publicationPage}");
                 <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon"> 
                 @${profileData.profileNickname}
             </a>
-            <p>Специальность: ${profileData.profileStyle}</p>
+            <p>Стиль: ${profileData.profileStyle}</p>
             <div class="social-links">
 ${socialLinksHtml1}            </div>
         </div>
@@ -4475,7 +4478,7 @@ ${generateProfileCardWorks(profileData.works)}        </div>
 ${index + 1}. ${profile.profileData.profileName}
    ├─ User ID: ${profile.username}
    ├─ Telegram: @${profile.profileData.profileNickname}
-   ├─ Специальность: ${profile.profileData.profileStyle}
+   ├─ Стиль: ${profile.profileData.profileStyle}
    ├─ Дата публикации: ${new Date(profile.publicationInfo.timestamp).toLocaleDateString('ru-RU')}
    └─ Статус: ✅ Опубликован
         `);
@@ -4661,7 +4664,7 @@ ${index + 1}. ${profile.profileData.profileName}
                     Основная информация заблокирована
                 </div>
                 <p style="color: #e0e0e0; font-size: 0.85em; margin: 5px 0 0 0;">
-                    Имя, никнейм и специальность нельзя изменить после сохранения профиля. 
+                    Имя, никнейм и стиль нельзя изменить после сохранения профиля. 
                     Это обеспечивает стабильность вашего профиля на платформе.
                 </p>
             </div>
@@ -6531,7 +6534,7 @@ ${index + 1}. ${profile.profileData.profileName}
 
             const profileStyle = document.getElementById('profileStyle').value;
             if (isNewProfile && !profileStyle) {
-                alert('✗ Пожалуйста, выберите специальность');
+                alert('✗ Пожалуйста, выберите стиль');
                 document.getElementById('profileStyle').focus();
                 saveBtn.disabled = false;
                 saveBtn.textContent = 'Сохранить профиль';
@@ -6542,7 +6545,7 @@ ${index + 1}. ${profile.profileData.profileName}
             if (isNewProfile && profileStyle === 'Другое') {
                 const customStyle = document.getElementById('profileCustomStyle').value.trim();
                 if (!customStyle) {
-                    alert('✗ Пожалуйста, укажите вашу специальность в поле "Другая специальность"');
+                    alert('✗ Пожалуйста, укажите ваш стиль в поле "Другой стиль"');
                     document.getElementById('profileCustomStyle').focus();
                     saveBtn.disabled = false;
                     saveBtn.textContent = 'Сохранить профиль';
