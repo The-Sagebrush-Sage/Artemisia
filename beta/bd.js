@@ -6,6 +6,7 @@ const userDatabase = {
         profileNickname: "_pro",
         profileStyle: "Дизайн",
         avatar: "https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg",
+        banner: "https://i.postimg.cc/8zGLmfKb/image.png",
         socialLinks: [
             { platform: "telegram", username: "_pro" },
             { platform: "instagram", username: "pro" }
@@ -28,6 +29,7 @@ const userDatabase = {
         profileNickname: "nance_art",
         profileStyle: "Авторский",
         avatar: "https://i.postimg.cc/257fv0QQ/%D0%B0%D0%B2%D0%B0_%D0%B1%D0%B0%D0%BD%D0%B0%D0%BD_3.png",
+        banner: "https://i.postimg.cc/Pf9GVnCH/photo_5244699232638725578_y.jpg",
         socialLinks: [
             { platform: "telegram", username: "nensn5" },
             { platform: "youtube", username: "nensn5" },

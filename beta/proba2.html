@@ -299,12 +299,12 @@
 
             <form class="registration-form" onsubmit="submitLogin(event)">
                 <div class="form-group">
-                    <label class="form-label" for="loginEmail">Никнейм:</label>
-                    <input type="text" id="loginEmail" class="form-input" placeholder="Введите ваш никнейм" required
+                    <label class="form-label" for="loginEmail">Ваш Id:</label>
+                    <input type="text" id="loginEmail" class="form-input" placeholder="Введите ваш Id" required
                         autocomplete="username">
                 </div>
 
-                <!-- В модальном окне входа (примерно строка 649) -->
+                <!-- В модальном окне входа  -->
                 <div class="form-group">
                     <label class="form-label" for="loginPassword">Пароль:</label>
                     <div class="password-input-wrapper">
@@ -431,7 +431,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label required" for="profileNickname">Никнейм в Telegram</label>
+                            <label class="form-label required" for="profileNickname">Юзернейм в Telegram</label>
                             <input type="text" id="profileNickname" class="form-input" placeholder="@username" required>
                         </div>
                     </div>
@@ -566,7 +566,7 @@
                         <!-- Работы будут добавляться динамически -->
                     </div>
                     <div class="works-counter minimum-warning" id="worksCounter">
-                        Минимум: 5 работ | Добавлено: 0/20 работ
+                        Минимум: 5 работ
                     </div>
                     <div class="work-link-input-container">
                         <div class="work-link-input-group">
@@ -651,7 +651,7 @@
                     </li>
                 </ol>
                 <p style="color: #ffcc00; margin-top: 15px; font-size: 0.9em; text-align: center;">
-                    ⏳ Обычно проверка занимает от 1 до 3 дней
+                    ⏳ Обычно проверка занимает от 1 до 6 дней
                 </p>
             </div>
         </div>
@@ -1142,78 +1142,6 @@
             </div>
         </section>
 
-        <!-- user_5sjr50 Prem -->
-        <section id="user_5sjr50_prem">
-            <section class="profile-section" data-style="Дизайн" data-prem="true"
-                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/8zGLmfKb/image.png')">
-                <div class="avatar-container" onclick="window.location.href='../Prem/user_5sjr50.html'">
-                    <div class="avatar-border"></div>
-                    <img src="https://i.postimg.cc/6p6LLrLR/photo_5244943526083553957_y.jpg" alt="Аватар"
-                        class="avatar">
-                    <div class="profile-button"> Профиль</div>
-                </div>
-
-                <div class="profile-info">
-                    <h1>user_5sjr50</h1>
-                    <a href="https://t.me/555" class="profile-link">
-                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
-                        @555
-                    </a>
-                    <p>Стиль: Дизайн</p>
-                    <div class="social-links">
-                        <a href="https://t.me/234" class="social-link" target="_blank" rel="noopener noreferrer"
-                            aria-label="telegram">
-                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
-                        </a>
-                        <a href="https://t.me/123456" class="social-link" target="_blank" rel="noopener noreferrer"
-                            aria-label="telegram">
-                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <h2 class="favorite-works">Публикации автора</h2>
-            <div class="works-carousel" id="artistuser_5sjr50PremCarousel">
-                <div class="works-inner" id="artistuser_5sjr50PremWorks">
-                    <img src="https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg" class="work-thumb-1"
-                        alt="Работа 1">
-                    <img src="https://i.postimg.cc/VvczXRxZ/photo_5337314107818374848_c.jpg" class="work-thumb-2"
-                        alt="Работа 2">
-                    <img src="https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg" class="work-thumb-3"
-                        alt="Работа 3">
-                    <img src="https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg" class="work-thumb-1"
-                        alt="Работа 4">
-                    <img src="https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg" class="work-thumb-2"
-                        alt="Работа 5">
-                </div>
-                <button class="works-control prev" onclick="prevWork('artistuser_5sjr50PremWorks')">&#10094;</button>
-                <button class="works-control next" onclick="nextWork('artistuser_5sjr50PremWorks')">&#10095;</button>
-            </div>
-            <button class="show-works-btn" onclick="openModal('modaluser_5sjr50Prem')">Ознакомиться со всеми
-                работами</button>
-
-            <!-- Modal -->
-            <div id="modaluser_5sjr50Prem" class="modal">
-                <span class="close-btn" onclick="closeModal('modaluser_5sjr50Prem')">&times;</span>
-                <div class="modal-header">
-                    <h2>Галерея работ</h2>
-                </div>
-                <div class="modal-content">
-                    <img src="https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg" class="modal-img"
-                        alt="Работа 1">
-                    <img src="https://i.postimg.cc/VvczXRxZ/photo_5337314107818374848_c.jpg" class="modal-img"
-                        alt="Работа 2">
-                    <img src="https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg" class="modal-img"
-                        alt="Работа 3">
-                    <img src="https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg" class="modal-img"
-                        alt="Работа 4">
-                    <img src="https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg" class="modal-img"
-                        alt="Работа 5">
-                </div>
-            </div>
-        </section>
-
         <!-- roklimorii Prem -->
         <section id="91">
             <section class="profile-section" data-style="Аниме" data-prem="true"
@@ -1617,7 +1545,7 @@
                     <h1>нэнсик</h1>
                     <a href="https://t.me/nance_art" class="profile-link">
                         <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
-                        @@nance_art
+                        @nance_art
                     </a>
                     <p>Стиль: Авторский</p>
                     <div class="social-links">
@@ -1627,7 +1555,7 @@
                         </a>
                         <a href="https://youtube.com/@nensn5" class="social-link" target="_blank"
                             rel="noopener noreferrer" aria-label="youtube">
-                            <img src="https://i.postimg.cc/7Yr7y0J0/icons8-youtube-48.png" alt="YouTube"
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube_(1).png" alt="YouTube"
                                 class="social-icon">
                         </a>
                         <a href="https://vk.com/nensn5" class="social-link" target="_blank" rel="noopener noreferrer"
@@ -1782,8 +1710,8 @@
                         <!-- YouTube -->
                         <a href="https://www.youtube.com/@nensn5" class="social-link" target="_blank"
                             rel="noopener noreferrer" aria-label="YouTube">
-                            <img src="https://i.postimg.cc/fW5tnzqN/youtube-1.png" alt="YouTube" width="32" height="32"
-                                loading="lazy" class="social-icon">
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube-(1).png" alt="YouTube" width="32"
+                                height="32" loading="lazy" class="social-icon">
                         </a>
 
                         <!-- Пинтерест -->
@@ -2798,7 +2726,7 @@ ${usersWithoutPasswords.map(user => `- ${user}`).join('\n')}
                 'instagram': 'https://i.postimg.cc/7Lf1r6LG/image.png',
                 'pinterest': 'https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png',
                 'youtube': 'https://i.postimg.cc/fW5tnzqN/youtube_(1).png',
-                'vk': 'https://i.postimg.cc/cHhQbQ8q/вк.png',
+                'vk': 'https://i.postimg.cc/cHhQbQ8q/image.png',
             };
 
             return icons[platform] || 'https://i.postimg.cc/cJXCqTTc/icons8-48.png';
@@ -4411,7 +4339,7 @@ ${generateProfileCardWorks(profileData.works)}        </div>
                 'telegram': '<img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32" loading="lazy" class="social-icon">',
                 'instagram': '<img src="https://i.postimg.cc/8zq7J7J7/icons8-instagram-48.png" alt="Instagram" width="32" height="32" loading="lazy" class="social-icon">',
                 'pinterest': '<img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pinterest" width="32" height="32" loading="lazy" class="social-icon">',
-                'youtube': '<img src="https://i.postimg.cc/7Yr7y0J0/icons8-youtube-48.png" alt="YouTube" width="32" height="32" loading="lazy" class="social-icon">',
+                'youtube': '<img src="https://i.postimg.cc/fW5tnzqN/youtube_(1).png" alt="YouTube" width="32" height="32" loading="lazy" class="social-icon">',
                 'artstation': '<img src="https://i.postimg.cc/8C3Q3Q3Q/icons8-artstation-48.png" alt="ArtStation" width="32" height="32" loading="lazy" class="social-icon">',
                 'behance': '<img src="https://i.postimg.cc/8C3Q3Q3Q/icons8-behance-48.png" alt="Behance" width="32" height="32" loading="lazy" class="social-icon">',
                 'vk': '<img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32" loading="lazy" class="social-icon">',
@@ -4482,13 +4410,12 @@ ${generateProfileCardWorks(profileData.works)}        </div>
         }
 
 
-
         function getSocialIcon(platform) {
             const icons = {
                 'telegram': '<img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">',
                 'instagram': '<img src="https://i.postimg.cc/8zq7J7J7/icons8-instagram-48.png" alt="Instagram" class="social-icon">',
                 'pinterest': '<img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pinterest" class="social-icon">',
-                'youtube': '<img src="https://i.postimg.cc/7Yr7y0J0/icons8-youtube-48.png" alt="YouTube" class="social-icon">',
+                'youtube': '<img src="https://i.postimg.cc/fW5tnzqN/youtube_(1).png" alt="YouTube" class="social-icon">',
                 'artstation': '<img src="https://i.postimg.cc/8C3Q3Q3Q/icons8-artstation-48.png" alt="ArtStation" class="social-icon">',
                 'behance': '<img src="https://i.postimg.cc/8C3Q3Q3Q/icons8-behance-48.png" alt="Behance" class="social-icon">',
                 'vk': '<img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" class="social-icon">',
@@ -4497,7 +4424,6 @@ ${generateProfileCardWorks(profileData.works)}        </div>
 
             return icons[platform] || '<img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Social" class="social-icon">';
         }
-
 
 
         function openCodeModal(profileCode, username, userPassword, isExistingUser = false) {

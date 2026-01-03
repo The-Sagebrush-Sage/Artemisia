@@ -566,7 +566,7 @@
                         <!-- Работы будут добавляться динамически -->
                     </div>
                     <div class="works-counter minimum-warning" id="worksCounter">
-                        Минимум: 5 работ 
+                        Минимум: 5 работ
                     </div>
                     <div class="work-link-input-container">
                         <div class="work-link-input-group">
@@ -1545,7 +1545,7 @@
                     <h1>нэнсик</h1>
                     <a href="https://t.me/nance_art" class="profile-link">
                         <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
-                        @@nance_art
+                        @nance_art
                     </a>
                     <p>Стиль: Авторский</p>
                     <div class="social-links">
@@ -1555,8 +1555,7 @@
                         </a>
                         <a href="https://youtube.com/@nensn5" class="social-link" target="_blank"
                             rel="noopener noreferrer" aria-label="youtube">
-                            <img src="https://i.postimg.cc/7Yr7y0J0/icons8-youtube-48.png" alt="YouTube"
-                                class="social-icon">
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube_(1).png" alt="YouTube" class="social-icon">
                         </a>
                         <a href="https://vk.com/nensn5" class="social-link" target="_blank" rel="noopener noreferrer"
                             aria-label="vk">
@@ -1710,8 +1709,8 @@
                         <!-- YouTube -->
                         <a href="https://www.youtube.com/@nensn5" class="social-link" target="_blank"
                             rel="noopener noreferrer" aria-label="YouTube">
-                            <img src="https://i.postimg.cc/fW5tnzqN/youtube-1.png" alt="YouTube" width="32" height="32"
-                                loading="lazy" class="social-icon">
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube-(1).png" alt="YouTube" width="32"
+                                height="32" loading="lazy" class="social-icon">
                         </a>
 
                         <!-- Пинтерест -->
@@ -2726,7 +2725,7 @@ ${usersWithoutPasswords.map(user => `- ${user}`).join('\n')}
                 'instagram': 'https://i.postimg.cc/7Lf1r6LG/image.png',
                 'pinterest': 'https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png',
                 'youtube': 'https://i.postimg.cc/fW5tnzqN/youtube_(1).png',
-                'vk': 'https://i.postimg.cc/cHhQbQ8q/вк.png',
+                'vk': 'https://i.postimg.cc/cHhQbQ8q/image.png',
             };
 
             return icons[platform] || 'https://i.postimg.cc/cJXCqTTc/icons8-48.png';
@@ -4211,24 +4210,26 @@ ${generateProfileCardWorks(profileData.works)}        </div>
 // ВАРИАНТ 4 //
 "${username}": {
     username: "${username}",
+    password: "${userPassword}",
     profileName: "${profileData.profileName}",
     profileNickname: "${profileData.profileNickname.replace('@', '')}",
     profileStyle: "${profileData.profileStyle}",
     avatar: "${profileData.avatar || 'https://i.postimg.cc/Rhz86Z09/photo_5337314107818374848_c.jpg'}",
+    banner: "${profileData.banner || ''}",
     socialLinks: [
         ${profileData.socialLinks ? profileData.socialLinks.map(link =>
-                `{ platform: "${link.platform}", username: "${link.username}" }`
-            ).join(',\n        ') : '{ platform: "telegram", username: "' + profileData.profileNickname.replace('@', '') + '" }'}
+                `{"platform": "${link.platform}", "username": "${link.username}"}`
+            ).join(',\n        ') : '{"platform": "telegram", "username": "' + profileData.profileNickname.replace('@', '') + '"}'}
     ],
     works: [
         ${profileData.works ? profileData.works.map(work =>
                 `"${work}"`
             ).join(',\n        ') : '""'}
     ],
-    publishedOn: "${publicationPage}",
-    password: "${userPassword}",
-    profileDescription: "${profileData.profileDescription || ''}",
-},`;
+    profileDescription: "${(profileData.profileDescription || '').replace(/"/g, '\\"')}",
+    publicationPage: "${publicationPage}",
+    lastUpdated: "${new Date().toISOString()}"
+}`;
 
             return profileCode;
         }
@@ -4339,7 +4340,7 @@ ${generateProfileCardWorks(profileData.works)}        </div>
                 'telegram': '<img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" width="32" height="32" loading="lazy" class="social-icon">',
                 'instagram': '<img src="https://i.postimg.cc/8zq7J7J7/icons8-instagram-48.png" alt="Instagram" width="32" height="32" loading="lazy" class="social-icon">',
                 'pinterest': '<img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pinterest" width="32" height="32" loading="lazy" class="social-icon">',
-                'youtube': '<img src="https://i.postimg.cc/7Yr7y0J0/icons8-youtube-48.png" alt="YouTube" width="32" height="32" loading="lazy" class="social-icon">',
+                'youtube': '<img src="https://i.postimg.cc/fW5tnzqN/youtube_(1).png" alt="YouTube" width="32" height="32" loading="lazy" class="social-icon">',
                 'artstation': '<img src="https://i.postimg.cc/8C3Q3Q3Q/icons8-artstation-48.png" alt="ArtStation" width="32" height="32" loading="lazy" class="social-icon">',
                 'behance': '<img src="https://i.postimg.cc/8C3Q3Q3Q/icons8-behance-48.png" alt="Behance" width="32" height="32" loading="lazy" class="social-icon">',
                 'vk': '<img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" width="32" height="32" loading="lazy" class="social-icon">',
@@ -4410,13 +4411,12 @@ ${generateProfileCardWorks(profileData.works)}        </div>
         }
 
 
-
         function getSocialIcon(platform) {
             const icons = {
                 'telegram': '<img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">',
                 'instagram': '<img src="https://i.postimg.cc/8zq7J7J7/icons8-instagram-48.png" alt="Instagram" class="social-icon">',
                 'pinterest': '<img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pinterest" class="social-icon">',
-                'youtube': '<img src="https://i.postimg.cc/7Yr7y0J0/icons8-youtube-48.png" alt="YouTube" class="social-icon">',
+                'youtube': '<img src="https://i.postimg.cc/fW5tnzqN/youtube_(1).png" alt="YouTube" class="social-icon">',
                 'artstation': '<img src="https://i.postimg.cc/8C3Q3Q3Q/icons8-artstation-48.png" alt="ArtStation" class="social-icon">',
                 'behance': '<img src="https://i.postimg.cc/8C3Q3Q3Q/icons8-behance-48.png" alt="Behance" class="social-icon">',
                 'vk': '<img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" class="social-icon">',
@@ -4425,7 +4425,6 @@ ${generateProfileCardWorks(profileData.works)}        </div>
 
             return icons[platform] || '<img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Social" class="social-icon">';
         }
-
 
 
         function openCodeModal(profileCode, username, userPassword, isExistingUser = false) {
@@ -4758,21 +4757,43 @@ ${index + 1}. ${profile.profileData.profileName}
             }
 
             const preview = document.getElementById('bannerPreview');
-            preview.innerHTML = `<img src="${link}" alt="Баннер" onerror="handleBannerError(this)">`;
 
+            // Создаем новый Image для предварительной загрузки и проверки
+            const img = new Image();
 
-            linkInput.value = '';
+            img.onload = function () {
+                // Устанавливаем высоту предпросмотра баннера
+                preview.style.height = '150px';
+                preview.innerHTML = `<img src="${link}" alt="Баннер" style="width: 100%; height: 100%; object-fit: cover;">`;
 
+                linkInput.value = '';
+                showBannerSuccess();
 
-            showBannerSuccess();
+                // Обновляем валидацию
+                setTimeout(() => {
+                    validateBanner();
+                    updateOverallValidation();
+                }, 100);
+            };
+
+            img.onerror = function () {
+                alert('Не удалось загрузить баннер. Проверьте ссылку и попробуйте снова.');
+                handleBannerError();
+            };
+
+            img.src = link;
         }
 
 
-        function handleBannerError(imgElement) {
-            const preview = document.getElementById('bannerPreview');
-            preview.innerHTML = '<div class="banner-placeholder">Баннер не выбран</div>';
-            alert('Не удалось загрузить баннер. Проверьте ссылку и попробуйте снова.');
-        }
+        function handleBannerError() {
+    const preview = document.getElementById('bannerPreview');
+    preview.innerHTML = '<div class="banner-placeholder">Баннер не выбран</div>';
+    preview.classList.add('banner-not-selected');
+    preview.style.height = 'auto';
+    
+    // Очищаем поле ввода
+    document.getElementById('bannerLinkInput').value = '';
+}
 
 
         function removeBanner() {
@@ -4796,10 +4817,21 @@ ${index + 1}. ${profile.profileData.profileName}
 
 
         function getBannerSrc() {
-            const bannerImg = document.querySelector('#bannerPreview img');
-            return bannerImg && bannerImg.src && !bannerImg.src.includes('data:image/svg+xml')
-                ? bannerImg.src
-                : '';
+            const bannerPreview = document.getElementById('bannerPreview');
+            const bannerImg = bannerPreview.querySelector('img');
+
+            // Проверяем, есть ли баннер (не дефолтное состояние)
+            if (bannerImg &&
+                bannerImg.src &&
+                !bannerImg.src.includes('data:image/svg+xml') &&
+                !bannerPreview.classList.contains('banner-not-selected')) {
+
+                // Очищаем ссылку от возможных параметров кэширования
+                const cleanUrl = bannerImg.src.split('?')[0];
+                return cleanUrl;
+            }
+
+            return '';
         }
 
         function closeCodeModal() {
@@ -6267,19 +6299,23 @@ ${index + 1}. ${profile.profileData.profileName}
             const userProfile = loadUserProfileFromDatabase(currentUser.username);
 
             if (userProfile) {
-
+                // ЗАГРУЗКА БАННЕРА
                 const bannerContainer = document.getElementById('cabinetBannerContainer');
                 const bannerImg = document.getElementById('cabinetBanner');
 
                 if (userProfile.banner && userProfile.banner.trim() !== '') {
-                    bannerImg.src = userProfile.banner;
-                    bannerContainer.style.display = 'block';
-
-
-                    bannerImg.onerror = function () {
-                        console.error('Ошибка загрузки баннера:', userProfile.banner);
+                    // Используем новый Image для предзагрузки
+                    const img = new Image();
+                    img.onload = function () {
+                        bannerImg.src = userProfile.banner;
+                        bannerContainer.style.display = 'block';
+                        bannerImg.style.opacity = '1';
+                    };
+                    img.onerror = function () {
+                        console.warn('Баннер не загрузился, скрываем контейнер:', userProfile.banner);
                         bannerContainer.style.display = 'none';
                     };
+                    img.src = userProfile.banner;
                 } else {
                     bannerContainer.style.display = 'none';
                 }
@@ -6488,7 +6524,7 @@ ${index + 1}. ${profile.profileData.profileName}
                 profileDescription: document.getElementById('profileDescription').value,
                 userPassword: document.getElementById('profilePassword').value,
                 avatar: getAvatarSrc(),
-                banner: getBannerSrc(),
+                banner: getBannerSrc(), // ← ЭТО ВАЖНО!
                 socialLinks: collectSocialLinks(),
                 works: collectWorks(),
                 lastUpdated: new Date().toISOString(),
@@ -6777,47 +6813,43 @@ ${index + 1}. ${profile.profileData.profileName}
 
 
         function syncUserData(username) {
-            const localProfile = localStorage.getItem('userProfile_' + username);
-            const dbProfile = userDatabase[username];
+    const localProfile = localStorage.getItem('userProfile_' + username);
+    const dbProfile = userDatabase[username];
 
-            if (!dbProfile) {
-                console.log('✗ Пользователь не найден в базе данных:', username);
-                return null;
-            }
+    if (!dbProfile) {
+        console.log('✗ Пользователь не найден в базе данных:', username);
+        return null;
+    }
 
+    if (localProfile) {
+        try {
+            const localData = JSON.parse(localProfile);
+            
+            // Сохраняем баннер при синхронизации
+            const mergedData = {
+                ...dbProfile,
+                ...localData,
+                password: dbProfile.password,
+                username: dbProfile.username,
+                // Приоритет у локального баннера, если он есть
+                banner: localData.banner || dbProfile.banner || ''
+            };
 
-            if (localProfile) {
-                try {
-                    const localData = JSON.parse(localProfile);
-
-
-                    const mergedData = {
-                        ...dbProfile,
-                        ...localData,
-                        password: dbProfile.password,
-                        username: dbProfile.username
-                    };
-
-                    localStorage.setItem('userProfile_' + username, JSON.stringify(mergedData));
-                    console.log('🔄 Данные синхронизированы для:', username);
-                    return mergedData;
-                } catch (error) {
-                    console.error('Ошибка синхронизации:', error);
-                }
-            }
-
-
-            localStorage.setItem('userProfile_' + username, JSON.stringify(dbProfile));
-            return dbProfile;
+            localStorage.setItem('userProfile_' + username, JSON.stringify(mergedData));
+            console.log('🔄 Данные синхронизированы для:', username);
+            return mergedData;
+        } catch (error) {
+            console.error('Ошибка синхронизации:', error);
         }
+    }
 
-        function getBannerSrc() {
-            const bannerImg = document.querySelector('#bannerPreview img');
-            return bannerImg && bannerImg.src && !bannerImg.src.includes('data:image/svg+xml')
-                ? bannerImg.src
-                : '';
-        }
-
+    // При первом входе сохраняем баннер из базы
+    localStorage.setItem('userProfile_' + username, JSON.stringify({
+        ...dbProfile,
+        banner: dbProfile.banner || ''
+    }));
+    return dbProfile;
+}
 
         function getAvatarSrc() {
             const avatarImg = document.querySelector('#avatarPreview img');
