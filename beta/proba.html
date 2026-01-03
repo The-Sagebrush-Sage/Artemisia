@@ -115,7 +115,7 @@
             </li>
 
             <li>
-                <a href="proba.html">
+                <a href="https://the-sagebrush-sage.github.io/Artemisia/html/Artist.html">
                     <img src="https://i.postimg.cc/MGRMh1NP/man-14816778.png" alt="Художники">
                     Художники
                 </a>
@@ -5866,31 +5866,94 @@ ${index + 1}. ${profile.profileData.profileName}
 
 
         function handleAnchorLinks() {
-
             if (window.location.hash) {
                 const artistId = window.location.hash.substring(1);
-                const artistSection = document.getElementById(artistId);
+                console.log('Поиск секции с ID:', artistId);
 
+                // Пытаемся найти секцию разными способами
+                let artistSection = document.getElementById(artistId);
+
+                // Если не нашли по точному ID, ищем по частичному совпадению
+                if (!artistSection) {
+                    // Ищем среди всех секций
+                    const allSections = document.querySelectorAll('section[id]');
+                    allSections.forEach(section => {
+                        const sectionId = section.id;
+                        if (sectionId.includes(artistId) || artistId.includes(sectionId)) {
+                            artistSection = section;
+                            console.log('Найдена секция по частичному совпадению:', sectionId);
+                        }
+                    });
+                }
+
+                // Если нашли секцию, скроллим к ней
                 if (artistSection) {
-
                     setTimeout(() => {
-                        artistSection.scrollIntoView({ behavior: 'smooth' });
+                        artistSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
 
-
+                        // Добавляем подсветку
                         const profile = artistSection.querySelector('.profile-section');
                         if (profile) {
                             profile.classList.add('artist-highlight');
-
 
                             setTimeout(() => {
                                 profile.classList.remove('artist-highlight');
                             }, 3000);
                         }
-                    }, 100);
+
+                        console.log('✓ Секция найдена и прокручена');
+                    }, 500);
+                } else {
+                    console.log('✗ Секция не найдена по ID:', artistId);
+
+                    // Пробуем найти по имени
+                    const allHeaders = document.querySelectorAll('.profile-section h1');
+                    allHeaders.forEach(header => {
+                        const name = header.textContent.toLowerCase().replace(/\s+/g, '');
+                        if (name === artistId.toLowerCase()) {
+                            const section = header.closest('section');
+                            if (section) {
+                                setTimeout(() => {
+                                    section.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                    });
+                                    console.log('✓ Найдено по имени:', name);
+                                }, 500);
+                            }
+                        }
+                    });
                 }
             }
         }
 
+        function getPublishedProfileId(username) {
+            // Получаем данные профиля
+            const userProfile = loadUserProfileFromDatabase(username);
+            if (!userProfile) return null;
+
+            // Формируем ID так же, как он формируется при публикации
+            const profileId = userProfile.profileName.toLowerCase().replace(/\s+/g, '');
+
+            // Проверяем, есть ли такой ID на странице
+            const element = document.getElementById(profileId);
+            if (element) {
+                return profileId;
+            }
+
+            // Ищем по частичному совпадению
+            const allIds = Array.from(document.querySelectorAll('section[id]')).map(el => el.id);
+            for (let id of allIds) {
+                if (id.includes(profileId) || profileId.includes(id)) {
+                    return id;
+                }
+            }
+
+            return null;
+        }
 
         window.addEventListener('load', handleAnchorLinks);
 
@@ -6259,6 +6322,28 @@ ${index + 1}. ${profile.profileData.profileName}
             }
         }
 
+        function loadPersonalCabinetData() {
+            if (!currentUser) return;
+
+            const userProfile = loadUserProfileFromDatabase(currentUser.username);
+
+            if (userProfile) {
+                // ... остальной код ...
+
+                // Получаем ID для ссылки на профиль
+                const profileId = getPublishedProfileId(currentUser.username);
+
+                // Отображаем информацию о ссылке
+                if (profileId) {
+                    const publicationInfo = getPublicationPage(currentUser.username);
+                    const pageName = getPageDisplayName(publicationInfo.page);
+
+                    console.log(`🔗 Ссылка на профиль: ${pageName}#${profileId}`);
+                }
+
+                // ... остальной код ...
+            }
+        }
 
         function loadPersonalCabinetData() {
             if (!currentUser) return;
@@ -7583,6 +7668,13 @@ ${index + 1}. ${profile.profileData.profileName}
         function copyProfileLink() {
             if (!currentUser) return;
 
+            // Получаем данные пользователя
+            const userProfile = loadUserProfileFromDatabase(currentUser.username);
+            if (!userProfile) {
+                showErrorNotification('Профиль не найден');
+                return;
+            }
+
             // Показываем лоадер/состояние загрузки
             const shareBtn = document.querySelector('.share-link-btn');
             if (shareBtn) {
@@ -7596,18 +7688,51 @@ ${index + 1}. ${profile.profileData.profileName}
                 }, 300);
             }
 
-            // Получаем ID профиля художника (формируем из имени)
-            const profileName = document.getElementById('cabinetUsername').textContent;
-            const profileId = profileName.toLowerCase().replace(/\s+/g, '');
+            // Формируем ID профиля так же, как он формируется в коде профиля
+            // Используем тот же алгоритм, что и в generateProfileCode()
+            const profileId = userProfile.profileName.toLowerCase().replace(/\s+/g, '');
 
-            // Формируем полную ссылку на профиль
-            const baseUrl = window.location.origin + window.location.pathname;
-            const profileUrl = `${baseUrl}#${profileId}`;
+            // Получаем страницу, где опубликован профиль
+            const publicationInfo = getPublicationPage(currentUser.username);
+            if (!publicationInfo) {
+                showErrorNotification('Профиль еще не опубликован на сайте');
+                return;
+            }
 
-            // Используем modern Clipboard API
+            // Формируем правильный URL в зависимости от страницы публикации
+            let baseUrl = window.location.origin;
+            let pagePath = '';
+
+            // Определяем путь к странице в зависимости от типа профиля
+            switch (publicationInfo.page) {
+                case 'prem_artist':
+                    pagePath = '/Artemisia/html/Prem_Artist.html';
+                    break;
+                case 'artist':
+                    pagePath = '/Artemisia/html/Artist.html';
+                    break;
+                case 'design':
+                    pagePath = '/Artemisia/html/Design.html';
+                    break;
+                default:
+                    // По умолчанию используем Prem_Artist для Prem профилей
+                    pagePath = '/Artemisia/html/Prem_Artist.html';
+            }
+
+            // Формируем полную ссылку с якорем
+            const profileUrl = `${baseUrl}${pagePath}#${profileId}`;
+
+            console.log('Формирование ссылки:', {
+                username: currentUser.username,
+                profileName: userProfile.profileName,
+                profileId: profileId,
+                publicationPage: publicationInfo.page,
+                profileUrl: profileUrl
+            });
+
+            // Копируем в буфер обмена
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(profileUrl).then(() => {
-                    // Показываем уведомление об успехе
                     showLinkCopiedNotification();
                     console.log('✓ Ссылка скопирована:', profileUrl);
                 }).catch(err => {
