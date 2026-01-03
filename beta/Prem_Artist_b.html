@@ -442,7 +442,7 @@
                                 <option value="">Выберите стиль</option>
                                 <option value="Авторский">Авторский</option>
                                 <option value="Аниме">Аниме</option>
-                                <option value="Графика">Графика</option>                                
+                                <option value="Графика">Графика</option>
                                 <option value="Реализм">Реализм</option>
                                 <option value="Мультяшный">Мультяшный</option>
                                 <option value="Cемиреализм">Cемиреализм</option>
@@ -804,7 +804,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Художники -->
     <section>
@@ -1527,6 +1526,75 @@
                     <img src="https://i.postimg.cc/BZPk90Fb/photo-5247249064528047701-y.jpg" class="modal-img" alt="">
                     <img src="https://i.postimg.cc/qvwZXBPb/photo-5247249064528047702-y.jpg" class="modal-img" alt="">
 
+                </div>
+            </div>
+        </section>
+
+        <!-- нэнсик Prem -->
+        <section id="нэнсик_prem">
+            <section class="profile-section" data-style="Авторский" data-prem="true"
+                style="background-image: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(30, 30, 30, 0.9)), url('https://i.postimg.cc/6pShcK0B/%D1%88%D0%B0%D0%BF%D0%BA%D0%B0_%D1%8E%D1%82%D1%83%D0%B1_2.png')">
+                <div class="avatar-container" onclick="window.location.href='../Prem/нэнсик.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/257fv0QQ/%D0%B0%D0%B2%D0%B0_%D0%B1%D0%B0%D0%BD%D0%B0%D0%BD_3.png"
+                        alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>нэнсик</h1>
+                    <a href="https://t.me/nance_art" class="profile-link">
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                        @@nance_art
+                    </a>
+                    <p>Стиль: Авторский</p>
+                    <div class="social-links">
+                        <a href="https://t.me/nensn5" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                        <a href="https://youtube.com/@nensn5" class="social-link" target="_blank"
+                            rel="noopener noreferrer" aria-label="youtube">
+                            <img src="https://i.postimg.cc/7Yr7y0J0/icons8-youtube-48.png" alt="YouTube"
+                                class="social-icon">
+                        </a>
+                        <a href="https://vk.com/nensn5" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="vk">
+                            <img src="https://i.postimg.cc/cHhQbQ8q/image.png" alt="VK" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artistнэнсикPremCarousel">
+                <div class="works-inner" id="artistнэнсикPremWorks">
+                    <img src="https://i.postimg.cc/432RBmSD/%D0%B2%D0%BE%D1%80%D0%BA_%D1%80%D0%B5%D0%B4.png"
+                        class="work-thumb-1" alt="Работа 1">
+                    <img src="https://i.postimg.cc/Kv776Vys/leha-dzenti.png" class="work-thumb-2" alt="Работа 2">
+                    <img src="https://i.postimg.cc/QxD1JbWV/a-i-vitek-drska.png" class="work-thumb-3" alt="Работа 3">
+                    <img src="https://i.postimg.cc/L5pYv9h1/arlena-dr.png" class="work-thumb-1" alt="Работа 4">
+                    <img src="https://i.postimg.cc/NM7fs1fs/laliii-itog.png" class="work-thumb-2" alt="Работа 5">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artistнэнсикPremWorks')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artistнэнсикPremWorks')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modalнэнсикPrem')">Ознакомиться со всеми
+                работами</button>
+
+            <!-- Modal -->
+            <div id="modalнэнсикPrem" class="modal">
+                <span class="close-btn" onclick="closeModal('modalнэнсикPrem')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/432RBmSD/%D0%B2%D0%BE%D1%80%D0%BA_%D1%80%D0%B5%D0%B4.png"
+                        class="modal-img" alt="Работа 1">
+                    <img src="https://i.postimg.cc/Kv776Vys/leha-dzenti.png" class="modal-img" alt="Работа 2">
+                    <img src="https://i.postimg.cc/QxD1JbWV/a-i-vitek-drska.png" class="modal-img" alt="Работа 3">
+                    <img src="https://i.postimg.cc/L5pYv9h1/arlena-dr.png" class="modal-img" alt="Работа 4">
+                    <img src="https://i.postimg.cc/NM7fs1fs/laliii-itog.png" class="modal-img" alt="Работа 5">
                 </div>
             </div>
         </section>
@@ -7828,53 +7896,6 @@ ${index + 1}. ${profile.profileData.profileName}
             textarea.style.transition = 'height 0.2s ease-out';
         }
 
-        // Проверка авторизации при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function () {
-            checkAuthStatus();
-
-            // Инициализация каруселей
-            initCarousel('artist1Works');
-            initCarousel('artist10Works');
-            initCarousel('artist45Works');
-            initCarousel('artist46Works');
-
-
-            initCarousel('artist71Works');
-            initCarousel('artist79Works');
-
-            initCarousel('artist91Works');
-            initCarousel('artist96Works');
-
-            initCarousel('artist102Works');
-
-            initCarousel('artist142Works');
-            initCarousel('artist150Works');
-
-            initCarousel('artist193Works');
-            initCarousel('artist220Works');
-            initCarousel('artist230Works');
-            initCarousel('artist232Works');
-            initCarousel('artist233Works');
-
-            // Инициализация фильтров
-            initFilters();
-
-            // Добавляем класс к первому элементу "Все стили"
-            const firstFilter = document.querySelector('.filters-dropdown a:first-child');
-            if (firstFilter) firstFilter.classList.add('active-filter');
-
-            // Адаптация каруселей при изменении размера окна
-            window.addEventListener('resize', () => {
-                Object.keys(carouselStates).forEach(worksInnerId => {
-                    carouselStates[worksInnerId].currentTranslate = 0;
-                    setPosition(worksInnerId);
-                });
-            });
-
-            // Инициализация модального окна изображений
-            initImageModal();
-        });
-
 
         function verifyPageCode(event) {
             event.preventDefault();
@@ -7928,13 +7949,63 @@ ${index + 1}. ${profile.profileData.profileName}
             }, 1500);
         }
 
+
+        // Проверка авторизации при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function () {
+            checkAuthStatus();
+
+            // Инициализация каруселей
+            initCarousel('artistнэнсикPremWorks');
+
+            initCarousel('artist1Works');
+            initCarousel('artist10Works');
+            initCarousel('artist45Works');
+            initCarousel('artist46Works');
+
+
+            initCarousel('artist71Works');
+            initCarousel('artist79Works');
+
+            initCarousel('artist91Works');
+            initCarousel('artist96Works');
+
+            initCarousel('artist102Works');
+
+            initCarousel('artist142Works');
+            initCarousel('artist150Works');
+
+            initCarousel('artist193Works');
+            initCarousel('artist220Works');
+            initCarousel('artist230Works');
+            initCarousel('artist232Works');
+            initCarousel('artist233Works');
+
+            // Инициализация фильтров
+            initFilters();
+
+            // Добавляем класс к первому элементу "Все стили"
+            const firstFilter = document.querySelector('.filters-dropdown a:first-child');
+            if (firstFilter) firstFilter.classList.add('active-filter');
+
+            // Адаптация каруселей при изменении размера окна
+            window.addEventListener('resize', () => {
+                Object.keys(carouselStates).forEach(worksInnerId => {
+                    carouselStates[worksInnerId].currentTranslate = 0;
+                    setPosition(worksInnerId);
+                });
+            });
+
+            // Инициализация модального окна изображений
+            initImageModal();
+        });
+
         // ========== СИСТЕМА ПАРОЛЕЙ ДЛЯ МОДЕРАТОРОВ ==========
 
         publishUserProfileOnPage("user_artist123", "artist");     // Художники
         publishUserProfileOnPage("user_5sjr50", "prem_artist");   // Дизайнеры  
         publishUserProfileOnPage("user_prem789", "prem_artist");  // Prem Artist
 
-        
+
 
     </script>
 
