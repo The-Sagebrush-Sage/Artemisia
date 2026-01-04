@@ -1555,7 +1555,8 @@
                         </a>
                         <a href="https://youtube.com/@nensn5" class="social-link" target="_blank"
                             rel="noopener noreferrer" aria-label="youtube">
-                            <img src="https://i.postimg.cc/fW5tnzqN/youtube_(1).png" alt="YouTube" class="social-icon">
+                            <img src="https://i.postimg.cc/fW5tnzqN/youtube_(1).png" alt="YouTube"
+                                class="social-icon">
                         </a>
                         <a href="https://vk.com/nensn5" class="social-link" target="_blank" rel="noopener noreferrer"
                             aria-label="vk">
@@ -4210,26 +4211,25 @@ ${generateProfileCardWorks(profileData.works)}        </div>
 // ВАРИАНТ 4 //
 "${username}": {
     username: "${username}",
-    password: "${userPassword}",
     profileName: "${profileData.profileName}",
     profileNickname: "${profileData.profileNickname.replace('@', '')}",
     profileStyle: "${profileData.profileStyle}",
     avatar: "${profileData.avatar || 'https://i.postimg.cc/Rhz86Z09/photo_5337314107818374848_c.jpg'}",
-    banner: "${profileData.banner || ''}",
+    banner: ${bannerUrl},
     socialLinks: [
         ${profileData.socialLinks ? profileData.socialLinks.map(link =>
-                `{"platform": "${link.platform}", "username": "${link.username}"}`
-            ).join(',\n        ') : '{"platform": "telegram", "username": "' + profileData.profileNickname.replace('@', '') + '"}'}
+                `{ platform: "${link.platform}", username: "${link.username}" }`
+            ).join(',\n        ') : '{ platform: "telegram", username: "' + profileData.profileNickname.replace('@', '') + '" }'}
     ],
     works: [
         ${profileData.works ? profileData.works.map(work =>
                 `"${work}"`
             ).join(',\n        ') : '""'}
     ],
-    profileDescription: "${(profileData.profileDescription || '').replace(/"/g, '\\"')}",
-    publicationPage: "${publicationPage}",
-    lastUpdated: "${new Date().toISOString()}"
-}`;
+    publishedOn: "${publicationPage}",
+    password: "${userPassword}",
+    profileDescription: "${profileData.profileDescription || ''}",
+},`;
 
             return profileCode;
         }
@@ -4732,7 +4732,7 @@ ${index + 1}. ${profile.profileData.profileName}
                     Основная информация заблокирована
                 </div>
                 <p style="color: #e0e0e0; font-size: 0.85em; margin: 5px 0 0 0;">
-                    Имя, никнейм и стиль нельзя изменить после сохранения профиля. 
+                    Имя, юз и стиль нельзя изменить после сохранения профиля. 
                     Это обеспечивает стабильность вашего профиля на платформе.
                 </p>
             </div>
@@ -4757,43 +4757,21 @@ ${index + 1}. ${profile.profileData.profileName}
             }
 
             const preview = document.getElementById('bannerPreview');
+            preview.innerHTML = `<img src="${link}" alt="Баннер" onerror="handleBannerError(this)">`;
 
-            // Создаем новый Image для предварительной загрузки и проверки
-            const img = new Image();
 
-            img.onload = function () {
-                // Устанавливаем высоту предпросмотра баннера
-                preview.style.height = '150px';
-                preview.innerHTML = `<img src="${link}" alt="Баннер" style="width: 100%; height: 100%; object-fit: cover;">`;
+            linkInput.value = '';
 
-                linkInput.value = '';
-                showBannerSuccess();
 
-                // Обновляем валидацию
-                setTimeout(() => {
-                    validateBanner();
-                    updateOverallValidation();
-                }, 100);
-            };
-
-            img.onerror = function () {
-                alert('Не удалось загрузить баннер. Проверьте ссылку и попробуйте снова.');
-                handleBannerError();
-            };
-
-            img.src = link;
+            showBannerSuccess();
         }
 
 
-        function handleBannerError() {
-    const preview = document.getElementById('bannerPreview');
-    preview.innerHTML = '<div class="banner-placeholder">Баннер не выбран</div>';
-    preview.classList.add('banner-not-selected');
-    preview.style.height = 'auto';
-    
-    // Очищаем поле ввода
-    document.getElementById('bannerLinkInput').value = '';
-}
+        function handleBannerError(imgElement) {
+            const preview = document.getElementById('bannerPreview');
+            preview.innerHTML = '<div class="banner-placeholder">Баннер не выбран</div>';
+            alert('Не удалось загрузить баннер. Проверьте ссылку и попробуйте снова.');
+        }
 
 
         function removeBanner() {
@@ -4817,21 +4795,10 @@ ${index + 1}. ${profile.profileData.profileName}
 
 
         function getBannerSrc() {
-            const bannerPreview = document.getElementById('bannerPreview');
-            const bannerImg = bannerPreview.querySelector('img');
-
-            // Проверяем, есть ли баннер (не дефолтное состояние)
-            if (bannerImg &&
-                bannerImg.src &&
-                !bannerImg.src.includes('data:image/svg+xml') &&
-                !bannerPreview.classList.contains('banner-not-selected')) {
-
-                // Очищаем ссылку от возможных параметров кэширования
-                const cleanUrl = bannerImg.src.split('?')[0];
-                return cleanUrl;
-            }
-
-            return '';
+            const bannerImg = document.querySelector('#bannerPreview img');
+            return bannerImg && bannerImg.src && !bannerImg.src.includes('data:image/svg+xml')
+                ? bannerImg.src
+                : '';
         }
 
         function closeCodeModal() {
@@ -6299,23 +6266,19 @@ ${index + 1}. ${profile.profileData.profileName}
             const userProfile = loadUserProfileFromDatabase(currentUser.username);
 
             if (userProfile) {
-                // ЗАГРУЗКА БАННЕРА
+
                 const bannerContainer = document.getElementById('cabinetBannerContainer');
                 const bannerImg = document.getElementById('cabinetBanner');
 
                 if (userProfile.banner && userProfile.banner.trim() !== '') {
-                    // Используем новый Image для предзагрузки
-                    const img = new Image();
-                    img.onload = function () {
-                        bannerImg.src = userProfile.banner;
-                        bannerContainer.style.display = 'block';
-                        bannerImg.style.opacity = '1';
-                    };
-                    img.onerror = function () {
-                        console.warn('Баннер не загрузился, скрываем контейнер:', userProfile.banner);
+                    bannerImg.src = userProfile.banner;
+                    bannerContainer.style.display = 'block';
+
+
+                    bannerImg.onerror = function () {
+                        console.error('Ошибка загрузки баннера:', userProfile.banner);
                         bannerContainer.style.display = 'none';
                     };
-                    img.src = userProfile.banner;
                 } else {
                     bannerContainer.style.display = 'none';
                 }
@@ -6524,7 +6487,7 @@ ${index + 1}. ${profile.profileData.profileName}
                 profileDescription: document.getElementById('profileDescription').value,
                 userPassword: document.getElementById('profilePassword').value,
                 avatar: getAvatarSrc(),
-                banner: getBannerSrc(), // ← ЭТО ВАЖНО!
+                banner: getBannerSrc(),
                 socialLinks: collectSocialLinks(),
                 works: collectWorks(),
                 lastUpdated: new Date().toISOString(),
@@ -6629,7 +6592,7 @@ ${index + 1}. ${profile.profileData.profileName}
 
             const profileNickname = document.getElementById('profileNickname').value.trim();
             if (isNewProfile && !profileNickname) {
-                alert('✗ Пожалуйста, укажите ваш никнейм в Telegram');
+                alert('✗ Пожалуйста, укажите ваш юзер в Telegram');
                 document.getElementById('profileNickname').focus();
                 saveBtn.disabled = false;
                 saveBtn.textContent = 'Сохранить профиль';
@@ -6813,43 +6776,47 @@ ${index + 1}. ${profile.profileData.profileName}
 
 
         function syncUserData(username) {
-    const localProfile = localStorage.getItem('userProfile_' + username);
-    const dbProfile = userDatabase[username];
+            const localProfile = localStorage.getItem('userProfile_' + username);
+            const dbProfile = userDatabase[username];
 
-    if (!dbProfile) {
-        console.log('✗ Пользователь не найден в базе данных:', username);
-        return null;
-    }
+            if (!dbProfile) {
+                console.log('✗ Пользователь не найден в базе данных:', username);
+                return null;
+            }
 
-    if (localProfile) {
-        try {
-            const localData = JSON.parse(localProfile);
-            
-            // Сохраняем баннер при синхронизации
-            const mergedData = {
-                ...dbProfile,
-                ...localData,
-                password: dbProfile.password,
-                username: dbProfile.username,
-                // Приоритет у локального баннера, если он есть
-                banner: localData.banner || dbProfile.banner || ''
-            };
 
-            localStorage.setItem('userProfile_' + username, JSON.stringify(mergedData));
-            console.log('🔄 Данные синхронизированы для:', username);
-            return mergedData;
-        } catch (error) {
-            console.error('Ошибка синхронизации:', error);
+            if (localProfile) {
+                try {
+                    const localData = JSON.parse(localProfile);
+
+
+                    const mergedData = {
+                        ...dbProfile,
+                        ...localData,
+                        password: dbProfile.password,
+                        username: dbProfile.username
+                    };
+
+                    localStorage.setItem('userProfile_' + username, JSON.stringify(mergedData));
+                    console.log('🔄 Данные синхронизированы для:', username);
+                    return mergedData;
+                } catch (error) {
+                    console.error('Ошибка синхронизации:', error);
+                }
+            }
+
+
+            localStorage.setItem('userProfile_' + username, JSON.stringify(dbProfile));
+            return dbProfile;
         }
-    }
 
-    // При первом входе сохраняем баннер из базы
-    localStorage.setItem('userProfile_' + username, JSON.stringify({
-        ...dbProfile,
-        banner: dbProfile.banner || ''
-    }));
-    return dbProfile;
-}
+        function getBannerSrc() {
+            const bannerImg = document.querySelector('#bannerPreview img');
+            return bannerImg && bannerImg.src && !bannerImg.src.includes('data:image/svg+xml')
+                ? bannerImg.src
+                : '';
+        }
+
 
         function getAvatarSrc() {
             const avatarImg = document.querySelector('#avatarPreview img');
