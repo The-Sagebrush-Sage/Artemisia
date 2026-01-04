@@ -29,7 +29,7 @@ const userDatabase = {
         profileNickname: "nance_art",
         profileStyle: "Авторский",
         avatar: "https://i.postimg.cc/257fv0QQ/%D0%B0%D0%B2%D0%B0_%D0%B1%D0%B0%D0%BD%D0%B0%D0%BD_3.png",
-        banner: "https://i.postimg.cc/Pf9GVnCH/photo_5244699232638725578_y.jpg",
+        banner: "https://i.postimg.cc/257fv0QQ/%D0%B0%D0%B2%D0%B0_%D0%B1%D0%B0%D0%BD%D0%B0%D0%BD_3.png",
         socialLinks: [
             { platform: "telegram", username: "nensn5" },
             { platform: "youtube", username: "nensn5" },
