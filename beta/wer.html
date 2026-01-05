@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemisia</title>
+    <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Модальное окно регистрации */
+        .registration-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            overflow-y: auto;
+        }
+        
+        .registration-modal-content {
+            position: relative;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1e1e1e 100%);
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #fff;
+        }
+        
+        .registration-modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .registration-modal-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        
+        .registration-modal-subtitle {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .bot-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255, 204, 0, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid #ffcc00;
+        }
+        
+        .bot-icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .bot-link {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .bot-link:hover {
+            text-decoration: underline;
+        }
+        
+        .registration-form {
+            margin: 25px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #e0e0e0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: #2a2a2a;
+            border: 2px solid #444;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #ffcc00;
+            box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.2);
+        }
+        
+        .form-input::placeholder {
+            color: #777;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #ffcc00, #ffdd33);
+            color: #262626;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .message {
+            display: none;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .message.success {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+        
+        .message.error {
+            background: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+        
+        .instructions {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 3px solid #ffcc00;
+        }
+        
+        .instructions-title {
+            color: #ffcc00;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .instructions-list {
+            padding-left: 20px;
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .instructions-list li {
+            margin-bottom: 10px;
+        }
+        
+        .instructions-link {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .instructions-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .registration-modal-content {
+                margin: 20px auto;
+                padding: 20px;
+                width: 95%;
+            }
+            
+            .registration-modal-title {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .registration-modal-content {
+                padding: 15px;
+            }
+            
+            .form-input {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+            
+            .submit-btn {
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            .instructions {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Модальное окно регистрации -->
+    <div id="registrationModal" class="registration-modal">
+        <div class="registration-modal-content">
+            <span class="close-modal" onclick="closeRegistrationModal()">&times;</span>
+
+            <div class="registration-modal-header">
+                <h3 class="registration-modal-title">Регистрация в Artemisia</h3>
+                <p class="registration-modal-subtitle">Введите код подтверждения из Telegram-канала</p>
+
+                <div class="bot-info">
+                    <svg class="bot-icon" viewBox="0 0 24 24" fill="#ffcc00">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-12S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                    </svg>
+                    <a href="https://t.me/Artemisia_website" class="bot-link" target="_blank">
+                        @Artemisia_website
+                    </a>
+                </div>
+            </div>
+
+            <form class="registration-form" onsubmit="submitRegistration(event)">
+                <div class="form-group">
+                    <label class="form-label" for="registrationCode">Код подтверждения:</label>
+                    <input type="text" id="registrationCode" class="form-input" placeholder="Введите код из бота"
+                        required maxlength="10" autocomplete="off" inputmode="text">
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Получить доступ к анкете
+                </button>
+
+                <div id="message" class="message"></div>
+            </form>
+
+            <div class="instructions">
+                <h4 class="instructions-title">Как получить код подтверждения:</h4>
+                <ol class="instructions-list">
+                    <li>Перейдите в наш Telegram-канал:
+                        <a href="https://t.me/Artemisia_website?direct" class="instructions-link" target="_blank">
+                            @Artemisia_website
+                        </a>
+                    </li>
+                    <li>Напишите в предложку канала</li>
+                    <li>Вам пришлют код и инструкцию</li>
+                    <li>После введите полученный код в поле выше</li>
+                    <li>Нажмите "Получить доступ к анкете"</li>
+                    <li>Следуйте дальше по инструкции</li>
+                </ol>
+                <p style="color: #ffcc00; margin-top: 12px; font-size: 0.85em; text-align: center;">
+                    💡 Если у вас возникли проблемы с получением кода, напишите в
+                    <a href="https://t.me/Artemisia_website?direct" class="instructions-link" target="_blank"
+                        style="color: #4a90e2; font-weight: 600;">
+                        техническую поддержку
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Проверка, зарегистрирован ли пользователь на этой странице
+        function checkRegistrationStatus() {
+            // Проверяем localStorage на наличие маркера регистрации
+            const registeredOnThisPage = localStorage.getItem('registered_on_prem_page');
+            return registeredOnThisPage === 'true';
+        }
+        
+        // Показать модальное окно если не зарегистрирован
+        function showRegistrationIfNeeded() {
+            if (!checkRegistrationStatus()) {
+                openRegistrationModal();
+            }
+        }
+        
+        // Функции для работы с модальным окном
+        function openRegistrationModal() {
+            const modal = document.getElementById('registrationModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Сброс сообщений и поля ввода
+            document.getElementById('message').style.display = 'none';
+            document.getElementById('registrationCode').value = '';
+            
+            // Фокусировка на поле ввода
+            setTimeout(() => {
+                const input = document.getElementById('registrationCode');
+                input.focus();
+            }, 100);
+        }
+        
+        function closeRegistrationModal() {
+            const modal = document.getElementById('registrationModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Обработка отправки формы
+        function submitRegistration(event) {
+            event.preventDefault();
+            
+            const code = document.getElementById('registrationCode').value.trim();
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (!code) {
+                showMessage('Пожалуйста, введите код подтверждения', 'error');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Проверка...';
+            
+            // Имитация проверки кода
+            setTimeout(() => {
+                // Валидный код (можно изменить)
+                const validCode = 'N876QwR';
+                
+                if (code === validCode) {
+                    // Помечаем пользователя как зарегистрированного на этой странице
+                    localStorage.setItem('registered_on_prem_page', 'true');
+                    
+                    showMessage('Код подтвержден! Вы получили доступ к этой странице.', 'success');
+                    
+                    setTimeout(() => {
+                        closeRegistrationModal();
+                        // Здесь можно добавить редирект или другую логику после успешной регистрации
+                    }, 2000);
+                } else {
+                    showMessage('Неверный код подтверждения', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Получить доступ к анкете';
+                }
+            }, 1500);
+        }
+        
+        // Показать сообщение
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+        }
+        
+        // Закрытие по клику вне модального окна
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('registrationModal');
+            if (event.target === modal) {
+                closeRegistrationModal();
+            }
+        });
+        
+        // Закрытие по клавише Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && document.getElementById('registrationModal').style.display === 'block') {
+                closeRegistrationModal();
+            }
+        });
+        
+        // Проверка при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(showRegistrationIfNeeded, 500);
+        });
+    </script>
+</body>
+</html>

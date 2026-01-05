@@ -2422,8 +2422,8 @@ function generateProfileCardWorks(works) {
 
     limitedWorks.forEach((work, index) => {
         worksHtml += `            <!-- Работа ${index + 1} -->
-            <div class="gallery-item" 
-                onclick="openModal('${work}', this, true)">
+            <div class="gallery-item" data-tags=""
+                onclick="openModal('${work}', '', this, true)">
                 <img src="${work}" alt="Работа ${index + 1}">
             </div>\n`;
     });
@@ -3655,6 +3655,9 @@ function closeFiltersOnClickOutside(event) {
 const carouselStates = {};
 
 function initCarousel(worksInnerId) {
+    const worksInner = document.getElementById(worksInnerId);
+    if (!worksInner) return;
+    
     if (!carouselStates[worksInnerId]) {
         carouselStates[worksInnerId] = {
             currentTranslate: 0,
@@ -3665,10 +3668,16 @@ function initCarousel(worksInnerId) {
         };
     }
 
-    const worksInner = document.getElementById(worksInnerId);
     const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
+    
+    // Убедимся, что элементы карусели существуют
+    if (works.length === 0) return;
 
+    // Добавим стили для лучшего перетаскивания
+    worksInner.style.cursor = 'grab';
+    worksInner.style.userSelect = 'none';
 
+    // Mouse events
     worksInner.addEventListener('mousedown', (e) => {
         const state = carouselStates[worksInnerId];
         state.isDragging = true;
@@ -3679,14 +3688,14 @@ function initCarousel(worksInnerId) {
         worksInner.style.transition = 'none';
     });
 
-    window.addEventListener('mousemove', (e) => {
+    document.addEventListener('mousemove', (e) => {
         const state = carouselStates[worksInnerId];
         if (!state.isDragging) return;
         const currentPosition = e.clientX;
         state.currentTranslate = state.prevTranslate + currentPosition - state.startPos;
     });
 
-    window.addEventListener('mouseup', () => {
+    document.addEventListener('mouseup', () => {
         const state = carouselStates[worksInnerId];
         if (!state.isDragging) return;
         state.isDragging = false;
@@ -3703,7 +3712,7 @@ function initCarousel(worksInnerId) {
         worksInner.style.transition = 'transform 0.5s ease';
     });
 
-
+    // Touch events
     worksInner.addEventListener('touchstart', (e) => {
         const state = carouselStates[worksInnerId];
         state.isDragging = true;
@@ -3711,29 +3720,25 @@ function initCarousel(worksInnerId) {
         state.prevTranslate = state.currentTranslate;
         state.animationID = requestAnimationFrame(() => animation(worksInnerId));
         worksInner.style.transition = 'none';
-    });
+    }, { passive: true });
 
-    window.addEventListener('touchmove', (e) => {
+    document.addEventListener('touchmove', (e) => {
         const state = carouselStates[worksInnerId];
         if (!state.isDragging) return;
 
         const currentPosition = e.touches[0].clientX;
-        const newTranslate = state.prevTranslate + currentPosition - state.startPos;
+        state.currentTranslate = state.prevTranslate + currentPosition - state.startPos;
+        
+        // Ограничиваем перемещение
+        const totalWorksWidth = Array.from(works).reduce((sum, work) => sum + work.offsetWidth + 35, 0);
+        const containerWidth = worksInner.parentElement.offsetWidth;
+        const maxTranslate = Math.min(0, -(totalWorksWidth - containerWidth));
+        
+        state.currentTranslate = Math.max(state.currentTranslate, maxTranslate);
+        state.currentTranslate = Math.min(state.currentTranslate, 0);
+    }, { passive: true });
 
-
-        if (window.innerWidth <= 768) {
-            const totalWorksWidth = Array.from(works).reduce((sum, work) => sum + work.offsetWidth + 35, 0);
-            const containerWidth = worksInner.parentElement.offsetWidth;
-            const maxTranslate = -(totalWorksWidth - containerWidth);
-
-
-            state.currentTranslate = Math.max(Math.min(newTranslate, 0), maxTranslate);
-        } else {
-            state.currentTranslate = newTranslate;
-        }
-    });
-
-    window.addEventListener('touchend', () => {
+    document.addEventListener('touchend', () => {
         const state = carouselStates[worksInnerId];
         if (!state.isDragging) return;
         state.isDragging = false;
@@ -3742,8 +3747,8 @@ function initCarousel(worksInnerId) {
         const movedBy = state.currentTranslate - state.prevTranslate;
         const visibleWorks = getVisibleWorksCount(worksInnerId);
 
-        if (movedBy < -100) nextWork(worksInnerId, visibleWorks);
-        else if (movedBy > 100) prevWork(worksInnerId, visibleWorks);
+        if (movedBy < -50) nextWork(worksInnerId, visibleWorks);
+        else if (movedBy > 50) prevWork(worksInnerId, visibleWorks);
         else setPosition(worksInnerId);
 
         worksInner.style.transition = 'transform 0.5s ease';
@@ -3774,12 +3779,23 @@ function getVisibleWorksCount(worksInnerId) {
 
 function nextWork(worksInnerId, step = null) {
     const worksInner = document.getElementById(worksInnerId);
-    if (!worksInner) return;
+    if (!worksInner) {
+        console.error(`Карусель с ID ${worksInnerId} не найдена`);
+        return;
+    }
 
     const works = worksInner.querySelectorAll('.work-thumb, .work-thumb-1, .work-thumb-2, .work-thumb-3');
     const state = carouselStates[worksInnerId];
 
-    if (works.length === 0) return;
+    if (!works || works.length === 0) {
+        console.error(`В карусели ${worksInnerId} нет работ`);
+        return;
+    }
+
+    if (!state) {
+        console.error(`Состояние для карусели ${worksInnerId} не инициализировано`);
+        return;
+    }
 
     if (step === null) step = getVisibleWorksCount(worksInnerId);
 
@@ -3788,8 +3804,7 @@ function nextWork(worksInnerId, step = null) {
     const maxPosition = Math.min(0, containerWidth - totalWorksWidth - 35);
 
     const newPosition = state.currentTranslate - (step * (works[0].offsetWidth + 35));
-
-
+    
     state.currentTranslate = Math.max(newPosition, maxPosition);
 
     worksInner.style.transition = 'transform 0.5s ease';
@@ -5301,6 +5316,33 @@ function findExistingUserId(nickname) {
     return null;
 }
 
+// Вместо ручного перечисления всех каруселей, инициализируем их автоматически
+document.addEventListener('DOMContentLoaded', function () {
+    // Автоматическая инициализация всех каруселей
+    document.querySelectorAll('.works-inner').forEach(worksInner => {
+        if (worksInner.id) {
+            initCarousel(worksInner.id);
+        }
+    });
+    
+    // Инициализация фильтров
+    initFilters();
+    
+    // Добавляем класс к первому элементу "Все стили"
+    const firstFilter = document.querySelector('.filters-dropdown a:first-child');
+    if (firstFilter) firstFilter.classList.add('active-filter');
+    
+    // Адаптация каруселей при изменении размера окна
+    window.addEventListener('resize', () => {
+        Object.keys(carouselStates).forEach(worksInnerId => {
+            carouselStates[worksInnerId].currentTranslate = 0;
+            setPosition(worksInnerId);
+        });
+    });
+    
+    // Инициализация модального окна изображений
+    initImageModal();
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     checkAuthStatus();
