@@ -18,7 +18,7 @@ const userDatabase = {
             "https://i.postimg.cc/Pf9GVnCH/photo-5244699232638725578-y.jpg",
             "https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg"
         ],
-        publishedOn: "prem_artist",
+        publishedOn: "artist",
         userPassword: "1234590",
         profileDescription: "",
     },
