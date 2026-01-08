@@ -4,7 +4,7 @@ const userDatabase = {
         username: "user_5sjr50",
         profileName: "Дизайнер Профи",
         profileNickname: "_pro",
-        profileStyle: "Серрилиазм",
+        profileStyle: "Дизайн",
         avatar: "https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg",
         banner: "https://i.postimg.cc/8zGLmfKb/image.png",
         socialLinks: [

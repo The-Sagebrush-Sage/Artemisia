@@ -463,6 +463,36 @@
                 toggleMenu();
             });
         });
+
+        function toggleMenu() {
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('overlay');
+    const menuIcon = document.getElementById('menuIcon');
+    const body = document.body;
+    const header = document.querySelector('header');
+    
+    if (!drawer.classList.contains('open')) {
+        // Открываем меню
+        body.classList.add('menu-open');
+        drawer.classList.add('open');
+        overlay.classList.add('active');
+        menuIcon.classList.add('active');
+        
+        // Скрываем полосу прокрутки
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+    } else {
+        // Закрываем меню
+        body.classList.remove('menu-open');
+        drawer.classList.remove('open');
+        overlay.classList.remove('active');
+        menuIcon.classList.remove('active');
+        
+        // Возвращаем полосу прокрутки
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+    }
+}
     </script>
 </body>
 </html>
