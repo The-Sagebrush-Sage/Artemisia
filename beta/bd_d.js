@@ -12,6 +12,8 @@ const userDatabase = {
             { platform: "instagram", username: "pro" }
         ],
         works: [
+            "https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg",
+            "https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg",
             "https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg",
             "https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg",
             "https://i.postimg.cc/Vk3Hs0tN/photo-5271895704291372799-c.jpg",
@@ -19,7 +21,7 @@ const userDatabase = {
             "https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg"
         ],
         publishedOn: "artist",
-        userPassword: "1234590",
+        userPassword: "MTIzNDU5MDo6cTJmMDp6OjIwMjQ6OmFydGVtaXNpYV9zZWN1cmVfa2V5XzIwMjQ=",
         profileDescription: "",
     },
 
