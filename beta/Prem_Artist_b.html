@@ -805,6 +805,64 @@
     <!-- Художники -->
     <section>
 
+        <!-- K. Bunny Prem -->
+        <section id="k.bunny_prem">
+            <section class="profile-section" data-style="Графика" data-prem="true">
+                <div class="avatar-container" onclick="window.location.href='../Prem/k.bunny.html'">
+                    <div class="avatar-border"></div>
+                    <img src="https://i.postimg.cc/R079SV85/6.jpg" alt="Аватар" class="avatar">
+                    <div class="profile-button"> Профиль</div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>K. Bunny</h1>
+                    <a href="https://t.me/Lifvci" class="profile-link">
+                        <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="profile-link-icon">
+                        @Lifvci
+                    </a>
+                    <p>Стиль: Графика</p>
+                    <div class="social-links">
+                        <a href="https://t.me/nicshe_777" class="social-link" target="_blank" rel="noopener noreferrer"
+                            aria-label="telegram">
+                            <img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Telegram" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="favorite-works">Публикации автора</h2>
+            <div class="works-carousel" id="artistk.bunnyPremCarousel">
+                <div class="works-inner" id="artistk.bunnyPremWorks">
+                    <img src="https://i.postimg.cc/L65HtSqL/2.jpg" class="work-thumb-1" alt="Работа 1">
+                    <img src="https://i.postimg.cc/05ckKjN9/1.jpg" class="work-thumb-2" alt="Работа 2">
+                    <img src="https://i.postimg.cc/5NrfprvG/3.jpg" class="work-thumb-3" alt="Работа 3">
+                    <img src="https://i.postimg.cc/DwbnNcPz/4.jpg" class="work-thumb-1" alt="Работа 4">
+                    <img src="https://i.postimg.cc/vmFbw60t/5.jpg" class="work-thumb-2" alt="Работа 5">
+                    <img src="https://i.postimg.cc/R079SV85/6.jpg" class="work-thumb-3" alt="Работа 6">
+                </div>
+                <button class="works-control prev" onclick="prevWork('artistk.bunnyPremWorks')">&#10094;</button>
+                <button class="works-control next" onclick="nextWork('artistk.bunnyPremWorks')">&#10095;</button>
+            </div>
+            <button class="show-works-btn" onclick="openModal('modalk.bunnyPrem')">Ознакомиться со всеми
+                работами</button>
+
+            <!-- Modal -->
+            <div id="modalk.bunnyPrem" class="modal">
+                <span class="close-btn" onclick="closeModal('modalk.bunnyPrem')">&times;</span>
+                <div class="modal-header">
+                    <h2>Галерея работ</h2>
+                </div>
+                <div class="modal-content">
+                    <img src="https://i.postimg.cc/L65HtSqL/2.jpg" class="modal-img" alt="Работа 1">
+                    <img src="https://i.postimg.cc/05ckKjN9/1.jpg" class="modal-img" alt="Работа 2">
+                    <img src="https://i.postimg.cc/5NrfprvG/3.jpg" class="modal-img" alt="Работа 3">
+                    <img src="https://i.postimg.cc/DwbnNcPz/4.jpg" class="modal-img" alt="Работа 4">
+                    <img src="https://i.postimg.cc/vmFbw60t/5.jpg" class="modal-img" alt="Работа 5">
+                    <img src="https://i.postimg.cc/R079SV85/6.jpg" class="modal-img" alt="Работа 6">
+                </div>
+            </div>
+        </section>
+
         <!-- Neko Nati Prem -->
         <section id="nekonati_prem">
             <section class="profile-section" data-style="Аниме" data-prem="true">
@@ -8098,8 +8156,9 @@ ${index + 1}. ${profile.profileData.profileName}
         document.addEventListener('DOMContentLoaded', function () {
             checkAuthStatus();
 
-            // Инициализация каруселей
+            // Инициализация каруселей 
             initCarousel('artistнэнсикPremWorks');
+            initCarousel('artistk.bunny_premWorks');
             initCarousel('artistnekonatiPremWorks');
 
             initCarousel('artist1Works');
@@ -8151,6 +8210,7 @@ ${index + 1}. ${profile.profileData.profileName}
         publishUserProfileOnPage("user_prem789", "prem_artist");  // Prem Artist
         publishUserProfileOnPage("user_nance_art_uz2t", "prem_artist"); // Prem Artist
         publishUserProfileOnPage("user_neko_nati_zv5g", "prem_artist"); // Prem Artist
+        publishUserProfileOnPage("user_5urt90", "prem_artist");
 
 
     </script>

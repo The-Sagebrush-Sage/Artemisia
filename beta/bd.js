@@ -4,7 +4,7 @@ const userDatabase = {
         username: "user_5sjr50",
         profileName: "Дизайнер Профи",
         profileNickname: "_pro",
-        profileStyle: "Серрилиазм",
+        profileStyle: "Аниме",
         avatar: "https://i.postimg.cc/K81gkwBL/photo-5226705699080367487-x.jpg",
         banner: "https://i.postimg.cc/8zGLmfKb/image.png",
         socialLinks: [
@@ -74,6 +74,30 @@ const userDatabase = {
         lastUpdated: "2026-01-05T16:37:39.721Z"
     }, 
 
+    "user_5urt90": {
+        username: "user_5urt90",
+        profileName: "K. Bunny",
+        profileNickname: "Lifvci",
+        profileStyle: "Графика",
+        avatar: "https://i.postimg.cc/R079SV85/6.jpg",
+        banner: "",
+        socialLinks: [
+            { platform: "telegram", username: "nicshe_777" }
+        ],
+        works: [
+            "https://i.postimg.cc/L65HtSqL/2.jpg",
+            "https://i.postimg.cc/05ckKjN9/1.jpg",
+            "https://i.postimg.cc/5NrfprvG/3.jpg",
+            "https://i.postimg.cc/DwbnNcPz/4.jpg",
+            "https://i.postimg.cc/vmFbw60t/5.jpg",
+            "https://i.postimg.cc/R079SV85/6.jpg"
+        ],
+        publishedOn: "prem_artist",
+        password: "123456",
+        profileDescription: "",
+        basicInfoLocked: true,
+        lastUpdated: "2026-01-15T17:50:10.147Z"
+    },
     
 
 

@@ -21,7 +21,7 @@ const userDatabase = {
             "https://i.postimg.cc/DwQtzWBf/photo-5244699232638725577-y.jpg"
         ],
         publishedOn: "artist",
-        userPassword: "MTIzNDU5MDo6cTJmMDp6OjIwMjQ6OmFydGVtaXNpYV9zZWN1cmVfa2V5XzIwMjQ=",
+        userPassword: "MDk4NzY1NDMyMTo6cm1lZGp2b29zcm86OmFydGVtaXNpYV9zZWN1cmVfa2V5XzIwMjQ=",
         profileDescription: "",
     },
 
