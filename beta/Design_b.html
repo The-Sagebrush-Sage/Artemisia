@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artemisia</title>
     <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
-    <link rel="stylesheet" href="Artist_b.css">
+    <link rel="stylesheet" href="Fr_b.css">
 
 </head>
 
@@ -1958,28 +1958,28 @@ publishUserProfile("user_abc123")
         }
 
         function loadCabinetSocialLinks(socialLinks) {
-            const container = document.getElementById('cabinetSocialLinks');
-            container.innerHTML = '';
+    const container = document.getElementById('cabinetSocialLinks');
+    container.innerHTML = '';
 
-            if (socialLinks && socialLinks.length > 0) {
-                socialLinks.forEach(link => {
-                    const socialLink = document.createElement('a');
-                    socialLink.href = getSocialPrefix(link.platform) + link.username;
-                    socialLink.target = '_blank';
-                    socialLink.className = 'cabinet-social-link';
+    if (socialLinks && socialLinks.length > 0) {
+        socialLinks.forEach(link => {
+            const socialLink = document.createElement('a');
+            socialLink.href = getSocialPrefix(link.platform) + link.username;
+            socialLink.target = '_blank';
+            socialLink.className = 'cabinet-social-link';
+            socialLink.title = link.platform; // Добавляем подсказку при наведении
 
-                    const iconSrc = getSocialIconSrc(link.platform);
-                    socialLink.innerHTML = `
+            const iconSrc = getSocialIconSrc(link.platform);
+            socialLink.innerHTML = `
                 <img src="${iconSrc}" alt="${link.platform}" class="cabinet-social-icon">
-                <span>${link.username}</span>
             `;
 
-                    container.appendChild(socialLink);
-                });
-            } else {
-                container.innerHTML = '<p style="color: #aaa; text-align: center;">Социальные сети не добавлены</p>';
-            }
-        }
+            container.appendChild(socialLink);
+        });
+    } else {
+        container.innerHTML = '<p style="color: #aaa; text-align: center;">Социальные сети не добавлены</p>';
+    }
+}
 
         function getSocialIconSrc(platform) {
             const icons = {
@@ -1988,7 +1988,8 @@ publishUserProfile("user_abc123")
                 'pinterest': 'https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png',
                 'youtube': 'https://i.postimg.cc/fW5tnzqN/youtube_(1).png',
                 'vk': 'https://i.postimg.cc/cHhQbQ8q/вк.png',
-                
+                'tiktok': 'https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png',
+
             };
 
             return icons[platform] || 'https://i.postimg.cc/cJXCqTTc/icons8-48.png';
@@ -2542,24 +2543,25 @@ ${index + 1}. ${user.name}
             const socialId = 'social_' + Date.now();
 
             const socialHtml = `
-                <div class="social-link-input" id="${socialId}">
-                    <select class="social-platform-select" onchange="updateSocialLinkPrefix(this)">
-                        <option value="telegram" ${platform === 'telegram' ? 'selected' : ''}>Telegram</option>
-                        <option value="instagram" ${platform === 'instagram' ? 'selected' : ''}>Instagram</option>
-                        <option value="pinterest" ${platform === 'pinterest' ? 'selected' : ''}>Pinterest</option>
-                        <option value="youtube" ${platform === 'youtube' ? 'selected' : ''}>YouTube</option>
-                        <option value="artstation" ${platform === 'artstation' ? 'selected' : ''}>ArtStation</option>
-                        <option value="behance" ${platform === 'behance' ? 'selected' : ''}>Behance</option>
-                    </select>
-                    <div class="social-link-input-group">
-                        <span class="social-link-prefix" id="${socialId}_prefix">${getSocialPrefix(platform)}</span>
-                        <input type="text" class="form-input social-link-input-field" 
-                               placeholder="username" value="${username || ''}"
-                               oninput="validateSocialLink(this)">
-                    </div>
-                    <button type="button" class="remove-btn" onclick="removeSocialLink('${socialId}')">Удалить</button>
-                </div>
-            `;
+        <div class="social-link-input" id="${socialId}">
+            <select class="social-platform-select" onchange="updateSocialLinkPrefix(this)">
+                <option value="telegram" ${platform === 'telegram' ? 'selected' : ''}>Telegram</option>
+                <option value="instagram" ${platform === 'instagram' ? 'selected' : ''}>Instagram</option>
+                <option value="pinterest" ${platform === 'pinterest' ? 'selected' : ''}>Pinterest</option>
+                <option value="youtube" ${platform === 'youtube' ? 'selected' : ''}>YouTube</option>
+                <option value="vk" ${platform === 'vk' ? 'selected' : ''}>VK</option>
+                <option value="tiktok" ${platform === 'tiktok' ? 'selected' : ''}>TikTok</option>
+               
+            </select>
+            <div class="social-link-input-group">
+                <span class="social-link-prefix" id="${socialId}_prefix">${getSocialPrefix(platform)}</span>
+                <input type="text" class="form-input social-link-input-field" 
+                       placeholder="username" value="${username || ''}"
+                       oninput="validateSocialLink(this)">
+            </div>
+            <button type="button" class="remove-btn" onclick="removeSocialLink('${socialId}')">Удалить</button>
+        </div>
+    `;
 
             container.insertAdjacentHTML('beforeend', socialHtml);
             socialLinksCount++;
@@ -2573,8 +2575,9 @@ ${index + 1}. ${user.name}
                 'instagram': 'https://instagram.com/',
                 'pinterest': 'https://pinterest.com/',
                 'youtube': 'https://youtube.com/',
-                'artstation': 'https://artstation.com/',
-                'behance': 'https://behance.net/'
+                'vk': 'https://vk.com/',
+                'tiktok': 'https://www.tiktok.com/@',
+
             };
 
             return prefixes[platform] || 'https://';
@@ -2676,8 +2679,9 @@ ${index + 1}. ${user.name}
                 <option value="instagram">Instagram</option>
                 <option value="pinterest">Pinterest</option>
                 <option value="youtube">YouTube</option>
-                <option value="artstation">ArtStation</option>
-                <option value="behance">Behance</option>
+                <option value="vk">VK</option>
+                <option value="tiktok">TikTok</option>
+                
             </select>
             <div class="social-link-input-group">
                 <span class="social-link-prefix" id="${socialId}_prefix">https://t.me/</span>
@@ -2694,7 +2698,6 @@ ${index + 1}. ${user.name}
             updateSocialLimitWarning();
             updateAddSocialButton();
 
-            // Запускаем валидацию после добавления
             setTimeout(() => {
                 validateSocialLinks();
                 updateOverallValidation();
@@ -2712,8 +2715,9 @@ ${index + 1}. ${user.name}
                 'instagram': 'https://instagram.com/',
                 'pinterest': 'https://pinterest.com/',
                 'youtube': 'https://youtube.com/',
-                'artstation': 'https://artstation.com/',
-                'behance': 'https://behance.net/'
+                'vk': 'https://vk.com/',
+                'tiktok': 'https://www.tiktok.com/@',
+
             };
 
             prefixElement.textContent = prefixes[platform] || 'https://';
@@ -2735,8 +2739,9 @@ ${index + 1}. ${user.name}
                 'instagram': /^[a-zA-Z0-9._]{1,30}$/,
                 'pinterest': /^[a-zA-Z0-9._-]{3,30}$/,
                 'youtube': /^@[a-zA-Z0-9._-]{3,30}$/,
-                'artstation': /^[a-zA-Z0-9_-]{3,30}$/,
-                'behance': /^[a-zA-Z0-9_-]{3,30}$/
+                'vk': /^[a-zA-Z0-9._-]{3,30}$/,
+                'tiktok': /^[a-zA-Z0-9._-]{3,30}$/,
+                
             };
 
             const pattern = patterns[platform];
@@ -3319,7 +3324,7 @@ ${profileData.works ? profileData.works.map(work => `            <img src="${wor
                 'pinterest': '<img src="https://i.postimg.cc/T3B57t75/icons8-pinterest-48.png" alt="Pinterest" class="social-icon">',
                 'youtube': '<img src="https://i.postimg.cc/fW5tnzqN/youtube_(1).png" alt="YouTube" class="social-icon">',
                 'vk': '<img src="https://i.postimg.cc/cHhQbQ8q/вк.png" alt="VK" class="social-icon">',
-                
+                'tiktok': '<img src="https://i.postimg.cc/sD6hSj5c/free-icon-video-13670382.png" alt="TikTok" class="social-icon">',
             };
 
             return icons[platform] || '<img src="https://i.postimg.cc/cJXCqTTc/icons8-48.png" alt="Social" class="social-icon">';
@@ -5154,7 +5159,7 @@ ${index + 1}. ${profile.profileData.profileName}
         window.addEventListener('resize', function () {
             updateAuthUI();
         });
-    
+
         // ========== ФУНКЦИИ ДЛЯ СТАТУСА ПУБЛИКАЦИИ ПРОФИЛЯ ==========
 
         // Функция для проверки статуса публикации профиля

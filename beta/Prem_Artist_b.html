@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artemisia</title>
     <link rel="icon" href="https://i.postimg.cc/zXXhVbHv/11.png" type="image/x-icon">
-    <link rel="stylesheet" href="Prem_pr.css">
+    <link rel="stylesheet" href="Pr_b.css">
 
 </head>
 
@@ -2764,28 +2764,28 @@ ${usersWithoutPasswords.map(user => `- ${user}`).join('\n')}
         }
 
         function loadCabinetSocialLinks(socialLinks) {
-            const container = document.getElementById('cabinetSocialLinks');
-            container.innerHTML = '';
+    const container = document.getElementById('cabinetSocialLinks');
+    container.innerHTML = '';
 
-            if (socialLinks && socialLinks.length > 0) {
-                socialLinks.forEach(link => {
-                    const socialLink = document.createElement('a');
-                    socialLink.href = getSocialPrefix(link.platform) + link.username;
-                    socialLink.target = '_blank';
-                    socialLink.className = 'cabinet-social-link';
-
-                    const iconSrc = getSocialIconSrc(link.platform);
-                    socialLink.innerHTML = `
+    if (socialLinks && socialLinks.length > 0) {
+        socialLinks.forEach(link => {
+            const socialLink = document.createElement('a');
+            socialLink.href = getSocialPrefix(link.platform) + link.username;
+            socialLink.target = '_blank';
+            socialLink.className = 'cabinet-social-link';
+            socialLink.title = `${link.platform}: ${link.username}`; // Добавляем подсказку при наведении
+            
+            const iconSrc = getSocialIconSrc(link.platform);
+            socialLink.innerHTML = `
                 <img src="${iconSrc}" alt="${link.platform}" class="cabinet-social-icon">
-                <span>${link.username}</span>
-            `;
+            `; // Убрали текстовый span
 
-                    container.appendChild(socialLink);
-                });
-            } else {
-                container.innerHTML = '<p style="color: #aaa; text-align: center;">Социальные сети не добавлены</p>';
-            }
-        }
+            container.appendChild(socialLink);
+        });
+    } else {
+        container.innerHTML = '<p style="color: #aaa; text-align: center;">Социальные сети не добавлены</p>';
+    }
+}
 
         function getSocialIconSrc(platform) {
             const icons = {
